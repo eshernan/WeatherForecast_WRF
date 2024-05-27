@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+ <stations>
+  <station wmo="83746" icao="SBGL" ctry="BR" loc="2249S04315W0006">Aeroporto Internacional do Rio de Janeiro/Galeão</station>
+  <station wmo="74486" icao="KJFK" ctry="US-NY" loc="4039N07347W0007">Kennedy International Airport, New York</station>
+  <station wmo="47671" icao="RJTT" ctry="JP" loc="3533N13947E0008">Tokyo International</station>
+  <station wmo="47662" icao="RJTD" ctry="JP" loc="3541N13946E0036">Metropolitan Area Heliport Tokyo</station>
+ </stations>
+
+ <countries lang="de">
+  <country o="BR">Brasilien</country>
+  <country o="JP">Japan</country>
+  <country o="US-NY">New York, USA</country>
+ </countries>
+
+ <countries lang="en">
+  <country o="BR">Brazil</country>
+  <country o="JP">Japan</country>
+  <country o="US-NY">New York, USA</country>
+ </countries>
+
+ <countries lang="es">
+  <country o="BR">Brasil</country>
+  <country o="JP">Japón</country>
+  <country o="US-NY">Nueva York, Estados Unidos</country>
+ </countries>
+
+ <countries lang="ru">
+  <country o="BR">Бразилия</country>
+  <country o="JP">Япония</country>
+  <country o="US-NY">Нью-Йорк, США</country>
+ </countries>
+</data>

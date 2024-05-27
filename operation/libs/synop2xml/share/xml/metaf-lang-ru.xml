@@ -1,0 +1,1939 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- thanks to XX.wikipedia.org -->
+<!-- thanks to translation2.paralink.com and russian.wunderground.com -->
+<!-- thanks to http://www.cpilot.info/show_article.php?id=43 -->
+<!-- thanks to http://meteocenter.net/meteolib/ww.htm -->
+<!-- thanks to http://meteoclub.ru/index.php?action=vthread&forum=6&topic=195 -->
+
+<trans>
+ <lang xmlns="http://metaf2xml.sourceforge.net/2.1">
+
+  <compassDirAbbr>
+   <arr>С</arr>
+   <arr>ССВ</arr>
+   <arr>СВ</arr>
+   <arr>ВСВ</arr>
+   <arr>В</arr>
+   <arr>ВЮВ</arr>
+   <arr>ЮВ</arr>
+   <arr>ЮЮВ</arr>
+   <arr>Ю</arr>
+   <arr>ЮЮЗ</arr>
+   <arr>ЮЗ</arr>
+   <arr>ЗЮЗ</arr>
+   <arr>З</arr>
+   <arr>ЗСЗ</arr>
+   <arr>СЗ</arr>
+   <arr>ССЗ</arr>
+   <arr>С</arr>
+  </compassDirAbbr>
+
+  <hdr o="metar">Сводка METAR</hdr>
+  <hdr o="metar_ul">============</hdr>
+  <hdr o="speci">Сводка SPECI</hdr>
+  <hdr o="speci_ul">============</hdr>
+  <hdr o="taf">прогноз аэродрома</hdr>
+  <hdr o="taf_hour">| ч. прогноз аэродрома</hdr>
+  <hdr o="taf_ul">=================</hdr>
+  <hdr o="synop">Наблюдение синоптиков</hdr>
+  <hdr o="synop_ul">=====================</hdr>
+  <hdr o="buoy">Наблюдение буя</hdr>
+  <hdr o="buoy_ul">==============</hdr>
+  <hdr o="amdar">Метеорологическая сводка с самолета</hdr>
+  <hdr o="amdar_ul">===================================</hdr>
+  <hdr o="obsStationId">код станции:&#9;&#9;</hdr>
+  <hdr o="callSign">позывной сигнал:&#9;&#9;</hdr>
+  <hdr o="buoyId">код буя:&#9;&#9;</hdr>
+  <hdr o="obsTime">время сводки:&#9;&#9;</hdr>
+  <hdr o="windIndicator">данные о ветре:&#9;&#9;</hdr>
+  <hdr o="precipIndicator">данные об осадках:&#9;</hdr>
+  <hdr o="wxIndicator">данные о погоде:&#9;&#9;</hdr>
+  <hdr o="stationPosition">положение станции:&#9;</hdr>
+  <hdr o="baseLowestCloud">нижняя граница самых низких облаков|:&#9;</hdr>
+  <hdr o="to">&#9;&#9;до:&#9;</hdr>
+  <hdr o="issueTime">время издания:&#9;&#9;</hdr>
+  <hdr o="fcstPeriod">период прогноза:&#9;</hdr>
+  <hdr o="visPrev">преобладающая видимость:&#9;&#9;</hdr>
+  <hdr o="visMin">мин. видимость:&#9;</hdr>
+  <hdr o="visMax">макс. видимость:&#9;</hdr>
+  <hdr o="visRwy">видимость ВПП |:&#9;</hdr>
+  <hdr o="visTrend">&#9;тенденция:&#9;</hdr>
+  <hdr o="visVert">верт. видимость|:&#9;</hdr>
+  <hdr o="sfcWind">ветер:&#9;&#9;&#9;</hdr>
+  <hdr o="totalCloudCover">общая облачность:&#9;</hdr>
+  <hdr o="totalOpacity">небо скрыто:&#9;</hdr>
+  <hdr o="gpSurface">геопотенциал по высоте | гПа:&#9;</hdr>
+  <hdr o="gpSurfaceNA">геопотенциал:&#9;&#9;</hdr>
+  <hdr o="weather">погода:&#9;&#9;&#9;</hdr>
+  <hdr o="cloud">облачность:&#9;&#9;</hdr>
+  <hdr o="ceiling">потолок:&#9;</hdr>
+  <hdr o="temperature-temp">температура:&#9;&#9;</hdr>
+  <hdr o="temperature-dew">точка росы:&#9;&#9;</hdr>
+  <hdr o="relHumid">относит. влажность:&#9;</hdr>
+  <hdr o="tempMaxAt">|макс. температура:&#9;</hdr>
+  <hdr o="tempMinAt">|мин. температура:&#9;</hdr>
+  <hdr o="tempMax">макс. температура|:&#9;</hdr>
+  <hdr o="tempMin">мин. температура|:&#9;</hdr>
+  <hdr o="tempMaxDaytime">макс. дневная температура|:&#9;</hdr>
+  <hdr o="tempMinNighttime">мин. ночная температура|:&#9;</hdr>
+  <hdr o="tempAt">температура:&#9;&#9;</hdr>
+  <hdr o="tempMaxFQ">макс. температура:&#9;</hdr>
+  <hdr o="temp_fcst">прогноз температуры:&#9;&#9;</hdr>
+  <hdr o="QNH">альтиметр:&#9;&#9;</hdr>
+  <hdr o="QNH_fcst">прогноз альтиметра:&#9;&#9;</hdr>
+  <hdr o="minQNH">мин. альтиметр:&#9;&#9;</hdr>
+  <hdr o="stationPressure">давление на уровне станции:&#9;</hdr>
+  <hdr o="stateOfRwy">состояние |:&#9;</hdr>
+  <hdr o="rwyReportRepeated">нет новой сводки для ВПП, предыдущая:&#9;</hdr>
+  <hdr o="windShearRwy">|:&#9;&#9;</hdr>
+  <hdr o="recentWeather">недавняя погода:&#9;&#9;</hdr>
+  <hdr o="weatherPast">погода|:&#9;</hdr>
+  <hdr o="colourCode">цветовой код:&#9;&#9;</hdr>
+  <hdr o="windShearLvl">СДВИГ ВЕТРА! Ветер:&#9;</hdr>
+  <hdr o="windShearConds">сдвиг ветра возможно</hdr>
+  <hdr o="waveHeight">волны:&#9;&#9;&#9;</hdr>
+  <hdr o="cloudMaxCover">макс. облачность:&#9;</hdr>
+  <hdr o="cloudCoverVar">облачность:&#9;&#9;</hdr>
+  <hdr o="cloudCoverVar2">изменение к:&#9;&#9;&#9;</hdr>
+  <hdr o="reportConcerns">сводка касается:&#9;&#9;</hdr>
+  <hdr o="cloudOpacityLvl">погодное явление с непрозрачностью:&#9;</hdr>
+  <hdr o="trend">тенденции в течение следующих 2 ч.:</hdr>
+  <hdr o="trend_ul">===============================</hdr>
+  <hdr o="trendTAF">прогноз тенденции:</hdr>
+  <hdr o="trendTAF_ul">===============</hdr>
+  <hdr o="remark">замечания:</hdr>
+  <hdr o="remark_ul">========</hdr>
+  <hdr o="visLoc">видимость|:&#9;</hdr>
+  <hdr o="rwyWind">ветер на ВПП |:&#9;</hdr>
+  <hdr o="thrWind">ветер на ВПП |:&#9;</hdr>
+  <hdr o="peakWind">макс. ветер|:&#9;</hdr>
+  <hdr o="SLP">давление на уровне моря:&#9;</hdr>
+  <hdr o="regQNH">рег. QNH:&#9;&#9;</hdr>
+  <hdr o="QFE">давление QFE:&#9;&#9;</hdr>
+  <hdr o="QFF">давление QFF:&#9;&#9;</hdr>
+  <hdr o="rmkVisVar">видимость изменяется от:&#9;</hdr>
+  <hdr o="correctedAt">сообщение было исправлено:&#9;</hdr>
+  <hdr o="amendedAt">сообщение было поправено:&#9;</hdr>
+  <hdr o="precipitation">количество осадков|:&#9;</hdr>
+  <hdr o="ERROR">ошибка в '@': </hdr>
+  <hdr o="warning">предупреждение: </hdr>
+  <hdr o="SST">темп. поверхности моря:&#9;</hdr>
+  <hdr o="OAT">темп. внешнего воздуха:&#9;</hdr>
+  <hdr o="AI">AI:&#9;&#9;&#9;</hdr>
+  <hdr o="snowIncr">снег быстро увеличивается:&#9;</hdr>
+  <hdr o="cloudTypes">типы облаков:&#9;</hdr>
+  <hdr o="windShift">изменение ветра</hdr>
+  <hdr o="conditionMountain">горы:&#9;&#9;&#9;</hdr>
+  <hdr o="conditionValley">долины:&#9;&#9;</hdr>
+  <hdr o="turbulence">турбулентность:&#9;&#9;</hdr>
+  <hdr o="icing">обледенение:&#9;&#9;&#9;</hdr>
+  <hdr o="tracesOf">следы:&#9;&#9;</hdr>
+  <hdr o="seaCondition">состояние моря:&#9;</hdr>
+  <hdr o="swellCondition">состояние волнения:&#9;</hdr>
+  <hdr o="cloudLayer">слой облаков:&#9;&#9;</hdr>
+  <hdr o="obscuration">из-за |:&#9;</hdr>
+  <hdr o="variableCeiling">изменение потолка:&#9;</hdr>
+  <hdr o="pressureChange">изменение давления|:&#9;</hdr>
+  <hdr o="pressureChangeStn">изменение давления (уровень станции)|:&#9;</hdr>
+  <hdr o="ceilVisVariable">потолок на или ниже 900 м и изменяется, видимость изменяется от:&#9;</hdr>
+  <hdr o="rwySfcCondition">состояние поверхности ВПП:&#9;</hdr>
+  <hdr o="rainfall">ливень|:&#9;&#9;</hdr>
+  <hdr o="NEFO_PLAYA">NEFO PLAYA:&#9;&#9;</hdr>
+  <hdr o="densityAlt">высота плотности:&#9;</hdr>
+  <hdr o="pressureAlt">высота давления:&#9;</hdr>
+  <hdr o="obsTimeOffset">смещение времени наблюдения:&#9;</hdr>
+  <hdr o="nextFcst">следующий прогноз:&#9;</hdr>
+  <hdr o="amdAt">поправка:&#9;&#9;</hdr>
+  <hdr o="fcstAutoObs">прогноз основан на автоматизированном наблюдении</hdr>
+  <hdr o="waterEquivOfSnow">водный эквивалент снега|:&#9;</hdr>
+  <hdr o="snowCover">снежный покров:&#9;&#9;</hdr>
+  <hdr o="fcstNotAvbl">прогноз недоступен:&#9;</hdr>
+  <hdr o="temp1">температура 1:&#9;&#9;</hdr>
+  <hdr o="temp2">температура 2:&#9;&#9;</hdr>
+  <hdr o="precipAmount1">осадки 1:&#9;&#9;</hdr>
+  <hdr o="precipAmount2">осадки 2:&#9;&#9;</hdr>
+  <hdr o="notRecognised">НЕ РАСПОЗНАНО:&#9;&#9;</hdr>
+  <hdr o="RSNK">данные для Rattlesnake Mountain:</hdr>
+  <hdr o="LAG_PK">данные для Laguna Peak:</hdr>
+  <hdr o="RADAT">данные наблюдений радиозонда для границы замерзания:</hdr>
+  <hdr o="freezingLvl">граница замерзания:&#9;&#9;</hdr>
+  <hdr o="sunshine">продолжительность светового дня|:&#9;</hdr>
+  <hdr o="hailStones">макс. диаметр градин:&#9;</hdr>
+  <hdr o="glazeDeposit">толщина гололёдных отложений:&#9;</hdr>
+  <hdr o="rimeDeposit">толщина изморози:&#9;</hdr>
+  <hdr o="compoundDeposit">толщина смешанных отложений:&#9;</hdr>
+  <hdr o="wetsnowDeposit">толщина мокрого снега:&#9;</hdr>
+  <hdr o="activeRwy">активная ВПП:&#9;&#9;</hdr>
+  <hdr o="transitionLvl">уровень перехода:&#9;</hdr>
+  <hdr o="currentATIS">ATIS:&#9;&#9;&#9;</hdr>
+  <hdr o="obsInitials">наблюдатель:&#9;&#9;</hdr>
+  <hdr o="QBB">нижняя граница облаков:&#9;</hdr>
+  <hdr o="QBJ">верхн. граница облаков:&#9;</hdr>
+  <hdr o="limMetwatch">огранич. мет. обслуживание</hdr>
+  <hdr o="autoMetwatch">автом. мет. обслуживание</hdr>
+  <hdr o="issuedBy">издания:&#9;&#9;</hdr>
+  <hdr o="windAtLoc">ветер |:&#9;&#9;</hdr>
+  <hdr o="exactObsTime">точное время наблюдения:&#9;</hdr>
+  <hdr o="stateOfGround">состояние земли:&#9;</hdr>
+  <hdr o="tempMinGround">мин. темп. земли|:&#9;</hdr>
+  <hdr o="tempGround">температура земли|:&#9;</hdr>
+  <hdr o="stateOfGroundSnow">состояние земли:&#9;</hdr>
+  <hdr o="snowDepth">глубина снега|:&#9;&#9;</hdr>
+  <hdr o="snowFall">недавно выпавший снег|:&#9;</hdr>
+  <hdr o="rad0PosNet">положительное нетто излучение|:&#9;</hdr>
+  <hdr o="rad1NegNet">отрицательное нетто излучение|:&#9;</hdr>
+  <hdr o="rad2GlobalSolar">глобальное солнечное излучение|:&#9;</hdr>
+  <hdr o="rad3DiffusedSolar">рассеянное солнечное излучение|:&#9;</hdr>
+  <hdr o="rad4DownwardLongWave">нисходящее длинноволновое излучение|:&#9;</hdr>
+  <hdr o="rad5UpwardLongWave">восходящее длинноволновое излучение|:&#9;</hdr>
+  <hdr o="rad6ShortWave">коротковолновая излучение|:&#9;</hdr>
+  <hdr o="radShortWave">коротковолновое нетто излучение|:&#9;</hdr>
+  <hdr o="radDirectSolar">прямое солнечное излучение|:&#9;</hdr>
+  <hdr o="cloudTypesDrift">движение облаков:&#9;</hdr>
+  <hdr o="evaporation">испарение|:&#9;</hdr>
+  <hdr o="evapotranspiration">суммарное испарение|:&#9;</hdr>
+  <hdr o="evapoInstrumentation">измерение с:&#9;</hdr>
+  <hdr o="cropEvapotranspiration">&#9;&#9;по:&#9;</hdr>
+  <hdr o="tempChange">изменение темп. |:&#9;</hdr>
+  <hdr o="cloudInfoBase">нижняя граница |:&#9;</hdr>
+  <hdr o="precipCharacter">характер осадков:&#9;</hdr>
+  <hdr o="beginPrecip">начало осадков:&#9;</hdr>
+  <hdr o="endPrecip">конец осадков:&#9;</hdr>
+  <hdr o="weatherSynopBegin">начало погоды:&#9;</hdr>
+  <hdr o="weatherSynopCharacter">характер погоды:&#9;</hdr>
+  <hdr o="weatherSynopEnd">конец погоды:&#9;</hdr>
+  <hdr o="weatherSynopSince">продолжительность погоды:&#9;</hdr>
+  <hdr o="highestGust">самый высокий порыв|:&#9;</hdr>
+  <hdr o="highestMeanSpeed">самая высокая сред. скорость ветра|:&#9;</hdr>
+  <hdr o="meanSpeed">сред. скорость ветра|:&#9;</hdr>
+  <hdr o="lowestMeanSpeed">самая низкая сред. скорость ветра|:&#9;</hdr>
+  <hdr o="highestWind">самая высокая скорость ветра|:&#9;</hdr>
+  <hdr o="weatherSynopAdd">дополнительная погода|:&#9;</hdr>
+  <hdr o="weatherSynopAmplPast">прошлая важная погода|:&#9;</hdr>
+  <hdr o="weatherSynopAmpl">важная погода|:&#9;</hdr>
+  <hdr o="weatherSynopPast">прошлая погода|:&#9;</hdr>
+  <hdr o="stateOfSky">состояние неба:&#9;</hdr>
+  <hdr o="weatherSynopPrecip">, темп осадков:&#9;</hdr>
+  <hdr o="cloudBelowStation">вершина | ниже станции:&#9;</hdr>
+  <hdr o="precipPeriods">продолжительность и период осадков:&#9;</hdr>
+  <hdr o="windDir">направление ветра|:&#9;</hdr>
+  <hdr o="tideData">поток:&#9;&#9;</hdr>
+  <hdr o="tideDeviation">отклонение:&#9;&#9;</hdr>
+  <hdr o="tempCity">температура в городе:&#9;</hdr>
+  <hdr o="tempCityMax">макс. температура в городе|:&#9;</hdr>
+  <hdr o="tempCityMin">мин. температура в городе|:&#9;</hdr>
+  <hdr o="precipCity">количество осадков в городе|:&#9;</hdr>
+  <hdr o="waterTemp">температура воды|:&#9;</hdr>
+  <hdr o="soilTemp">температура почвы|:&#9;</hdr>
+  <hdr o="soilTempMin">мин. температура почвы|:&#9;</hdr>
+  <hdr o="verticalClouds">вертикальные облака:&#9;</hdr>
+  <hdr o="specialClouds">специальные облака:&#9;</hdr>
+  <hdr o="opticalPhenom">оптический феномен:&#9;</hdr>
+  <hdr o="equivWindSpeed">эквивалентный ветер в |:&#9;</hdr>
+  <hdr o="cloudTopsHeight">вершина самых низких облаков или тумана|:&#9;</hdr>
+  <hdr o="displacement">перемещение|:&#9;</hdr>
+  <hdr o="seaSurfaceTemp">температура поверхности воды:&#9;</hdr>
+  <hdr o="orographicClouds">орограф. облака:&#9;</hdr>
+  <hdr o="waves">волны:&#9;&#9;&#9;</hdr>
+  <hdr o="windWaves">данные ветровых волн:&#9;</hdr>
+  <hdr o="swell">данные зыби:&#9;&#9;</hdr>
+  <hdr o="wetbulbTemperature">температура мокрого термометра:&#9;</hdr>
+  <hdr o="snowCoverCharacter">характер снежного покрова:&#9;</hdr>
+  <hdr o="snowCoverRegularity">регулярность снежного покрова:&#9;</hdr>
+  <hdr o="driftSnowData">позёмок/метель:&#9;</hdr>
+  <hdr o="driftSnowEvolution">развитие позёмки:&#9;</hdr>
+  <hdr o="cloudEvolution">развитие облачности:&#9;</hdr>
+  <hdr o="endOfContWinds">конец непрерывных измерений ветра:&#9;</hdr>
+  <hdr o="continuousWind">средний ветер | до:&#9;</hdr>
+  <hdr o="iceAccretion">обледенение судов|:&#9;</hdr>
+  <hdr o="seaLandIce">морской лёд/лёд материкового происхождения:&#9;</hdr>
+  <hdr o="maxWindForce">макс. сила ветра|:&#9;</hdr>
+  <hdr o="frozenDeposit">гололедно-изморозевые отложения:&#9;</hdr>
+  <hdr o="tempVariation">изменения температуры|:&#9;</hdr>
+  <hdr o="mirage">мираж|:&#9;</hdr>
+  <hdr o="visibilityVariation">изменение видимости|:&#9;</hdr>
+  <hdr o="alightingAreaCondition">состояние водяной поверхности в месте посадки гидросамолетов:&#9;</hdr>
+  <hdr o="MAR">видимость в направлении моря|:&#9;</hdr>
+  <hdr o="SFC">видимость на поверхности|:&#9;</hdr>
+  <hdr o="TWR">видимость с башни|:&#9;</hdr>
+  <hdr o="ROOF">видимость с крыши|:&#9;</hdr>
+  <hdr o="qualitySection">качество этого раздела:&#9;</hdr>
+  <hdr o="qualityControlPosition">качество позиции:&#9;</hdr>
+  <hdr o="qualityControlTime">качество времени:&#9;</hdr>
+  <hdr o="qualityLocClass">ошибка позиции (66 %-й достоверн.)|:&#9;</hdr>
+  <hdr o="layerBase">нижняя граница слоя:&#9;</hdr>
+  <hdr o="layerThickness">толщина слоя:&#9;</hdr>
+  <hdr o="qualityData">данные качества:&#9;</hdr>
+  <hdr o="qualityPressure">качество измерения давления:&#9;</hdr>
+  <hdr o="qualityHousekeeping">качество служебного параметра:&#9;</hdr>
+  <hdr o="qualityWaterTemp">качество измерения температуры воды:&#9;</hdr>
+  <hdr o="qualityAirTemp">качество измерения температуры воздуха:&#9;</hdr>
+  <hdr o="qualityTransmission">качество передачи на спутник:&#9;</hdr>
+  <hdr o="qualityLocation">качество местоположения:&#9;</hdr>
+  <hdr o="depthCorrectionInd">коррекция значений глубины:&#9;</hdr>
+  <hdr o="qualityTempSalProfile">качество измерения профилей температуры и солености:&#9;</hdr>
+  <hdr o="qualityCurrentProfile">качество измерения профилей течения:&#9;</hdr>
+  <hdr o="salinityMeasurement">метод измерения солёности:&#9;</hdr>
+  <hdr o="salinity">солёность:&#9;</hdr>
+  <hdr o="measurementDurTime">измерение течения:&#9;</hdr>
+  <hdr o="measurementCorrection">исправление измерения:&#9;</hdr>
+  <hdr o="current">течение:&#9;</hdr>
+  <hdr o="lastKnownPosTime">время последнего известного местоположения:</hdr>
+  <hdr o="buoyType">тип буя:&#9;</hdr>
+  <hdr o="drogueType">тип плавучего якоря:&#9;</hdr>
+  <hdr o="anemometer">анемометр:&#9;</hdr>
+  <hdr o="buoyDrift">дрейф буя:&#9;</hdr>
+  <hdr o="pressureCableEnd">гидростатическое давление на нижнем конце троса:&#9;</hdr>
+  <hdr o="batteryVoltage">напряжение батареи:&#9;</hdr>
+  <hdr o="submergence">время погружения:&#9;</hdr>
+  <hdr o="cableLengthThermistor">длина троса (гирлянда терморезисторов):&#9;</hdr>
+  <hdr o="cableLengthDrogue">длина троса якоря:&#9;</hdr>
+  <hdr o="fcstCancelledFrom">прогноз отменен</hdr>
+  <hdr o="phaseOfFlight">фаза полета:&#9;&#9;</hdr>
+  <hdr o="aircraftId">указатель самолета:&#9;</hdr>
+  <hdr o="aircraftLocation">местоположение самолета:&#9;</hdr>
+  <hdr o="amdarObs">данные измерения:</hdr>
+  <hdr o="amdarObs_ul">=================</hdr>
+  <hdr o="windAtPA">ветер:&#9;&#9;&#9;</hdr>
+  <hdr o="turbulenceAtPA">турбулентность:&#9;&#9;</hdr>
+  <hdr o="rollAngleQuality">качество угла крена воздушного судна:&#9;</hdr>
+  <hdr o="amdarInfo">дополнительная информация:&#9;</hdr>
+  <hdr o="flightLvl">эшелон полета:&#9;&#9;</hdr>
+  <hdr o="maxDerivedVerticalGust">самый высокий верт. порыв|:&#9;</hdr>
+
+  <t o="notAvailable">(не доступно)</t>
+  <t o="invalidFormat">некорректный формат</t>
+  <t o="bulletinSeq">, последовательность сводок </t>
+  <t o="sequenceLost">, последовательность сводок потеряна</t>
+  <t o="over24hLate">, сводка более 24-х часов после наблюдения</t>
+  <t o="calmWind">штиль</t>
+  <t o="calmSea">спокойное море</t>
+  <t o="noWaves">волн нет</t>
+  <t o="onDate">в </t>
+  <t o="byDate">до </t>
+  <t o="fromDate">от </t>
+  <t o="fromTillDate">от </t>
+  <t o="sinceDate">с </t>
+  <t o="tillDate">по </t>
+  <t o="dirVariable">с изменяющихся направлений</t>
+  <t o="dirVarAllUnk">с изменяющихся/всех/неизвестных направлений</t>
+  <t o="dirNotAvailable">направление недоступно,</t>
+  <t o="speedNotAvailable">скорость недоступна</t>
+  <t o="wind-from">из |</t>
+  <t o="last">последняя</t>
+  <t o="segment">доля</t>
+  <t o="wind-at">в</t>
+  <t o="wind-gusts">&#9;&#9;&#9;с порывами</t>
+  <t o="cloud-at">в</t>
+  <t o="cloudTypeNotAvailable">(тип облака необозрим)</t>
+  <t o="baseBelowStation">нижняя граница облаков ниже уровня станции</t>
+  <t o="cloudBaseNotAvailable">нижняя граница облаков неизвестна</t>
+  <t o="timeAt">в </t>
+  <t o="afterHour"> минут после часа</t>
+  <t o="timeBy">до </t>
+  <t o="timeFrom">от </t>
+  <t o="timeFromTill">от </t>
+  <t o="timeSince">с </t>
+  <t o="timeTill">по </t>
+  <t o="variable">&#9;&#9;&#9;переменный</t>
+  <t o="variable-from">от </t>
+  <t o="variable-to">до </t>
+  <t o="visVertNA">невозможно определить</t>
+  <t o="windShear">критический сдвиг ветра</t>
+  <t o="rwyNotInUse">ВПП не используется</t>
+  <t o="rwyVisNotAvailable">(видимость недоступна)</t>
+  <t o="visRwyNotAvailable">(видимость за ВПП недоступна)</t>
+  <t o="rwyDesigAll">все ВПП</t>
+  <t o="rwyDesig">ВПП |</t>
+  <t o="SNOCLO">аэропорт закрыт из-за снега</t>
+  <t o="cleared">очищен</t>
+  <t o="friction">коэффициент трения: </t>
+  <t o="depositExtent"> ВПП покрыто</t>
+  <t o="depositDepth">глубина отложений |</t>
+  <t o="NOSIG">нет существенных изменений</t>
+  <t o="BECMG">переход к</t>
+  <t o="TEMPO">временно</t>
+  <t o="INTER">нерегулярно</t>
+  <t o="CAVOK">облака и видимость хорошие</t>
+  <t o="RVRNO">видимость ВПП должна была быть указана, но отсутствует</t>
+  <t o="PWINO">датчик текущей погоды не работает</t>
+  <t o="FZRANO">датчик переохлаждённого дождя не работает</t>
+  <t o="TSNO">датчик молний не работает</t>
+  <t o="PNO">датчик не работает: опрокидная бадья</t>
+  <t o="CHINO">вторичный индикатор потолка | не работает</t>
+  <t o="VISNO">вторичный датчик видимости | не работает</t>
+  <t o="WXNO">информация о текущей погоде не доступно</t>
+  <t o="CBNO">информация о типах облаков CB/TCU не доступно</t>
+  <t o="NOSPECI">отчётов SPECI с этой станции не имеется</t>
+  <t o="VIA_PHONE">по телефону</t>
+  <t o="RCRNR">торможение затруднено, но данные деселерометра недоступны</t>
+  <t o="FROIN">иней на индикаторе</t>
+  <t o="LGT_FROIN">легкий иней на индикаторе</t>
+  <t o="HVY_FROIN">сильный иней на индикаторе</t>
+  <t o="VRBL_CONDS">переменные условия</t>
+  <t o="ACFT_MSHP">неполадка самолета</t>
+  <t o="LTG_DATA_MISG">данные по молниям отсутствуют</t>
+  <t o="RVR_MISG">данные о видимости на ВПП отсутствуют</t>
+  <t o="CLD_MISG">данные по облакам отсутствуют</t>
+  <t o="WX_MISG">данные по погоде отсутствуют</t>
+  <t o="VIS_MISG">данные по видимости отсутствуют</t>
+  <t o="WND_MISG">данные о ветре отсутствуют</t>
+  <t o="CIG_RAG">потолок рваный</t>
+  <t o="needMaint">автоматизированная станция нуждается в обслуживании</t>
+  <t o="loc-and"> и </t>
+  <t o="loc-through"> к</t>
+  <t o="predictedColour">предсказанный:</t>
+  <t o="prob">с | %-ой вероятностью</t>
+  <t o="nextDay"> на следующий день</t>
+  <t o="isStationary">неподвижно</t>
+  <t o="obscgMtns"> закрывают горы</t>
+  <t o="isGrid">сетка </t>
+  <t o="quadrant">сектор</t>
+  <t o="snowIncrPastHour">| дюймов за прошедший час</t>
+  <t o="snowIncrOnGround">| дюймов на земле</t>
+  <t o="low">низко:&#9;&#9;</t>
+  <t o="middle">средне:&#9;</t>
+  <t o="high">высоко:&#9;&#9;</t>
+  <t o="FROPA">из-за переднего прохода</t>
+  <t o="MOV">двигается</t>
+  <t o="MOVD">двигалось</t>
+  <t o="weatherBegan">начинался</t>
+  <t o="weatherEnded">кончался</t>
+  <t o="compassDirLocation">на |е</t>
+  <t o="compassDirTo">в направлении |</t>
+  <t o="compassDirFrom">из |а</t>
+  <t o="compassDirThrough">|е</t>
+  <t o="compassDirDescrQuad">| сектор</t>
+  <t o="isLower">ниже</t>
+  <t o="isLow">низко</t>
+  <t o="isFrequent">часто</t>
+  <t o="isOccasional">при случае</t>
+  <t o="isThick">толсто</t>
+  <t o="isPrettyThick">довольно толсто</t>
+  <t o="isVeryThick">очень толсто</t>
+  <t o="isThin">тонко</t>
+  <t o="isPrettyThin">довольно тонко</t>
+  <t o="isVeryThin">очень тонко</t>
+  <t o="isFeeble">слабо</t>
+  <t o="isPrettyFeeble">довольно слабо</t>
+  <t o="isVeryFeeble">очень слабо</t>
+  <t o="isSlight">немного</t>
+  <t o="isLight">легко</t>
+  <t o="isPrettyLight">довольно легко</t>
+  <t o="isVeryLight">очень легко</t>
+  <t o="isModerate">умеренно</t>
+  <t o="isHeavy">сильн.</t>
+  <t o="isVeryHeavy">очень сильн.</t>
+  <t o="isIntermittent">прерывисто</t>
+  <t o="isContinuous">непрерывный</t>
+  <t o="isIsolated">отдельно</t>
+  <t o="isNumerous">многочисленный</t>
+  <t o="isConvective">конвективный</t>
+  <t o="isDissipated">рассредоточенный</t>
+  <t o="isFreezing">переохлаждённый</t>
+  <t o="isPatchy">местами</t>
+  <t o="isVertical">вертикально</t>
+  <t o="isPartial">частично</t>
+  <t o="isVariable">поочередно легко и сильн.</t>
+  <t o="inPastHour">за прошедший час</t>
+  <t o="isAloft">наверху</t>
+  <t o="aloftNotNearGround">наверху, не около земли</t>
+  <t o="nearGroundNotAloft">около земли, не наверху</t>
+  <t o="isSteady">равномерно</t>
+  <t o="isIncreasing">увеличивается</t>
+  <t o="isDecreasing">уменьшаются</t>
+  <t o="layerTop">верхняя граница слоя</t>
+  <t o="thinLayer">тонкий слой |</t>
+  <t o="range-from"> от</t>
+  <t o="toTopOfCloud">к вершине облака</t>
+  <t o="isNotScheduled">не намечается</t>
+  <t o="isLtdToCldVisWind">ограничено облаками, видимостью и ветром</t>
+  <t o="amendment">поправка</t>
+  <t o="ceiling">потолок</t>
+  <t o="approach">подход</t>
+  <t o="cloudTypeAsoctd">| связанно</t>
+  <t o="cloudTypeEmbd">| вложено</t>
+  <t o="decelerometerReading">показания деселерометера</t>
+  <t o="decelerometerReadingNA">показания деселерометера недоступны</t>
+  <t o="minutes">минут</t>
+  <t o="fcstAutoMETAR">прогноз основан на автоматизированном METAR</t>
+  <t o="fcstCancelled">прогноз отменен</t>
+  <t o="CAVU">ясно либо рассеянные облака и видимость >10 амер. милей</t>
+  <t o="EPC">проход вероятно закрыт</t>
+  <t o="EPO">проход вероятно открыт</t>
+  <t o="EPM">проход вероятно граничный</t>
+  <t o="RTS">возвратитесь на обслуживание</t>
+  <t o="precipTraces">следы</t>
+  <t o="thicknessTraces">следы</t>
+  <t o="firstObs">первое| наблюдение</t>
+  <t o="nextObs">следующее| наблюдение</t>
+  <t o="lastObs">последнее| наблюдение</t>
+  <t o="isStaffed"> укомплектованно</t>
+  <t o="isManned"> укомплектованно</t>
+  <t o="balloonDisapp">аэростат исчез в |</t>
+  <t o="balloonVisib">аэростат был видим до |</t>
+  <t o="estimated">оценено</t>
+  <t o="isEstimated">| (оценено)</t>
+  <t o="distIsVariable">| (переменно)</t>
+  <t o="dueToIceAccretion"> из-за приставания льда</t>
+  <t o="BA_POOR">торможение плохое</t>
+  <t o="BA_POOR_MED">торможение среднее/плохое</t>
+  <t o="BA_MEDIUM">торможение среднее</t>
+  <t o="BA_MED_GOOD">торможение среднее/хорошее</t>
+  <t o="BA_GOOD">торможение хорошее</t>
+  <t o="frictionUnreliable">трение: ненадежные данные</t>
+  <t o="THN_SPTS_IOVC">небольшие пробелы в облачности</t>
+  <t o="FUOCTY">дым в городе</t>
+  <t o="ALTM_MISG">показания альтиметра отсутствуют</t>
+  <t o="ALL_WNDS_GRID">решётка всех направлений ветра</t>
+  <t o="CONTRAILS">инверсионные следы</t>
+  <t o="FOGGY">туманно</t>
+  <t o="TWLGT">сумерки</t>
+  <t o="WEA">ручное дополнение погоды</t>
+  <t o="isMissing">отсутствуют</t>
+  <t o="slash">/</t>
+  <t o="FIBI">подано, но передача невыполнима</t>
+  <t o="section">раздел</t>
+  <t o="lessOktas"> или менее, но не 0/8 (0/10)</t>
+  <t o="moreOktas"> или более, но не 8/8 (10/10)</t>
+  <t o="lessTenths"> или менее, но не 0/10 (0/8)</t>
+  <t o="moreTenths"> или более, но не 10/10 (8/8)</t>
+  <t o="oktasNotAvailable">облачность недоступна</t>
+  <t o="synopMainHour"> (основной срок)</t>
+  <t o="synopIntermHour"> (промежуточный срок)</t>
+  <t o="synopNonstandardHour"> (нестандартный срок)</t>
+  <t o="cloudNone">нет облаков</t>
+  <t o="cloudInvisible">облака не видны</t>
+  <t o="coverNotCont">снежный покров не постоянен</t>
+  <t o="noMeasurement">измерение невозможно или неточно</t>
+  <t o="topsInvisible">вершины облаков не видны</t>
+  <t o="elevationAngle">угол к вершине облака </t>
+  <t o="noPrecip">осадков нет</t>
+  <t o="atAgo">| назад</t>
+  <t o="beganAgo">началось | назад</t>
+  <t o="endedAgo">закончилось | назад</t>
+  <t o="duration">за |</t>
+  <t o="timeBeforeObsAtNA">(время недоступно)</t>
+  <t o="timeBeforeObsBeginNA">(начало недоступно)</t>
+  <t o="timeBeforeObsEndNA">(конец недоступен)</t>
+  <t o="timeBeforeObsNA">(период недоступен)</t>
+  <t o="RS">Rosário (1 мор. милей THR05)</t>
+  <t o="during"> во время </t>
+  <t o="periodNotAvailable"> (период недоступен)</t>
+  <t o="beganDuringObs">начинался во время наблюдения</t>
+  <t o="endedDuringObs">кончался во время наблюдения</t>
+  <t o="beganEndedDuringObs">начинался и кончился во время наблюдения</t>
+  <t o="changedDuringObs">изменялся во время наблюдения</t>
+  <t o="beganAfterObs">начинался после наблюдения</t>
+  <t o="endedAfterObs">кончался после наблюдения</t>
+  <t o="onePeriod"> в течение одного периода</t>
+  <t o="morePeriods"> в течение двух или больше периодов</t>
+  <t o="NDV">(нет возможности отчёта о направлении изменчивости)</t>
+  <t o="onGround"> на земле</t>
+  <t o="recordTemp">| температура</t>
+  <t o="recordTempCity">| температура в городе</t>
+  <t o="highest">самая высокая</t>
+  <t o="lowest">самая низкая</t>
+  <t o="isEqualled"> уравняна</t>
+  <t o="isOverrun"> превышена</t>
+  <t o="isUnderrun"> превышена</t>
+  <t o="since">с </t>
+  <t o="TWR">на башни</t>
+  <t o="KAUKAU">на Mt. Kaukau</t>
+  <t o="SUGARLOAF">на Sugar Loaf</t>
+  <t o="intensity">интенсивность</t>
+  <t o="notMeasurable">слишком мало для измерения</t>
+  <t o="typeOfMeasurement">тип измерения: </t>
+  <t o="period">период</t>
+  <t o="height">высота</t>
+  <t o="seaConfused">волнение на море</t>
+  <t o="approaching"> приближается |</t>
+  <t o="dataQualityAllOrBetter">| (или лучше)</t>
+  <t o="dataQualityExcept">, кроме последующей группы |: </t>
+  <t o="cloudLayerCover">облачность:&#9;</t>
+  <t o="atDepth">на глубине |</t>
+  <t o="atHeight">на высоте |</t>
+  <t o="birdStrikeHazard">риск столкновения с птицами|</t>
+  <t o="approachingWith">приближается | с:&#9;</t>
+  <t o="maxConcentration">макс. концентрация</t>
+  <t o="confidenceIsExcellent">(+/- &lt;=3 m)</t>
+  <t o="confidenceIsGood">(+/- &lt;=10 m)</t>
+  <t o="confidenceIsFair">(+/- &lt;=20 m)</t>
+  <t o="confidenceIsPoor">(+/- >20 m)</t>
+  <t o="combined_phenom1"> с </t>
+  <t o="combined_phenom2"> и </t>
+  <t o="navSystem">навигационная система: |</t>
+  <t o="amdarSystem">система AMDAR: |</t>
+  <t o="tempPrecision">точность температуры: |</t>
+
+  <reportModifierType o="NIL" >отчёт отсутствует</reportModifierType>
+  <reportModifierType o="AUTO">сгенерировано автоматически</reportModifierType>
+  <reportModifierType o="COR" >исправлено вручную</reportModifierType>
+  <reportModifierType o="RTD" >процедура отсрочена</reportModifierType>
+  <reportModifierType o="P"   >сегментировано, </reportModifierType>
+  <reportModifierType o="RR"  >отсрочено</reportModifierType>
+  <reportModifierType o="CC"  >исправлено</reportModifierType>
+  <reportModifierType o="AA"  >дополнено</reportModifierType>
+  <reportModifierType o="AMD" >дополнено</reportModifierType>
+  <reportModifierType o="LVW" >наиболее сильный встречаемый ветер</reportModifierType>
+
+  <compassDir o="N">север</compassDir>
+  <compassDir o="NNE">северный северо-восток</compassDir>
+  <compassDir o="NE">северо-восток</compassDir>
+  <compassDir o="ENE">восточный северо-восток</compassDir>
+  <compassDir o="E">восток</compassDir>
+  <compassDir o="ESE">восточный юго-восток</compassDir>
+  <compassDir o="SE">юго-восток</compassDir>
+  <compassDir o="SSE">южный юго-восток</compassDir>
+  <compassDir o="S">юг</compassDir>
+  <compassDir o="SSW">южный юго-запад</compassDir>
+  <compassDir o="SW">юго-запад</compassDir>
+  <compassDir o="WSW">западный юго-запад</compassDir>
+  <compassDir o="W">запад</compassDir>
+  <compassDir o="WNW">западный северо-запад</compassDir>
+  <compassDir o="NW">северо-запад</compassDir>
+  <compassDir o="NNW">северный северо-запад</compassDir>
+  <compassDir o="N">север</compassDir>
+
+  <units o="M"> м</units>
+  <units o="KM"> км</units>
+  <units o="DM"> дм</units>
+  <units o="CM"> см</units>
+  <units o="MM"> мм</units>
+  <units o="SM"> милей</units>
+  <units o="NM"> мор. милей</units>
+  <units o="FT"> фт</units>
+  <units o="IN"> дюймов</units>
+  <units o="KMH"> км/ч</units>
+  <units o="KT"> уз</units>
+  <units o="MPH"> амер. милей/ч</units>
+  <units o="MPS"> м/с</units>
+  <units o="hPa"> гПа</units>
+  <units o="kPa"> кПа</units>
+  <units o="inHg"> дюймов рт. ст.</units>
+  <units o="mmHg"> мм рт. ст.</units>
+  <units o="SEC"> сек.</units>
+  <units o="SEC-sum">с</units>
+  <units o="MIN"> мин.</units>
+  <units o="MIN-sum">м</units>
+  <units o="H"> час(ы,ов)</units>
+  <units o="H-sum">ч</units>
+  <units o="Jcm2"> Дж/см²</units>
+  <units o="kJm2"> кДж/м²</units>
+  <units o="kgm2"> кг/м²</units>
+  <units o="MMH"> мм/ч</units>
+  <units o="CMH"> см/ч</units>
+  <units o="CMSEC"> см/сек.</units>
+  <units o="gpm"> гпм</units>
+  <units o="bft"> Бофорт</units>
+  <units o="UTC"> UTC</units>
+  <units o="localtime"> (местное время)</units>
+  <units o="V"> вольт</units>
+
+  <locationSpec o="isAround">вокруг</locationSpec>
+  <locationSpec o="atStation">на станции</locationSpec>
+  <locationSpec o="atStationNotInDistance">на станции, не на расстоянии</locationSpec>
+  <locationSpec o="allDirections">во всех направлениях</locationSpec>
+  <locationSpec o="allDirectionsNotAtStation">во всех направлениях, не на станции</locationSpec>
+  <locationSpec o="approachingStation">приближается к станции</locationSpec>
+  <locationSpec o="recedingFromStation">отступает от станции</locationSpec>
+  <locationSpec o="passingStationInDistance">проходит мимо станции на расстоянии</locationSpec>
+  <locationSpec o="inDistance">на расстоянии</locationSpec>
+  <locationSpec o="inVicinity">в близости</locationSpec>
+  <locationSpec o="OMTNS">над горами</locationSpec>
+  <locationSpec o="OHD">наверху</locationSpec>
+  <locationSpec o="ALQDS">все сектора</locationSpec>
+  <locationSpec o="AT_AP">в аэропорту</locationSpec>
+  <locationSpec o="OVR_AP">над аэропортом</locationSpec>
+  <locationSpec o="NR_AP">около аэропорта</locationSpec>
+  <locationSpec o="VC_AP">вблизи аэропорта</locationSpec>
+  <locationSpec o="IN_VLY">в долине</locationSpec>
+  <locationSpec o="V_D">к различным направлениям</locationSpec>
+  <locationSpec o="OVR_LK">над озером</locationSpec>
+  <locationSpec o="OVR_RIVER">над рекой</locationSpec>
+  <locationSpec o="OVR_VLYS">над долинами</locationSpec>
+  <locationSpec o="OVR_RDG">над гребнем горы</locationSpec>
+  <locationSpec o="ALG_RIVER">вдоль реки</locationSpec>
+  <locationSpec o="ALG_SHRLN">вдоль побережья</locationSpec>
+  <locationSpec o="UNKN">в неизвестном направлении</locationSpec>
+
+  <cloudCover o="SKC">ясно</cloudCover>
+  <cloudCover o="NSC">нет существенной облачности</cloudCover>
+  <cloudCover o="CLR">облака не сообщалось от автоматизированной станции</cloudCover>
+  <cloudCover o="NCD">облака не обнаружены</cloudCover>
+  <cloudCover o="FEW">отдельные облака (1-2/8)</cloudCover>
+  <cloudCover o="SCT">разбросанные облака (3-4/8)</cloudCover>
+  <cloudCover o="BKN">рассеянные облака (5-7/8)</cloudCover>
+  <cloudCover o="OVC">сплошная облачность (8/8)</cloudCover>
+
+  <cloudType o="AC">высоко-кучевые</cloudType>
+  <cloudType o="ACC">высоко-кучево-башенкообразные</cloudType>
+  <cloudType o="ACSL">высоко-кучево-лентикулярные</cloudType>
+  <cloudType o="AS">высоко-слоистые</cloudType>
+  <cloudType o="CB">кучево-дождевые</cloudType>
+  <cloudType o="CBMAM">кучево-дождево-вымяобразные</cloudType>
+  <cloudType o="CC">перисто-кучевые</cloudType>
+  <cloudType o="CCSL">перисто-кучево-лентикулярные</cloudType>
+  <cloudType o="CF">разорванно-кучевые</cloudType>
+  <cloudType o="CI">перистые</cloudType>
+  <cloudType o="CS">перисто-слоистые</cloudType>
+  <cloudType o="CU">кучевые</cloudType>
+  <cloudType o="CUFRA">разорванно-кучевые</cloudType>
+  <cloudType o="NS">слоисто-дождевые</cloudType>
+  <cloudType o="SAC">слоисто-высоко-кучевые</cloudType>
+  <cloudType o="SC">слоисто-кучевые</cloudType>
+  <cloudType o="SCSL">слоисто-кучево-лентикулярные</cloudType>
+  <cloudType o="SF">разорванно-слоистые</cloudType>
+  <cloudType o="ST">слоистые</cloudType>
+  <cloudType o="STFRA">разорванно-слоистые</cloudType>
+  <cloudType o="TCU">башенкообразные кучевые</cloudType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0513, FMH-2 table 4-17 -->
+  <cloudTypeLow o="0">нет облаков</cloudTypeLow>
+  <cloudTypeLow o="1">кучевые (небольшая вертикальная степень) (Cu humulis или fractus)</cloudTypeLow>
+  <cloudTypeLow o="2">кучевые (умеренная/сильная вертикальная степень или мощнокучевые) (Cu mediocris или congestus)</cloudTypeLow>
+  <cloudTypeLow o="3">кучево-дождевые (вершины не волокнистые, либо в форме наковальни) (Cb calvus)</cloudTypeLow>
+  <cloudTypeLow o="4">слоисто-кучевые (сформированы распространением кучевых) (Sc cumulogenitus)</cloudTypeLow>
+  <cloudTypeLow o="5">слоисто-кучевые (не сформированы распространением кучевых) (Sc)</cloudTypeLow>
+  <cloudTypeLow o="6">слоистые (достаточно непрерывный лист и/или слой) (St nebulosus или fractus)</cloudTypeLow>
+  <cloudTypeLow o="7">разорванно-слоистые или разорванно-кучевые из-за плохой погоды (St fractus или Cu fractus)</cloudTypeLow>
+  <cloudTypeLow o="8">кучевые и слоисто-кучевые, с различными базовыми формами (Cu и St)</cloudTypeLow>
+  <cloudTypeLow o="9">кучево-дождевые (с волокнистыми вершинами, либо в форме наковальни) (Cb capillatus)</cloudTypeLow>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0515, FMH-2 table 4-18 -->
+  <cloudTypeMiddle o="0">нет облаков</cloudTypeMiddle>
+  <cloudTypeMiddle o="1">высоко-слоистые (преобладающе полупрозрачные) (As translucidus)</cloudTypeMiddle>
+  <cloudTypeMiddle o="2">высоко-слоистые (преобладающе непрозрачные) или слоисто-дождевые (As opacus или Ns)</cloudTypeMiddle>
+  <cloudTypeMiddle o="3">высоко-кучевые (преобладающе полупрозрачные) (Ac translucidus)</cloudTypeMiddle>
+  <cloudTypeMiddle o="4">участками высоко-кучевые (лентикулярные) (Ac translucidus или lenticularis)</cloudTypeMiddle>
+  <cloudTypeMiddle o="5">высоко-кучевые (прогрессивно наводняющие небо, либо полупрозрачные) (Ac translucidus или opacus)</cloudTypeMiddle>
+  <cloudTypeMiddle o="6">высоко-кучевые (сформированные распространением кучевых или кучево-дождевых) (Ac cumulogenitus или cumulonimbogenitus)</cloudTypeMiddle>
+  <cloudTypeMiddle o="7">высоко-кучевые (в основном непрозрачные, нераспространяющиеся; либо с высоко-слоистыми) (Ac translucidus или opacus, Ac и As или Ns)</cloudTypeMiddle>
+  <cloudTypeMiddle o="8">высоко-кучевые (со отростками или пучками) (Ac castellanus или flocus)</cloudTypeMiddle>
+  <cloudTypeMiddle o="9">хаотичное небо с высоко-кучевыми на нескольких уровнях (Ac)</cloudTypeMiddle>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0509, FMH-2 table 4-19 -->
+  <cloudTypeHigh o="0">нет облаков</cloudTypeHigh>
+  <cloudTypeHigh o="1">перистые (нити, пряди, либо крюки) (Ci fibratus или uncinus)</cloudTypeHigh>
+  <cloudTypeHigh o="2">перистые (плотные, с отростками, либо пучками) (Ci spissatus, castellanus, или flocus)</cloudTypeHigh>
+  <cloudTypeHigh o="3">перистые (плотные, оставшиеся от кучево-дождевой наковальни) (Ci spissatus cumulonimbogenitus)</cloudTypeHigh>
+  <cloudTypeHigh o="4">перистые (крюки или нити, прогрессивно наводняющие небо) (Ci uncinus или fibratus)</cloudTypeHigh>
+  <cloudTypeHigh o="5">перистые и/или перисто-слоистые (прогрессивно наводняющие небо, завеса &lt;45° выше горизонта) (Ci, Cs)</cloudTypeHigh>
+  <cloudTypeHigh o="6">перистые и/или перисто-слоистые (прогрессивно наводняющие небо, завеса >45° выше горизонта) (Ci, Cs)</cloudTypeHigh>
+  <cloudTypeHigh o="7">перисто-слоистые (покрывают всё небо) (Cs)</cloudTypeHigh>
+  <cloudTypeHigh o="8">перисто-слоистые (не наводняющие или покрывающие всё небо) (Cs)</cloudTypeHigh>
+  <cloudTypeHigh o="9">перисто-кучевые (как преобладающее высокое облако) (Cc)</cloudTypeHigh>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0531 -->
+  <cloudTypeVertical o="Cuhum">кучевые (небольшая вертикальная протяжённость) (Cu humulis и/или Cu mediocris)</cloudTypeVertical>
+  <cloudTypeVertical o="Cucon">кучевые (умеренная/сильная вертикальная протяжённость) (Cu congestus)</cloudTypeVertical>
+  <cloudTypeVertical o="Cb">кучево-дождевые (Cb)</cloudTypeVertical>
+  <cloudTypeVertical o="CuCb">кучевые и кучево-дождевые (Cu, Cb)</cloudTypeVertical>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0521 -->
+  <cloudTypeSpecial o="1">перламутровые облака</cloudTypeSpecial>
+  <cloudTypeSpecial o="2">серебристые облака</cloudTypeSpecial>
+  <cloudTypeSpecial o="3">облака от водопадов</cloudTypeSpecial>
+  <cloudTypeSpecial o="4">облака от пожаров</cloudTypeSpecial>
+  <cloudTypeSpecial o="5">облака от вулканических извержений</cloudTypeSpecial>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0561 -->
+  <cloudTypeOrographic o="1">отдельные облака, колоколообразные, в виде наковальни, формируются</cloudTypeOrographic>
+  <cloudTypeOrographic o="2">отдельные облака, колоколообразные, в виде наковальни, не изменяются</cloudTypeOrographic>
+  <cloudTypeOrographic o="3">отдельные облака, колоколообразные, в виде наковальни, рассеиваются</cloudTypeOrographic>
+  <cloudTypeOrographic o="4">нерегулярные гряды облаков, феновые гряды и т. д., формируются</cloudTypeOrographic>
+  <cloudTypeOrographic o="5">нерегулярные гряды облаков, феновые гряды и т. д., не изменяются</cloudTypeOrographic>
+  <cloudTypeOrographic o="6">нерегулярные гряды облаков, феновые гряды и т. д., рассеиваются</cloudTypeOrographic>
+  <cloudTypeOrographic o="7">плотный слой облаков, феновая гряда и т. д., формируются</cloudTypeOrographic>
+  <cloudTypeOrographic o="8">плотный слой облаков, феновая гряда и т. д., не изменяются</cloudTypeOrographic>
+  <cloudTypeOrographic o="9">плотный слой облаков, феновая гряда и т. д., рассеиваются</cloudTypeOrographic>
+
+  <weather o="BCFG">|участки тумана</weather>
+  <weather o="BLDU">|ветер с пылью</weather>
+  <weather o="BLSA">|ветер с песком</weather>
+  <weather o="BLSN">|метель</weather>
+  <weather o="BR">|дымка</weather>
+  <weather o="BLPY">|водяная пыль</weather>
+  <weather o="DRDU">|пыльный позёмок</weather>
+  <weather o="DRSA">|песчаный позёмок</weather>
+  <weather o="DRSN">|позёмок</weather>
+  <weather o="DS">|пыльная буря</weather>
+  <weather o="DU">|обложная пыль</weather>
+  <weather o="DZ">|морось</weather>
+  <weather_combined o="DZ">|моросью</weather_combined>
+  <weather o="DZSN">|морось со снегопадом</weather>
+  <weather o="FC">|воронкообразное облако</weather>
+  <weather o="FG">|туман</weather>
+  <weather_all o="+FG">густой туман</weather_all>
+  <weather o="FU">|дым</weather>
+  <weather o="FZBR">|переохлаждённая дымка</weather>
+  <weather o="FZDZ">|переохлаждённая морось</weather>
+  <weather o="FZFG">|переохлаждённый туман</weather>
+  <weather o="FZRA">|переохлаждённый дождь</weather>
+  <weather o="FZRASN">|переохлаждённый дождь со снегом</weather>
+  <weather o="FZSNRA">|снегопад с переохлаждённём дождём</weather>
+  <weather o="FZUP">|неизвестные переохлаждённые осадки</weather>
+  <weather o="GR">|град</weather>
+  <weather_combined o="GR">|градом</weather_combined>
+  <weather o="GS">|небольшой град и/или снежная крупа</weather>
+  <weather_combined o="GS">|небольшим градом и/или снежной крупой</weather_combined>
+  <weather o="HZ">|мгла</weather>
+  <weather o="IC">|ледяные иглы</weather>
+  <weather o="JP">|смежние осадки</weather>
+  <weather o="MIFG">|низкий туман</weather>
+  <weather o="NSW">непримечательная погода</weather>
+  <weather o="PL">|ледяная крупа</weather>
+  <weather_combined o="PL">|ледяной крупой</weather_combined>
+  <weather o="PLSN">|ледяная крупа со снегом</weather>
+  <weather o="PO">|пыльные/песчаные вихри</weather>
+  <weather o="PRFG">|частичные туманы</weather>
+  <weather o="RA">|дождь</weather>
+  <weather_combined o="RA">|дождём</weather_combined>
+  <weather o="RASN">|дождь со снегом</weather>
+  <weather o="RASNPL">|дождь со снегом y ледянём дождём</weather>
+  <weather o="SA">|песок</weather>
+  <weather o="SG">|снежные зерна</weather>
+  <weather o="SH">|ливни</weather>
+  <weather o="SHGR">|ливни града</weather>
+  <weather o="SHGS">|ливни небольшего града и/или снежной крупы</weather>
+  <weather o="SHGSSN">|ливни небольшего града и/или снежной крупы со снегом</weather>
+  <weather o="SHPL">|ливни с ледяной крупой</weather>
+  <weather o="SHRA">|ливневые дожди</weather>
+  <weather o="SHRASNGS">|ливневые дожди со снегом и небольшим градом и/или снежной крупой</weather>
+  <weather o="SHSN">|ливни снега</weather>
+  <weather o="SHRASN">|ливневые дожди со снегом</weather>
+  <weather o="SHUP">|ливни неизвестного типа</weather>
+  <weather o="SN">|снегопад</weather>
+  <weather_combined o="SN">|снегом</weather_combined>
+  <weather o="SQ">|шквалы</weather>
+  <weather o="SS">|песчаная буря</weather>
+  <weather o="TS">|гроза</weather>
+  <weather o="TSDS">гроза с |пыльной бурей</weather>
+  <weather o="TSDZ">гроза с |моросью</weather>
+  <weather o="TSGR">гроза с |градом</weather>
+  <weather o="TSGS">гроза с |ледяной и/или снежной крупой</weather>
+  <weather o="TSRA">гроза с |дождём</weather>
+  <weather o="TSSN">гроза с |снегопадом</weather>
+  <weather o="TSSS">гроза с |песчаной бурей</weather>
+  <weather o="TSUP">гроза с |неизвестными осадками</weather>
+  <weather o="UP">|неизвестные осадки</weather>
+  <weather o="VA">|вулканический пепел</weather>
+  <weather o="tornado">смерч/водяной смерч</weather>
+
+  <tornadoType o="tornado">смерч</tornadoType>
+  <tornadoType o="funnel_cloud">воронкообразное облако</tornadoType>
+  <tornadoType o="waterspout">водяной смерч</tornadoType>
+
+  <lightningType o="CA">облака-воздух</lightningType>
+  <lightningType o="CC">облака-облака</lightningType>
+  <lightningType o="CG">облака-земля</lightningType>
+  <lightningType o="CW">облака-вода</lightningType>
+  <lightningType o="IC">в пределах облака</lightningType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 4677, FMH-2 table 4-12 -->
+  <weatherSynop o="0">развитие облачности не наблюдалось в течение последнего часа</weatherSynop>
+  <weatherSynop o="1">облака в целом рассеивались в течение последнего часа</weatherSynop>
+  <weatherSynop o="2">состояние неба в общем не изменилось в течение последнего часа</weatherSynop>
+  <weatherSynop o="3">облака в основном формируются или развиваются в течение последнего часа</weatherSynop>
+  <weatherSynop o="4">видимость ухудшена дымом или вулканическим пеплом</weatherSynop>
+  <weatherSynop o="5">мгла</weatherSynop>
+  <weatherSynop o="6">не поднятая ветром пылевая взвесь на обширном пространстве</weatherSynop>
+  <weatherSynop o="7">пыль или песок, поднятые ветром; либо брызги</weatherSynop>
+  <weatherSynop o="8">хорошо развитый пыльный или песчаный вихрь (вихри)</weatherSynop>
+  <weatherSynop o="9">пыльная или песчаная буря в поле зрения в срок наблюдения, либо на станции в течение последнего часа</weatherSynop>
+  <weatherSynop o="10">дымка</weatherSynop>
+  <weatherSynop o="11">клочья приземного или ледяного тумана</weatherSynop>
+  <weatherSynop o="12">приземный туман или ледяной туман</weatherSynop>
+  <weatherSynop o="13">зарница</weatherSynop>
+  <weatherSynop o="14">в поле зрения осадки, не достигающие земли</weatherSynop>
+  <weatherSynop o="15">осадки в поле зрения, но больше чем 5 км от станции</weatherSynop>
+  <weatherSynop o="16">осадки в поле зрения, близко, но не на станции</weatherSynop>
+  <weatherSynop o="17">гроза, но без осадков во время наблюдения</weatherSynop>
+  <weatherSynop o="18">шквалы</weatherSynop>
+  <weatherSynop o="19">воронкообразное облако(а) (торнадо или водяной смерч)</weatherSynop>
+  <weatherSynop o="20">морось или снежные зерна в течение последнего часа</weatherSynop>
+  <weatherSynop o="21">дождь в течение последнего часа</weatherSynop>
+  <weatherSynop o="22">снегопад в течение последнего часа</weatherSynop>
+  <weatherSynop o="23">дождь со снегом или ледяная крупа в течение последнего часа</weatherSynop>
+  <weatherSynop o="24">замерзающая морось или переохлаждённый дождь в течение последнего часа</weatherSynop>
+  <weatherSynop o="25">ливневый(ые) дождь(и) в течение последнего часа</weatherSynop>
+  <weatherSynop o="26">ливневый снег или ливневый дождь и снег в течение последнего часа</weatherSynop>
+  <weatherSynop o="27">ливневый(ые) град, либи дождь и град в течение последнего часа</weatherSynop>
+  <weatherSynop o="28">туман или ледяной туман в течение последнего часа</weatherSynop>
+  <weatherSynop o="29">гроза в течение последнего часа</weatherSynop>
+  <weatherSynop o="30">слабая или умеренная пыльная или песчаная буря, ослабела в течение последнего часа</weatherSynop>
+  <weatherSynop o="31">слабая или умеренная пыльная или песчаная буря, без изменения в течение последнего часа</weatherSynop>
+  <weatherSynop o="32">слабая или умеренная пыльная или песчаная буря, началась или усилилась в течение последнего часа</weatherSynop>
+  <weatherSynop o="33">сильная пыльная или песчаная буря, ослабела в течение последнего часа</weatherSynop>
+  <weatherSynop o="34">сильная пыльная или песчаная буря, без изменения в течение последнего часа</weatherSynop>
+  <weatherSynop o="35">сильная пыльная или песчаная буря, началась или усилилась в течение последнего часа</weatherSynop>
+  <weatherSynop o="36">слабый или умеренный позёмок, ниже уровня глаз наблюдателя</weatherSynop>
+  <weatherSynop o="37">сильный позёмок, ниже уровня глаз наблюдателя</weatherSynop>
+  <weatherSynop o="38">слабая или умеренная метель, выше уровня глаз наблюдателя</weatherSynop>
+  <weatherSynop o="39">сильная метель, выше уровня глаз наблюдателя</weatherSynop>
+  <weatherSynop o="40">туман или ледяной туман на расстоянии, выше уровня наблюдателя</weatherSynop>
+  <weatherSynop o="41">участки тумана или ледяного тумана</weatherSynop>
+  <weatherSynop o="42">туман или ледяной туман, ослабел в течение последнего часа, небо видно</weatherSynop>
+  <weatherSynop o="43">туман или ледяной туман, ослабел в течение последнего часа, небо не видно</weatherSynop>
+  <weatherSynop o="44">туман или ледяной туман, без изменения интенсивности в течение последнего часа, небо видно</weatherSynop>
+  <weatherSynop o="45">туман или ледяной туман, без изменения интенсивности в течение последнего часа, небо не видно</weatherSynop>
+  <weatherSynop o="46">туман или ледяной туман, начался или усилился в течение последнего часа, небо видно</weatherSynop>
+  <weatherSynop o="47">туман или ледяной туман, начался или усилился в течение последнего часа, небо не видно</weatherSynop>
+  <weatherSynop o="48">туман с отложением изморози, небо видно</weatherSynop>
+  <weatherSynop o="49">туман с отложением изморози, небо не видно</weatherSynop>
+  <weatherSynop o="50">слабая морось с перерывами</weatherSynop>
+  <weatherSynop o="51">слабая морось</weatherSynop>
+  <weatherSynop o="52">умеренная морось с перерывами</weatherSynop>
+  <weatherSynop o="53">умеренная морось</weatherSynop>
+  <weatherSynop o="54">сильная морось с перерывами</weatherSynop>
+  <weatherSynop o="55">сильная морось</weatherSynop>
+  <weatherSynop o="56">слабая замерзающая морось</weatherSynop>
+  <weatherSynop o="57">умеренная или сильная замерзающая морось</weatherSynop>
+  <weatherSynop o="58">слабая морось и дождь</weatherSynop>
+  <weatherSynop o="59">умеренная или сильная морось и дождь</weatherSynop>
+  <weatherSynop o="60">слабый дождь с перерывами</weatherSynop>
+  <weatherSynop o="61">слабый дождь</weatherSynop>
+  <weatherSynop o="62">умеренный дождь с перерывами</weatherSynop>
+  <weatherSynop o="63">умеренный дождь</weatherSynop>
+  <weatherSynop o="64">сильный дождь с перерывами</weatherSynop>
+  <weatherSynop o="65">сильный дождь</weatherSynop>
+  <weatherSynop o="66">слабый замерзающий дождь</weatherSynop>
+  <weatherSynop o="67">умеренный или сильный замерзающий дождь</weatherSynop>
+  <weatherSynop o="68">слабый дождь или морось со снегом</weatherSynop>
+  <weatherSynop o="69">умеренный или сильный дождь или морось со снегом</weatherSynop>
+  <weatherSynop o="70">слабый снегопад с перерывами</weatherSynop>
+  <weatherSynop o="71">слабый снегопад</weatherSynop>
+  <weatherSynop o="72">умеренный снегопад с перерывами</weatherSynop>
+  <weatherSynop o="73">умеренный снегопад</weatherSynop>
+  <weatherSynop o="74">сильный снегопад с перерывами</weatherSynop>
+  <weatherSynop o="75">сильный снегопад</weatherSynop>
+  <weatherSynop o="76">алмазная пыль</weatherSynop>
+  <weatherSynop o="77">снежные зерна</weatherSynop>
+  <weatherSynop o="78">отдельные кристаллы снега</weatherSynop>
+  <weatherSynop o="79">ледяная крупа</weatherSynop>
+  <weatherSynop o="80">слабый ливневый дождь(и)</weatherSynop>
+  <weatherSynop o="81">умеренный или сильный ливневый дождь(и)</weatherSynop>
+  <weatherSynop o="82">очень сильный ливневый дождь(и)</weatherSynop>
+  <weatherSynop o="83">слабые ливневые дожди со снегом</weatherSynop>
+  <weatherSynop o="84">умеренный или сильный ливневый дождь(и) со снегом</weatherSynop>
+  <weatherSynop o="85">слабый ливневый снегопад(ы)</weatherSynop>
+  <weatherSynop o="86">умеренный или сильный ливневый снегопад(ы)</weatherSynop>
+  <weatherSynop o="87">слабый ливень(и) снежной крупы или небольшого града</weatherSynop>
+  <weatherSynop o="88">умеренный или сильный ливень(и) снежной крупы или небольшого града</weatherSynop>
+  <weatherSynop o="89">слабый ливень(и) града</weatherSynop>
+  <weatherSynop o="90">умеренный или сильный ливень(и) града</weatherSynop>
+  <weatherSynop o="91">гроза в течение последнего часа, теперь слабый дождь</weatherSynop>
+  <weatherSynop o="92">гроза в течение последнего часа, теперь умеренный или сильный дождь</weatherSynop>
+  <weatherSynop o="93">гроза в течение последнего часа, теперь слабый снегопад, или дождь со снегом, или град</weatherSynop>
+  <weatherSynop o="94">гроза в течение последнего часа, теперь умеренный или сильный снегопад, или дождь со снегом, или град</weatherSynop>
+  <weatherSynop o="95">слабая или умеренная гроза с дождём и/или снегопадом</weatherSynop>
+  <weatherSynop o="96">слабая или умеренная гроза с градом</weatherSynop>
+  <weatherSynop o="97">сильная гроза с дождём и/или снегопадом</weatherSynop>
+  <weatherSynop o="98">гроза с пыльной или песчаной бурей</weatherSynop>
+  <weatherSynop o="99">сильная гроза с градом</weatherSynop>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 4561, FMH-2 table 4-14 -->
+  <weatherSynopPast o="0">облака, покрывающие половину, либо меньше неба</weatherSynopPast>
+  <weatherSynopPast o="1">облака, покрывающие иногда больше, а иногда меньше половины неба</weatherSynopPast>
+  <weatherSynopPast o="2">облака, покрывающие больше половины неба</weatherSynopPast>
+  <weatherSynopPast o="3">песчаная буря, пылевая буря или метель</weatherSynopPast>
+  <weatherSynopPast o="4">туман или переохлаждённый туман, или дремучая мгла</weatherSynopPast>
+  <weatherSynopPast o="5">морось</weatherSynopPast>
+  <weatherSynopPast o="6">дождь</weatherSynopPast>
+  <weatherSynopPast o="7">снегопад, или дождь со снегом</weatherSynopPast>
+  <weatherSynopPast o="8">ливень(и)</weatherSynopPast>
+  <weatherSynopPast o="9">гроза(ы)</weatherSynopPast>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 4680, FMH-2 table 4-13 -->
+  <weatherSynopSimple o="0">нет существенной погоды</weatherSynopSimple>
+  <weatherSynopSimple o="1">облака в целом рассеивались в течение последнего часа</weatherSynopSimple>
+  <weatherSynopSimple o="2">состояние неба в целом не изменилось в течение последнего часа</weatherSynopSimple>
+  <weatherSynopSimple o="3">облака в основном формируются или развиваются в течение последнего часа</weatherSynopSimple>
+  <weatherSynopSimple o="4">в воздухе взвесь мглы, дыма или пыли, видимость 1 км или больше</weatherSynopSimple>
+  <weatherSynopSimple o="5">в воздухе взвесь мглы, дыма или пыли, видимость меньше чем 1 км</weatherSynopSimple>
+  <weatherSynopSimple o="10">дымка</weatherSynopSimple>
+  <weatherSynopSimple o="11">алмазная пыль</weatherSynopSimple>
+  <weatherSynopSimple o="12">зарница на расстоянии</weatherSynopSimple>
+  <weatherSynopSimple o="18">шквалы</weatherSynopSimple>
+  <weatherSynopSimple o="20">туман в течение последнего часа</weatherSynopSimple>
+  <weatherSynopSimple o="21">осадки в течение последнего часа</weatherSynopSimple>
+  <weatherSynopSimple o="22">морось или снежные зерна в течение последнего часа</weatherSynopSimple>
+  <weatherSynopSimple o="23">дождь в течение последнего часа</weatherSynopSimple>
+  <weatherSynopSimple o="24">снегопад в течение последнего часа</weatherSynopSimple>
+  <weatherSynopSimple o="25">замерзающая морось или переохлаждённый дождь в течение последнего часа</weatherSynopSimple>
+  <weatherSynopSimple o="26">гроза в течение последнего часа</weatherSynopSimple>
+  <weatherSynopSimple o="27">метель или позёмок из снега или песка</weatherSynopSimple>
+  <weatherSynopSimple o="28">метель или позёмок из снега или песка, видимость 1 км или больше</weatherSynopSimple>
+  <weatherSynopSimple o="29">метель или позёмок из снега или песка, видимость меньше чем 1 км</weatherSynopSimple>
+  <weatherSynopSimple o="30">туман</weatherSynopSimple>
+  <weatherSynopSimple o="31">туман или ледяной туман участками</weatherSynopSimple>
+  <weatherSynopSimple o="32">туман или ледяной туман, становился слабее в течение последнего часа</weatherSynopSimple>
+  <weatherSynopSimple o="33">туман или ледяной туман</weatherSynopSimple>
+  <weatherSynopSimple o="34">туман или ледяной туман, начинался или становился сильнее в течение последнего часа</weatherSynopSimple>
+  <weatherSynopSimple o="35">туман, отложение изморози</weatherSynopSimple>
+  <weatherSynopSimple o="40">осадки</weatherSynopSimple>
+  <weatherSynopSimple o="41">слабые или умеренные осадки</weatherSynopSimple>
+  <weatherSynopSimple o="42">сильные осадки</weatherSynopSimple>
+  <weatherSynopSimple o="43">слабые или умеренные жидкие осадки</weatherSynopSimple>
+  <weatherSynopSimple o="44">сильные жидкие осадки</weatherSynopSimple>
+  <weatherSynopSimple o="45">слабые или умеренные твердые осадки</weatherSynopSimple>
+  <weatherSynopSimple o="46">сильные твердые осадки</weatherSynopSimple>
+  <weatherSynopSimple o="47">слабые или умеренные переохлаждённые осадки</weatherSynopSimple>
+  <weatherSynopSimple o="48">сильные переохлаждённые осадки</weatherSynopSimple>
+  <weatherSynopSimple o="50">морось</weatherSynopSimple>
+  <weatherSynopSimple o="51">слабая морось</weatherSynopSimple>
+  <weatherSynopSimple o="52">умеренная морось</weatherSynopSimple>
+  <weatherSynopSimple o="53">сильная морось</weatherSynopSimple>
+  <weatherSynopSimple o="54">слабая переохлаждённая морось</weatherSynopSimple>
+  <weatherSynopSimple o="55">умеренная переохлаждённая морось</weatherSynopSimple>
+  <weatherSynopSimple o="56">сильная переохлаждённая морось</weatherSynopSimple>
+  <weatherSynopSimple o="57">слабая морось c дождём</weatherSynopSimple>
+  <weatherSynopSimple o="58">умеренная или сильная морось и дождь</weatherSynopSimple>
+  <weatherSynopSimple o="60">дождь</weatherSynopSimple>
+  <weatherSynopSimple o="61">слабый дождь</weatherSynopSimple>
+  <weatherSynopSimple o="62">умеренный дождь</weatherSynopSimple>
+  <weatherSynopSimple o="63">сильный дождь</weatherSynopSimple>
+  <weatherSynopSimple o="64">слабый переохлаждённый дождь</weatherSynopSimple>
+  <weatherSynopSimple o="65">умеренный переохлаждённый дождь</weatherSynopSimple>
+  <weatherSynopSimple o="66">сильный переохлаждённый дождь</weatherSynopSimple>
+  <weatherSynopSimple o="67">слабый дождь (или морось) и снегопад</weatherSynopSimple>
+  <weatherSynopSimple o="68">умеренный или сильный дождь (или морось) и снегопад</weatherSynopSimple>
+  <weatherSynopSimple o="70">снегопад</weatherSynopSimple>
+  <weatherSynopSimple o="71">слабый снегопад</weatherSynopSimple>
+  <weatherSynopSimple o="72">умеренный снегопад</weatherSynopSimple>
+  <weatherSynopSimple o="73">сильный снегопад</weatherSynopSimple>
+  <weatherSynopSimple o="74">слабый ледяной дождь</weatherSynopSimple>
+  <weatherSynopSimple o="75">умеренный ледяной дождь</weatherSynopSimple>
+  <weatherSynopSimple o="76">сильный ледяной дождь</weatherSynopSimple>
+  <weatherSynopSimple o="77">снежные зерна</weatherSynopSimple>
+  <weatherSynopSimple o="78">ледяные иглы</weatherSynopSimple>
+  <weatherSynopSimple o="80">ливни или переменные осадки</weatherSynopSimple>
+  <weatherSynopSimple o="81">слабый ливневый дождь(и) или переменный дождь</weatherSynopSimple>
+  <weatherSynopSimple o="82">умеренный ливневый дождь(и) или переменный дождь</weatherSynopSimple>
+  <weatherSynopSimple o="83">сильный ливневый дождь(и) или переменный дождь</weatherSynopSimple>
+  <weatherSynopSimple o="84">очень сильный ливневый дождь(и) или переменный дождь</weatherSynopSimple>
+  <weatherSynopSimple o="85">слабый ливень(и) из снега или переменный снегопад</weatherSynopSimple>
+  <weatherSynopSimple o="86">умеренный ливнень(и) из снега или переменный снегопад</weatherSynopSimple>
+  <weatherSynopSimple o="87">сильный ливень(и) из снега или переменный снегопад</weatherSynopSimple>
+  <weatherSynopSimple o="89">град</weatherSynopSimple>
+  <weatherSynopSimple o="90">гроза</weatherSynopSimple>
+  <weatherSynopSimple o="91">слабая или умеренная гроза</weatherSynopSimple>
+  <weatherSynopSimple o="92">слабая или умеренная гроза с ливнями дождя и/или снега</weatherSynopSimple>
+  <weatherSynopSimple o="93">слабая или умеренная гроза с градом</weatherSynopSimple>
+  <weatherSynopSimple o="94">сильная гроза</weatherSynopSimple>
+  <weatherSynopSimple o="95">сильная гроза с ливнями дождя и/или снега</weatherSynopSimple>
+  <weatherSynopSimple o="96">сильная гроза с градом</weatherSynopSimple>
+  <weatherSynopSimple o="99">смерч</weatherSynopSimple>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 4531, FMH-2 table 4-15 -->
+  <weatherSynopPastSimple o="0">нет существенной погоды</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="1">видимость уменьшена</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="2">дующее погодное явление, видимость уменьшена</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="3">туман</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="4">осадки</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="5">морось</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="6">дождь</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="7">снегопад или ледяной дождь</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="8">ливни или переменные осадки</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="9">гроза</weatherSynopPastSimple>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 4687 -->
+  <weatherSynop1 o="4">вулканический пепел в воздухе</weatherSynop1>
+  <weatherSynop1 o="6">сильная пыльная мгла, видимость меньше чем 1 км</weatherSynop1>
+  <weatherSynop1 o="7">водяная пыль на станции</weatherSynop1>
+  <weatherSynop1 o="8">пыльный (песчаный) позёмок</weatherSynop1>
+  <weatherSynop1 o="9">стена пыли или песка на расстоянии (как хабуб)</weatherSynop1>
+  <weatherSynop1 o="10">снежная мгла</weatherSynop1>
+  <weatherSynop1 o="11">снежная буря</weatherSynop1>
+  <weatherSynop1 o="13">молния, с облаков да земли</weatherSynop1>
+  <weatherSynop1 o="17">сухая гроза</weatherSynop1>
+  <weatherSynop1 o="19">облако торнадо (разрушительное) на станции, либо в границах видимости станции в течение последнего часа или во время наблюдения</weatherSynop1>
+  <weatherSynop1 o="20">отложение вулканического пепла</weatherSynop1>
+  <weatherSynop1 o="21">отложение пыли или песка</weatherSynop1>
+  <weatherSynop1 o="22">отложение росы</weatherSynop1>
+  <weatherSynop1 o="23">отложение мокрого снега</weatherSynop1>
+  <weatherSynop1 o="24">отложение слабой изморози</weatherSynop1>
+  <weatherSynop1 o="25">отложение сильной изморози</weatherSynop1>
+  <weatherSynop1 o="26">отложение изморози</weatherSynop1>
+  <weatherSynop1 o="27">отложение ясного льда</weatherSynop1>
+  <weatherSynop1 o="28">отложение корок льда</weatherSynop1>
+  <weatherSynop1 o="30">пылевая или снежная буря с температурой ниже 0 °C</weatherSynop1>
+  <weatherSynop1 o="39">метель</weatherSynop1>
+  <weatherSynop1 o="41">туман на море</weatherSynop1>
+  <weatherSynop1 o="42">туман в долинах</weatherSynop1>
+  <weatherSynop1 o="43">дым с антарктического моря, либо арктический дым</weatherSynop1>
+  <weatherSynop1 o="44">пар (морской, озйрный или речной)</weatherSynop1>
+  <weatherSynop1 o="45">пар (с земли)</weatherSynop1>
+  <weatherSynop1 o="46">туман над ледяным или снежным покровом</weatherSynop1>
+  <weatherSynop1 o="59">морось и снегопад</weatherSynop1>
+  <weatherSynop1 o="78">снегопад или ледяные кристаллы с чистого неба</weatherSynop1>
+  <weatherSynop1 o="79">мокрый снег, замерзает при прикосновении</weatherSynop1>
+  <weatherSynop1 o="80">дождь</weatherSynop1>
+  <weatherSynop1 o="81">переохлаждённый дождь</weatherSynop1>
+  <weatherSynop1 o="82">дождь со снегом</weatherSynop1>
+  <weatherSynop1 o="83">снегопад</weatherSynop1>
+  <weatherSynop1 o="84">снежная крупа или мелкий град</weatherSynop1>
+  <weatherSynop1 o="85">снежная крупа или мелкий град, с дождём</weatherSynop1>
+  <weatherSynop1 o="86">снежная крупа или мелкий град, со снегом и дождём</weatherSynop1>
+  <weatherSynop1 o="87">снежная крупа или мелкий град, со снегом</weatherSynop1>
+  <weatherSynop1 o="88">град</weatherSynop1>
+  <weatherSynop1 o="89">град с дождём</weatherSynop1>
+  <weatherSynop1 o="90">град с дождём и снегом</weatherSynop1>
+  <weatherSynop1 o="91">град со снегом</weatherSynop1>
+  <weatherSynop1 o="92">ливень(и) или гроза на море</weatherSynop1>
+  <weatherSynop1 o="93">ливень(и) или гроза над горами</weatherSynop1>
+
+  <visTrend o="U">восходящий</visTrend>
+  <visTrend o="N">изменений нет</visTrend>
+  <visTrend o="D">нисходящий</visTrend>
+
+  <stationType o="AO1">автоматизированная станция без дискриминатора осадков (AMOS)</stationType>
+  <stationType o="AO2">автоматизированная станция с дискриминатором осадков (ASOS)</stationType>
+  <stationType o="AO2A">автоматизированная станция с дискриминатором осадков (ASOS) и ручным приращением</stationType>
+  <stationType o="SAWR">дополнительная метеорологическая станция для авиации</stationType>
+  <stationType o="AAXX">фиксированная наземная станция</stationType>
+  <stationType o="BBXX">морская станция</stationType>
+  <stationType o="OOXX">мобильная наземная станция</stationType>
+  <stationType o="ZZYY">буй</stationType>
+  <stationType o="AMDAR">самолет</stationType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0919 -->
+  <depositType o="0">нет отложений и сухо</depositType>
+  <depositType o="1">влажно</depositType>
+  <depositType o="2">влажные и водяные пятна</depositType>
+  <depositType o="3">изморозь и иней</depositType>
+  <depositType o="4">сухой снег</depositType>
+  <depositType o="5">мокрый снег</depositType>
+  <depositType o="6">снежно-ледяная каша</depositType>
+  <depositType o="7">лёд</depositType>
+  <depositType o="8">слежавшийся или скрученный в валки снег</depositType>
+  <depositType o="9">замороженные борозды или складки</depositType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0519 -->
+  <depositExtent o="0">0 %|</depositExtent>
+  <depositExtent o="1">1-10 %|</depositExtent>
+  <depositExtent o="2">11-25 %|</depositExtent>
+  <depositExtent o="5">26-50 %|</depositExtent>
+  <depositExtent o="9">51-100 %|</depositExtent>
+
+  <colour o="BLACK"     >аэропорт закрыт по техническим причинам</colour>
+  <colour o="BLUplus"   >потолок >=20000 фт, видимость >=8 км</colour>
+  <colour o="BLU"       >потолок >=2500 фт, видимость >=8 км</colour>
+  <colour o="WHT"       >потолок 1500..&lt;2500 фт, видимость 5..&lt;8 км</colour>
+  <colour o="GRN"       >потолок 700..&lt;1500 фт, видимость 3700..&lt;5000 м</colour>
+  <colour o="YLO1"      >потолок 500..&lt;700 фт, видимость 2500..&lt;3700 м</colour>
+  <colour o="YLO2"      >потолок 300..&lt;500 фт, видимость 1600..&lt;2500 м</colour>
+  <colour o="YLO"       >потолок 300..&lt;700 фт, видимость 1600..&lt;3700 м</colour>
+  <colour o="AMB"       >потолок 200..&lt;300 фт, видимость 800..&lt;1600 м</colour>
+  <colour o="RED"       >потолок &lt;200 фт, видимость &lt;800 м</colour>
+  <colour o="FCSTCANCEL">прогноз отменен</colour>
+  <colour o="noChange"  >потолок или видимость без изменений</colour>
+
+  <concernsChange o="M">ухудшение условий |</concernsChange>
+  <concernsChange o="B">улучшение условий |</concernsChange>
+  <concernsSubject o="0">порывов</concernsSubject>
+  <concernsSubject o="1">ветра</concernsSubject>
+  <concernsSubject o="2">видимости</concernsSubject>
+  <concernsSubject o="3">облаков</concernsSubject>
+  <concernsSubject o="4">осадков</concernsSubject>
+  <concernsSubject o="5">давления</concernsSubject>
+  <concernsSubject o="6">состояния моря или волнения</concernsSubject>
+  <concernsSubject o="7">пыльная буря, песчаная буря или метель</concernsSubject>
+  <concernsSubject o="8">гроза</concernsSubject>
+  <concernsSubject o="9">шквалы или смерч</concernsSubject>
+
+  <phenomenon o="LTG">молния</phenomenon>
+  <phenomenon o="VIRGA">вирга</phenomenon>
+  <phenomenon o="AURBO">северное полярное сияние</phenomenon>
+  <phenomenon o="FG_BNK">полоса тумана</phenomenon>
+  <phenomenon o="PCPN">осадки</phenomenon>
+  <phenomenon o="BC_VLY_FG">участки тумана в долине</phenomenon>
+  <phenomenon o="VLY_FG">туман в долине</phenomenon>
+  <phenomenon o="HIR_CLDS">более высокие облака</phenomenon>
+  <phenomenon o="FULYR">слой дыма</phenomenon>
+  <phenomenon o="HZY">туманный</phenomenon>
+  <phenomenon o="BINOVC">пробелы в облачности</phenomenon>
+  <phenomenon o="ICG">обледенение</phenomenon>
+  <phenomenon o="SH">ливень</phenomenon>
+  <phenomenon o="SHS">ливни</phenomenon>
+  <phenomenon o="DEW">роса</phenomenon>
+  <phenomenon o="VIS_HYR">видимость больше</phenomenon>
+  <phenomenon o="VIS_LWR">видимость меньше</phenomenon>
+  <phenomenon o="VIS_RDCD">видимость уменьшена</phenomenon>
+  <phenomenon o="CIG_HYR">потолок выше</phenomenon>
+  <phenomenon o="CIG_LWR">потолок ниже</phenomenon>
+  <phenomenon o="ROTOR_CLD">облако ротор</phenomenon>
+  <phenomenon o="CLD">облако</phenomenon>
+  <phenomenon o="CLDS">облака</phenomenon>
+  <phenomenon o="CLD_EMBD">облако вложено</phenomenon>
+  <phenomenon o="CLDS_EMBD">облака вложены</phenomenon>
+  <phenomenon o="CLD_EMBD_1ST_LYR">облако вложено в первый слой</phenomenon>
+  <phenomenon o="CLDS_EMBD_1ST_LYR">облака вложены в первый слой</phenomenon>
+  <phenomenon o="PRESFR">тенденция давления: быстрое падение</phenomenon>
+  <phenomenon o="PRESRR">тенденция давления: быстрое повышение</phenomenon>
+  <phenomenon o="FIRE">пожар</phenomenon>
+  <phenomenon o="FIRES">пожары</phenomenon>
+  <phenomenon o="GRASS_FIRE">горение травы</phenomenon>
+  <phenomenon o="GRASS_FIRES">горения травы</phenomenon>
+  <phenomenon o="MTN_TOPS_OBSC">вершины затенены</phenomenon>
+  <phenomenon o="SKY_OBSC">небо затенено</phenomenon>
+  <phenomenon o="MTNS_OBSC">горы затенены</phenomenon>
+  <phenomenon o="RDGS_OBSC">горные хребты затенены</phenomenon>
+  <phenomenon o="MTN_TOPS_PRLY_OBSC">вершины частично затенены</phenomenon>
+  <phenomenon o="SKY_PRLY_OBSC">небо частично затенено</phenomenon>
+  <phenomenon o="MTNS_PRLY_OBSC">горы частично затенены</phenomenon>
+  <phenomenon o="RDGS_PRLY_OBSC">горные хребты частично затенены</phenomenon>
+  <phenomenon o="MTNS_OPEN">горы открыты</phenomenon>
+  <phenomenon o="HALO">гало видно</phenomenon>
+  <phenomenon o="CB_TOPS">вершины кучево-дождевых облаков</phenomenon>
+  <phenomenon o="TCU_TOPS">вершины башенкообразных кучевых облаков</phenomenon>
+  <phenomenon o="VOLCANIC_ASH_CLOUD">облако вулканическего пепела</phenomenon>
+  <phenomenon o="ASH_FALL">осадка вулканическего пепела</phenomenon>
+
+  <quadrant o="1">первый</quadrant>
+  <quadrant o="2">второй</quadrant>
+  <quadrant o="3">третий</quadrant>
+  <quadrant o="4">четвертый</quadrant>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 2745 -->
+  <cloudMountain o="0">открыты</cloudMountain>
+  <cloudMountain o="1">частично покрыты отдельными облаками</cloudMountain>
+  <cloudMountain o="2">горные склоны закрыты, вершины и перевалы свободны</cloudMountain>
+  <cloudMountain o="3">открыты со стороны наблюдателя, непрерывная стена облаков с другой стороны</cloudMountain>
+  <cloudMountain o="4">облака низко над горами, все склоны и горы открыты</cloudMountain>
+  <cloudMountain o="5">облака низко над горами, вершины частично покрыты</cloudMountain>
+  <cloudMountain o="6">вершины закрыты облаками, перевалы открыты</cloudMountain>
+  <cloudMountain o="7">в основном закрыты, некоторые вершины свободны</cloudMountain>
+  <cloudMountain o="8">в облаках</cloudMountain>
+  <cloudMountain o="9">нельзя увидеть</cloudMountain>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 2863 -->
+  <cloudEvol o="0">изменений нет</cloudEvol>
+  <cloudEvol o="1">развитие кучевообразной облачности</cloudEvol>
+  <cloudEvol o="2">медленное повышение</cloudEvol>
+  <cloudEvol o="3">быстрое повышение</cloudEvol>
+  <cloudEvol o="4">поднялась и стала слоистой</cloudEvol>
+  <cloudEvol o="5">медленное снижение</cloudEvol>
+  <cloudEvol o="6">быстрое снижение</cloudEvol>
+  <cloudEvol o="7">развитие слоистости</cloudEvol>
+  <cloudEvol o="8">развитие слоистости и понижение</cloudEvol>
+  <cloudEvol o="9">быстрые изменения</cloudEvol>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 2754 -->
+  <cloudValley o="0">нет облаков или дымки</cloudValley>
+  <cloudValley o="1">дымка, небо ясное сверху</cloudValley>
+  <cloudValley o="2">отдельные полосы тумана</cloudValley>
+  <cloudValley o="3">тонкий слой тумана</cloudValley>
+  <cloudValley o="4">густой слой тумана</cloudValley>
+  <cloudValley o="5">отдельные облака</cloudValley>
+  <cloudValley o="6">отдельные облака, снизу туман</cloudValley>
+  <cloudValley o="7">много отдельных облаков</cloudValley>
+  <cloudValley o="8">море облаков</cloudValley>
+  <cloudValley o="9">взгляд вниз затемнён</cloudValley>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 2864 -->
+  <cloudBelowEvol o="0">изменений нет</cloudBelowEvol>
+  <cloudBelowEvol o="1">уменьшаются и поднимаются</cloudBelowEvol>
+  <cloudBelowEvol o="2">уменьшаются</cloudBelowEvol>
+  <cloudBelowEvol o="3">поднимаются</cloudBelowEvol>
+  <cloudBelowEvol o="4">уменьшаются и снижаются</cloudBelowEvol>
+  <cloudBelowEvol o="5">увеличиваются и поднимаются</cloudBelowEvol>
+  <cloudBelowEvol o="6">снижаются</cloudBelowEvol>
+  <cloudBelowEvol o="7">увеличиваются</cloudBelowEvol>
+  <cloudBelowEvol o="8">увеличиваются и снижаются</cloudBelowEvol>
+  <cloudBelowEvol o="9">прерывистый туман на станции</cloudBelowEvol>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0300 -->
+  <turbulenceDescr o="0">нет</turbulenceDescr>
+  <turbulenceDescr o="1">легка</turbulenceDescr>
+  <turbulenceDescr o="2">случайна, умеренна, в ясном воздухе</turbulenceDescr>
+  <turbulenceDescr o="3">часта, умеренна, в ясном воздухе</turbulenceDescr>
+  <turbulenceDescr o="4">случайна, умеренна, в облаках</turbulenceDescr>
+  <turbulenceDescr o="5">часта, умеренна, в облаках</turbulenceDescr>
+  <turbulenceDescr o="6">случайна, серьёзна, в ясном воздухе</turbulenceDescr>
+  <turbulenceDescr o="7">часта, серьёзна, в ясном воздухе</turbulenceDescr>
+  <turbulenceDescr o="8">случайна, серьёзна, в облаках</turbulenceDescr>
+  <turbulenceDescr o="9">часта, серьёзна, в облаках</turbulenceDescr>
+  <!-- as text -->
+  <turbulenceDescr o="MOD">умеренна</turbulenceDescr>
+  <turbulenceDescr o="MOD_SEV">умеренна или серьёзна</turbulenceDescr>
+  <turbulenceDescr o="SEV">серьёзна</turbulenceDescr>
+
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code tables 0 11 031 -->
+  <turbulenceVal o="0">нет в облаках</turbulenceVal>
+  <turbulenceVal o="1">легка, в облаках</turbulenceVal>
+  <turbulenceVal o="2">умеренна, в облаках</turbulenceVal>
+  <turbulenceVal o="3">серьёзна, в облаках</turbulenceVal>
+  <turbulenceVal o="4">нет в ясном воздухе</turbulenceVal>
+  <turbulenceVal o="5">легка, в ясном воздухе</turbulenceVal>
+  <turbulenceVal o="6">умеренна, в ясном воздухе</turbulenceVal>
+  <turbulenceVal o="7">серьёзна, в ясном воздухе</turbulenceVal>
+  <turbulenceVal o="8">нет</turbulenceVal>
+  <turbulenceVal o="9">легка</turbulenceVal>
+  <turbulenceVal o="10">умеренна</turbulenceVal>
+  <turbulenceVal o="11">серьёзна</turbulenceVal>
+  <turbulenceVal o="12">экстремальна, в ясном воздухе</turbulenceVal>
+  <turbulenceVal o="13">экстремальна, в облаках</turbulenceVal>
+  <turbulenceVal o="14">экстремальна</turbulenceVal>
+
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code tables 0 02 064 -->
+  <rollAngleQualityVal o="0">хорошо</rollAngleQualityVal>
+  <rollAngleQualityVal o="1">плохо</rollAngleQualityVal>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 1733 -->
+  <icingDescr o="0">нет</icingDescr>
+  <icingDescr o="1">легка</icingDescr>
+  <icingDescr o="2">легка, в облаках</icingDescr>
+  <icingDescr o="3">легка, в осадках</icingDescr>
+  <icingDescr o="4">умеренна</icingDescr>
+  <icingDescr o="5">умеренна, в облаках</icingDescr>
+  <icingDescr o="6">умеренна, в осадках</icingDescr>
+  <icingDescr o="7">серьезна</icingDescr>
+  <icingDescr o="8">серьезна, в облаках</icingDescr>
+  <icingDescr o="9">серьезна, в осадках</icingDescr>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3700 -->
+  <seaCondition o="0">совершенно спокойно</seaCondition>
+  <seaCondition o="1">спокойное (рифлёное)</seaCondition>
+  <seaCondition o="2">слабое волнение</seaCondition>
+  <seaCondition o="3">легкое волнение</seaCondition>
+  <seaCondition o="4">умеренное волнение</seaCondition>
+  <seaCondition o="5">неспокойно</seaCondition>
+  <seaCondition o="6">очень неспокойно</seaCondition>
+  <seaCondition o="7">сильное волнение</seaCondition>
+  <seaCondition o="8">очень сильное волнение</seaCondition>
+  <seaCondition o="9">исключительное волнение</seaCondition>
+
+  <swellCondition o="0">нет</swellCondition>
+  <swellCondition o="1">длина: короткая или средняя, высота: маленькая</swellCondition>
+  <swellCondition o="2">длина: большая, высота: маленькая</swellCondition>
+  <swellCondition o="3">длина: маленькая, высота: средняя</swellCondition>
+  <swellCondition o="4">длина: средняя, высота: средняя</swellCondition>
+  <swellCondition o="5">длина: большая, высота: средняя</swellCondition>
+  <swellCondition o="6">длина: маленькая, высота: большая</swellCondition>
+  <swellCondition o="7">длина: средняя, высота: большая</swellCondition>
+  <swellCondition o="8">длина: большая, высота: большая</swellCondition>
+  <swellCondition o="9">хаотично</swellCondition>
+
+  <cloudPhenom o="PWR_PLNT">электростанция</cloudPhenom>
+  <cloudPhenom o="PWR_PLNT_PLUME">перо (из дыма) электростанции</cloudPhenom>
+
+  <pressureTend o="0">увеличилось, затем уменьшилось</pressureTend>
+  <pressureTend o="1">увеличилось, затем устойчиво; или увеличилось, а затем увеличивалось медленнее</pressureTend>
+  <pressureTend o="2">увеличивалось устойчиво либо неустойчиво</pressureTend>
+  <pressureTend o="3">уменьшалось или оставалось устойчивым, затем увеличивалось; или увеличивалось, а затем увеличивалось более быстро</pressureTend>
+  <pressureTend o="4">устойчиво</pressureTend>
+  <pressureTend o="5">уменьшается, затем увеличивается</pressureTend>
+  <pressureTend o="6">уменьшается, затем устойчиво; либо уменьшается, а затем уменьшается более медленно</pressureTend>
+  <pressureTend o="7">уменьшается устойчиво или неустойчиво</pressureTend>
+  <pressureTend o="8">устойчиво или увеличивается, после уменьшается; или уменьшается, а потом уменьшается более быстро</pressureTend>
+
+  <rwySfc o="SLR">слякоть на ВПП</rwySfc>
+  <rwySfc o="LSR">рыхлый снег на ВПП</rwySfc>
+  <rwySfc o="PSR">плотный снег на ВПП</rwySfc>
+  <rwySfc o="P">местами</rwySfc>
+  <rwySfc o="SANDED">смешанный с песком</rwySfc>
+  <rwySfc o="WET">влажна</rwySfc>
+  <rwySfc o="DRY">суха</rwySfc>
+  <rwySfc o="IR">лёд на ВПП</rwySfc>
+  <rwySfc o="WR">влажная ВПП</rwySfc>
+
+  <snowCoverType o="ONE_LOOSE">один свободный</snowCoverType>
+  <snowCoverType o="MUCH_LOOSE">много свободный</snowCoverType>
+  <snowCoverType o="TRACE_LOOSE">следы свободный</snowCoverType>
+  <snowCoverType o="MEDIUM_PACKED">средний упакован</snowCoverType>
+  <snowCoverType o="HARD_PACKED">сильно упакован</snowCoverType>
+  <snowCoverType o="NIL">ноль</snowCoverType>
+
+  <estimatedItem o="WND">ветер</estimatedItem>
+  <estimatedItem o="ALTM">показания высотомера</estimatedItem>
+  <estimatedItem o="CIG">потолок</estimatedItem>
+  <estimatedItem o="CIG_BLN">потолок по данным аэростата</estimatedItem>
+  <estimatedItem o="CLD_HGTS">высота облаков</estimatedItem>
+  <estimatedItem o="SLP">давление на уровне моря</estimatedItem>
+  <estimatedItem o="ALSTG">настройка высотомера (A....)</estimatedItem>
+  <estimatedItem o="QNH">настройка высотомера (Q....)</estimatedItem>
+
+  <fcstNotAvblReason o="NOOBS">нет наблюдений</fcstNotAvblReason>
+  <fcstNotAvblReason o="INSUFFICIENTOBS">недостаточное наблюдение</fcstNotAvblReason>
+
+  <wmoRegion o="I">Африка</wmoRegion>
+  <wmoRegion o="II">Азия</wmoRegion>
+  <wmoRegion o="III">Южная Америка</wmoRegion>
+  <wmoRegion o="IV">Северная и Центральная Америка</wmoRegion>
+  <wmoRegion o="V">Юго-Западный Тихий Океан</wmoRegion>
+  <wmoRegion o="VI">Европа</wmoRegion>
+  <wmoRegion o="Antarctic">Антарктида</wmoRegion>
+
+  <precipIndicator o="0">в разделах 1 и 3</precipIndicator>
+  <precipIndicator o="1">в разделе 1</precipIndicator>
+  <precipIndicator o="2">в разделе 3</precipIndicator>
+  <precipIndicator o="3">пропущенный (нет осадков)</precipIndicator>
+  <precipIndicator o="4">пропущенный (не имеется)</precipIndicator>
+
+  <wxIndicator o="1">в разделе 1</wxIndicator>
+  <wxIndicator o="2">пропущенный (нет особых погодных явлений)</wxIndicator>
+  <wxIndicator o="3">пропущенный (не имеется)</wxIndicator>
+  <wxIndicator o="4">в разделе 1</wxIndicator>
+  <wxIndicator o="5">пропущенный (нет особых погодных явлений)</wxIndicator>
+  <wxIndicator o="6">пропущенный (не имеется)</wxIndicator>
+  <wxIndicator o="7">в разделе 1</wxIndicator>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0901 -->
+  <stateOfGround o="0">поверхность суха</stateOfGround>
+  <stateOfGround o="1">поверхность сыра</stateOfGround>
+  <stateOfGround o="2">поверхность влажна</stateOfGround>
+  <stateOfGround o="3">затопляемый</stateOfGround>
+  <stateOfGround o="4">поверхность заморожена</stateOfGround>
+  <stateOfGround o="5">иней на земле</stateOfGround>
+  <stateOfGround o="6">рыхлая сухая пыль или песок, земля покрыта не полностью</stateOfGround>
+  <stateOfGround o="7">тонкое покрытие рыхлой сухой пыли или песка</stateOfGround>
+  <stateOfGround o="8">среднее или толстое покрытие рыхлой сухой пыли или песка</stateOfGround>
+  <stateOfGround o="9">чрезвычайно сухая с трещинами</stateOfGround>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0975 -->
+  <stateOfGroundSnow o="0">земля в основном покрыта льдом</stateOfGroundSnow>
+  <stateOfGroundSnow o="1">плотный или влажный снег, покрывающий меньше чем половину земли</stateOfGroundSnow>
+  <stateOfGroundSnow o="2">плотный или влажный снег, покрывающий по крайней мере половину земли, однако земля покрыта не полностью</stateOfGroundSnow>
+  <stateOfGroundSnow o="3">гладкий слой плотного или мокрого снега</stateOfGroundSnow>
+  <stateOfGroundSnow o="4">неровный слой плотного или мокрого снега</stateOfGroundSnow>
+  <stateOfGroundSnow o="5">рыхлый сухой снег, покрывающий меньше половины земли</stateOfGroundSnow>
+  <stateOfGroundSnow o="6">рыхлый сухой снег, покрывающий по крайней мере половину земли, однако земля покрыта не полностью</stateOfGroundSnow>
+  <stateOfGroundSnow o="7">гладкий слой рыхлого сухого снега</stateOfGroundSnow>
+  <stateOfGroundSnow o="8">неровный слой рыхлого сухого снега</stateOfGroundSnow>
+  <stateOfGroundSnow o="9">снег, покрывающий основание полностью; высокие сугробы</stateOfGroundSnow>
+
+  <period o="p">вчера</period>
+  <period o="n">предыдущей ночью</period>
+  <period o="24h06">в предыдущие 24 ч. от 06:00 UTC</period>
+  <period o="12h18p">вчера между 06:00 и 18:00 UTC</period>
+  <period o="24h04">в предыдущие 24 ч. от 04:00 UTC</period>
+  <period o="24h14">в предыдущие 24 ч. от 14:00 UTC</period>
+  <period o="24h21">в предыдущие 24 ч. от 21:00 UTC</period>
+  <period o="24h07p">в предыдущие 24 ч. от 07:00 UTC вчера</period>
+  <period o="3or6h">за прошлые 3 или 6 ч.</period>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 1806 -->
+  <evapoIndicator o="0">USA open pan evaporimeter (без покрытия)</evapoIndicator>
+  <evapoIndicator o="1">USA open pan evaporimeter (покрытие сетка)</evapoIndicator>
+  <evapoIndicator o="2">испаритель GGI-3000 (погружённый)</evapoIndicator>
+  <evapoIndicator o="3">20 м² бак</evapoIndicator>
+  <evapoIndicator o="4">другие</evapoIndicator>
+  <evapoIndicator o="5">рис</evapoIndicator>
+  <evapoIndicator o="6">пшеница</evapoIndicator>
+  <evapoIndicator o="7">кукуруза</evapoIndicator>
+  <evapoIndicator o="8">сорго обыкновенное</evapoIndicator>
+  <evapoIndicator o="9">другие культуры</evapoIndicator>
+
+  <!-- WMO-No. 306 Vol II, code table 430 -->
+  <stateOfSky o="0">cumulus, если таковые имеются, весьма малы, обычно меньше, чем 2 / 8 покрытия, кроме как на наветренной стороне склонов возвышенностей; средняя ширина облака не меньше её вертикальной толщины</stateOfSky>
+  <stateOfSky o="1">cumulus среднего размера с покрытием менее 5 / 8; в среднем ширина облака больше его вертикальной толщины; башни вертикальны практически без каких-либо признаков осадков, за исключением склонов возвышений; общее отсутствие средних и верхних слоёв облаков</stateOfSky>
+  <stateOfSky o="2">распухающие cumulus с быстро растущими высокими башнями, которые уменьшаются в размере с высотой и чьи вершины, как правило, отделены от тел более длинных облаков и испаряются в течение нескольких минут после разделения</stateOfSky>
+  <stateOfSky o="3">распухающие cumulus с башнями, имеющими выраженный наклон в поветренном направлении; вертикальная толщина облаков более чем в 1 1/2 раза больше, чем их средняя ширина</stateOfSky>
+  <stateOfSky o="4">распухающие cumulus с башнями, имеющими выраженный наклон в подветренном направлении; вертикальная толщина облаков более чем в 1 1 / 2 раза больше, чем их средняя ширина</stateOfSky>
+  <stateOfSky o="5">высотные cumulus congestus с вертикальной толщиной, превышающей среднюю ширину более чем в два раза; не организованны в группы или линии; один или несколько слоёв облаков выступает из башни облака, хотя постоянного облачного слоя не существуют</stateOfSky>
+  <stateOfSky o="6">изолированные cumulonimbus или крупный блок башен cumulus, разделенный широкими областями отсутствия облаков; основания облаков в основном тёмные, в большинстве кластеров наблюдаются дожди, могут присутствовать несколько средних и высоких разрозненных облаков; отдельные кластеры cumulus в один или два раза больше в высоту, чем в ширину.</stateOfSky>
+  <stateOfSky o="7">многочисленные cumulus, тянущиеся через середину тропосферы с прерывистыми, либо полностью облачными листами средних облаков и/или cirrostratus; башни cumulus в основном не уменьшаются в размере с высотой; присутствуют рваные тёмные основания облаков с дождями</stateOfSky>
+  <stateOfSky o="8">непрерывные плотные средние облака и/или листы cirrostratus облаков с некоторыми крупными изолированными cumulonimbus или cumulus congestus, проникающими в эти листы; время от времени с altostratus наблюдается слабый дождь; основания cumulonimbus имеют рваные края, тёмные, видны дожди</stateOfSky>
+  <stateOfSky o="9">непрерывные листы средних облаков и/или cirrostratus с cumulonimbus и cumulus congestus, организованны в линии или полосы облаков; дождь в основном наблюдается с листов altostratus, сильные ливни с cumulonimbus; ветер имеет шквалистый характер</stateOfSky>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0552 -->
+  <cloudTopDescr o="0">изолированное облако или фрагменты облаков</cloudTopDescr>
+  <cloudTopDescr o="1">непрерывное облако, плоские вершины</cloudTopDescr>
+  <cloudTopDescr o="2">прерывистое облако, небольшие разрывы, плоские вершины</cloudTopDescr>
+  <cloudTopDescr o="3">прерывистое облако, большие разрывы, плоские вершины</cloudTopDescr>
+  <cloudTopDescr o="4">непрерывное облако, холмистые вершины</cloudTopDescr>
+  <cloudTopDescr o="5">прерывистое облако, небольшие разрывы, холмистые вершины</cloudTopDescr>
+  <cloudTopDescr o="6">прерывистое облако, большие разрывы, холмистые вершины</cloudTopDescr>
+  <cloudTopDescr o="7">непрерывные или почти непрерывные волны башенкообразных облаков, возвышающиеся над верхней частью слоя</cloudTopDescr>
+  <cloudTopDescr o="8">группы волн башенкоообразных облаков, возвышающиеся над верхней частью слоя</cloudTopDescr>
+  <cloudTopDescr o="9">два или более слоёв на различных уровнях</cloudTopDescr>
+
+  <recordPeriod o="AT"> в этом году</recordPeriod>
+  <recordPeriod o="FM"> в этом месяце</recordPeriod>
+  <recordPeriod o="DA"> на сегодня</recordPeriod>
+  <recordPeriod o="spring"> на весну</recordPeriod>
+  <recordPeriod o="fall"> на осень</recordPeriod>
+
+  <tideLevel o="below">, наблюдаемый поток ниже предсказанного</tideLevel>
+  <tideLevel o="equal">, наблюдаемый поток соотвествует предсказанному</tideLevel>
+  <tideLevel o="above">, наблюдаемый поток выше предсказанного</tideLevel>
+
+  <tideType o="low">отлив</tideType>
+  <tideType o="neither">ни прилив, ни отлив</tideType>
+  <tideType o="high">прилив</tideType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0938 -->
+  <elevAboveHorizon o="1">очень низко в горизонте</elevAboveHorizon>
+  <elevAboveHorizon o="3">меньше 30° над горизонтом</elevAboveHorizon>
+  <elevAboveHorizon o="7">больше 30° над горизонтом</elevAboveHorizon>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 5161 -->
+  <opticalPhenomenon o="0">брокенский призрак</opticalPhenomenon>
+  <opticalPhenomenon o="1">радуга</opticalPhenomenon>
+  <opticalPhenomenon o="2">гало вокруг солнца или луны</opticalPhenomenon>
+  <opticalPhenomenon o="3">паргелий</opticalPhenomenon>
+  <opticalPhenomenon o="4">солнечный столб</opticalPhenomenon>
+  <opticalPhenomenon o="5">корона</opticalPhenomenon>
+  <opticalPhenomenon o="6">утренняя/вечерняя заря</opticalPhenomenon>
+  <opticalPhenomenon o="7">утренняя/вечерняя заря в горах (Alpenglow)</opticalPhenomenon>
+  <opticalPhenomenon o="8">мираж</opticalPhenomenon>
+  <opticalPhenomenon o="9">зодиакальный свет</opticalPhenomenon>
+
+  <maxCloudType o="cloud">облака</maxCloudType>
+  <maxCloudType o="lowCloud">низкие облака</maxCloudType>
+
+  <weatherType o="present">актуальная погода</weatherType>
+  <weatherType o="addPresent">дополнительная погода (960ww)</weatherType>
+  <weatherType o="addPresent1">дополнительная погода (961w1w1)</weatherType>
+  <weatherType o="past1">прошедшая погода 1</weatherType>
+  <weatherType o="past2">прошедшая погода 2</weatherType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3850 -->
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code table 0 02 038 -->
+  <waterTempMeasurement o="0">судовое устройство для забора забортной воды</waterTempMeasurement>
+  <waterTempMeasurement o="1">ведро</waterTempMeasurement>
+  <waterTempMeasurement o="2">контактный датчик на корпусе судна</waterTempMeasurement>
+  <waterTempMeasurement o="3">опрокидывающийся термометр</waterTempMeasurement>
+  <waterTempMeasurement o="4">датчик STD/СTD</waterTempMeasurement>
+  <waterTempMeasurement o="5">механический батитермограф</waterTempMeasurement>
+  <waterTempMeasurement o="6">батитермограф разового пользования</waterTempMeasurement>
+  <waterTempMeasurement o="7">цифровой батитермограф</waterTempMeasurement>
+  <waterTempMeasurement o="8">термисторная цепь</waterTempMeasurement>
+  <waterTempMeasurement o="9">инфракрасный сканер</waterTempMeasurement>
+  <waterTempMeasurement o="10">микроволновый сканер</waterTempMeasurement>
+  <waterTempMeasurement o="11">инфракрасный радиометр</waterTempMeasurement>
+  <waterTempMeasurement o="12">линейный термосоленограф</waterTempMeasurement>
+  <waterTempMeasurement o="13">буксируемый объект</waterTempMeasurement>
+  <waterTempMeasurement o="14">прочее</waterTempMeasurement>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3855 -->
+  <wetbulbTempMeasurement o="measured">измерено</wetbulbTempMeasurement>
+  <wetbulbTempMeasurement o="icedMeasured">измерено, по отношению к льду</wetbulbTempMeasurement>
+  <wetbulbTempMeasurement o="computed">расчетнo</wetbulbTempMeasurement>
+  <wetbulbTempMeasurement o="icedComputed">расчетнo, по отношению к льду</wetbulbTempMeasurement>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3765 -->
+  <snowCoverCharacter o="0">рыхлый, свежий снег</snowCoverCharacter>
+  <snowCoverCharacter o="1">свежий снег в сугробах</snowCoverCharacter>
+  <snowCoverCharacter o="2">влажный свежий снег</snowCoverCharacter>
+  <snowCoverCharacter o="3">старый рыхлый снег</snowCoverCharacter>
+  <snowCoverCharacter o="4">старый твёрдый снег</snowCoverCharacter>
+  <snowCoverCharacter o="5">старый влажный снег</snowCoverCharacter>
+  <snowCoverCharacter o="6">рыхлый снег с коркой</snowCoverCharacter>
+  <snowCoverCharacter o="7">твёрдый снег с коркой</snowCoverCharacter>
+  <snowCoverCharacter o="8">влажный снег с коркой</snowCoverCharacter>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3775 -->
+  <snowCoverRegularity o="0">ровный, земля замёрзла</snowCoverRegularity>
+  <snowCoverRegularity o="1">ровный, земля не замёрзла</snowCoverRegularity>
+  <snowCoverRegularity o="2">ровный</snowCoverRegularity>
+  <snowCoverRegularity o="3">умеренно неровный, незначительные сугробы, земля замёрзла</snowCoverRegularity>
+  <snowCoverRegularity o="4">умеренно неровный, незначительные сугробы, земля не замёрзла</snowCoverRegularity>
+  <snowCoverRegularity o="5">умеренно неровный, незначительные сугробы</snowCoverRegularity>
+  <snowCoverRegularity o="6">очень неровный, сильные сугробы, земля замёрзла</snowCoverRegularity>
+  <snowCoverRegularity o="7">очень неровный, сильные сугробы, земля не замёрзла</snowCoverRegularity>
+  <snowCoverRegularity o="8">очень неровный, сильные сугробы</snowCoverRegularity>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3766 -->
+  <driftSnowData o="0">снежная мгла</driftSnowData>
+  <driftSnowData o="1">слабый или умеренный позёмок</driftSnowData>
+  <driftSnowData o="2">сильный позёмок</driftSnowData>
+  <driftSnowData o="3">сильный позёмок со снегопадом</driftSnowData>
+  <driftSnowData o="4">слабая или умеренная метель</driftSnowData>
+  <driftSnowData o="5">сильная метель</driftSnowData>
+  <driftSnowData o="6">слабая или умеренная метель со снегопадом</driftSnowData>
+  <driftSnowData o="7">сильная метель со снегопадом</driftSnowData>
+  <driftSnowData o="8">слабые или умеренные снежные заносы и метель</driftSnowData>
+  <driftSnowData o="9">сильные снежные заносы и метель</driftSnowData>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3776 -->
+  <driftSnowEvolution o="0">закончилось</driftSnowEvolution>
+  <driftSnowEvolution o="1">интенсивность убавляется</driftSnowEvolution>
+  <driftSnowEvolution o="2">интенсивность не изменяется</driftSnowEvolution>
+  <driftSnowEvolution o="3">интенсивность возрастает</driftSnowEvolution>
+  <driftSnowEvolution o="4">продолжается, несмотря на перерыв, длившийся менее 30 минут</driftSnowEvolution>
+  <driftSnowEvolution o="5">обычные сугробы превратились в позёмок</driftSnowEvolution>
+  <driftSnowEvolution o="6">позёмок у земли превратился в обычные сугробы</driftSnowEvolution>
+  <driftSnowEvolution o="7">позёмок начался снова после перерыва минимум в 30 минут</driftSnowEvolution>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3761 -->
+  <hoarFrost o="horizSurface">отложение изморози на горизонтальных поверхностях</hoarFrost>
+  <hoarFrost o="horizVertSurface">отложение изморози на горизонтальных и вертикальных поверхностях</hoarFrost>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3761 -->
+  <colouredPrecip o="sand">осадки, содержащие песок или пустынную пыль</colouredPrecip>
+  <colouredPrecip o="volcanicAsh">осадки, содержащие вулканический пепел</colouredPrecip>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 1751 -->
+  <iceAccretionSource o="1">от брызг</iceAccretionSource>
+  <iceAccretionSource o="2">от тумана</iceAccretionSource>
+  <iceAccretionSource o="3">от брызг и тумана</iceAccretionSource>
+  <iceAccretionSource o="4">от дождя</iceAccretionSource>
+  <iceAccretionSource o="5">от брызг и дождя</iceAccretionSource>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3551 -->
+  <iceAccretionRate o="0">лёд не нарастает</iceAccretionRate>
+  <iceAccretionRate o="1">лёд медленно нарастает</iceAccretionRate>
+  <iceAccretionRate o="2">лёд быстро нарастает</iceAccretionRate>
+  <iceAccretionRate o="3">лёд медленно тает или откалывается</iceAccretionRate>
+  <iceAccretionRate o="4">лёд быстро тает или откалывается</iceAccretionRate>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0639 -->
+  <seaIceConcentration o="0">лёд в поле зрения не наблюдается</seaIceConcentration>
+  <seaIceConcentration o="1-0">судно в открытом канале шириной >1 мор. мили</seaIceConcentration>
+  <seaIceConcentration o="1-9">судно в припае, граница которого находится вне поля зрения</seaIceConcentration>
+  <seaIceConcentration o="1">судно в открытом канале шириной более 1 морской мили или в припае, граница которого находится вне поля зрения</seaIceConcentration>
+  <seaIceConcentration o="2">судно во льдах или в пределах 0,5 мор. мили от кромки льда, &lt;3/8 однородного морского льда, открытая вода либо сильно разрежённый паковый лёд</seaIceConcentration>
+  <seaIceConcentration o="3">судно во льдах или в пределах 0,5 мор. мили от кромки льда, 3/8 .. &lt;6/8 однородного морского льда, разрежённый паковый лёд</seaIceConcentration>
+  <seaIceConcentration o="4">судно во льдах или в пределах 0,5 мор. мили от кромки льда, 6/8 .. &lt;7/8 однородного морского льда, сплочённый паковый лёд</seaIceConcentration>
+  <seaIceConcentration o="5">судно во льдах или в пределах 0,5 мор. мили от кромки льда, 7/8 .. &lt;8/8 однородного морского льда, очень сплочённый паковый лёд</seaIceConcentration>
+  <seaIceConcentration o="6">судно во льдах или в пределах 0,5 мор. мили от кромки льда, морской лёд не однороден, полосы и пятна дрейфующего пакового льда, в промежутках открытая вода</seaIceConcentration>
+  <seaIceConcentration o="7">судно во льдах или в пределах 0,5 мор. мили от кромки льда, морской лёд не однороден, полосы и пятна сплочённого или очень спрочённого пакового льда, между ними наблюдаются районы меньшей сплочённости</seaIceConcentration>
+  <seaIceConcentration o="8">судно во льдах или в пределах 0,5 мор. мили от кромки льда, морской лёд не однороден, припай с открытой водой, разреженный или редкий паковый лёд в сторону моря от границ льда</seaIceConcentration>
+  <seaIceConcentration o="9">судно во льдах или в пределах 0,5 мор. мили от кромки льда, морской лёд неоднороден, припай со сплочённым или сильно сплочённым паковым льдом направленный в сторону моря от границ льда</seaIceConcentration>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3739 -->
+  <iceDevelopmentStage o="0">только новый лёд (ледяные иглы, ледяное сало, снежура, шуга)</iceDevelopmentStage>
+  <iceDevelopmentStage o="1">нилас или склянка толщиной &lt;10 см</iceDevelopmentStage>
+  <iceDevelopmentStage o="2">молодые льды (серый, серо-белый лёд) толщиной 10–30 см</iceDevelopmentStage>
+  <iceDevelopmentStage o="3">преобладают новые\молодые льды с небольшим количеством однолетних льдов</iceDevelopmentStage>
+  <iceDevelopmentStage o="4">преобладает тонкий однолетний лёд с небольшим количеством новых\молодых льдов</iceDevelopmentStage>
+  <iceDevelopmentStage o="5">тонкий однолетний лёд (толщина 30–70 см)</iceDevelopmentStage>
+  <iceDevelopmentStage o="6">преобладают однолетний лёд средней толщины (70–120 см), толстый однолетний лёд (>120 см) и небольшое количество более тонкого (более молодого) однолетнего льда</iceDevelopmentStage>
+  <iceDevelopmentStage o="7">однолетний лёд средней толщины и толстый</iceDevelopmentStage>
+  <iceDevelopmentStage o="8">преобладает средний\толстый однолетний лёд и небольшое количество старого льда (толщина обычно более 2 м)</iceDevelopmentStage>
+  <iceDevelopmentStage o="9">преобладает старый лёд</iceDevelopmentStage>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0439 -->
+  <iceOfLandOrigin o="0">лёд материкового происхождения отсутствует</iceOfLandOrigin>
+  <iceOfLandOrigin o="1">1–5 айсбергов, куски или обломки айсбергов отсутствуют</iceOfLandOrigin>
+  <iceOfLandOrigin o="2">6–10 айсбергов, куски или обломки айсбергов отсутствуют</iceOfLandOrigin>
+  <iceOfLandOrigin o="3">11–20 айсбергов, куски или обломки айсбергов отсутствуют</iceOfLandOrigin>
+  <iceOfLandOrigin o="4">айсберги отсутствуют, &lt;=10 кусков и обломков айсбергов</iceOfLandOrigin>
+  <iceOfLandOrigin o="5">айсберги отсутствуют, >10 кусков и обломков айсбергов</iceOfLandOrigin>
+  <iceOfLandOrigin o="6">1–5 айсбергов, с кусками и обломками айсбергов</iceOfLandOrigin>
+  <iceOfLandOrigin o="7">6–10 айсбергов, с кусками и обломками айсбергов</iceOfLandOrigin>
+  <iceOfLandOrigin o="8">11–20 айсбергов, с кусками и обломками айсбергов</iceOfLandOrigin>
+  <iceOfLandOrigin o="9">>20 айсбергов, с кусками и обломками айсбергов — основная опасность для навигации</iceOfLandOrigin>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0739 -->
+  <iceEdgeBearing o="0">основная кромка льда не определена: судно у берега или в заприпайной прогалине</iceEdgeBearing>
+  <iceEdgeBearing o="1">основная кромка льда в северо-восточном направлении</iceEdgeBearing>
+  <iceEdgeBearing o="2">основная кромка льда в восточном направлении</iceEdgeBearing>
+  <iceEdgeBearing o="3">основная кромка льда в юго-восточном направлении</iceEdgeBearing>
+  <iceEdgeBearing o="4">основная кромка льда в южном направлении</iceEdgeBearing>
+  <iceEdgeBearing o="5">основная кромка льда в юго-западном направлении</iceEdgeBearing>
+  <iceEdgeBearing o="6">основная кромка льда в западном направлении</iceEdgeBearing>
+  <iceEdgeBearing o="7">основная кромка льда в северо-западном направлении</iceEdgeBearing>
+  <iceEdgeBearing o="8">основная кромка льда в северном направлении</iceEdgeBearing>
+  <iceEdgeBearing o="9">основная кромка льда не определена: судно во льдах</iceEdgeBearing>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 5239 -->
+  <iceConditionTrend o="0">судно находится в открытых водах, в поле зрения плавучий лёд</iceConditionTrend>
+  <iceConditionTrend o="1">судно легко преодолевает лёд; условия улучшаются</iceConditionTrend>
+  <iceConditionTrend o="2">судно легко преодолевает лёд; условия не изменяются</iceConditionTrend>
+  <iceConditionTrend o="3">судно легко преодолевает лёд; условия ухудшаются</iceConditionTrend>
+  <iceConditionTrend o="4">судно с трудом преодолевает лёд; условия улучшаются</iceConditionTrend>
+  <iceConditionTrend o="5">судно с трудом преодолевает лёд; условия не изменяются</iceConditionTrend>
+  <iceConditionTrend o="6">судно с трудом преодолевает лёд; условия ухудшаются, образование льда и смерзание ледяных полей</iceConditionTrend>
+  <iceConditionTrend o="7">судно с трудом преодолевает лёд; условия ухудшаются, лёд под небольшим давлением</iceConditionTrend>
+  <iceConditionTrend o="8">судно с трудом преодолевает лёд; условия ухудшаются, лёд под средним или сильным давлением</iceConditionTrend>
+  <iceConditionTrend o="9">судно затёрто льдами; условия ухудшаются</iceConditionTrend>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3955 -->
+  <tempVariation o="0">устойчивая</tempVariation>
+  <tempVariation o="1">падает, не понижаясь ниже 0 °C</tempVariation>
+  <tempVariation o="2">поднимается, не повышаясь выше 0 °C</tempVariation>
+  <tempVariation o="3">падает до величины ниже 0 °C</tempVariation>
+  <tempVariation o="4">поднимается до величины выше 0 °C</tempVariation>
+  <tempVariation o="5">неравномерное изменение, колебания с переходом через 0 °C</tempVariation>
+  <tempVariation o="6">неравномерное изменение, колебания без перехода через 0 °C</tempVariation>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3764 -->
+  <frozenDepositType o="0">иней</frozenDepositType>
+  <frozenDepositType o="1">лёгкая изморозь</frozenDepositType>
+  <frozenDepositType o="2">твердый налёт</frozenDepositType>
+  <frozenDepositType o="3">отложения снега</frozenDepositType>
+  <frozenDepositType o="4">отложения мокрого снега</frozenDepositType>
+  <frozenDepositType o="5">отложения замерзающего мокрого снега</frozenDepositType>
+  <frozenDepositType o="6">смешанные отложения (одновременно гололед и изморозь, либо изморозь и замерзающий мокрый снег и т. д.)</frozenDepositType>
+  <frozenDepositType o="7">гололедица</frozenDepositType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0101 -->
+  <mirageType o="0">спецификации нет</mirageType>
+  <mirageType o="1">изображение удаленного объекта приподнято (с неясными очертаниями)</mirageType>
+  <mirageType o="2">изображение удаленного объекта чётко видно над горизонтом</mirageType>
+  <mirageType o="3">перевернутое изображение удаленного объекта</mirageType>
+  <mirageType o="4">сложные, многократно повторяемые изображения удаленного объекта (изображения не перевернуты)</mirageType>
+  <mirageType o="5">сложные, многократно повторяемые изображения удаленного объекта (некоторые изображения перевернуты)</mirageType>
+  <mirageType o="6">солнце или луна наблюдаются заметно искаженными</mirageType>
+  <mirageType o="7">солнце видно, хотя астрономически находится ниже горизонта</mirageType>
+  <mirageType o="8">луна видна, хотя астрономически находится ниже горизонта</mirageType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 4332 -->
+  <visibilityVariation o="0">видимость не изменялась (солнце/небо/луна/звезды видны)</visibilityVariation>
+  <visibilityVariation o="1">видимость не изменялась (солнце/небо/луна/звезды не видны)</visibilityVariation>
+  <visibilityVariation o="2">видимость увеличилась (солнце/небо/луна/звезды видны)</visibilityVariation>
+  <visibilityVariation o="3">видимость увеличилась (солнце/небо/луна/звезды не видны)</visibilityVariation>
+  <visibilityVariation o="4">видимость уменьшилась (солнце/небо/луна/звезды видны)</visibilityVariation>
+  <visibilityVariation o="5">видимость уменьшилась (солнце/небо/луна/звезды не видны)</visibilityVariation>
+  <visibilityVariation o="6">туман прибывает</visibilityVariation>
+  <visibilityVariation o="7">туман поднялся, не рассеиваясь</visibilityVariation>
+  <visibilityVariation o="8">туман рассеялся</visibilityVariation>
+  <visibilityVariation o="9">движущиеся обрывки или пласты тумана</visibilityVariation>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3334 -->
+  <qualityControlInd o="0">данные не проверены</qualityControlInd>
+  <qualityControlInd o="1">данные хорошего качества</qualityControlInd>
+  <qualityControlInd o="2">данные не являются логически последовательными</qualityControlInd>
+  <qualityControlInd o="3">данные сомнительны</qualityControlInd>
+  <qualityControlInd o="4">данные неверны</qualityControlInd>
+  <qualityControlInd o="5">значение данных было изменено</qualityControlInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3315, 3319, 3363 -->
+  <qualityInd o="0">значение в рамках установленных границ</qualityInd>
+  <qualityInd o="1">значение вне указанных границ</qualityInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3313 -->
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code table 0 33 023 -->
+  <qualityTransmission o="0">хорошо</qualityTransmission>
+  <qualityTransmission o="1">сомнительно</qualityTransmission>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3311 -->
+  <qualityLocation o="0">значения в начале сводки достаточно надёжны</qualityLocation>
+  <qualityLocation o="1">значения в начале сводки являются последними известными величинами</qualityLocation>
+  <qualityLocation o="2">значения в начале сводки сомнительны</qualityLocation>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3318 -->
+  <depthCorrectionInd o="0">значения глубины не откорректированы</depthCorrectionInd>
+  <depthCorrectionInd o="1">значения глубины откорректированы</depthCorrectionInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 2263 -->
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code table 0 02 033 -->
+  <salinityMeasurementInd o="0">не измеряется</salinityMeasurementInd>
+  <salinityMeasurementInd o="1">датчик, находящийся в точке, точность выше 0,02 ‰</salinityMeasurementInd>
+  <salinityMeasurementInd o="2">датчик, находящийся в точке, точность менее 0,02 ‰</salinityMeasurementInd>
+  <salinityMeasurementInd o="3">анализ проб</salinityMeasurementInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 2267 -->
+  <measurementCorrectionInd o="0">движение путем усреднения, скорость донным слежением</measurementCorrectionInd>
+  <measurementCorrectionInd o="1">движение методом уравнения движения, скорость донным слежением</measurementCorrectionInd>
+  <measurementCorrectionInd o="2">движение не скорректировано, скорость донным слежением</measurementCorrectionInd>
+  <measurementCorrectionInd o="3">движение путем усреднения, скорость по навигации</measurementCorrectionInd>
+  <measurementCorrectionInd o="4">движение методом компенсации движения, скорость по навигации</measurementCorrectionInd>
+  <measurementCorrectionInd o="5">движение не скорректировано, скорость по навигации</measurementCorrectionInd>
+  <measurementCorrectionInd o="6">(доплеровский метод не использовался)</measurementCorrectionInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 2264 -->
+  <measurementDurTimeInd o="1">мгновенное измерение, измерено в течение последнего часа</measurementDurTimeInd>
+  <measurementDurTimeInd o="2">усреднено за &lt;=3 мин., измерено в течение последнего часа</measurementDurTimeInd>
+  <measurementDurTimeInd o="3">усреднено за >3..&lt;=6 мин., измерено в течение последнего часа</measurementDurTimeInd>
+  <measurementDurTimeInd o="4">усреднено за >6..&lt;=12 мин., измерено в течение последнего часа</measurementDurTimeInd>
+  <measurementDurTimeInd o="5">мгновенное измерение, измерено в течение предпоследнего часа</measurementDurTimeInd>
+  <measurementDurTimeInd o="6">усреднено за &lt;=3 мин., измерено в течение предпоследнего часа</measurementDurTimeInd>
+  <measurementDurTimeInd o="7">усреднено за >3..&lt;=6 мин., измерено в течение предпоследнего часа</measurementDurTimeInd>
+  <measurementDurTimeInd o="8">усреднено за >6..&lt;=12 мин., измерено в течение предпоследнего часа</measurementDurTimeInd>
+  <measurementDurTimeInd o="9">(векторный или доплеровский метод не использовался)</measurementDurTimeInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0370 -->
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code table 0 02 149 -->
+  <buoyTypeInd o="0">дрейфующий буй</buoyTypeInd>
+  <buoyTypeInd o="1">стандартный дрейфующий буй Лагранжа</buoyTypeInd>
+  <buoyTypeInd o="2">стандартный дрейфующий буй типа ПГЭП</buoyTypeInd>
+  <buoyTypeInd o="3">дрейфующий буй типа ПГЭП для измерения ветра</buoyTypeInd>
+  <buoyTypeInd o="4">буй на дрейфующей льдине</buoyTypeInd>
+  <buoyTypeInd o="5">стандартный дрифтер Лагранжас с ГСОМ СВПГ</buoyTypeInd>
+  <buoyTypeInd o="6">дрифтер с датчиком температуры с высоким разрешением или гирляндой терморезисторов СВП-ВР</buoyTypeInd>
+  <buoyTypeInd o="8">притопленный буй</buoyTypeInd>
+  <buoyTypeInd o="9">SOFAR</buoyTypeInd>
+  <buoyTypeInd o="10">ALACE</buoyTypeInd>
+  <buoyTypeInd o="11">MARVOR</buoyTypeInd>
+  <buoyTypeInd o="12">RAFOS</buoyTypeInd>
+  <buoyTypeInd o="13">PROVOR</buoyTypeInd>
+  <buoyTypeInd o="14">SOLO</buoyTypeInd>
+  <buoyTypeInd o="15">APEX</buoyTypeInd>
+  <buoyTypeInd o="16">заякоренный буй</buoyTypeInd>
+  <buoyTypeInd o="17">NOMAD</buoyTypeInd>
+  <buoyTypeInd o="18">трехметровый диск</buoyTypeInd>
+  <buoyTypeInd o="19">10..12-метровый диск</buoyTypeInd>
+  <buoyTypeInd o="20">буй серии ODAS 30</buoyTypeInd>
+  <buoyTypeInd o="21">ATLAS</buoyTypeInd>
+  <buoyTypeInd o="22">TRITON</buoyTypeInd>
+  <buoyTypeInd o="23">заякоренный буй FLEX</buoyTypeInd>
+  <buoyTypeInd o="24">всенаправленный волномерный буй</buoyTypeInd>
+  <buoyTypeInd o="25">направленный волномерный буй</buoyTypeInd>
+  <buoyTypeInd o="26">притопленный буй ARGO</buoyTypeInd>
+  <buoyTypeInd o="27">PALACE</buoyTypeInd>
+  <buoyTypeInd o="28">NEMO</buoyTypeInd>
+  <buoyTypeInd o="29">NINJA</buoyTypeInd>
+  <buoyTypeInd o="30">ледовый буй/поплавок</buoyTypeInd>
+  <buoyTypeInd o="34">океанографический заякоренный буй</buoyTypeInd>
+  <buoyTypeInd o="35">метеорологический заякоренный буй</buoyTypeInd>
+  <buoyTypeInd o="36">междисциплинарный заякоренный буй</buoyTypeInd>
+  <buoyTypeInd o="37">заякоренный буй с мареографом или буй для обнаружения волн цунами</buoyTypeInd>
+  <buoyTypeInd o="38">ледовый маяк</buoyTypeInd>
+  <buoyTypeInd o="39">буй для измерения баланса массы морского льда</buoyTypeInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 4780 -->
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code table 0 02 034 -->
+  <drogueTypeInd o="0">не определено</drogueTypeInd>
+  <drogueTypeInd o="1">полый конус</drogueTypeInd>
+  <drogueTypeInd o="2">TRISTAR</drogueTypeInd>
+  <drogueTypeInd o="3">ветровой щит</drogueTypeInd>
+  <drogueTypeInd o="4">буйково-парашютный измеритель</drogueTypeInd>
+  <drogueTypeInd o="5">плавучий якорь, отличный от типа Лагранжа</drogueTypeInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0114 -->
+  <anemometerTypeInd o="0">чашечный анемометр</anemometerTypeInd>
+  <anemometerTypeInd o="1">анемометр с мельничкой</anemometerTypeInd>
+  <anemometerTypeInd o="2">расчет ветра по окружающему шуму (WOTAN)</anemometerTypeInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3848 -->
+  <squallType o="0">штиль или легкий ветер, за которым последовал шквал</squallType>
+  <squallType o="1">штиль или легкий ветер, за которым последовала серия шквалов</squallType>
+  <squallType o="2">порывистый ветер, за которым последовал шквал</squallType>
+  <squallType o="3">порывистый ветер, за которым последовала серия шквалов</squallType>
+  <squallType o="4">шквал, за которым последовал порывистый ветер</squallType>
+  <squallType o="5">общий порывистый ветер, временами со шквалами</squallType>
+  <squallType o="6">шквал, приближающийся к станции</squallType>
+  <squallType o="7">фронтальный шквал</squallType>
+  <squallType o="8">шквал с пыльным или песчаным поземком или с пыльной или песчаной бурей</squallType>
+  <squallType o="9">фронтальный шквал с пыльным или песчаным поземком или с пыльной или песчаной бурей</squallType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 2555 -->
+  <windPhenomType o="0">водяной(ые) смерч(и) в радиусе 3 км от станции</windPhenomType>
+  <windPhenomType o="1">водяной(ые) смерч(и) на удалении более 3 км от станции</windPhenomType>
+  <windPhenomType o="2">облако торнадо в радиусе 3 км от станции</windPhenomType>
+  <windPhenomType o="3">облако торнадо на расстоянии более 3 км от станции</windPhenomType>
+  <windPhenomType o="4">вихри слабой интенсивности</windPhenomType>
+  <windPhenomType o="5">вихри умеренной интенсивности</windPhenomType>
+  <windPhenomType o="6">вихри сильной интенсивности</windPhenomType>
+  <windPhenomType o="7">пыльные вихри слабой интенсивности</windPhenomType>
+  <windPhenomType o="8">пыльные вихри умеренной интенсивности</windPhenomType>
+  <windPhenomType o="9">пыльные вихри сильной интенсивности</windPhenomType>
+
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code tables 0 08 004 (2..6), 0 08 009 -->
+  <phaseOfFlight o="0">горизонтальный полет, обычные наблюдения, неустойчивый полет</phaseOfFlight>
+  <phaseOfFlight o="1">горизонтальный полет, наивысшее встретившееся значение ветра, неустойчивый полет</phaseOfFlight>
+  <phaseOfFlight o="2">неустойчивый полет</phaseOfFlight>
+  <phaseOfFlight o="3">горизонтальный полет, обычные наблюдения</phaseOfFlight>
+  <phaseOfFlight o="4">горизонтальный полет, наивысшее встретившееся значение ветра</phaseOfFlight>
+  <phaseOfFlight o="5">набор высоты</phaseOfFlight>
+  <phaseOfFlight o="6">снижение</phaseOfFlight>
+  <phaseOfFlight o="7">набор высоты, интервалы наблюдений, выбранные по инкрементам времени</phaseOfFlight>
+  <phaseOfFlight o="8">набор высоты, интервалы наблюдений, выбранные по инкрементам времени, неустойчивый полет</phaseOfFlight>
+  <phaseOfFlight o="9">набор высоты, интервалы наблюдений, выбранные по инкрементам давления</phaseOfFlight>
+  <phaseOfFlight o="10">набор высоты, интервалы наблюдений, выбранные по инкрементам давления, неустойчивый полет</phaseOfFlight>
+  <phaseOfFlight o="11">снижение, интервалы наблюдений, выбранные по инкрементам времени</phaseOfFlight>
+  <phaseOfFlight o="12">снижение, интервалы наблюдений, выбранные по инкрементам времени, неустойчивый полет</phaseOfFlight>
+  <phaseOfFlight o="13">снижение, интервалы наблюдений, выбранные по инкрементам давления</phaseOfFlight>
+  <phaseOfFlight o="14">снижение, интервалы наблюдений, выбранные по инкрементам давления, неустойчивый полет</phaseOfFlight>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3866 -->
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code tables 0 02 061 -->
+  <navSystem o="0">инерционная система</navSystem>
+  <navSystem o="1">ОМЕГА</navSystem>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3867 -->
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code tables 0 02 062 -->
+  <amdarSystem o="0">АСДАР</amdarSystem>
+  <amdarSystem o="1">АСДАР (АКАРС имеется, но не функционирует)</amdarSystem>
+  <amdarSystem o="2">АСДАР (АКАРС имеется и функционирует)</amdarSystem>
+  <amdarSystem o="3">АКАРС</amdarSystem>
+  <amdarSystem o="4">АКАРС (АСДАР имеется, но не функционирует)</amdarSystem>
+  <amdarSystem o="5">АКАРС (АСДАР имеется и функционирует)</amdarSystem>
+
+  <error o="obsStation">не код станции</error>
+  <error o="obsTime">не время наблюдения</error>
+  <error o="obsStationType">не тип станции</error>
+  <error o="stationId">не код станции</error>
+  <error o="callSign">не позывной сигнал</error>
+  <error o="buoyId">не код буя</error>
+  <error o="obsTimeWindInd">не время наблюдения/индикатор ветра</error>
+  <error o="stationPosition">не положение станции</error>
+  <error o="indicatorCloudVis">не группа индикаторов/облаков/видимости</error>
+  <error o="cloudWind">не группа облаков и ветра</error>
+  <error o="wind">не группа ветра</error>
+  <error o="QNH">не давление</error>
+  <error o="invalid333-5xxxx">5xxxx группы в разделе 3 некорректны</error>
+  <error o="noTrendData">данные о тенденции отсутствуют</error>
+  <error o="other">некорректный формат</error>
+
+  <warning o="msgModified">сообщение изменено на:
+|</warning>
+  <warning o="notProcessed">не обработанно: |</warning>
+  <warning o="windMissing">ветер отсутствует</warning>
+  <warning o="visibilityMissing">видимость отсутствует</warning>
+  <warning o="tempMissing">температура отсутствует</warning>
+  <warning o="QNHMissing">QNH отсутствует</warning>
+  <warning o="pressureMissing">давление на уровне станции отсутствует</warning>
+  <warning o="periodMissing">период явлений отсутствует за |</warning>
+  <warning o="periodInvalid">период измерения некорректны: |</warning>
+  <warning o="cloudTypeInvalid">типы облаков некорректны: |</warning>
+  <warning o="weatherOmitted">данные о погоде опущены</warning>
+  <warning o="weatherNotOmitted">данные о погоде не опущены</warning>
+  <warning o="precipOmitted1">данные по осадкам опущены в разделе 1</warning>
+  <warning o="precipNotOmitted1">данные по осадкам не опущены в разделе 1</warning>
+  <warning o="precipOmitted3">данные по осадкам опущены в разделе 3</warning>
+  <warning o="precipNotOmitted3">данные по осадкам не опущены в разделе 3</warning>
+  <warning o="multCloudTypes">более одной группы типов облаков: |</warning>
+  <warning o="mixedFormat4TafPeriods">старый формат или минут нет за период |</warning>
+  <warning o="ambigPeriodVis">неоднозначная группа: период | может быть видимость</warning>
+  <warning o="qualityLimit">ошибка измерения параметра около '&lt;' превышает предел точности</warning>
+  <warning o="BLUslash">'BLU/' по всей вероятности имеет в виду 'BLU+'</warning>
+  <warning o="latlonDigitMismatch">контрольные числа позиции ожидалось != найдено: |</warning>
+
+  <cgi o="title">metaf2xml: разбирать и декодировать METAR, TAF, SYNOP, BUOY и AMDAR</cgi>
+  <cgi o="infosrc">Хороший источник для свежих сообщений METAR и TAF</cgi>
+  <cgi o="infofetch">Если выбрана опция с "ид" и указан один или более ид, сообщения будут запрашиваться из выбранного источника (либо если эта опция отключена на сервере, с которого запрошена эта веб-страница).</cgi>
+  <cgi o="options">Опционы</cgi>
+  <cgi o="example">примеры: </cgi>
+  <cgi o="type1">METAR сообщение или </cgi>
+  <cgi o="type2">TAF сообщение или </cgi>
+  <cgi o="type3">сообщение или </cgi>
+  <cgi o="type4">ICAO ид: </cgi>
+  <cgi o="type5">WMO ид: </cgi>
+  <cgi o="type7">WMO ид или </cgi>
+  <cgi o="type8">SHIP ид или </cgi>
+  <cgi o="type9">MOBIL ид: </cgi>
+  <cgi o="type11">самолет ид: </cgi>
+  <cgi o="source">получать сообщения от: </cgi>
+  <cgi o="source1">NOAA/IWS </cgi>
+  <cgi o="source2">NOAA/ADDS </cgi>
+  <cgi o="source3">NOAA/ADDS сервер </cgi>
+  <cgi o="source4">NOAA/NWS </cgi>
+  <cgi o="source5">Колледж DuPage </cgi>
+  <cgi o="source6">Ogimet </cgi>
+  <cgi o="language">язык: </cgi>
+  <cgi o="format">выдавать как: </cgi>
+  <cgi o="format1">HTML </cgi>
+  <cgi o="format2">текст </cgi>
+  <cgi o="format3">XML (+XSL -> HTML) </cgi>
+  <cgi o="mode">получить/показать: </cgi>
+  <cgi o="mode1">послед./подробно </cgi>
+  <cgi o="mode2">всё/обзор с </cgi>
+  <cgi o="hours"> час(ов)</cgi>
+  <cgi o="decode">декодировать</cgi>
+  <cgi o="disclaimer">Предупреждение: Информация ниже может быть устаревшей, неточной, либо и то и&#10;другое. Она не подходит для использования в авиации.</cgi>
+  <cgi o="derived">Значения отмеченные * не происходят непосредственно из сообщения, а вычислены&#10;основываясь на его данных.</cgi>
+
+  <country o="BR">Бразилия</country>
+  <country o="JP">Япония</country>
+  <country o="US-NY">Нью-Йорк, США</country>
+
+  <summaryHeader o="metar">
+   <c/><c>станция</c><c>время (UTC)</c><c>ветер (уз)</c><c>видим</c><c>погода</c><c>облака</c><c>темп (°C)</c><c>влажн</c><c>давление (гПа)</c><c>н.п.</c><c align="left">сообщение</c>
+  </summaryHeader>
+  <summaryHeader o="synop">
+   <c/><c>тип</c><c>станция</c><c>время (UTC)</c><c>видим</c><c post="&#9;">облака</c><c>ветер (уз)</c><c>темп (°C)</c><c>влажн</c><c>давление (гПа)/гп (гпм)</c><c>осадки</c><c>погода</c><c colspan="3" post="&#9;&#9;">низкие, средние, высокие облака</c><c>уровень облаков</c><c>волны</c><c>нет</c><c align="left">сообщение</c>
+  </summaryHeader>
+  <summaryHeader o="buoy">
+   <c/><c>буй</c><c>время (UTC)</c><c>ветер (уз)</c><c>темп (°C)</c><c>влажн</c><c>давление (гПа)</c><c>волны</c><c>нет</c><c align="left">сообщение</c>
+  </summaryHeader>
+  <summaryHeader o="amdar">
+   <c/><c>тип</c><c>самолет</c><c>время (UTC)</c><c>местоположение</c><c>ветер (уз)</c><c>темп (°C)</c><c>нет</c><c align="left">сообщение</c>
+  </summaryHeader>
+ </lang>
+</trans>

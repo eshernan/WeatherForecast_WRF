@@ -1,0 +1,191 @@
+<head>
+<title>README.md</title>
+<link rel="stylesheet" href="../../../../multimarkdown_layout-fx.css">
+<style>
+.container { width: 100%; }
+.wiki-container { width: 100%; }
+.wiki-body { width: 100%; }
+</style>
+<link rel="stylesheet" href="../../../../multimarkdown_darcula-fx.css">
+<link rel="stylesheet" href="../../../../multimarkdown_hljs-darcula.css">
+<script src="../../../../multimarkdown_highlight.pack.js"></script>
+</head>
+<body>
+<div class="container">
+<div id="readme" class="boxed-group">
+<h3>
+   <a href="#" name="markdown-page" id="markdown-page" class="page-anchor"><span class="bookicon octicon-book"></span>
+</a>  README.md
+</h3>
+<article class="markdown-body">
+<h1 id="proceso-automático-de-corrida-del-modelo-wrf-fac"><a href="#proceso-automático-de-corrida-del-modelo-wrf-fac" name="proceso-automático-de-corrida-del-modelo-wrf-fac" class="anchor"><span class="octicon octicon-link"></span></a>Proceso automático de corrida del modelo WRF-FAC</h1>
+<p>El siguiente es un manual rápido del código del proceso de automatización y estructuración de la corrida del modelo WRF desarrollado para la Fuerza Aérea Colombiana.</p>
+<h2 id="estructura-del-código-procesos-y-archivos"><a href="#estructura-del-código-procesos-y-archivos" name="estructura-del-código-procesos-y-archivos" class="anchor"><span class="octicon octicon-link"></span></a>Estructura del código, procesos y archivos</h2>
+<p>La siguiente es la vista de la organización de los archivos, carpetas y scripts que se ven involucrados en el proceso de corrida:</p>
+<ul>
+  <li><strong>arw</strong>
+    <ul>
+      <li><strong>control</strong>
+        <ul>
+          <li><strong>data_assim</strong> <em>(datos estáticos de asimilación)</em></li>
+          <li><strong>scripts</strong> <em>(código de automatización)</em></li>
+          <li><strong>namelist</strong> <em>(templates de los namelists)</em></li>
+        </ul>
+      </li>
+      <li><strong>data</strong> <em>(datos de entrada)</em>
+        <ul>
+          <li><strong>yyyymmdd-hh</strong>
+            <ul>
+              <li><strong>gfs</strong></li>
+              <li><strong>metar</strong></li>
+              <li><strong>synop</strong></li>
+              <li><strong>radiom</strong></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><strong>system</strong>
+        <ul>
+          <li><strong>model</strong> <em>(modelo WRF completo)</em></li>
+          <li><strong>wps_light</strong> <em>(ejecutables del WPS)</em></li>
+          <li><strong>wrf_light</strong> <em>(ejecutables del WRF)</em></li>
+          <li><strong>wrfda_light</strong> <em>(ejecutables del WRFDA)</em></li>
+        </ul>
+      </li>
+      <li><strong>run</strong> <em>(corrida en frio del modelo)</em>
+        <ul>
+          <li><strong>yyyymmdd-hh</strong>
+            <ul>
+              <li><strong>logs</strong> <em>(registros de la corrida)</em></li>
+              <li><strong>wrfda</strong>
+                <ul>
+                  <li><strong>obsproc</strong> <em>(ejecución y salidas de obsproc)</em>
+                    <ul>
+                      <li><strong>litR</strong> <em>(datos de asimilación convertidos)</em></li>
+                    </ul>
+                  </li>
+                  <li><strong>low_bc</strong> <em>(ejecución y salidas de low_bc)</em></li>
+                  <li><strong>3dvar</strong> <em>(ejecución y salidas de 3dvar)</em></li>
+                  <li><strong>lat_bc</strong> <em>(ejecución y salidas de lat_bc)</em></li>
+                </ul>
+              </li>
+              <li><strong>wps</strong> <em>(ejecución y salidas de geogrid, ungrib, metgrid)</em></li>
+              <li><strong>real</strong> <em>(ejecución y salidas de real)</em></li>
+              <li><strong>fcst</strong> <em>(ejecución y salidas del wrf)</em></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><strong>rap</strong> <em>(corrida en caliente del modelo)</em>
+        <ul>
+          <li><strong>yyyymmdd-hh</strong>
+            <ul>
+              <li><strong>logs</strong> <em>(registros de la corrida)</em></li>
+              <li><strong>wrfda</strong>
+                <ul>
+                  <li><strong>obsproc</strong> <em>(ejecución y salidas de obsproc)</em>
+                    <ul>
+                      <li><strong>litR</strong> <em>(datos de asimilación convertidos)</em></li>
+                    </ul>
+                  </li>
+                  <li><strong>low_bc</strong> <em>(ejecución y salidas de low_bc)</em></li>
+                  <li><strong>3dvar</strong> <em>(ejecución y salidas de 3dvar)</em></li>
+                  <li><strong>lat_bc</strong> <em>(ejecución y salidas de lat_bc)</em></li>
+                </ul>
+              </li>
+              <li><strong>fcst</strong> <em>(ejecución y salidas del wrf)</em></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h2 id="estructura-de-los-scripts-de-automatización"><a href="#estructura-de-los-scripts-de-automatización" name="estructura-de-los-scripts-de-automatización" class="anchor"><span class="octicon octicon-link"></span></a>Estructura de los scripts de automatización</h2>
+<p>La siguiente es el orden y estructura de los scripts de automatización y corrida del modelo WRF ubicados en <code>/arw/control/scripts/</code>:</p>
+<ul>
+  <li><strong>p1_download</strong></li>
+  <li><strong>p2_preparation</strong></li>
+  <li><strong>p3_wps</strong>
+    <ul>
+      <li><strong>geogrid</strong></li>
+      <li><strong>ungrib</strong></li>
+      <li><strong>metgrid</strong></li>
+    </ul>
+  </li>
+  <li><strong>p4_real</strong>
+    <ul>
+      <li><strong>real</strong></li>
+    </ul>
+  </li>
+  <li><strong>p5_wrfda</strong>
+    <ul>
+      <li><strong>obsproc</strong></li>
+      <li><strong>low_bc</strong></li>
+      <li><strong>3dvar</strong></li>
+      <li><strong>lat_bc</strong></li>
+    </ul>
+  </li>
+  <li><strong>p6_fcst</strong>
+    <ul>
+      <li><strong>wrf</strong></li>
+    </ul>
+  </li>
+</ul>
+<h2 id="ejecución-control-y-registro"><a href="#ejecución-control-y-registro" name="ejecución-control-y-registro" class="anchor"><span class="octicon octicon-link"></span></a>Ejecución, control y registro</h2>
+<p>Hay tres niveles de control y modificaciones de la corrida y de los procesos, estos son; <code>los argumentos de corrida</code> que son los que se pasan en la ejecución de la automatización y son las variables que mas varían, los siguientes son <code>las variables dentro del settings.ini</code> donde se configuran las principales variables de la corrida y procesos, y por ultimo las modificaciones dentro de los templates de los namelist y modificaciones dentro código (aunque no es recomendado) donde se pueden, si se requieren, ajustes mayores de la corrida y del modelo.</p>
+<h3 id="argumentos-de-corrida"><a href="#argumentos-de-corrida" name="argumentos-de-corrida" class="anchor"><span class="octicon octicon-link"></span></a>Argumentos de corrida</h3>
+<p>Los scripts de automatización se encuentran en /arw/control/scripts, ahí esta el script principal que se encarga del todo el proceso llamado main.py. El script de automatización tiene la siguiente estructura de corrida:</p>
+<pre><code>python3 main.py --start-date START_DATE --run-time RUN_TIME --run-type {warm,cold}
+
+Argumentos:
+    --start-date START_DATE (fecha de la corrida YYYY-MM-DD)
+    --run-time RUN_TIME (hora de la corrida)
+    --run-type {warm,cold} (tipo de corrida del modelo)
+</code></pre>
+<p>Donde los tres argumentos son necesarios, en importante tener en cuenta que al correr el proceso no se vera ninguna salida o mensaje en la misma terminal de ejecución, todo se redireccionara a los logs de corrida.</p>
+<h3 id="settings-y-flags-de-ejecución"><a href="#settings-y-flags-de-ejecución" name="settings-y-flags-de-ejecución" class="anchor"><span class="octicon octicon-link"></span></a>Settings y flags de ejecución</h3>
+<p>Las principales variables de configuración de las corridas y del modelo se encuentran dentro del archivo llamado <code>settings.ini</code> localizado junto al main.py y es la que permite realizar modificaciones de manera rápida, practica y sencilla sin alterar ni modificar el código.</p>
+<p>La estructura y bloques del settings son los siguientes:</p>
+<ul>
+  <li><strong>flags</strong><br />
+  <em>Banderas de corrida para habilitar o deshabilitar procesos y/o subprocesos en la ejecución</em></li>
+  <li><strong>globals</strong><br />
+  <em>Variables globales del proceso de ejecución</em></li>
+  <li><strong>download</strong><br />
+  <em>Configuraciones del proceso de descarga</em></li>
+  <li><strong>process</strong><br />
+  <em>Configuraciones del proceso de corrida del modelo WRF</em></li>
+  <li><strong>assim</strong><br />
+  <em>Configuraciones del proceso de asimilación</em></li>
+  <li><strong>rap</strong><br />
+  <em>Configuraciones del proceso de la corrida en caliente</em></li>
+</ul>
+<h3 id="logs"><a href="#logs" name="logs" class="anchor"><span class="octicon octicon-link"></span></a>Logs</h3>
+<p>Cada corrida guarda sus propios logs de la ejecución, estos son almacenados en <code>/arw/{run,rap}/yyyymmdd-hh/logs</code> y son:</p>
+<ul>
+  <li>main.log</li>
+  <li>geogrid.log</li>
+  <li>metgrid.log</li>
+  <li>real.log</li>
+  <li>ungrib.log</li>
+  <li>wrf.log</li>
+</ul>
+<p>Donde el <code>main.log</code> es el log principal de registro del proceso y los otros son los logs de su respectivo proceso. Tener en cuenta que aunque se redirecciona mensajes y errores a los logs, si ocurre un problema, por ejemplo en el wrf, el log del wrf posiblemente no se va a ver reflejado el error en detalle, se tiene que revisar los archivos rsl.error.0000 y rsl.out.0000 respectivos de la corrida.</p>
+<h3 id="mpi"><a href="#mpi" name="mpi" class="anchor"><span class="octicon octicon-link"></span></a>MPI</h3>
+<p>Los scripts de automatización detectan, en el momento justo de cada una de los procesos que corre en paralelo, los nodos disponibles para incluirlo en la corrida. Los procesos que corren en paralelo son:</p>
+<ul>
+  <li>geogrid *</li>
+  <li>metgrid *</li>
+  <li>real</li>
+  <li>obsproc *</li>
+  <li>3dvar</li>
+  <li>wrf</li>
+</ul>
+<p>* Estos procesos por limitancia o recomendación misma del programa corren en paralelo pero unicamente en el master.</p>
+<p>Si uno de los nodos no responde o no es detectado en el momento de la configuración del mpi en la corrida, este no lo va a tener en cuenta para los procesos en paralelo, para ello se creo el archivo <code>mpd.conf</code> donde se registra con cuantos y cuales nodos corrió el proceso en paralelo ubicado en su respectiva carpeta de logs de la corrida <code>/arw/{run,rap}/yyyymmdd-hh/logs</code></p>
+
+</article>
+</div>
+</div>
+<script>hljs.initHighlightingOnLoad();</script></body>

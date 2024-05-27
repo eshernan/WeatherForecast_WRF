@@ -1,0 +1,11 @@
+#!/bin/bash
+###################################################
+# Script to download the Intel OneAPI SDK
+# Current version 2024.1 -> March 2024
+###################################################
+
+
+wget https://registrationcenter-download.intel.com/akdlm/IRC_NAS/7f096850-dc7b-4c35-90b5-36c12abd9eaa/l_HPCKit_p_2024.1.0.560_offline.sh
+
+sudo sh ./l_HPCKit_p_2024.1.0.560_offline.sh
+

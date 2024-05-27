@@ -1,0 +1,152 @@
+metaf2xml can download, parse and decode aviation routine weather reports
+(METAR, SPECI, SAO), aerodrome forecasts (TAF), synoptic observations
+(SYNOP), observations from buoys (BUOY) and meteorological reports from
+aircrafts (AMDAR). Data can also be taken from decoded BUFR messages.
+The extracted data can be written as XML or passed to a user-defined
+function (all done in Perl).
+
+It also provides XSLT style sheets to convert the XML to plain language
+(text, HTML), or XML with different schemas. A web-based (CGI) user
+interface can be used to download and display up-to-date weather data from
+NOAA, Ogimet, and other sources.
+
+The documentation for all Perl scripts and modules (as manual and in other
+formats) can be generated from the POD inside them.
+
+metaf2xml consists of the following files:
+
+metaf2xml/parser.pm
+    contains the code to parse messages and write the data as XML or pass
+    it to a user-defined function
+
+    requires the Perl module metaf2xml::bufr
+
+    The structure of the XML file probably needs some comment. There were
+    2 design goals:
+    - one should be able to check the contents of an XML file as strict as
+      possible but with little effort
+    - it should not contain additional data that is not in the original
+      message.
+
+    DTD is used to check the structure and values of the XML. XSD could
+    have been used, too, but it seemed more effort.
+
+    DTD cannot restrict the string-value of a node, but only its
+    attributes. Therefore values are assigned to an otherwise empty node
+    with the attribute 'v' (for "value") and, if applicable, 'u' (for
+    "unit"), 'q' (for "qualifier"), and 'rp'/'rpi' and/or 'rn'/'rne'
+    (possible positive and/or negative deviation from the displayed value
+    due to rounding of the observed value):
+
+       <wind>
+        <dir v="210" rp="4" rn="5"/>      <!-- 205..214° -->
+        <speed v="12" u="KT"/>            <!-- 12 kt -->
+       </wind>
+       <RVR>
+        <distance v="325" rp="24" u="M"/> <!-- 325..349 m -->
+       </RVR>
+       <cloudCover v="OVC"/>
+
+    It is concise, but human-legible as well.
+
+    Each entry also contains the original string from the message as an
+    attribute named 's' (for "string"):
+
+       <cloud s="OVC200">
+        <cloudBase v="20000" u="FT" />
+        <cloudCover v="OVC" />
+       </cloud>
+
+    There are 2 exceptions to the "no additional data" goal:
+    - if a cloud layer is the ceiling, it will have the "isCeiling" tag
+    - if temperature and dew point are given it will have 4 tags for the
+      humidity (from 4 different formulas)
+    Both items are considered "hard to compute" in XSL though it certainly
+    is possible.
+
+    Further information can be found in metaf2xml::parser(3pm).
+
+metaf2xml/bufr.pm
+    contains a helper function for parser.pm to process a decoded
+    BUFR message
+
+metaf2xml.pl
+    example script to parse messages and write the data as XML
+
+    requires the Perl module metaf2xml::parser
+
+    Further information can be found in metaf2xml(1).
+
+metaf2xml/src2raw.pm
+    contains the code to convert data from different sources of METAR,
+    TAF, SYNOP, BUOY and AMDAR information to the format expected by
+    metaf2xml::parser.
+
+    Further information can be found in metaf2xml::src2raw(3pm).
+
+metafsrc2raw.pl
+    example script to convert data from different sources to the format
+    expected by metaf2xml::parser
+
+    requires the Perl module metaf2xml::src2raw
+
+    Further information can be found in metafsrc2raw(1).
+
+metaf.pl
+    (CGI) script to download and display METAR/TAF/SYNOP/BUOY/AMDAR messages
+
+    requires the Perl modules CGI, metaf2xml::parser, metaf2xml::src2raw
+    may require curl, xsltproc, and a web server (depending on use)
+
+    Further information can be found in metaf(1).
+
+metaf-html.xsl, metaf-text.xsl
+    two wrapper files for metaf.xsl
+
+    They define the output method (HTML or text) and then include
+    metaf.xsl.
+
+metaf.xsl
+    XML style sheet to transform the contents of the generated XML file
+
+    All abbreviations are converted to plain language (language support
+    from metaf-lang*.xml), one message item per line. The output format can
+    be text or HTML. For the text format, the columns are separated by
+    tabulators.
+
+metaf-sum-html.xsl, metaf-sum-text.xsl
+    two wrapper files for metaf-sum.xsl
+
+    They define the output method (HTML or text) and then include
+    metaf-sum.xsl.
+
+metaf-sum.xsl
+    XML style sheet to transform the contents of the generated XML file
+
+    The output is in the form of a summary, one METAR/TAF/SYNOP/BUOY/AMDAR
+    per line (plus one for each trend). The output format can be text or
+    HTML.
+
+metaf-ui.xsl
+    XML style sheet to generate the header, footer and input form for the
+    user interface
+
+metaf-fullhtml.xsl, metaf-sum-ui.xsl
+    top level XML style sheets for the user interface
+
+    They define the output method HTML and then include metaf.xsl or
+    metaf-sum.xsl, respectively, and metaf-ui.xsl.
+
+metaf-lang.xml, metaf-lang-{de,en,es,ru}.xml
+    XML files with plain language text in several languages
+
+    Currently output in german, english, spanish, and russian is
+    supported.
+
+stations.xml
+    example data file with additional station information, read by
+    metaf.xsl.
+    This is, and will remain, a stub, and will not be extended or updated.
+
+metaf.dtd
+    the Document Type Definition for the XML data

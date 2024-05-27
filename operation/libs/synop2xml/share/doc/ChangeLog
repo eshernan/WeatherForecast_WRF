@@ -1,0 +1,1285 @@
+2016-10-27 release 2.1
+cgi:
+    * adapt to new URLs for NOAA/IWS and NOAA/NWS
+    * optimise and/or fix file search and server queries
+parser, xsl, dtd, lang:
+    * METAR runway state: allow friction coefficient 00; decode all values
+      (not backwards compatible)
+bufr:
+    * omit associated field if significance is missing
+
+2016-07-09 release 2.0
+all:
+    * extend BUFR processing
+src2raw, metaf2xml.pl metafsrc2raw.pl:
+    * decode binary BUFR in metaf2xml::src2raw, deprecate
+      "metaf2xml.pl -TBUFR"
+parser, xsl, dtd, lang:
+    * METAR remarks: recognise Ihnnn (ice accretion)
+parser, xsl, metaf-sum, dtd, lang:
+    * group AMDAR measurements in <amdarObs/>
+metaf-sum:
+    * show precipitation and cloudInfo as lists in one field
+    * SYNOP, BUOY: show wave data
+    * SYNOP: separate lowest cloud base from total cover with comma
+cgi:
+    * allow selection by report type for BUOY (SS|IOB), AMDAR (UD|IUA)
+    * recognise report type IS[IMN] for (BUFR) SYNOP
+cgi, install.pl:
+    * change default CGI_{DATA,LOG}_DIR from /var/tmp to
+      /var/opt/metaf2xml as required by the FHS
+    * change default log file name from metaf2xml.log to metaf.log
+install.pl:
+    * change default METAF2XML_{MAN,DOC,XSL} as required by the FHS
+xsl, ui, metaf-sum, dtd, cgi:
+    * remove unused translation stubs for pl, pt-br
+parser, dtd:
+    * 70HwaHwaHwa (SYNOP) and 20PwaPwaPwa 21HwaHwaHwa (BUOY) are more
+      exact values, not additional measurements
+
+2015-12-23 release 1.58
+all:
+    * add processing of AMDAR messages
+parser, metaf2xml.pl, cgi:
+    * remove use of keywords/prefixes SYNOP, BUOY (deprecated since 1.54)
+parser, bufr, xsl, dtd:
+    * add @q for lat, lon
+
+2015-07-12 release 1.57
+parser, bufr, src2raw, metaf2xml.pl, cgi, metafsrc2raw.pl, install.pl:
+    * require Perl 5.10.1+ (use state, //, \K)
+parser:
+    * SYNOP section 5: process 4 more groups (for NL)
+    * SYNOP section 1: fix ranges for VV=9* for US
+parser, bufr, xsl, dtd:
+    * extend BUFR parsing
+parser, xsl, xsl-sum, dtd:
+    * remove report/@query_start, add it and Perl version as comments
+cgi:
+    * adapt to new URLs for Ogimet, recognise quota reached
+ui, cgi:
+    * use operational (version 1.3) instead of experimental (1.5, to be
+      shutdown) NOAA/ADDS dataserver (partially revert 69efd22)
+
+2015-01-10 release 1.56
+parser, xsl, dtd:
+    * add range for table 1677. use @rne/@rpi instead of @rn/@rp with
+      @q=exclLower
+parser, xsl, dtd, metaf-sum:
+    * TAF: trendType: use FM instead of PROB. summary: show probability
+metaf-sum:
+    * SYNOP cloudInfo: omit if type and height are N/A. show VV
+cgi:
+    * use the list form of "open" for pipes if platform supports it
+parser, bufr, xsl, metaf-ui.xsl, dtd, metaf2xml.pl, cgi, install.pl
+    * prepare for BUFR processing
+Makefile:
+    * just pass variables to install.pl
+metaf2xml.pl, cgi, metafsrc2raw.pl, install.pl:
+    * use Pod::Usage::pod2usage
+    * allow scripts to be loaded as library
+install.pl:
+    * use default if variable is empty
+    * add options -v, -n
+metaf2xml.pl:
+    * remove option -O
+
+2014-06-01 release 1.55
+xsl, metaf-sum, ui, lang, install.pl:
+    * rename metaf-lang*.xsl to what they are: .xml
+parser, metaf2xml.pl, cgi:
+    * replace metaf2xml::parser::finish_* by metaf2xml::parser::finish
+parser, xsl, metaf-sum, dtd, lang:
+    * TAF: use tag minQNH for forecast lowest altimeter setting
+xsl, lang:
+    * METAR/TAF: improve weather translation. show CNL in title, NIL as
+      group
+parser, xsl, dtd:
+    * TAF: add volcanic ash forecast
+parser:
+    * temperature: do not omit '-' for M00 (METAR,TAF) and x1000
+      (SYNOP,BUOY)
+    * METAR/TAF visibility: add range only for reportable values
+parser, src2raw, metaf2xml.pl, cgi, metafsrc2raw.pl, install.pl:
+    * use L<> for Pod links to manuals
+
+2013-12-28 release 1.54
+parser, src2raw, metaf2xml.pl, cgi, metafsrc2raw.pl:
+    * make message prefixes SYNOP and BUOY deprecated
+parser, xsl, dtd, lang:
+    * TAF: recognise QNH and temperature forecast
+metaf-sum, cgi:
+    * summary: fetch and display TAF, too
+
+2013-09-29 release 1.53
+parser, xsl, dtd, lang:
+    * SYNOP section 3: process groups 918sqDp, 919MwDa, 97[5-9]vpDp,
+      959vpDp
+parser, xsl, metaf-sum, dtd:
+    * SYNOP section 9: process group 0dxdxfxfx for DE
+metaf-add, ui, dtd, lang, cgi:
+    * distinguish SYNOP by station type (wmo,ship,mobil) instead of source
+      (land,ship)
+xsl, metaf-sum:
+    * SYNOP: show offset to actual obs. time
+    * support GUI demo with browsers based on WebKit
+metaf-sum, lang:
+    * improve handling of summary header
+metaf-sum:
+    * wind: show direction for gusts, use 1 column instead of 2
+    * mark derived humidity
+parser, src2raw, metaf2xml.pl, cgi, metafsrc2raw.pl:
+    * allow and make check for exact Perl module version
+xsl, ui, cgi, css, install.pl:
+    * move style to CSS file to allow stricter CSP directives
+parser, xsl, metaf-sum, lang, cgi:
+    * if data source is DB: also get station info from DB
+parser:
+    * SYNOP section 3: allow ///// as 5j1j2j3j4 group. process tempMax,
+      tempMin for MOBIL
+parser, metaf2xml.pl:
+    * allow character data in "empty" nodes
+install.pl:
+    * settings can be provided as arguments. extend description of
+      installation
+    * fix installation of files having CRLF as end-of-line
+    * improve installation of man pages
+metaf-add:
+    * adapt to changes in DTD, stations.xml. improve namespace handling
+
+2013-06-27 release 1.52
+parser, xsl, dtd, lang:
+    * METAR main: waterTemp, seaCondition (since 2001), waveHeight (from
+      2013-11-04) are standard
+parser, XML, metaf2xml.pl, cgi, install.pl:
+    * merge XML.pm into parser.pm
+metaf2xml.pl:
+    * remove obsolete option -x
+parser, xsl, dtd:
+    * METAR/TAF trend: position visVert after weather
+parser:
+    * buffer XML output
+cgi:
+    * ogimet.com/display_*.php supports minutes for start/end
+    * bugfix: don't skip METAR starting with COR/AMD
+metaf-sum:
+    * also show gusts for METAR trends, invalidFormat
+install.pl:
+    * do not install INSTALL
+
+2013-02-20 release 1.51
+parser, xsl, dtd:
+    * METAR/TAF: use code table 1690 for heights and vert. vis. except for
+      US
+parser, xsl, metaf-sum, dtd:
+    * SYNOP US: use FMH-2 instead of code table 1600 for base of lowest
+      cloud
+parser, xsl, dtd, lang:
+    * extend processing of SAO
+parser, XML, xsl, dtd:
+    * METAR: 5 groups handled as extensions become remarks
+
+2012-11-01 release 1.50
+dtd, ui, cgi:
+    * new data source: SQL database
+parser, XML, src2raw, xsl, dtd, lang:
+    * extend processing of SAO
+xsl, ui, metaf-sum, dtd, lang, cgi:
+    * prepare translations for pl, pt-br
+xsl, ui, metaf-sum, lang, install.pl:
+    * split metaf-lang-{de,en,es,pl,pt-br,ru}.xsl from metaf-lang.xsl
+lang:
+    * improve Russian translation (thanks to Roman Nikitin)
+
+2012-07-19 release 1.49
+parser, xsl, dtd, lang:
+    * complete processing of BUOY sections 3 and 4
+XML, metaf2xml.pl:
+    * use option -o instead of -x; option -x will become obsolete
+metaf2xml.pl:
+    * example callback functions: honor option -o, add filter
+parser, src2raw:
+    * process (canadian AUTO) SAO
+parser:
+    * METAR, TAF: tolerate one previously unrecognised group before
+      a recognised mandatory group
+
+2012-04-18 release 1.48
+parser, XML, xsl, dtd, lang:
+    * SYNOP section 5: add processing for country RU
+    * TAF: write actual height values for turbulence and icing to XML
+      instead of coded values
+    * METAR, TAF: process turbulence (plain text) reports
+    * BUOY section 4: add processing for groups 1QPQ2QTWQ4 2QNQLQAQz
+parser, xsl, metaf-sum, dtd, lang:
+    * rename tempMinPeriod -> tempMin, tempMaxPeriod -> tempMax
+parser, xsl, dtd:
+    * rename equivWindSpeed/elevation -> equivWindSpeed/height
+    * METAR: add rp/rn for for cloud layer height and vertical visibility
+parser, dtd:
+    * TAF: display temperatures always before trend(s)
+parser:
+    * METAR: improve POD
+metaf2xml.pl:
+    * provide another example callback function
+metaf2xml.pl, cgi, metafsrc2raw.pl:
+    * improve handling of --help, --version
+ui, cgi:
+    * NOAA/IWS HTTP service for METAR, TAF discontinued (-> "use ADDS")
+cgi:
+    * document the format for files in $CGI_DATA_DIR
+    * TAF from ADDS dataserver: remove leading 'TAF ' from message
+    * TAF from Ogimet: leading 'TAF ' is missing sometimes
+
+2012-01-04 release 1.47
+parser, XML, xsl, dtd, lang:
+    * BUOY sections 1, 2: process quality control indicators for section
+    * BUOY: process quality control indicators for position and time
+    * SYNOP section 5: add processing for country BE
+parser, xsl, dtd, metaf-sum:
+    * use <noClouds v="SKC"/> instead of <SKC/>
+    * cloudTypes: improve display of oktas
+xsl, lang:
+    * mark derived values
+xsl, metaf-sum, lang:
+    * move country name translations to station.xml
+cgi:
+    * if HTTP header DNT (Do Not Track) is 1: log only x's as IP address
+parser, XML, src2raw:
+    * improve version string handling
+ui, cgi:
+    * use HTTP method GET instead of POST (no data is changed on the
+      server)
+INSTALL, install.pl:
+    * generate INSTALL from POD in install.pl
+
+2011-10-26 release 1.46
+parser, xsl, dtd, metaf-sum, lang:
+    * METAR remarks: tempHourly is not the 1h average temperature
+    * METAR remarks: weatherHist: allow MM for missing begin/end of weather,
+      use weatherHist for tornadicActivity,
+      rename beganAt/endedAt -> weatherBegan/weatherEnded
+    * XML structure cleanup (suggested by barrycarter)
+XML, metaf2xml.pl:
+    * provide access to parsed data via a callback function
+    * provide return codes to caller
+parser, xsl, metaf-sum:
+    * METAR remarks: improve handling of 24h min./max. temperature
+      (thanks to hyvatti)
+install.sh, install.pl:
+    * install.sh becomes install.pl
+    * also install docs
+    * change default directory for web server files to $INSTDIR/...
+
+2011-07-22 release 1.45
+xsl, metaf-sum:
+    * minor bugfixes: swap display of 'm' and 'h', remove duplicate display
+      of "hour(s)"
+
+2011-07-21 release 1.44
+parser:
+    * optimise parser::parse_report: use m/\G.../gc to make $msg read-only
+    * SYNOP section 3: correct duration for min/max temperature for FR
+      (thanks to Julien VIENNE)
+parser, XML, dtd, xsl, lang, metaf-sum:
+    * optimise XML::print_report: rename traces -> precipTraces and use
+      sortedArr to reduce special sorting in XML.pm
+    * METAR: improvements for remark RF (rainfall)
+    * rename precipHourly -> precipitation, timeBeforeObs can have minutes,
+      rename hoursUnknown -> notAvailable
+*.xsl, lang, cgi:
+    * avoid xmlns="" in HTML summary output, make output valid
+      HTML 4.01 Transitional
+src2raw, metafsrc2raw.pl, cgi, install.sh:
+    * create and use module src2raw.pm
+dtd, ui, lang, cgi:
+    * add data source "Ogimet ship" for SYNOP
+lang:
+    * improve mapping of SYNOP -> METAR weather for summary
+metaf-sum:
+    * improve display of wind, pressure (change) and temperature for summary
+cgi:
+    * undo commit v1.42~5: re-allow tipo=SI for src_synop=ogimet (filter
+      was fixed), allow tipo=SN (now also supported)
+    * adapt to new URLs for NOAA/IWS (for METAR) and NOAA/ADDS
+    * improve error handling for forked processes
+    * use option -d for curl to avoid the need for quoting
+install.sh:
+    * avoid bash's {..,..} syntax
+    * adapting METAF2XML_LIB not needed for modules since v1.17~2
+    * files are copied instead of linked if $USE_CP is set
+    * improve quoting of directory names
+metaf2xml.pl, metafsrc2raw.pl:
+    * add option -v to print version and exit
+
+2011-04-08 release 1.43
+(nearly all components):
+    * add processing of BUOY messages sections 0, 1, 2
+install.sh, INSTALL, Makefile:
+    * minor changes to how and which files are installed
+      - install.sh: set CGI_LOG_FILE from $CGI_LOG_DIR/$CGI_LOG_NAME
+      - install.sh: install metaf.pl also to METAF2XML_BIN,
+        install metafsrc2raw.pl only for "cgi"
+      - install.sh: install example configuration for Apache
+      - INSTALL: adapted to above changes
+      - Makefile: avoid duplicate shell commands, use install.sh instead
+metaf-sum, cgi:
+    * do not make text of report a link or provide station info as hint if
+      called from command line or for format=text
+metaf2xml.pl, metafsrc2raw.pl:
+    * extend option -H to 5: with optional group BBB
+cgi:
+    * add parameter "end_date" for Ogimet (usable from command line, only)
+
+2011-02-06 release 1.42
+XML, dtd, xsl, ui, metaf-sum:
+    * add namespace for XML and translation data, plus minor changes
+parser, dtd, xsl, lang:
+    * TAF: add trendType "FM" to clearly distinguish it from "BECMG FM"
+      (thanks to Jesse (angelldev))
+    * SYNOP section 3: process groups 92[01]SFx, 923S'S, 924SVs, 925TwTw,
+      927S6Tw, 941CDp, 943CLDp, 950Nmn3, 951Nvn4, 989VbDa, 991ADa
+    * improve processing of SYNOP sections 1, 2 and 3: allow more variants for
+      several groups; improve processing for countries CN, FR, TV; ...
+    * SYNOP section 3: correct periods for region VI, MG, MZ
+    * improve parsing of visibility and weather for METAR and TAF
+parser, XML, dtd, xsl, metaf-sum, lang:
+    * change period handling
+parser:
+    * METAR: forward 'isGrid' to all winds if specified; use existing patterns
+      for additional countries
+XML, metaf2xml.pl, gui:
+    * remove option -X for metaf2xml.pl, tag <data> is mandatory
+ui, gui:
+    * use explicit link for favicon
+gui:
+    * tipo=SN is not supported for src_synop=ogimet; disallow tipo=SI for now,
+      filter is broken and returns no reports
+    * check if input parameter hours is a number
+metaf-sum:
+    * make text of report a link to show it in mode=detailed
+
+2010-10-16 release 1.41
+parser, dtd, xsl, lang:
+    * SYNOP section 2: process groups 6IsEsEsRs/ICING, ICE ciSibiDizi
+    * SYNOP section 5: fix and extend processing of US sea reports
+    * SYNOP section 2: allow 99 for direction and period of swell
+parser, dtd, xsl:
+    * SYNOP section 2: allow missing speed for displacement
+parser:
+    * SYNOP section 0: determine country for mobile land stations
+    * SYNOP section 2: improve determination of country from call sign
+metaf-sum, lang:
+    * pressure tendency is for station level if provided
+    * improve display of past weather
+
+2010-05-21 release 1.40
+cgi:
+    * don't print any HTML if called from command line and format=text
+    * set TZ=GMT0 to prevent offsets from mktime()
+    * NOAA/IWS has only 24 files, don't download any of them twice
+    * only return valid names for file list from NOAA/NWS
+xsl, metaf-sum:
+    * revert commit a434444 (xsl cleanup: use <X/> ...) to avoid excessive
+      memory usage by xsltproc
+    * if $lang is set but invalid: use default language instead of @lang
+parser:
+    * process SYNOP group 00fff (wind speed >99) even if speed unit is unknown
+    * minor bugfixes: reject invalid code 05 for SYNOP additional weather,
+      always include all available decimal places
+xsl:
+    * minor bugfix: show direction of cloud for SYNOP group 57CDaeC
+metaf-sum:
+    * improve output for gusts
+
+2010-03-07 release 1.39
+parser, dtd, xsl, lang:
+    * SYNOP section 3: process groups 926S0i0 (hoar frost/coloured precip.),
+      929S8S'8 (drift snow), 93[2-7]RR (deposits), 928S7S'7 (snow cover), and
+      940Cn3 (evolution of clouds)
+    * METAR: improve parsing for remarks
+parser, dtd, xsl:
+    * METAR runway state: allow (and mark invalid) states U, D, N
+    * SYNOP section 1: allow /// for geopotential
+    * TAF periods: process but warn about mixed pre/post August 2007 format and
+      ambiguous period (pre August 2007 format)/wind groups
+parser:
+    * correct computation of SLP <=x99.9 if QNH is just above 1000 hPa
+    * METAR remarks: don't treat unparsed DSNT|DSIPTD special if previous item
+      was not recognised (CB X DSNT)
+    * bugfix: prevent endless loop caused by some METAR remarks
+xsl, metaf-sum:
+    * prefer parameter $lang over /data/options/@lang, use default if neither
+      is valid
+metaf-sum, lang:
+    * summary: also show SYNOP station pressure and pressure(s) from METAR RMK
+    * summary: also show gust/peak wind; show fixed units in header
+xsl, metaf-sum, metaf-add:
+    * cleanup: use current() instead of variables; omit parameters referencing
+      the current node
+xsl, metaf-sum, ui:
+    * cleanup: use <X/> instead of <xsl:element name="X"/> using "{$...}" for
+      variable attributes
+lang:
+    * improve translation
+cgi:
+    * do not discard last METAR/TAF report in response from NOAA/ADDS dataserver
+parser, metaf2xml.pl, metafsrc2raw.pl:
+    * POD: improve description of the required format of messages
+metafsrc2raw.pl:
+    * prepend WMO header also for NOAA/IWS cycle files
+metaf2xml.pl:
+    * add option -H <0..4> to use the WMO header
+    * add option -f for input file
+
+2009-12-24 release 1.38
+parser, XML, dtd, xsl, metaf-sum, lang:
+    * METAR: MGxx uses QFE instead of QNH
+    * rename SLPhPa and SLPinHg to SLP
+parser, XML, dtd, xsl, lang:
+    * SYNOP section 2: process groups 222Dsvs 0ssTwTwTw (displacement, water
+      temp.)
+parser, dtd, xsl, lang:
+    * SYNOP section 3: add processing of group 944CLDa (location of maximum
+      cloud concentration), group 97xEhDa (location of max. concentration for
+      weather), extend usage of group 958EhDa (max. concentration), process
+      group 945htht (tops of lowest clouds or fog), group 948C0Da (orographic
+      clouds), correct processing of group 0EsnT'gT'g for region II
+    * SYNOP section 5: add processing for US (sea) and country AT
+    * METAR remarks: recognise STNRY as special case of movement of a phenomenon
+    * METAR: recognise water temperature and sea condition
+    * METAR remarks: recognise trailing DSNT or DSIPTD
+    * METAR/TAF: recognise and report as error if trend data is missing
+    * SYNOP section 2: process groups 1PwaPwaHwaHwa 2PwPwHwHw 3dw1dw1dw2dw2
+      4Pw1Pw1Hw1Hw1 5Pw2Pw2Hw2Hw2 70HwaHwaHwa (wave and swell data), group
+      8swTbTbTb (wet-bulb temperature)
+xsl, metaf-sum, lang, ui:
+    * XSL: use global variable $trans instead of passing it to each template
+parser, XML, dtd, xsl:
+    * SYNOP: handle extensions to format
+xsl, metaf-sum, lang:
+    * version string is now an attribute of <trans> instead of a subnode
+parser, dtd:
+    * SYNOP ship: determine country (for some) and region of station
+parser:
+    * METAR LPMA: adapt to format change for radio sonde and runway wind
+    * METAR remarks: use existing patterns for additional countries, recognise
+      ATIS and active runway for VTxx
+    * METAR: add 'RMK' for METAR if QNH was found and no trend or RMK follow
+    * SYNOP section 5: prepare processing for countries AR, NL, NO
+    * bugfix: temperatures from -0.1 to -0.9 were reported as positive
+    * skip unprocessed SYNOP groups only up to the start of a new section
+    * SYNOP section 3: process prepended time of occurrence for 910ff (highest
+      gust)
+metaf-sum:
+    * HTML attribute tr/@title now contains the station info
+lang:
+    * add some countries, split GB
+cgi:
+    * bugfix: src must be provided for searching METAR files
+    * use restrictions in URLs when fetching data
+metafsrc2raw.pl:
+    * improve parsing of SYNOP files for messages from MXBA
+    * recognise SYNOP message header after message, add option -H<0..4>
+install:
+    * also install DTD
+    * prepend $BUILD_ROOT to installation directories
+
+2009-08-09 release 1.37
+parser, XML, dtd, xsl, metaf-sum, lang:
+    * improved and cleaned up handling of day/hour/minutes and periods
+    * METAR: changes to phenomenon locations:
+      - nodes phenomenonOnly and phenomenonAtLoc become phenomenon
+      - avoid unnecessary reordering of keywords
+      - correct spelling of SH, OMTNS, OVHD, AP, DISTANT, MOVD, UNKN
+      - obscgMtns is now a subnode of phenomenon instead of location
+      - inDistance is inherited by subsequent locations
+      - OMTNS & others are now locationSpec instead of location
+      - ARND is now locationSpec instead of phenomSpec
+      - isGrid is now an attribute of dir/compassDir
+parser, dtd, xsl, lang:
+    * SYNOP section 3: add processing of vertical clouds (949CaDa [958EhDa]),
+      special clouds (993CSDa [958EhDa]), visibility (98xVV [958EhDa]), location
+      of max. cloud concentration (942CDa), optical phenomena (990Z0i0),
+      hailStoneSize (932RR), phenomVariation and phenomDescr for weather
+    * SYNOP section 5: add processing for country CZ
+parser, dtd, xsl:
+    * METAR: store decoded value (or rwyNotInUse) in depositDepthVal
+    * METAR: add visibility from ROOF, add cloudCoverNotAvailable, recognise
+      LTG DATA MISG, colour code(s) with trailing slash, other minor changes
+XML, dtd, lang, ui, cgi:
+    * add parameter "hours" (number of hours to fetch data for in mode summary)
+ui, cgi:
+    * SourceForge.net logo is required only on pages served by its web service
+parser:
+    * bugfix: prevent overwriting data of previous group(s) in SYNOP section 4
+    * SYNOP section 3: recognise wind direction group (915dd) after wind speed
+      groups
+metafsrc2raw.pl:
+    * improve parsing of METAR/TAF files
+cgi:
+    * if source is NOAA/IWS and mode is summary: fetch and search (cycle) files
+    * fetching SYNOP from ogimet in mode summary: filter out unneeded messages
+metaf-sum:
+    * SYNOP: show (abbreviated) max. and min. temperatures from section 3
+    * SYNOP weather: show "?" if not available, "-" if no significant weather
+    * SYNOP: show precipHourly only if the amount is available
+    * show (most) report modifiers
+xsl:
+    * use template invalidFormat for depositExtent, depositDepth, friction
+lang:
+    * improve translation
+
+2009-05-09 release 1.36
+metafsrc2raw.pl, cgi:
+    * add script to convert data from different sources to standard format,
+      removed this functionality from the cgi script which now uses the new one
+parser, XML, dtd, xsl, metaf-sum, ui, lang, metaf2xml.pl:
+    * change version string handling (not backwards compatible)
+parser, dtd, xsl, metaf-sum, lang:
+    * SYNOP: use separate tags *Simple for wx indicator = 7
+parser, metaf2xml.pl:
+    * use option -T{TAF|SYNOP} instead of -t, -s and replace arguments is_taf
+      and is_synop of parseReport by default_msg_type (not backwards compatible)
+parser, XML, metaf2xml.pl:
+    * rename exported module functions (not backwards compatible)
+XML, dtd, ui:
+    * "options" now has no subnodes but attributes (not backwards compatible)
+parser, XML, dtd, xsl:
+    * use "sinceHour" instead of "timeBeforeObsSince/hoursFrom" for precipHourly
+      and snowFall (for countries IN, LK)
+dtd, cgi:
+    * fetch METAR/TAF data also from nws, cod, and fsu, SYNOP data also from fsu
+      (only available from command line)
+parser, XML:
+    * POD: avoid empty "=item"s
+parser:
+    * SYNOP section 3: process 3Ejjj for region III
+    * SYNOP: allow NIL after section 0
+    * SYNOP section 1: country SA uses 12 hours for 6RRRtR if not specified
+cgi:
+    * don't show the input form if the script was started from the command line
+    * use $CGI_DATA_DIR/metaf.txt instead of $CGI_DATA_DIR/{metar,staf,taf}.txt
+    * use WMO header type when discarding older TAF messages
+
+2009-02-28 release 1.35
+XML:
+    * removed dependency on XML::Writer and IO::File
+    * options D, S, and O now imply option X instead of requiring it
+parser, XML, dtd, xsl, lang:
+    * SYNOP section 5: added partial processing for CA, US (land)
+parser, dtd, xsl, lang:
+    * added decoding of snow and rain accumulation
+    * incorporated changes for canadian MANOBS/MANAIR, FMH-2 (visibility)
+    * METAR: allow more than 1 report modifier (e.g. AUTO CCA)
+    * METAR: allow runway visibility with CAVOK
+    * attribute 'rp' for distances now is the offset to the next greater value
+      instead of being marginally less than that (e.g. 1 km instead of 999 m)
+    * renamed snowDepthNoMeasurement -> noMeasurement,
+      snowDepthNew -> snowFall, precipAmountTraces -> traces,
+      snowDepthCoverNotCont -> coverNotCont, snowOnGround -> snowDepth
+parser:
+    * canadian METAR: unit for CIG VRB is hundrets of feet, not SM
+    * allow visibility with whole miles and fraction without space (21/2 = 2.5)
+    * METAR, TAF: set "isModerate" only if intensities are mandatory
+xsl:
+    * visibility: always show original unit first (with 'rp'), then other units
+    * removed (handling of) parameter strictfgfs
+station, lang:
+    * use ISO 3166-1 (and -2) for country codes
+metaf-sum, lang:
+    * make display of the original message configurable with param no_msg
+cgi, ui:
+    * use new sflogo
+
+2009-01-05 release 1.34
+parser:
+    * METAR: recognise new format for runway state
+    * TAF: recognise new date/time formats also for max./min. temperature
+    * SYNOP: tolerate invalid values for table 4377
+
+2008-11-05 release 1.33
+parser, XML, dtd, xsl, lang:
+    * rename obsStation,stationId -> obsStationId
+    * TAF: recognise new date/time formats
+    * TAF: pass through fcstCancelled
+parser, dtd, xsl, lang:
+    * SYNOP section 3: added processing of 95[01]xx, changed names and meaning 
+      for tags in conditionMountain and conditionValley (used in METAR, too)
+    * include tag isModerate if appropriate, display only if present
+parser, dtd, xsl:
+    * recognise obscuration in TAF supplementary
+xsl:
+    * distinguish station type when selecting additional station data
+metaf-sum:
+    * bugfix: SPECI was not displayed
+cgi, ui:
+    * force font size 100% for input fields and button
+    * omit name for input button
+cgi:
+    * override format=xml with html if client does not accept XML
+xsl, lang:
+    * use translated strings for NDV
+
+2008-06-28 release 1.32
+parser, dtd, xsl, XML:
+    * added attributes rp, rn for possible deviation from @v due to rounding
+parser, dtd, xsl:
+    * SYNOP section 1: allow 6////, 89///
+    * SYNOP section 3: added processing for Antarctic, allow 8//99, use new tag
+      group5xxxxNA for 5///.
+parser, dtd, xsl, lang:
+    * renamed tags beginEndPrecip -> weatherHist, precip -> weatherBeginEnd
+parser, lang:
+    * SYNOP section 1: tolerate multiple 8NhCLCMCH groups
+metaf-lang, metaf-sum:
+    * SYNOP summary: show present weather (in METAR coding), highest gust
+      (first occurrence in section 3)
+lang, ui, cgi:
+    * added fetching SYNOP ship data from NOAA/NWS
+parser:
+    * bugfix: some 5xxxx groups out of order in SYNOP section 3 were skipped
+    * SYNOP section 3: require region only for groups that depend on it
+    * recognize TCU W BBLO in METAR remark
+    * use s/X// instead m/X(.*)/ where possible, corrected use of /o
+
+2008-06-06 release 1.31
+parser, dtd, xsl, lang.xsl, XML:
+    * SYNOP section 3: added processing for region IV, extended processing of
+      9xxxx groups
+    * added processing of SYNOP section 4
+    * SYNOP section 1: recognise 4a3hhh (tag gpSurface)
+    * SYNOP section 1: VV in iRixhVV is visibility at sea only for sea stations
+parser:
+    * SYNOP section 3 group 931xx: added country-specific processing
+xsl:
+    * bugfix: don't print @s in text mode if only humidity is given
+lang.xsl:
+    * many small improvements
+ui, cgi:
+    * added fetching data from OGIMET
+ui:
+    * bugfix: versions were not processed
+metaf-sum:
+    * SYNOP: show precipitation amounts and cloud infos from sections 1 and 3
+    * display header every 15 lines
+metaf-sum-text:
+    * wrapper table for output format "text" for HTML page is now created in XSL
+      instead of CGI (with xsltproc option "--stringparam wrap_table 1")
+
+2008-04-06 release 1.30
+parser, dtd, xsl, lang.xsl, XML:
+    * SYNOP section 3: added processing for regions II, III, V and processing
+      of some frequently used 9xxxx groups
+    * many changes to the structure of the XML data (not backwards compatible,
+      XSL transformation available): removed all *List nodes,
+      node WARNING becomes 1..n nodes warning,
+      ERROR now has attributes instead of sub-nodes,
+      separate radiationSun from radiation,
+      renamed tags distant and isDistant -> inDistance, hours -> period,
+      precipHourly -> period, eights -> oktas, visListLoc -> visListAtLoc,
+      SYNOP QNH -> stationPressure, phenomOpacity -> opacityPhenom
+dtd, XML:
+    * added attribute query_start to node reports
+parser:
+    * adapt to changed syntax of RMK for EDLP
+    * bugfix: argument is_synop was not overwritten for non-SYNOP messages
+XML:
+    * code much simplified
+metaf-sum:
+    * bugfix: NSW and tornado not shown
+lang.xsl:
+    * completed russian translation for SYNOP weather
+    * added descriptions for METAR/TAF weather SHGSSN, SHRAGSSN, TSRAGS
+    * minor translation improvements and additions
+cgi, metaf-text:
+    * wrapper table for output format "text" for HTML page is now created in XSL
+      instead of CGI (with xsltproc option "--stringparam wrap_table 1")
+cgi, install:
+    * avoid temporary files in CGI_TMP_DIR
+cgi:
+    * use CGI->header only if server_software() != 'cmdline'
+
+2007-09-11 release 1.29
+parser, XML, metaf2xml.pl:
+    * modifications to follow perlmod(1): export of functions restricted,
+      use BEGIN{} and END{}, removed __END__
+    * XML.pm: renamed printReport_XML() -> printReport(),
+      xml_start() -> startXML(), xml_end() -> finishXML()
+    * parser.pm: deleted version_parser(), use $VERSION_ID instead
+parser, dtd, xsl, metaf-sum, XML:
+    * METAR weather: renamed tag intensity -> phenomDescr
+parser, dtd, xsl, lang.xsl, XML:
+    * SYNOP: renamed tag precipBeginEnd -> beginPrecip/endPrecip
+    * METAR: added processing of radiosonde and runway winds for LPMA
+parser, XML, metaf2xml.pl, metaf.pl:
+    * major enhancement of POD
+admin:
+    * README: info is now in manuals
+    * distribute and install man pages extracted from POD
+
+2007-08-31 release 1.28
+parser, dtd, xsl, lang.xsl, XML:
+    * SYNOP: added processing of section 3 for region I (Africa) up to 8xxxx
+parser, lang.xsl:
+    * METAR: added keywords RDGS OBSC, WEA
+parser, dtd, xsl, metaf-sum:
+    * replace tags speedGreater/gustSpeedGreater by adding q='isGreater' for
+      speed/gustSpeed
+parser:
+    * replace [0-9] by \d (also avoids interpretation of $re_X[0-9] as array)
+admin:
+    * updated README, TODO
+
+2007-08-21 release 1.27
+lang.xsl, cgi, ui, XML, admin:
+    * options "ICAO"/"WMO" replace keyword "FETCH" which seems difficult to use
+parser, dtd, xsl:
+    * SYNOP: added tags cloudType(Low|Middle|High)NA
+metaf-sum:
+    * bugfix: VC not shown
+
+2007-07-30 release 1.26
+parser, dtd, xsl, lang.xsl, XML:
+    * SYNOP: added tempChange, cloudLocation, pressureChange, cloudInfo to
+      section 3 for region VI (Europe)
+    * tags isLess, isGreater, isEqualGreater are now values of new attribute q,
+      also for confidence values of station elevation
+    * renamed tag pressureTendency3h -> pressureChange with hours="3",
+      cloudBaseFT -> cloudBase with u="FT", cloudTypeFamily -> cloudTypes
+cgi:
+    * use ADDS dataserver release 1.2, adapt for changes
+    * small layout changes
+metaf-sum:
+    * bugfix: isCalm not shown for wind
+
+2007-07-17 release 1.25
+parser, dtd, xsl, lang.xsl, XML:
+    * SYNOP: added processing of section 3 for region VI (Europe) up to 7xxxx
+    * SYNOP: split tag precipWxInd into precipInd and wxInd
+    * METAR: allow invalid format for wind in trend forecast
+    * TAF: added trend type INTER, additional info may be in each trend section
+parser, dtd, xsl, XML:
+    * units are now in attribute 'u', not a separate tag or even in the tag name
+parser, dtd, xsl:
+    * QNH: store and show hPa and inHg if both are given
+    * added tags isCalm, dirVarAllUnk for wind
+    * renamed temp*hMin, temp*hMax -> tempMinPeriod/tempMaxPeriod w/ attr. hours
+    * renamed tempMin, tempMax -> tempMinAt/tempMaxAt
+    * precipPastHour is now precipHourly with hours=1 (header was not printed)
+parser:
+    * SNYOP section 1: allow 4////
+    * SNYOP section 1: missing QNH for AAXX is warning, not error
+    * bugfix SYNOP: weatherPastNotAvailable not detected, wrong text for ERRORs
+    * bugfix: unit for gust speed missing if wind speed unavailable
+cgi:
+    * improved parsing of NOAA/IWS files
+
+2007-05-18 release 1.24
+parser, dtd, xsl, lang.xsl, ui, cgi, XML:
+    * added processing of SYNOP messages (sections 0 and 1) (russian translation
+      for weather incomplete)
+parser, dtd, xsl, XML:
+    * renamed tag metafList -> reports (XML not backwards compatible)
+    * combined tags precip[136]Hour to precipXHour, renamed precip36Hour to
+      precip3o6Hour, precip1Traces -> precipTraces, SLPdPa -> SLPhPa
+metaf2xml.pl, FGFS:
+    * removed obsolete module FGFS.pm
+parser:
+    * bugfix: pressure change is negative for 3h pressure tendencies 5 .. 8
+parser, xsl:
+    * bugfix: unit for transitionLvl (EDLP) is FL, not ft
+lang.xsl:
+    * improved/fixed translations
+xsl:
+    * new file stations.xml, provides additional station info
+      This is, and will remain, a stub, and will not be extended or updated.
+cgi:
+    * bugfix: for modes HTML and text, the message in the text field was not
+      changed to the "cleaned" version
+    * don't fetch TAFs if mode is summary
+metaf-sum:
+    * sfcWind: gusts don't get separate column in HTML table
+
+2007-03-29 release 1.23
+parser, FGFS, dtd, xsl, XML:
+    * bugfix: values for QBB and QBJ are in meter, not flight level
+lang.xsl:
+    * added description for TSGR
+    * improved russian translation
+
+2007-03-04 release 1.22
+parser, FGFS, dtd, xsl, lang.xsl, XML:
+    * added METAR tags for active runway, transition level, observer initials
+      (all EDLP), ATIS (country ED), QBB, QBJ, wind at some other location
+parser, dtd, xsl, lang.xsl, XML:
+    * tempAt, tempMin, tempMax, amendment are now in "info" section of TAF
+    * added TAF tags for met watch, and correction and amendment times
+    * TAF can have QNH in any section
+parser, XML:
+    * printReport_XML: API CHANGE! removed argument "is_taf", use hash value TAF
+cgi, ui:
+    * increased maximum message size from 300 to 500
+    * removed obsolete outdated message
+cgi:
+    * fetch messages for last 36 h from NOAA/ADDS for mode=all/summary
+    * proxy option for curl defaults to empty
+admin:
+    * added install.sh, updated INSTALL, README, TODO
+
+2007-02-14 release 1.21
+metaf-ui.xsl:
+    * new file for user interface
+metaf-sum-html.xsl:
+    * new file to transform XML METAR data to summary in HTML format
+metaf-sum-text.xsl:
+    * new file to transform XML METAR data to summary in text format
+metaf-sum-ui.xsl:
+    * new file for user interface with summary (HTML format)
+metaf-sum:
+    * show type of message (METAR/SPECI)
+    * bugfix: missing tag sfcWind resulted in wrong number of columns in table
+    * show METAR trends (except NOSIG) in separate line
+    * added tabs, newlines for output in text format
+    * other minor display format changes
+xsl:
+    * changes to allow use in combination with metaf-ui
+fullhtml.xsl:
+    * moved user interface stuff to metaf-ui, include it
+lang.xsl, cgi, XML:
+    * new option "mode": fetch/display latest/detailed or all/summary
+lang.xsl, cgi:
+    * display names for radio buttons type, source, format, and mode now depend
+      on language
+cgi:
+    * always show SPECI before METAR
+    * use ADDS dataserver V1.1, adapt for format changes
+Makefile:
+    * added install for new files
+
+2006-11-09 release 1.20
+metaf-sum:
+    * new XSL transformation:
+        transforms XML for METAR to get a summary as HTML table
+metaf-add:
+    * new XSL transformation:
+        transforms XML for METAR: units are all SI, obsStationInfo is added
+parser, FGFS, dtd, xsl, XML:
+    * renamed tag tempUnit -> unitTemp
+dtd, XML:
+    * removed unused tag correctedMsg
+parser:
+    * allow space between cloud group and cloud type
+    * overwriting $TZ is not necessary anymore
+    * $is_speci not passed as argument anymore
+cgi:
+    * when FETCHing from ADDS dataserver:
+      show SPECI additionally to METAR if SPECI is newer
+    * use hoursBeforeNow=0 instead of 12 for TAF from ADDS dataserver as
+      parameter refers to time of validity not collection (as web page states)
+admin:
+    * metaf2xml.pl does not set and pass $is_speci to parser anymore
+
+2006-11-03 release 1.19
+parser, FGFS, dtd, xsl, lang.xsl, XML:
+    * added tag for hail stone size (METAR) and time of amendment (TAF)
+    * CONTRAIL(S)? is not a phenomenon description, but a phenomenon
+    * renamed conditionMountain -> conditionMountainList,
+      condMoun -> conditionMountain, same for valley
+parser:
+    * recognise variable ceiling in ft (with 4 digits)
+    * don't correct spaces in temperature or dewpoint, extend RE instead
+    * allow wind directions not rounded to 10 degrees
+    * bugfix: fraction M1/4 not always processed correctly
+    * bugfix visLocData: fractions were parsed, but not added to distance
+    * improved pod
+FGFS, lang.xsl:
+    * added descriptions for swell conditions 5-9
+    * recognise ACFT MSHP, OVR VLYS
+FGFS, xsl:
+    * bugfix: colourCode printing was incorrect
+    * small formatting changes
+lang.xsl:
+    * completed russian translation
+FGFS:
+    * bugfix: descriptions for some keywords were missing
+    * bugfix: CLD SCT not displayed correctly
+dtd, XML:
+    * versions come first
+XML:
+    * $writer is now global variable, not returned from xml_start, not passed to
+      functions
+    * properly close XML file
+    * added pod
+admin:
+    * include russian in README
+    * option -m of metaf2xml.pl is now without argument and with -f, only
+    * make calls to "sed" work for older versions of "sed"
+
+2006-10-27 release 1.18
+parser, FGFS, dtd, xsl, lang.xsl, XML:
+    * added weather JP (thanks to Th. Auguste, St. Lucia Met Services) and rel.
+      humidity to main section of METAR
+    * added DRFTG SNW, SP29.860, MT/SKY OBSC, V/D, FU ALOFT ..., SLP///, PRWX,
+      TWLGT, OVR LK|RIVER, TX/28,0, VRBL CONDS, sunshine duration to remarks
+    * phenomenon descriptions not separate tags anymore. splitted into pre/post
+    * clouds can be embedded in/associated with any phenomenon
+    * renamed cloudBaseNotAvailable -> baseBelowStation
+parser:
+    * correctly split HZY ISOLD? CI, VIS RDCD LO CLD, PRES[FR]R OCNL LTGICCG
+    * IC is also a phenomenon with opacity
+    * allow runway visibility in METAR remarks
+    * commata replaced by blank in NOAA/IWS messages are restored for
+      FQCH ... TX/ and ZMUB ... QFE
+    * DUE( TO) ... and BY ... are not recognised temporarily, they require
+      special handling, TBD
+    * avoid more corrections of messages by extending the patterns recognised
+
+2006-10-20 release 1.17
+parser, FGFS, dtd, xsl, lang.xsl, XML:
+    * added tags for unrecognised components, balloon data, info about estimated
+      data, observation (time) info, radiosonde, and observation data from
+      Rattlesnake Mtn. and Laguna Peak
+    * allow more than one phenomenon description
+    * renamed tag RHVal -> relHumid
+parser, FGFS, dtd, xsl, XML:
+    * removed the now obsolete tag freetext
+cgi, fullhtml.xsl, lang.xsl:
+    * remove hint for remark texts being in english
+parser:
+    * avoid some corrections of messages by extending the patterns recognised
+lang.xsl:
+    * continued russian translation
+    * added missing description of some keywords
+xsl:
+    * bugfix: printLayerHeight now requires $trans
+    * use templates for phenomenon descriptions
+admin:
+    * don't link files to HTDOCS directory if it is the install directory
+    * basic.pm is now obsolete
+
+2006-10-13 release 1.16
+parser, FGFS, dtd, xsl, lang.xsl, XML:
+    * added tags for snow cover, climate data, tornadic activity
+    * extend visibility at 2nd location to be at a runway (approach)
+    * WR (wet runway) is now in tag rwySfcCondition
+    * accept LWR (lower) and CLD (unknown cloud type) in tag cloudTrace
+    * renamed beginPrecip -> startTime, endPrecip -> endTime
+parser, cgi:
+    * allow ASCII in input, only
+lang.xsl:
+    * continued russian translation
+
+2006-09-28 release 1.15
+cgi, FGFS, xsl, lang.xsl, XML:
+    * changed encoding from ISO-8859-1 to UTF-8
+cgi, FGFS, xsl, lang.xsl:
+    * started to add russian translation
+cgi, fullhtml.xsl:
+    * added value 'ru' to language options
+    * minor layout changes
+xsl, lang.xsl:
+    * units depend on language. add and use <units>
+parser:
+    * allow FM24[00] for TAF
+xsl:
+    * bugfix: needMaint not correctly displayed
+XML:
+    * bugfix: data for TAFsuppl/windShearLvl was not written
+
+2006-09-21 release 1.14
+parser, FGFS, dtd, xsl, lang.xsl, XML:
+    * added tags nextFcstBy, nextFcstAt, fcstAutoObs, fcstAutoMETAR for
+      new tags for TAF remarks: <tafRemarkList><tafRemark>
+    * added tags waterEquivOfSnow, snowOnGround, fcstNotAvbl
+    * added CAVU, EPC, EPO, EPM, RTS to keywords
+parser:
+    * recognise EPM, more variants of EPC, EPO
+FGFS:
+    * added printing for TAF: fcstPeriod, trendType PROB
+
+2006-09-15 release 1.13
+parser, FGFS, dtd, xsl, lang.xsl, XML:
+    * added tags NEFO_PLAYA, precipPastHour, densityAlt, pressureAlt,
+      obsTimeOffset, CHINO, VISNO
+    * recognise station type AO2A, phenomenon modifier (VRY )FBL, HIER, distance
+      of phenomenon in km, "cloud type ASOCTD" for lightning, strange variant of
+      PK WND for KEHA
+    * set attribute isGrid in XML for subsequent compass directions but display
+      once, only
+    * renamed tag precipAmount -> precipAmountInch
+parser:
+    * everything for country RJ also holds for RO (both Japan)
+cgi:
+    * use ADDS dataserver version 1.0
+xsl:
+    * bugfix: rwyWind for METAR and rwyState for METAR trend was not displayed
+    * bugfix: SKC in cloudMaxCover was not displayed correctly
+FGFS, xsl:
+    * distinguish between compass dir as location and direction
+xsl, lang.xsl:
+    * bugfix: is(Very)Thin for phenomenonAtLoc/Only was not displayed
+    * add and use translations for unitLength
+lang.xsl:
+    * added descriptions for BLDU, DZSN, FZBCFG, GRRA, RAPL, SHGR, SHRAPL,
+      TSRAGR
+FGFS:
+    * bugfixes: lightningType was not displayed, wrong visibility for YLO2,
+      wrong value for depositDepth; formatting corrected
+    * cleanup _printWind_FGFS()
+
+2006-09-08 release 1.12
+parser, FGFS, dtd, xsl, lang.xsl, XML:
+    * added tags obscuration, variableCeiling, pressureTendency3h,
+      ceilVisVariable, rwySfcCondition, rainfall
+    * PWINO, FZRANO, etc. are now just values for new tag keyword
+    * bugfix: added tornado in weather
+parser, dtd, xsl, XML:
+    * bugfix: TAF element tempAt was not written to XML, wrong in DTD
+FGFS, lang.xsl:
+    * added descriptions for YLO1, YLO2
+cgi, fullhtml.xsl:
+    * small layout change
+cgi:
+    * more fixes due to changes in HTML layout of NOAA source
+FGFS:
+    * further cleanup basic.pm (move stuff to FGFS.pm)
+
+2006-09-01 release 1.11
+parser, FGFS, dtd, xsl, lang.xsl, XML:
+    * added tags phenomOpacity, ceilingAtLoc, cloudTypeLvl, cloudTrace,
+      seaCondition, and swellCondition (TODO: description of QUL4-9!)
+    * renamed tags: phenomLocation -> phenomenonLocAt, visAt -> visibilityAtLoc
+    * use tag phenomenonOnly instead of phenomenonLocAt if no location is given
+    * parser now recognises STNRY, OHD, AT AP, (VRY) THN, CVCTV, DSIPTD,
+      quadrants delimited by blank, HALO
+    * PRES[FR]R, visLower, cigLower are now not separate tags but in
+      phenomenonOnly or phenomenonLocAt
+parser, dtd, xsl:
+    * remove attribute v for all tags with boolean values
+lang.xsl:
+    * several other additions & corrections
+cgi:
+    * delete control characters in message after fetching from a source
+    * adapt to changes in HTML layout of NOAA source
+    * bugfix: message in last line of file was never added
+FGFS:
+    * further cleanup basic.pm (move stuff to FGFS.pm)
+
+2006-08-25 release 1.10
+cgi, parser, dtd, xsl:
+    * new data source: experimental ADDS dataserver
+xsl:
+    * display TAF forecast period length
+    * use boolean() for node test, not comparison with ''
+cgi, parser:
+    * comma is a valid character in messages (ZMUB ... QFE649,6 ...) though
+      NOAA/IWS replaces it with a blank
+cgi, fullhtml.xsl:
+    * disable options for source if data file exists
+cgi, install:
+    * make path and options for curl configurable
+
+2006-08-18 release 1.9
+parser, FGFS, dtd, xsl, lang.xsl, XML:
+    * process TAF elements wind shear, turbulence, icing, amendment
+xsl, cgi:
+    * added option to select source (currently NOAA or ADDS) for current weather
+    * added warning about NOAA not updating TAFs
+    * parameter values are all lower case
+xsl:
+    * reorder output to match order of TAF components in trends
+cgi:
+    * use curl options --fail --silent --show-error
+
+2006-08-10 release 1.8
+parser, FGFS, dtd, xsl, lang.xsl, XML:
+    * added tags for condition in mountains and valleys in italian METARs
+    * added lightning to tag phenomLocation
+FGFS:
+    * bugfix: tags visMin, cloud in remarks were not handled
+xsl, cgi:
+    * modified disclaimer
+
+2006-08-03 release 1.7
+cgi:
+    * use CGI functions instead of HTML code everywhere
+    * use only function-oriented style of CGI
+    * restrict use of CGI (length of post, no uploads)
+    * check and display CGI errors
+    * added pod
+xsl:
+    * MS IE complained about $this set twice in a template and didn't find
+      second root node in style sheet (but only in fullhtml?!?)
+
+2006-07-27 release 1.6
+parser, FGFS, dtd, xsl, lang.xsl, XML:
+    * added tags visLower, cigLower, phenomLocation
+xsl, cgi:
+    * added disclaimer
+    * added hint and example for 'FETCH'
+cgi, dtd, xsl, XML:
+    * removed option for notuptodate
+parser, xsl, XML:
+    * heed sequence of tempMin, tempMax
+parser:
+    * discard leading, trailing, multiple blanks before anything else
+xsl:
+    * omit prefix localdata:
+    * use font-size "90%" instead of "smaller", <pre> has margin 0
+    * drop check for alternate tags in remarks, use last (and only)
+cgi:
+    * bugfix: original message was not saved properly
+fullhtml.xsl:
+    * use defaults for unset options
+    * replaced call-template by apply-templates because of MS IE bug
+
+2006-07-20 release 1.5
+parser, FGFS, dtd, xsl, lang.xsl, XML:
+    * added proper tags for increasing snow, cloud type families, wind shift,
+      start/end of precipitation, and a dozen single word remarks
+dtd, xsl, XML:
+    * extended metaf-fullhtml.xsl to provide HTML identical to metaf.pl; XML
+      file can now contain call options (i.e. CGI parameters), passed with new
+      option -O of metaf2xml.pl
+parser:
+    * started adding pod
+    * option strict_fgfs no longer needed
+cgi:
+    * removed support for display of plain text XML; this can be done instead by
+      looking at the page source of XML/XSL output format
+    * bugfix: invalid HTML when displaying XML with empty message
+xsl, lang.xsl:
+    * use texts for <locationSpec>
+lang.xsl:
+    * translated remaining items to spanish
+    * bugfix de/compassDir: content of "o" must be english
+parser, FGFS, dtd, xsl, XML:
+    * renamed "min" to "minute"
+parser, FGFS, basic:
+    * moved unneeded variables and functions from basic and parser to FGFS
+home page, cgi, xsl:
+    * replaced copyright character by "copyright (c)"
+xsl:
+    * small style changes for HTML
+
+2006-07-06 release 1.4
+cgi, xsl, Makefile:
+    * added metaf-fullhtml.xsl and options in web interface for direct display
+      (without xsltproc) of xml as HTML rendered by (XML capable) browser
+xsl, FGFS:
+    * don't assume month and year of issue/observation time is current.
+      also some browser don't support date() in direct display of XML. omit it.
+    * reorder output to match order of metar components (and not metar of fgfs)
+xsl:
+    * replaced <xsl:text disable-output-escaping="yes"> by <xsl:comment>
+xsl, home page, cgi:
+    * style in header is useles for rendering in browser, use style attribute
+xsl, XML:
+    * replaced tag weatherObs by tags RH, SST, OAT, AI
+cgi:
+    * small layout change
+home page:
+    * URL for compressed tar ball: link to SF package
+dtd, XML:
+    * exchange order of visVert <-> cloudList (found just 1 example)
+parser:
+    * allow combination of tempMin and tempMax in both orders
+    * bugfix: subtag tempUnit was not set for tempMax
+
+2006-06-29 release 1.3
+parser, dtd, xsl, FGFS, XML:
+    * added processing and display of SPECI
+    * proper tags for precipitation, temperature, QFF, SST, OAT, RH, AI in remarks
+    * provide tempUnit with temp to avoid conversion
+parser, XML:
+    * new option: -S <stylesheet> to add stylesheet reference to .xml (with -X)
+    * renamed option -s to -F (aka -x/-X)
+    * added usage message
+parser:
+    * check observation time for 3-/6-hourly precipitation
+    * removed printUSTemp()
+    * other bugfixes and cleanups (removed remarkWT, added remarkKNIP, $re_wind)
+xsl:
+    * removed font-family: monospace
+    * added class="msg" for message field
+FGFS:
+    * bugfix: check exists toplevel hash element before children
+html.xsl
+    * added METAR/TAF, RMK in first column
+lang.xsl:
+    * corrected display of time-from, time-till
+cgi:
+    * prepend METAR/TAF to example messages
+    * added embedded style sheet (for now small font for message, only)
+    * removed (now) unnecessary sed /DOCTYPE/d
+html.xsl, text.xsl:
+    * further cleanup header declarations
+pm:
+    * prepend _ to name of local functions
+README:
+    * list all dependencies
+
+2006-06-22 release 1.2
+parser, dtd, xsl, FGFS:
+    * introduced subtags (XML)/hashes (perl) for runway state (XML not backwards
+      compatible)
+parser, cgi:
+    * allow leading "METAR ", "SPECI ", and "TAF " in messages; change type
+      accordingly
+parser, xsl:
+    * day, hour and minutes always have 2 digits
+parser:
+    * added check for invalid formats for depositExtent, friction
+    * bugfix: PROB[34]0 TEMPO without time: TEMPO was not seen
+    * improved check for missing period for trends
+    * added a few comments for specs used
+html.xsl, cgi:
+    * omit xhtml declaration, DOCTYPE is HTML 4.01 Transitional (verified)
+    * use short tags
+cgi:
+    * added keywords like in home page
+    * hint to Aviation Weather page, not METAR page, of NOAA
+lang.xsl, text.xsl:
+    * omit unnecessary declarations
+xsl, FGFS:
+    * peakWind: incorrect display if only minutes were given
+    * added display of rwyWind and cloudCoverVar
+    * small changes in wording/translation and composition of output
+FGFS:
+    * corrected conditions for output of "calm"
+    * show CAVOK for METAR
+README:
+    * minor modifications
+
+2006-06-13 release 1.1
+parser, xsl:
+    * parse remarks re. forecast status in TAF messages
+    * make depositExtent, depositDepth more descriptive
+parser, dtd, xsl, cgi:
+    * add CVS ids of parser, XSL sources to XML and (as comment) to HTML
+parser:
+    * missing cloud base in regular clouds section of METAR now is invalidFormat
+xsl, FGFS:
+    * added cloudBaseNotAvailable
+xsl:
+    * short cut separate template for *List where possible
+    * visRwy in remarks needs unitThreshold -> separate call to template
+dtd:
+    * added tempAtList, tempAt
+cgi:
+    * allow lower case letters, convert to upper case
+    * write requests to logfile
+    * modified options for curl
+    * "CURRENT" -> "FETCH" (data is not really current :-), added warning to
+      that effect, i.e. if fetched from raw data files
+    * added usage comments
+FGFS:
+    * print ceiling
+    * "deposit height" -> "deposit depth"
+    * use leading '0' for hours < 10
+    * recWeather comes later
+    * print peakWind, visRwy from remarks
+    * header cosmetics
+admin:
+    * improve install (paths are variables, Makefile, INSTALL)

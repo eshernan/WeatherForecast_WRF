@@ -1,0 +1,26 @@
+&datetime
+ start_date = '{start_year}-{start_month}-{start_day}_{start_hour}:00:00',
+ end_date   = '{end_year}-{end_month}-{end_day}_{end_hour}:00:00',
+ interval_seconds = 10800,
+ tacc = 0,
+ debug_level = 0,
+/
+
+&io
+
+ input_root_name = '{path_in}fcst/wrfout_d0{domain}_'
+ output_root_name = '{path_out}wrfout_d0{domain}'
+ plot = 'all_list'
+ fields = 'height,geopt,theta,tc,tk,td,td2,rh,rh2,umet,vmet,pressure,u10m,v10m,wdir,wspd,wd10,ws10,slp,mcape,mcin,lcl,lfc,cape,cin,dbz,max_dbz,clfr'
+ output_type = 'grads'
+ mercator_defs = .true.
+ split_output = .true.
+ frames_per_outfile = 1
+/
+
+&interp
+ interp_method = 1,
+ interp_levels =  1000., 990., 980., 975., 960., 950., 925., 900., 890., 870., 850., 830., 800., 780., 760., 750., 720., 700., 650., 600., 575., 550., 525., 500., 450., 400., 350., 300., 250., 200., 175., 150., 100., 70., 50.,
+
+/
+extrapolate = .true.

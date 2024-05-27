@@ -1,0 +1,115 @@
+&record1
+ obs_gts_filename     = 'obs.{start_year}{start_month}{start_day}{start_hour}',
+ fg_format            = 'WRF',
+ obs_err_filename     = './obserr.txt',
+ gts_from_mmm_archive = .false.,
+/
+
+&record2
+ time_window_min      ='{tw_min_year}-{tw_min_month}-{tw_min_day}_{tw_min_hour}:{tw_min_min}:00',
+ time_analysis        ='{start_year}-{start_month}-{start_day}_{start_hour}:00:00',
+ time_window_max      ='{tw_max_year}-{tw_max_month}-{tw_max_day}_{tw_max_hour}:{tw_max_min}:00',
+/
+
+&record3
+ max_number_of_obs        = 400000,
+ fatal_if_exceed_max_obs  = .TRUE.,
+/
+
+&record4
+ qc_test_vert_consistency = .TRUE.,
+ qc_test_convective_adj   = .TRUE.,
+ qc_test_above_lid        = .TRUE.,
+ remove_above_lid         = .TRUE.,
+ domain_check_h           = .TRUE.,
+ Thining_SATOB            = .FALSE.,
+ Thining_SSMI             = .FALSE.,
+ Thining_QSCAT            = .FALSE.,
+/
+
+&record5
+ print_gts_read       = .TRUE.,
+ print_gpspw_read     = .TRUE.,
+ print_recoverp       = .TRUE.,
+ print_duplicate_loc  = .TRUE.,
+ print_duplicate_time = .TRUE.,
+ print_recoverh       = .TRUE.,
+ print_qc_vert        = .TRUE.,
+ print_qc_conv        = .TRUE.,
+ print_qc_lid         = .TRUE.,
+ print_uncomplete     = .TRUE.,
+/
+
+&record6
+ ptop            = 5000.0,
+ base_pres       = 101300.0,
+ base_temp       = 290.0,
+ base_lapse      = 50.0,
+ base_strat_temp = 215.0,
+ base_tropo_pres = 20000.0
+/
+
+&record7
+ IPROJ        = 3,
+ PHIC         = 4.7,
+ XLONC        = -73.0,
+ TRUELAT1     = 4.7,
+ TRUELAT2     = 0.0,
+ MOAD_CEN_LAT = 4.7,
+ STANDARD_LON = -73.0,
+/
+
+&record8
+ IDD    =   1,
+ MAXNES =   2,
+ NESTIX =  300, 532,
+ NESTJX =  326, 661, 
+ DIS    =  9000, 3000,
+ NUMC   =    1,     1,
+ NESTI  =    1,    63,
+ NESTJ  =    1,    45,
+ /
+
+&record9
+ OUTPUT_OB_FORMAT = 2
+ use_for          = '3DVAR',
+ num_slots_past   = 3,
+ num_slots_ahead  = 3,
+ write_synop      = .true.,
+ write_ship       = .true.,
+ write_metar      = .true.,
+ write_buoy       = .true.,
+ write_pilot      = .true.,
+ write_sound      = .true.,
+ write_amdar      = .true.,
+ write_satem      = .true.,
+ write_satob      = .true.,
+ write_airep      = .true.,
+ write_gpspw      = .true.,
+ write_gpsztd     = .true.,
+ write_gpsref     = .true.,
+ write_gpseph     = .true.,
+ write_ssmt1      = .true.,
+ write_ssmt2      = .true.,
+ write_ssmi       = .true.,
+ write_tovs       = .true.,
+ write_qscat      = .true.,
+ write_profl      = .true.,
+ write_bogus      = .true.,
+ write_airs       = .true.,
+ /
+
+ &record10
+ WIND_SD          = F,
+ WIND_SD_SYNOP    = F,
+ WIND_SD_SHIPS    = F,
+ WIND_SD_METAR    = F,
+ WIND_SD_BUOY     = F,
+ WIND_SD_SOUND    = F,
+ WIND_SD_QSCAT    = F,
+ WIND_SD_PILOT    = F,
+ WIND_SD_AIREP    = F,
+ WIND_SD_GEOAMV   = F,
+ WIND_SD_TAMDAR   = F,
+ WIND_SD_PROFILER = F,
+  /

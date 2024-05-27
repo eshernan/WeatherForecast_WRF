@@ -1,0 +1,144 @@
+ &time_control
+ run_days                 = 0,
+ run_hours                = 0,
+ run_minutes              = 0,
+ run_seconds              = 0,
+ start_year               = {start_year}, {start_year},{start_year}, 
+ start_month              = {start_month}, {start_month},{start_month},
+ start_day                = {start_day}, {start_day},{start_day},
+ start_hour               = {start_hour}, {start_hour}, {start_hour},
+ start_minute             = 00,   00, 00,
+ start_second             = 00,   00, 00,
+ end_year                 = {end_year_d01}, {end_year_d02},{end_year_d02}
+ end_month                = {end_month_d01}, {end_month_d02},{end_month_d02},
+ end_day                  = {end_day_d01}, {end_day_d02},{end_day_d02},
+ end_hour                 = {end_hour_d01}, {end_hour_d02},{end_hour_d02}
+ end_minute               = 00,   00, 00, 
+ end_second               = 00,   00, 00,
+ interval_seconds         = {interval_seconds},
+ input_from_file          = .true.,   .true.,.true.,
+ history_interval         = {history_interval}, {history_interval}, {history_interval}
+ frames_per_outfile       = 1,     1, 1,
+ restart                  = .false.,
+ restart_interval         = 5000,
+ io_form_history          = 2,
+ io_form_restart          = 2,
+ io_form_input            = 2,
+ io_form_boundary         = 2,
+ debug_level              = 0,
+ io_form_auxhist23        = 2,
+ auxhist23_outname        = diagnostics_d<domain>_<date>
+ auxhist23_interval       = {history_interval}, {history_interval},{history_interval}
+ frames_per_auxhist23     = 1,
+
+/
+
+ &domains
+ time_step                = 54,
+ time_step_fract_num      = 0,
+ time_step_fract_den      = 1,
+ max_dom                  = {domains},
+ e_we                     = 300, 532, 151
+ e_sn                     = 326, 661, 187
+ e_vert                   = 42,    42, 42,
+ p_top_requested          = 5000,
+ num_metgrid_levels       = 34,
+ num_metgrid_soil_levels  = 4,
+ dx                       = 9000, 3000,1000,
+ dy                       = 9000, 3000,1000,
+ grid_id                  = 1,     2, 3,
+ parent_id                = 1,     1, 2,
+ i_parent_start           = 1,     63,198,
+ j_parent_start           = 1,     45,318,
+ parent_grid_ratio        = 1,     3, 3,
+ parent_time_step_ratio   = 1,     2, 3, 
+ feedback                 = 0,
+ smooth_option            = 0,
+ use_adaptive_time_step	  = .true.,
+ step_to_output_time      = .true.,
+ target_cfl               = 1.2,   1.2,1.2,
+ target_hcfl              = 0.84,  0.84, 0.84,
+ max_step_increase_pct    = 15,     51,
+ starting_time_step       = -1,    -1,
+ min_time_step            = 09,
+ max_time_step            = 90,
+ adaptation_domain        = 1,
+ /
+
+ &physics
+ mp_physics               = 6,     6, 6,
+ ra_lw_physics            = 3,     3, 3,
+ ra_sw_physics            = 2,     2, 2,
+ radt                     = 9,     9, 9,
+ sf_sfclay_physics        = 2,     2, 2,
+ sf_surface_physics       = 2,     2, 2,
+ bl_pbl_physics           = 2,     2, 2,
+ bldt                     = 0,     0, 0,
+ cu_physics               = 1,     0, 0,
+ cudt                     = 5,     
+ isfflx                   = 1,
+ ifsnow                   = 0,
+ icloud                   = 1,
+ surface_input_source     = 1,
+ num_soil_layers          = 4,
+ sf_urban_physics         = 0,     0,     
+ slope_rad                = 1,     1, 1, 
+ topo_shading             = 1,     1, 1,
+ /
+
+ &fdda
+ /
+
+ &dynamics
+ w_damping                = 0,
+ diff_opt                 = 1,      1,  1,    
+ km_opt                   = 4,      4,  4,    
+ diff_6th_opt             = 0,      0,      
+ diff_6th_factor          = 0.12,   0.12,   
+ base_temp                = 290.,
+ damp_opt                 = 0,
+ zdamp                    = 5000.,  5000.,
+ dampcoef                 = 0.01,    0.01,
+ khdif                    = 0,      0,
+ kvdif                    = 0,      0,
+ non_hydrostatic          = .true., .true.,
+ moist_adv_opt            = 1,      1,
+ scalar_adv_opt           = 1,      1,
+ /
+
+ &bdy_control
+ spec_bdy_width           = 5,
+ spec_zone                = 1,
+ relax_zone               = 4,
+ specified                = .true., .false.,
+ nested                   = .false., .true.,
+ /
+
+ &grib2
+ /
+
+ &namelist_quilt
+ nio_tasks_per_group = 0,
+ nio_groups = 1,
+ /
+
+ &afwa
+ afwa_diag_opt                       = 1, 1, 
+ afwa_turb_opt                       = 1, 1,
+ afwa_severe_opt                     = 1, 1,
+ afwa_ptype_opt                      = 1, 1,
+ afwa_buoy_opt                       = 1, 1,
+ afwa_icing_opt                      = 1, 1,
+ afwa_vis_opt                        = 1, 1,
+ afwa_radar_opt                      = 1, 1,
+ afwa_cloud_opt                      = 1, 1,
+ /
+
+ &diags
+ p_lev_diags                         = 1,
+ num_press_levels                    = 20,
+ press_levels                        = 100000, 95000, 90000, 85000, 80000, 75000, 70000, 65000, 60000, 55000, 50000, 45000, 40000, 35000, 30000, 25000, 20000, 15000, 10000, 5000
+ use_tot_or_hyd_p                    = 1
+ p_lev_missing                       = -1.e6
+ /
+q

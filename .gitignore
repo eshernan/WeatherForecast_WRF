@@ -1,0 +1,14 @@
+*.pyc
+*.bk
+*.pyo
+*.out
+*.log
+*.swp
+*.swo
+__pycache__/
+.DS_Store
+utils/*.txt
+*.txt
+.venv/*
+*.lock
+wrf_env

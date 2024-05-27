@@ -1,0 +1,2094 @@
+<!--
+########################################################################
+# metaf.dtd 2.1
+#   Document Type Definition for parsed METAR/TAF/SYNOP/BUOY/AMDAR data
+#
+# copyright (c) 2006-2016 metaf2xml
+#
+# This file is part of metaf2xml.
+#
+# metaf2xml is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# metaf2xml is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with metaf2xml.  If not, see <http://www.gnu.org/licenses/>.
+########################################################################
+-->
+
+<!ENTITY % digit '0|1|2|3|4|5|6|7|8|9'>
+
+<!ENTITY % cloudType 'AC|ACC|ACSL|AS|CB|CBMAM|CC|CCSL|CI|CS|CU|CF|CUFRA|NS|SAC|SC|SCSL|ST|SF|STFRA|TCU'>
+<!ENTITY % colourCodes 'BLUplus|BLU|WHT|GRN|YLO|YLO1|YLO2|AMB|RED|FCSTCANCEL'>
+<!ENTITY % cloudCover 'FEW|SCT|BKN|OVC'>
+<!ENTITY % phenomDescr 'isFrequent|isOccasional|isIntermittent|isContinuous|isSteady|isIncreasing|isDecreasing|isThick|isPrettyThick|isVeryThick|isThin|isPrettyThin|isVeryThin|isFeeble|isPrettyFeeble|isVeryFeeble|isSlight|isLight|isPrettyLight|isVeryLight|isModerate|isHeavy|isVeryHeavy|isVariable|isLow|isLower|isIsolated|isNumerous|isConvective|isDissipated|inPastHour|baseBelowStation|isAloft|aloftNotNearGround|nearGroundNotAloft|isFreezing|isPatchy|isVertical|isPartial'>
+<!ENTITY % unitRadiation 'kJm2|Jcm2'>
+<!ENTITY % unitSpeed     'KT|MPS|KMH|CMSEC'>
+<!ENTITY % compassDir    'N|NNE|NE|ENE|E|ESE|SE|SSE|S|SSW|SW|WSW|W|WNW|NW|NNW'>
+
+<!ELEMENT data (options?, reports)>
+
+<!ELEMENT reports ((metar|taf|synop|buoy|amdar)*)>
+<!-- TODO: a missing "xmlns" is not reported as invalid -->
+<!ATTLIST reports xmlns       CDATA #FIXED "http://metaf2xml.sourceforge.net/2.1">
+
+<!ELEMENT options EMPTY>
+<!ATTLIST options type_metaf (metar|taf|icao)                        #REQUIRED
+                  type_synop (synop|wmo|ship|mobil)                  #REQUIRED
+                  type_buoy  (buoy|wmo)                              #REQUIRED
+                  type_amdar (amdar|ac)                              #REQUIRED
+                  lang       (de|en|es|ru)                           #REQUIRED
+                  format     (html|text|xml)                         #REQUIRED
+                  src_metaf
+                         (noaa|adds|addsds|nws|ogimet|cod|fsu|local) #REQUIRED
+                  src_synop  (nws|ogimet|cod|fsu|local)              #REQUIRED
+                  src_buoy   (nws|ogimet|local)                      #REQUIRED
+                  src_amdar  (nws|fsu|local)                         #REQUIRED
+                  mode       (latest|summary)                        #REQUIRED
+                  hours      CDATA                                   #REQUIRED
+                  msg_metaf  CDATA                                   #REQUIRED
+                  msg_synop  CDATA                                   #REQUIRED
+                  msg_buoy   CDATA                                   #REQUIRED
+                  msg_amdar  CDATA                                   #REQUIRED>
+
+<!ELEMENT taf (ERROR?, warning*,
+               obsStationId?, issueTime?, fcstPeriod?, reportModifier*,
+               fcstCancelled?, fcstNotAvbl?,
+               sfcWind?,
+               (CAVOK |
+                (visPrev?,
+                 weather*,
+                 cloud*,
+                 visVert?)),
+               (tempMaxAt | tempMinAt)*,
+               (turbulence | icing | windShearLvl | windShearConds | minQNH | obscuration | VA_fcst)*,
+               trend*,
+               (correctedAt | amendedAt | limMetwatch | autoMetwatch | amendment | issuedBy | temp_fcst | QNH_fcst | fcstCancelledFrom | tempAt | QFE | QNH)*,
+               tafRemark*)>
+<!ATTLIST taf s CDATA #REQUIRED>
+
+<!ELEMENT synop (ERROR?, warning*,
+                 obsStationType?,
+                 callSign?,
+                 obsTime?, reportModifier?,
+                 windIndicator?,
+                 stationPosition?, obsStationId?,
+                 precipInd?, wxInd?,
+                 baseLowestCloud?,
+                 (visPrev | visibilityAtLoc)?,
+                 totalCloudCover?,
+                 sfcWind?,
+                 temperature?,
+                 stationPressure?,
+                 (SLP | gpSurface)?,
+                 pressureChange?,
+                 precipitation?,
+                 weatherSynop?,
+                 cloudTypes?,
+                 exactObsTime?,
+                 synop_section2?,
+                 synop_section3?,
+                 synop_section4?,
+                 synop_section5?,
+                 synop_section9?)>
+<!ATTLIST synop s CDATA #REQUIRED>
+
+<!ELEMENT metar (ERROR?, warning*,
+                 isSpeci?,
+                 obsStationId?, obsTime?, reportModifier*,
+                 skyObstructed?,
+                 sfcWind?,
+                 ((CAVOK, (visRwy+ | RVRNO)?) |
+                  (((visPrev, visMin?) | (visMin, visMax))?, (visRwy+ | RVRNO)?,
+                   weather*,
+                   cloud*,
+                   visVert?))?,
+                 temperature?, (QNH+ | QFE)?, stationPressure?,
+                 cloudMaxCover?,
+                 recentWeather*,
+                 windShear*,
+                 (waterTemp, (seaCondition | waveHeight))?,
+                 rwyState*,
+                 colourCode?,
+                 RH?,
+                 trend*,
+                 remark*)>
+<!ATTLIST metar  s CDATA #REQUIRED>
+
+<!ELEMENT buoy (ERROR?, warning*,
+                obsStationType?,
+                buoyId?, obsTime?, reportModifier*,
+                windIndicator?,
+                stationPosition?,
+                qualityPositionTime?,
+                visPrev?,
+                buoy_section1?,
+                buoy_section2?,
+                buoy_section3?,
+                buoy_section4?)>
+<!ATTLIST buoy  s CDATA #REQUIRED>
+
+<!ELEMENT buoyId (id, obsStationName?, region?)>
+<!ATTLIST buoyId s CDATA #REQUIRED>
+
+<!ELEMENT amdar (ERROR?, warning*,
+                 reportModifier?,
+                 obsStationType?,
+                 phaseOfFlight?,
+                 aircraftId?,
+                 aircraftLocation?,
+                 obsTime?,
+                 amdarObs*,
+                 amdarInfo?,
+                 amdar_section3?)>
+<!ATTLIST amdar s CDATA #REQUIRED>
+
+<!ELEMENT phaseOfFlight (notAvailable | phaseOfFlightVal)>
+<!ATTLIST phaseOfFlight s CDATA #REQUIRED>
+
+<!ELEMENT phaseOfFlightVal EMPTY>
+<!ATTLIST phaseOfFlightVal v CDATA #REQUIRED>
+
+<!ELEMENT aircraftId (id)>
+<!ATTLIST aircraftId s CDATA #REQUIRED>
+
+<!ELEMENT aircraftLocation (lat, lon)>
+<!ATTLIST aircraftLocation s CDATA #REQUIRED>
+
+<!ELEMENT amdarObs (  (flightLvl, aircraftLocation?, windAtPA?,
+                       rollAngleQuality?, temperature, turbulenceAtPA?)
+                    | (pressureAlt?, temperature?, windAtPA?, turbulenceAtPA?))>
+
+<!ELEMENT windAtPA (wind)>
+<!ATTLIST windAtPA s CDATA #REQUIRED>
+
+<!ELEMENT rollAngleQuality (rollAngleQualityVal)>
+<!ATTLIST rollAngleQuality s CDATA #REQUIRED>
+
+<!ELEMENT rollAngleQualityVal EMPTY>
+<!ATTLIST rollAngleQualityVal v (0|1|2) #REQUIRED>
+
+<!ELEMENT turbulenceAtPA (notAvailable | turbulenceDescr | turbulenceVal)>
+<!ATTLIST turbulenceAtPA s CDATA #REQUIRED>
+
+<!ELEMENT turbulenceVal EMPTY>
+<!ATTLIST turbulenceVal v (%digit;|10|11|12|13|14) #REQUIRED>
+
+<!ELEMENT amdarInfo (notAvailable | (navSystem?, amdarSystem?, tempPrecision?))>
+<!ATTLIST amdarInfo s CDATA #REQUIRED>
+
+<!ELEMENT navSystem EMPTY>
+<!ATTLIST navSystem v (0|1) #REQUIRED>
+
+<!ELEMENT amdarSystem EMPTY>
+<!ATTLIST amdarSystem v (0|1|2|3|4|5) #REQUIRED>
+
+<!ELEMENT tempPrecision EMPTY>
+<!ATTLIST tempPrecision v CDATA #REQUIRED>
+
+<!ELEMENT amdar_section3 (flightLvl?, maxDerivedVerticalGust?)>
+<!ATTLIST amdar_section3 s (333) #REQUIRED>
+
+<!ELEMENT flightLvl (notAvailable | level)>
+<!ATTLIST flightLvl s CDATA #REQUIRED>
+
+<!ELEMENT maxDerivedVerticalGust (wind)>
+<!ATTLIST maxDerivedVerticalGust s CDATA #REQUIRED>
+
+<!ELEMENT ERROR EMPTY>
+<!ATTLIST ERROR s         CDATA #REQUIRED
+                errorType (obsStation|obsTime|fcstPeriod|obsStationType|stationId|callSign|buoyId|obsTimeWindInd|stationPosition|indicatorCloudVis|cloudWind|invalid333-5xxxx|wind|QNH|noTrendData|other) #REQUIRED>
+
+<!ELEMENT warning EMPTY>
+<!ATTLIST warning s           CDATA #IMPLIED
+                  warningType (notProcessed|windMissing|visibilityMissing|tempMissing|QNHMissing|pressureMissing|periodMissing|periodInvalid|cloudTypeInvalid|weatherOmitted|weatherNotOmitted|precipOmitted1|precipNotOmitted1|precipOmitted3|precipNotOmitted3|multCloudTypes|msgModified|mixedFormat4TafPeriods|ambigPeriodVis|qualityLimit|BLUslash|latlonDigitMismatch) #REQUIRED>
+
+<!ELEMENT isSpeci EMPTY>
+
+<!ELEMENT obsStationId (((id, natId?) | natId), obsStationName?, region?)>
+<!ATTLIST obsStationId s CDATA #REQUIRED>
+
+<!ELEMENT id EMPTY>
+<!ATTLIST id v CDATA #REQUIRED>
+
+<!ELEMENT natId (countryId, natStationId)>
+
+<!ELEMENT countryId EMPTY>
+<!ATTLIST countryId v CDATA #REQUIRED>
+
+<!ELEMENT natStationId EMPTY>
+<!ATTLIST natStationId v CDATA #REQUIRED>
+
+<!ELEMENT obsStationName EMPTY>
+<!ATTLIST obsStationName v CDATA #REQUIRED>
+
+<!ELEMENT issueTime (invalidFormat | timeAt)>
+<!ATTLIST issueTime s CDATA #REQUIRED>
+<!ELEMENT obsTime (invalidFormat | timeAt)>
+<!ATTLIST obsTime s CDATA #REQUIRED>
+<!ELEMENT invalidFormat EMPTY>
+<!ATTLIST invalidFormat v CDATA #REQUIRED>
+
+<!ELEMENT fcstPeriod (invalidFormat | (timeFrom, timeTill))>
+<!ATTLIST fcstPeriod s CDATA #REQUIRED>
+
+<!ELEMENT timeAt    (minute | (hour, minute?) | (day, hour?, minute?, (month, (yearUnitsDigit|year))?))>
+<!ELEMENT timeBy    (minute | (hour, minute?) | (day, hour?, minute?))>
+<!ELEMENT timeFrom  (minute | (hour, minute?) | (day, hour?, minute?))>
+<!ELEMENT timeSince (minute | (hour, minute?) | (day, hour?, minute?))>
+<!ELEMENT timeTill  (minute | (hour, minute?) | (day, hour?, minute?))>
+<!ELEMENT day    EMPTY>
+<!ATTLIST day    v CDATA #REQUIRED>
+<!ELEMENT hour   EMPTY>
+<!ATTLIST hour   v CDATA       #REQUIRED
+                 q (localtime) #IMPLIED>
+<!ELEMENT minute EMPTY>
+<!ATTLIST minute v CDATA #REQUIRED>
+<!ELEMENT month EMPTY>
+<!ATTLIST month v CDATA #REQUIRED>
+<!ELEMENT yearUnitsDigit EMPTY>
+<!ATTLIST yearUnitsDigit v CDATA #REQUIRED>
+<!ELEMENT year EMPTY>
+<!ATTLIST year v CDATA #REQUIRED>
+
+<!ELEMENT reportModifier (modifierType,
+                          (  (isLastSegment?, segment)
+                           | bulletinSeq | sequenceLost | over24hLate)?)>
+<!ATTLIST reportModifier s CDATA #REQUIRED>
+<!ELEMENT modifierType   EMPTY>
+<!ATTLIST modifierType   v (NIL|AUTO|COR|AMD|RTD|P|RR|CC|AA|LVW) #REQUIRED>
+<!ELEMENT isLastSegment  EMPTY>
+<!ELEMENT segment        EMPTY>
+<!ATTLIST segment        v CDATA #REQUIRED>
+<!ELEMENT bulletinSeq    EMPTY>
+<!ATTLIST bulletinSeq    v CDATA #REQUIRED>
+<!ELEMENT sequenceLost   EMPTY>
+<!ELEMENT over24hLate    EMPTY>
+
+<!ELEMENT fcstCancelled EMPTY>
+<!ATTLIST fcstCancelled s CDATA #REQUIRED>
+
+<!ELEMENT fcstNotAvbl (fcstNotAvblReason)>
+<!ATTLIST fcstNotAvbl s CDATA #REQUIRED>
+<!ELEMENT fcstNotAvblReason EMPTY>
+<!ATTLIST fcstNotAvblReason v (NOOBS|INSUFFICIENTOBS) #REQUIRED>
+
+<!ELEMENT wind ((notAvailable | invalidFormat |
+                 (isCalm, isEstimated?) |
+                ((dir | dirNotAvailable | dirVariable | dirVarAllUnk)?,
+                 gustSpeed?,
+                 isEstimated?,
+                 (speedNotAvailable | speed))),
+                 (windVarLeft, windVarRight)?)>
+<!ELEMENT sfcWind           (measurePeriod?, sensorHeight?, wind)>
+<!ATTLIST sfcWind           s CDATA #REQUIRED>
+<!ELEMENT isCalm            EMPTY>
+<!ELEMENT dir               EMPTY>  <!-- true -->
+<!ATTLIST dir               v  CDATA    #REQUIRED
+                            rp CDATA    #IMPLIED
+                            rn CDATA    #IMPLIED
+                            q  (isGrid) #IMPLIED>
+<!ELEMENT dirNotAvailable   EMPTY>
+<!ELEMENT dirVariable       EMPTY>
+<!ELEMENT dirVarAllUnk      EMPTY>
+<!ELEMENT speedNotAvailable EMPTY>
+<!ELEMENT speed             EMPTY>
+<!ATTLIST speed             v  CDATA                             #REQUIRED
+                            rp CDATA                             #IMPLIED
+                            u  (%unitSpeed;)                     #REQUIRED
+                            q  (isEqualGreater|isGreater|isLess) #IMPLIED>
+<!ELEMENT gustSpeed         EMPTY>
+<!ATTLIST gustSpeed         v CDATA         #REQUIRED
+                            u (%unitSpeed;) #REQUIRED
+                            q (isGreater)   #IMPLIED>
+<!ELEMENT windVarLeft       EMPTY>
+<!ATTLIST windVarLeft       v CDATA #REQUIRED>
+<!ELEMENT windVarRight      EMPTY>
+<!ATTLIST windVarRight      v CDATA #REQUIRED>
+
+<!ELEMENT skyObstructed EMPTY>
+<!ATTLIST skyObstructed s CDATA       #REQUIRED
+                        q (isPartial) #IMPLIED>
+
+<!ELEMENT visPrev (notAvailable | invalidFormat |
+                   (NDV?, compassDir?, distance, sensorHeight?))>
+<!ATTLIST visPrev        s CDATA #REQUIRED>
+<!ELEMENT notAvailable   EMPTY>
+<!ELEMENT compassDir     EMPTY>
+<!ATTLIST compassDir     v (%compassDir;) #REQUIRED
+                         q (isGrid)       #IMPLIED>
+<!ELEMENT distance       EMPTY>
+<!ATTLIST distance       v   CDATA                 #REQUIRED
+                         rp  CDATA                 #IMPLIED
+                         rn  CDATA                 #IMPLIED
+                         rpi CDATA                 #IMPLIED
+                         rne CDATA                 #IMPLIED
+                         u   (M|KM|SM|NM|FT)       #REQUIRED
+    q (isLess|isGreater|isEqualGreater|isVariable) #IMPLIED>
+<!ELEMENT NDV            EMPTY>
+
+<!ELEMENT visMin (compassDir?, distance)>
+<!ATTLIST visMin s CDATA #REQUIRED>
+
+<!ELEMENT visMax (compassDir?, distance)>
+<!ATTLIST visMax s CDATA #REQUIRED>
+
+<!ELEMENT visVert (notAvailable | invalidFormat | distance)>
+<!ATTLIST visVert s CDATA #REQUIRED>
+
+<!ELEMENT visRwy (notAvailable | (RVR, RVRVariations?, rwyDesig, visTrend?))>
+<!ATTLIST visRwy s CDATA #REQUIRED>
+<!ELEMENT RVR (notAvailable | distance)>
+<!ELEMENT RVRVariations (distance)>
+<!ELEMENT visTrend EMPTY>
+<!ATTLIST visTrend v (U|D|N) #REQUIRED>
+
+<!ELEMENT RVRNO EMPTY>
+
+<!ELEMENT weather (  notAvailable | invalidFormat | NSW | tornado
+                   | (descriptor?, inVicinity?, phenomDescr?, phenomSpec+))>
+<!ATTLIST weather    s CDATA #REQUIRED>
+<!ELEMENT NSW        EMPTY>
+<!ELEMENT tornado    EMPTY>
+<!ATTLIST tornado    v (tornado|funnel_cloud|waterspout) #IMPLIED>
+<!ELEMENT inVicinity EMPTY>
+<!ELEMENT descriptor EMPTY>
+<!ATTLIST descriptor v (MI|BC|PR|DR|BL|SH|TS|FZ) #REQUIRED>
+<!ELEMENT phenomSpec EMPTY>
+<!ATTLIST phenomSpec v CDATA #REQUIRED>
+
+<!ELEMENT cloud (notAvailable | invalidFormat | noClouds |
+                 ((cloudBase  | cloudBaseNotAvailable)?,
+                  (cloudCover | cloudCoverNotAvailable),
+                  (cloudType  | cloudTypeNotAvailable)?,
+                  isCeiling?, locationAnd?))>
+<!ATTLIST cloud     s CDATA #REQUIRED>
+<!ELEMENT noClouds  EMPTY>
+<!ATTLIST noClouds  v (SKC|NSC|CLR|NCD) #REQUIRED>
+<!ELEMENT cloudBase EMPTY>
+<!ATTLIST cloudBase v   CDATA                                  #REQUIRED
+                    rp  CDATA                                  #IMPLIED
+                    rn  CDATA                                  #IMPLIED
+                    rpi CDATA                                  #IMPLIED
+                    rne CDATA                                  #IMPLIED
+                    u   (M|FT)                                 #REQUIRED
+    q (isLess|isGreater|isEqualGreater|isEstimated|isVariable) #IMPLIED>
+<!ELEMENT cloudCover             EMPTY>
+<!ATTLIST cloudCover             v (%cloudCover;) #REQUIRED
+                                 q (isThin)       #IMPLIED>
+<!ELEMENT cloudCoverNotAvailable EMPTY>
+<!ELEMENT cloudType              EMPTY>
+<!ATTLIST cloudType              v (%cloudType;) #REQUIRED>
+<!ELEMENT cloudTypeNotAvailable  EMPTY>
+<!ELEMENT isCeiling              EMPTY>
+<!ATTLIST isCeiling              q (M2Xderived) #IMPLIED>
+
+<!ELEMENT tempMaxAt (temp, timeAt)>
+<!ATTLIST tempMaxAt s CDATA #REQUIRED>
+<!ELEMENT tempMinAt (temp, timeAt)>
+<!ATTLIST tempMinAt s CDATA #REQUIRED>
+
+<!ELEMENT tempAt (temp, timeAt)>
+<!ATTLIST tempAt s CDATA #REQUIRED>
+
+<!ELEMENT turbulence (layerBase?,
+                      (layerThickness | layerTop | layerTopOfCloud),
+                      (timeFrom, timeTill?)?,
+                      turbulenceDescr)>
+<!ATTLIST turbulence s CDATA #REQUIRED>
+<!ELEMENT layerBase EMPTY>
+<!ATTLIST layerBase v   CDATA  #REQUIRED
+                    rp  CDATA  #IMPLIED
+                    rpi CDATA  #IMPLIED
+                    rne CDATA  #IMPLIED
+                    u   (M|FT) #REQUIRED>
+<!ELEMENT layerThickness EMPTY>
+<!ATTLIST layerThickness v CDATA  #REQUIRED
+                         u (M|FT) #REQUIRED>
+<!ELEMENT layerTop EMPTY>
+<!ATTLIST layerTop v   CDATA            #REQUIRED
+                   rp  CDATA            #IMPLIED
+                   rpi CDATA            #IMPLIED
+                   rne CDATA            #IMPLIED
+                   u   (M|FT)           #REQUIRED
+                   q   (isEqualGreater) #IMPLIED>
+<!ELEMENT layerTopOfCloud EMPTY>
+<!ELEMENT turbulenceDescr EMPTY>
+<!ATTLIST turbulenceDescr v (%digit;|MOD|MOD_SEV|SEV) #REQUIRED>
+
+<!ELEMENT icing (icingDescr,
+                 layerBase,
+                 (layerThickness | layerTop | layerTopOfCloud))>
+<!ATTLIST icing s CDATA #REQUIRED>
+<!ELEMENT icingDescr EMPTY>
+<!ATTLIST icingDescr v (%digit;|TR) #REQUIRED>
+
+<!ELEMENT windShearLvl (level, wind)>
+<!ATTLIST windShearLvl s CDATA #REQUIRED>
+<!ELEMENT level EMPTY>
+<!ATTLIST level v CDATA #REQUIRED>
+
+<!ELEMENT windShearConds EMPTY>
+<!ATTLIST windShearConds s CDATA #REQUIRED>
+
+<!ELEMENT limMetwatch (timeFrom, timeTill)>
+<!ATTLIST limMetwatch s CDATA #REQUIRED>
+
+<!ELEMENT autoMetwatch ((timeFrom, timeTill)?)>
+<!ATTLIST autoMetwatch s CDATA #REQUIRED>
+
+<!ELEMENT amendedAt (timeAt)>
+<!ATTLIST amendedAt s CDATA #REQUIRED>
+
+<!ELEMENT amendment (  isNotScheduled
+                     | (isLtdToCldVisWind, (timeFrom?, timeTill)?))>
+<!ATTLIST amendment s CDATA #REQUIRED>
+<!ELEMENT isNotScheduled    EMPTY>
+<!ELEMENT isLtdToCldVisWind EMPTY>
+
+<!ELEMENT issuedBy (id)>
+<!ATTLIST issuedBy s CDATA #REQUIRED>
+
+<!ELEMENT temperature (invalidFormat |
+                       (air?,
+                        dewpoint?,
+                        (relHumid1, (relHumid2, relHumid3, relHumid4)?)?,
+                        sensorHeight?))>
+<!ATTLIST temperature s CDATA #REQUIRED>
+<!ELEMENT air         (notAvailable | temp)>
+<!ELEMENT temp        EMPTY>
+<!ATTLIST temp        v CDATA #REQUIRED
+                      u (C|F) #REQUIRED>
+<!ELEMENT dewpoint    (notAvailable | temp)>
+<!ELEMENT relHumid1   EMPTY>
+<!ATTLIST relHumid1   v CDATA        #REQUIRED
+                      q (M2Xderived) #IMPLIED>
+<!ELEMENT relHumid2   EMPTY>
+<!ATTLIST relHumid2   v CDATA        #REQUIRED
+                      q (M2Xderived) #REQUIRED>
+<!ELEMENT relHumid3   EMPTY>
+<!ATTLIST relHumid3   v CDATA        #REQUIRED
+                      q (M2Xderived) #REQUIRED>
+<!ELEMENT relHumid4   EMPTY>
+<!ATTLIST relHumid4   v CDATA        #REQUIRED
+                      q (M2Xderived) #REQUIRED>
+
+<!ELEMENT sensorHeight EMPTY>
+<!ATTLIST sensorHeight v CDATA     #REQUIRED
+                       u (CM|DM|M) #REQUIRED
+                       above (water) "ground">
+
+<!ELEMENT QNH (notAvailable | invalidFormat | pressure)>
+<!ATTLIST QNH s CDATA #REQUIRED>
+<!ELEMENT pressure EMPTY>
+<!ATTLIST pressure v CDATA               #REQUIRED
+                   u (hPa|kPa|inHg|mmHg) #REQUIRED
+                   q (isEstimated)       #IMPLIED>
+
+<!ELEMENT stationPressure (notAvailable | (barometerElev?, pressure))>
+<!ATTLIST stationPressure s CDATA #REQUIRED>
+
+<!ELEMENT barometerElev EMPTY>
+<!ATTLIST barometerElev v CDATA #REQUIRED
+                        u (M)   #REQUIRED>
+
+<!ELEMENT cloudMaxCover (noClouds | cloudCover)>
+<!ATTLIST cloudMaxCover s CDATA #REQUIRED>
+
+<!ELEMENT recentWeather (notAvailable | invalidFormat |
+                         (descriptor?, phenomSpec+))>
+<!ATTLIST recentWeather s CDATA #REQUIRED>
+
+<!ELEMENT windShear (rwyDesig | rwyDesigAll)>
+<!ATTLIST windShear s CDATA #REQUIRED>
+
+<!ELEMENT waveHeight (notAvailable | height)>
+<!ATTLIST waveHeight s CDATA #REQUIRED>
+
+<!ELEMENT rwyState (SNOCLO |
+                    (( invalidFormat |
+                       ((cleared |
+                         (depositDepth, depositExtent, depositType)),
+                         friction)),
+                     (rwyDesigAll | rwyReportRepeated | rwyDesig)))>
+<!ATTLIST rwyState      s CDATA #REQUIRED>
+<!ELEMENT SNOCLO        EMPTY>
+<!ELEMENT cleared  EMPTY>
+<!ELEMENT depositDepth     (notAvailable | invalidFormat |
+                            depositDepthVal | rwyNotInUse)>
+<!ELEMENT depositDepthVal  EMPTY>
+<!ATTLIST depositDepthVal  v CDATA                   #REQUIRED
+                           u (MM|CM)                 #REQUIRED
+                           q (isLess|isEqualGreater) #IMPLIED>
+<!ELEMENT depositExtent    (notAvailable | invalidFormat | depositExtentVal)>
+<!ELEMENT depositExtentVal EMPTY>
+<!ATTLIST depositExtentVal v (0|1|2|5|9) #REQUIRED>
+<!ELEMENT rwyNotInUse      EMPTY>
+<!ELEMENT depositType      (notAvailable | depositTypeVal)>
+<!ELEMENT depositTypeVal   EMPTY>
+<!ATTLIST depositTypeVal   v (%digit;) #REQUIRED>
+<!ELEMENT friction         (notAvailable | invalidFormat |
+                            coefficient | brakingAction | unreliable)>
+<!ELEMENT coefficient      EMPTY>
+<!ATTLIST coefficient      v CDATA #REQUIRED>
+<!ELEMENT brakingAction    EMPTY>
+<!ATTLIST brakingAction    v (BA_POOR|BA_POOR_MED|BA_MEDIUM|BA_MED_GOOD|BA_GOOD) #REQUIRED>
+<!ELEMENT unreliable       EMPTY>
+<!ELEMENT rwyDesigAll       EMPTY>
+<!ELEMENT rwyReportRepeated EMPTY>
+<!ELEMENT rwyDesig          EMPTY>
+<!ATTLIST rwyDesig          v CDATA #REQUIRED>
+
+<!ELEMENT colourCode (BLACK?, (currentColour, predictedColour?)?)>
+<!ATTLIST colourCode s CDATA #REQUIRED>
+<!ELEMENT BLACK EMPTY>
+<!ELEMENT currentColour EMPTY>
+<!ATTLIST currentColour v (%colourCodes;) #REQUIRED>
+<!ELEMENT predictedColour EMPTY>
+<!ATTLIST predictedColour v (%colourCodes;) #REQUIRED>
+
+<!ELEMENT NEFO_PLAYA (noClouds | cloudBase)>
+<!ATTLIST NEFO_PLAYA s CDATA #REQUIRED>
+
+<!ELEMENT trend (trendType, (timeAt | timeTill | (timeFrom, timeTill?))?,
+                 probability?,
+                 sfcWind?,
+                 (CAVOK | (visPrev?, weather*, cloud*, visVert?)),
+                 colourCode?,
+                 (turbulence | icing | windShearLvl | windShearConds | minQNH | obscuration | VA_fcst)*)>
+<!ATTLIST trend s CDATA #REQUIRED>
+<!ELEMENT trendType EMPTY>
+<!ATTLIST trendType v (NOSIG|FM|BECMG|TEMPO|INTER) #REQUIRED>
+<!ELEMENT probability EMPTY>
+<!ATTLIST probability v (30|40) #REQUIRED>
+<!ELEMENT CAVOK EMPTY>
+
+<!ELEMENT tafRemark (( notRecognised
+                      | nextFcst | amdAt
+                      | fcstAutoObs | fcstAutoMETAR
+                      | turbulence
+                      | QNH_fcst | temp_fcst
+                      | issuedBy)?)>
+
+<!ELEMENT remark ((  notRecognised
+                   | obsStationType | peakWind | thrWind | rwyWind | sfcWind
+                   | (visVar1, visVar2) | trCloud | visMin
+                   | windShift | visibilityAtLoc
+                   | cloudMaxCover | visListAtLoc | rwyState | colourCode
+                   | cloudOpacityLvl | snowIncr
+                   | SLP | regQNH | QFE | QNH | QFF
+                   | correctedAt | recentWeather
+                   | cloudAbove | cloudCoverVar| cloud | reportConcerns
+                   | visRwy | tempMax | tempMin
+                   | temperature | tempExtreme | precipitation
+                   | AI | RH | SST | OAT
+                   | keyword | needMaint
+                   | NEFO_PLAYA | cloudTypes | weatherHist
+                   | phenomenon
+                   | conditionMountain | conditionValley
+                   | ceilingAtLoc | opacityPhenom
+                   | cloudTypeLvl | cloudTrace
+                   | seaCondition | swellCondition
+                   | obscuration | variableCeiling | pressureChange
+                   | ceilVisVariable | rwySfcCondition | rainfall
+                   | densityAlt | pressureAlt
+                   | VISNO | CHINO | obsTimeOffset | climate
+                   | waterEquivOfSnow | snowDepth | snowCover | snowFall
+                   | balloon | firstObs | nextObs | lastObs
+                   | estimated | RSNK | LAG_PK | RADAT | tempMaxFQ
+                   | radiationSun | hailStones | currentATIS
+                   | activeRwy | transitionLvl | obsInitials | QBB | QBJ
+                   | windAtLoc | turbulence | weatherMan | weather
+                   | birdStrikeHazard | totalCloudCover | totalOpacity
+                   | iceAccretion)?)>
+
+<!ELEMENT notRecognised EMPTY>
+<!ATTLIST notRecognised s CDATA #REQUIRED>
+
+<!ELEMENT obsStationType (stationType)>
+<!ATTLIST obsStationType s CDATA #REQUIRED>
+<!ELEMENT stationType EMPTY>
+<!ATTLIST stationType v (AO1|AO2|AO2A|SAWR|AAXX|BBXX|OOXX|ZZYY|AMDAR) #REQUIRED>
+
+<!ELEMENT peakWind (timeAt?, wind)>
+<!ATTLIST peakWind s CDATA #REQUIRED>
+
+<!ELEMENT thrWind (rwyDesig, wind)>
+<!ATTLIST thrWind s CDATA #REQUIRED>
+
+<!ELEMENT windAtLoc (wind, windLocation)>
+<!ATTLIST windAtLoc s CDATA #REQUIRED>
+<!ELEMENT windLocation EMPTY>
+<!ATTLIST windLocation v CDATA #REQUIRED>
+
+<!ELEMENT rwyWind (rwyDesig, wind)>
+<!ATTLIST rwyWind s CDATA #REQUIRED>
+
+<!ELEMENT visVar1 (distance)>
+<!ATTLIST visVar1 s CDATA #REQUIRED>
+
+<!ELEMENT visVar2 (distance)>
+
+<!ELEMENT trCloud EMPTY>
+<!ATTLIST trCloud v CDATA #REQUIRED>
+
+<!ELEMENT windShift (FROPA?, timeAt)>
+<!ATTLIST windShift s CDATA #REQUIRED>
+<!ELEMENT FROPA EMPTY>
+
+<!ELEMENT visibilityAtLoc (  (isApproach?, rwyDesig, visibility)
+                           | (compassDir?, locationAt,
+                              (notAvailable | visibility)))>
+<!ATTLIST visibilityAtLoc s CDATA #REQUIRED>
+<!ELEMENT locationAt EMPTY>
+<!ATTLIST locationAt v (TWR|SFC|ROOF|MAR) #REQUIRED>
+<!ELEMENT visibility (distance)>
+
+<!ELEMENT correctedAt (timeAt)>
+<!ATTLIST correctedAt s CDATA #REQUIRED>
+
+<!ELEMENT quadrant EMPTY>
+<!ATTLIST quadrant v (1|2|3|4) #REQUIRED>
+
+<!ELEMENT locationAnd (locationThru+)>
+<!ELEMENT locationThru (location+)>
+<!ELEMENT location ((inDistance | inVicinity | distance)?,
+                    locationSpec?,
+                    ((compassDir, isQuadrant?) | quadrant+)?)>
+
+<!ELEMENT inDistance EMPTY>
+<!ELEMENT isQuadrant EMPTY>
+
+<!ELEMENT locationSpec EMPTY>
+<!ATTLIST locationSpec v
+             ( isAround|atStation|atStationNotInDistance
+              |allDirections|allDirectionsNotAtStation|approachingStation
+              |recedingFromStation|passingStationInDistance
+              |OMTNS|OHD|ALQDS|AT_AP|OVR_AP|NR_AP|VC_AP|IN_VLY|V_D|OVR_LK|OVR_RIVER
+              |OVR_VLYS|ALG_LK|ALG_MTNS|ALG_RIVER|ALG_SHRLN|UNKN) #REQUIRED>
+
+<!ELEMENT visListAtLoc (visLocData+)>
+<!ATTLIST visListAtLoc s CDATA #REQUIRED>
+<!ELEMENT visLocData (locationAnd, visibility)>
+
+<!ELEMENT cloudOpacityLvl (locationAnd?, oktas,
+                           (weather | cloudType), cloudBase)>
+<!ATTLIST cloudOpacityLvl s CDATA #REQUIRED>
+<!ELEMENT oktas EMPTY>
+<!ATTLIST oktas v (0|1|2|3|4|5|6|7|8) #REQUIRED>
+
+<!ELEMENT snowIncr (onGround, pastHour)>
+<!ATTLIST snowIncr s CDATA #REQUIRED>
+<!ELEMENT pastHour EMPTY>
+<!ATTLIST pastHour v CDATA #REQUIRED>
+<!ELEMENT onGround EMPTY>
+<!ATTLIST onGround v CDATA #REQUIRED>
+
+<!ELEMENT QFF (pressure)>
+<!ATTLIST QFF s CDATA #REQUIRED>
+
+<!ELEMENT SLP (notAvailable | invalidFormat | pressure)>
+<!ATTLIST SLP s CDATA #REQUIRED>
+
+<!ELEMENT regQNH (pressure)>
+<!ATTLIST regQNH s CDATA #REQUIRED>
+
+<!ELEMENT QFE (pressure+)>
+<!ATTLIST QFE s CDATA #REQUIRED>
+
+<!ELEMENT minQNH (pressure+)>
+<!ATTLIST minQNH s CDATA #REQUIRED>
+
+<!ELEMENT cloudAbove (cloudBase, cloudCover)>
+<!ATTLIST cloudAbove s CDATA #REQUIRED>
+
+<!ELEMENT cloudCoverVar (cloudBase?, cloudCover, cloudCover2)>
+<!ATTLIST cloudCoverVar s CDATA #REQUIRED>
+<!ELEMENT cloudCover2 EMPTY>
+<!ATTLIST cloudCover2 v (%cloudCover;) #REQUIRED>
+
+<!ELEMENT reportConcerns (change, subject)>
+<!ATTLIST reportConcerns s CDATA #REQUIRED>
+<!ELEMENT change EMPTY>
+<!ATTLIST change v (M|B) #REQUIRED>
+<!ELEMENT subject EMPTY>
+<!ATTLIST subject v (%digit;) #REQUIRED>
+
+<!ELEMENT tempMin (notAvailable |
+                   (sensorHeight?, temp, (timePeriod | timeBeforeObs)))>
+<!ATTLIST tempMin s CDATA #REQUIRED>
+
+<!ELEMENT tempMax (notAvailable |
+                   (sensorHeight?, temp, (timePeriod | timeBeforeObs)))>
+<!ATTLIST tempMax s CDATA #REQUIRED>
+
+<!ELEMENT tempExtreme (sensorHeight?, tempExtremeMax, tempExtremeMin)>
+<!ATTLIST tempExtreme s CDATA #REQUIRED>
+
+<!ELEMENT tempExtremeMin (notAvailable | (temp, timeBeforeObs))>
+<!ELEMENT tempExtremeMax (notAvailable | (temp, timeBeforeObs))>
+
+<!ELEMENT precipitation (  notAvailable
+                         | ((precipAmount | precipTraces),
+                            sensorHeight?,
+                            (timePeriod | timeBeforeObs | timeSince)))>
+<!ATTLIST precipitation s CDATA #REQUIRED>
+<!ELEMENT precipTraces EMPTY>
+<!ELEMENT precipAmount EMPTY>
+<!ATTLIST precipAmount v CDATA                             #REQUIRED
+                       u (MM|CM|IN)                        #REQUIRED
+                       q (isLess|isGreater|isEqualGreater) #IMPLIED>
+
+<!ELEMENT AI (AIVal)>
+<!ATTLIST AI s CDATA #REQUIRED>
+<!ELEMENT AIVal EMPTY>
+<!ATTLIST AIVal v CDATA #REQUIRED>
+
+<!ELEMENT RH (relHumid)>
+<!ATTLIST RH s CDATA #REQUIRED>
+<!ELEMENT relHumid EMPTY>
+<!ATTLIST relHumid v CDATA #REQUIRED>
+
+<!ELEMENT SST (temp)>
+<!ATTLIST SST s CDATA #REQUIRED>
+
+<!ELEMENT OAT (temp)>
+<!ATTLIST OAT s CDATA #REQUIRED>
+
+<!ELEMENT needMaint EMPTY>
+<!ATTLIST needMaint s CDATA #REQUIRED>
+
+<!ELEMENT keyword EMPTY>
+<!ATTLIST keyword s CDATA #REQUIRED
+                  v CDATA #REQUIRED>
+
+<!ELEMENT cloudTypes
+    (  notAvailable | skyObscured | invalidFormat
+     | ((cloudTypeHigh   | cloudTypeHighNA),
+        (cloudTypeLow    | cloudTypeLowNA),
+        (cloudTypeMiddle | cloudTypeMiddleNA),
+        (oktas | oktasLow | oktasMiddle)?))>
+<!ATTLIST cloudTypes s CDATA #REQUIRED>
+
+<!ELEMENT cloudTypeLow      EMPTY>
+<!ATTLIST cloudTypeLow      v (%digit;) #REQUIRED>
+<!ELEMENT cloudTypeLowNA    EMPTY>
+
+<!ELEMENT cloudTypeMiddle   EMPTY>
+<!ATTLIST cloudTypeMiddle   v (%digit;) #REQUIRED>
+<!ELEMENT cloudTypeMiddleNA EMPTY>
+
+<!ELEMENT cloudTypeHigh     EMPTY>
+<!ATTLIST cloudTypeHigh     v (%digit;) #REQUIRED>
+<!ELEMENT cloudTypeHighNA   EMPTY>
+
+<!ELEMENT oktasLow EMPTY>
+<!ATTLIST oktasLow v (0|1|2|3|4|5|6|7|8) #REQUIRED>
+
+<!ELEMENT oktasMiddle EMPTY>
+<!ATTLIST oktasMiddle v (0|1|2|3|4|5|6|7|8) #REQUIRED>
+
+<!ELEMENT oktasNotAvailable EMPTY>
+
+<!ELEMENT weatherHist ((MOV | MOVD | isStationary)?, locationAnd?,
+                       weatherBeginEnd+)>
+<!ATTLIST weatherHist s CDATA #REQUIRED>
+
+<!ELEMENT weatherBeginEnd ((tornado | (descriptor?, phenomDescr?, phenomSpec+)),
+                           (weatherBegan | weatherEnded)+)>
+<!ELEMENT weatherBegan (timeAt?)>
+<!ELEMENT weatherEnded (timeAt?)>
+
+<!ELEMENT MOV (locationAnd)>
+<!ELEMENT MOVD (locationAnd)>
+
+<!ELEMENT phenomenon (phenomDescrPre*, phenomDescrPost*,
+                      (  weather
+                       | cloudType+
+                       | cloudCover
+                       | lightningType+
+                       | otherPhenom),
+                      obscgMtns?, locationAnd?, (MOV | MOVD | isStationary)?,
+                      (cloudTypeAsoctd | cloudTypeEmbd)?)>
+<!ATTLIST phenomenon s CDATA #REQUIRED>
+
+<!ELEMENT isStationary EMPTY>
+
+<!ELEMENT lightningType EMPTY>
+<!ATTLIST lightningType v (CA|CC|CG|CW|IC) #REQUIRED>
+
+<!ELEMENT otherPhenom EMPTY>
+<!ATTLIST otherPhenom v (LTG|VIRGA|AURBO|FG_BNK|PCPN|BC_VLY_FG|VLY_FG|HIR_CLDS|FULYR|HZY|BINOVC|ICG|SH|SHS|DEW|VIS_HYR|VIS_LWR|VIS_RDCD|CIG_HYR|CIG_LWR|ROTOR_CLD|CLD|CLDS|CLD_EMBD|CLDS_EMBD|CLD_EMBD_1ST_LYR|CLDS_EMBD_1ST_LYR|TCU_EMBD|PRESFR|PRESRR|FIRE|FIRES|GRASS_FIRE|GRASS_FIRES|MTN_TOPS_OBSC|SKY_OBSC|MTNS_OBSC|RDGS_OBSC|MTN_TOPS_PRLY_OBSC|SKY_PRLY_OBSC|MTNS_PRLY_OBSC|RDGS_PRLY_OBSC|MTNS_OPEN|HALO|CB_TOPS|TCU_TOPS|VOLCANIC_ASH_CLOUD|ASH_FALL) #REQUIRED>
+
+<!ELEMENT phenomDescrPre EMPTY>
+<!ATTLIST phenomDescrPre v (%phenomDescr;) #REQUIRED>
+
+<!ELEMENT phenomDescrPost EMPTY>
+<!ATTLIST phenomDescrPost v (%phenomDescr;) #REQUIRED>
+
+<!ELEMENT obscgMtns EMPTY>
+
+<!ELEMENT conditionMountain (condMountainLoc+, maxConcentration*)>
+<!ATTLIST conditionMountain s CDATA #REQUIRED>
+
+<!ELEMENT condMountainLoc (cloudEvol?, cloudMountain, locationAnd?)>
+
+<!ELEMENT cloudMountain EMPTY>
+<!ATTLIST cloudMountain v (%digit;) #REQUIRED>
+
+<!ELEMENT cloudEvol EMPTY>
+<!ATTLIST cloudEvol v (%digit;) #REQUIRED>
+
+<!ELEMENT conditionValley (condValleyLoc+, maxConcentration*)>
+<!ATTLIST conditionValley s CDATA #REQUIRED>
+
+<!ELEMENT condValleyLoc (cloudBelowEvol?, cloudValley, locationAnd?)>
+
+<!ELEMENT cloudValley EMPTY>
+<!ATTLIST cloudValley v (%digit;) #REQUIRED>
+
+<!ELEMENT cloudBelowEvol EMPTY>
+<!ATTLIST cloudBelowEvol v (%digit;) #REQUIRED>
+
+<!ELEMENT ceilingAtLoc ((cloudBase | cloudsLower), isApproach?, locationAnd?, rwyDesig?)>
+<!ATTLIST ceilingAtLoc s CDATA #REQUIRED>
+
+<!ELEMENT isApproach EMPTY>
+<!ELEMENT cloudsLower EMPTY>
+
+<!ELEMENT opacityPhenom ((cloudTypeAsoctd | cloudTypeEmbd)?,
+                         (opacityCloud | opacityWeather)+)>
+<!ATTLIST opacityPhenom s CDATA #REQUIRED>
+
+<!ELEMENT cloudTypeAsoctd EMPTY>
+<!ATTLIST cloudTypeAsoctd v (%cloudType;) #REQUIRED>
+
+<!ELEMENT cloudTypeEmbd EMPTY>
+<!ATTLIST cloudTypeEmbd v (%cloudType;) #REQUIRED>
+
+<!ELEMENT opacityCloud (cloudType, (oktas | tenths))>
+<!ELEMENT opacityWeather ((oktas | tenths), weather)>
+
+<!ELEMENT tenths EMPTY>
+<!ATTLIST tenths v (%digit;|10) #REQUIRED>
+
+<!ELEMENT cloudTypeLvl (cloudBase?, cloudType)>
+<!ATTLIST cloudTypeLvl s CDATA #REQUIRED>
+
+<!ELEMENT cloudTrace ((cloudType+ | cloudTypeNotAvailable), isLower?)>
+<!ATTLIST cloudTrace s CDATA #REQUIRED>
+
+<!ELEMENT isLower EMPTY>
+
+<!ELEMENT cloudTypeOnly (cloudType)>
+<!ATTLIST cloudTypeOnly s CDATA #REQUIRED>
+
+<!ELEMENT seaCondition (locationAnd?, (seaCondVal | notAvailable))>
+<!ATTLIST seaCondition s CDATA #REQUIRED>
+
+<!ELEMENT swellCondition (locationAnd?, (swellCondVal | notAvailable))>
+<!ATTLIST swellCondition s CDATA #REQUIRED>
+
+<!ELEMENT seaCondVal EMPTY>
+<!ATTLIST seaCondVal v (%digit;) #REQUIRED>
+
+<!ELEMENT swellCondVal EMPTY>
+<!ATTLIST swellCondVal v (%digit;) #REQUIRED>
+
+<!ELEMENT obscuration (cloud, (cloudPhenom | weather))>
+<!ATTLIST obscuration s CDATA #REQUIRED>
+
+<!ELEMENT VA_fcst (layerBase, layerTop)>
+<!ATTLIST VA_fcst s CDATA #REQUIRED>
+
+<!ELEMENT cloudPhenom EMPTY>
+<!ATTLIST cloudPhenom v (PWR_PLNT|PWR_PLNT_PLUME) #REQUIRED>
+
+<!ELEMENT variableCeiling (cloudBaseFrom, cloudBaseTo)>
+<!ATTLIST variableCeiling s CDATA #REQUIRED>
+
+<!ELEMENT cloudBaseFrom EMPTY>
+<!ATTLIST cloudBaseFrom v CDATA #REQUIRED
+                        u (M|FT) #REQUIRED>
+<!ELEMENT cloudBaseTo   EMPTY>
+<!ATTLIST cloudBaseTo   v CDATA #REQUIRED
+                        u (M|FT) #REQUIRED
+                        q (isLess) #IMPLIED>
+
+<!ELEMENT pressureChange ((  notAvailable | invalidFormat
+                           | (pressureChangeVal, pressureTendency?)),
+                          timeBeforeObs)>
+<!ATTLIST pressureChange s CDATA #REQUIRED>
+
+<!ELEMENT pressureChangeVal EMPTY>
+<!ATTLIST pressureChangeVal v CDATA #REQUIRED
+                            u (hPa) #REQUIRED>
+<!ELEMENT pressureTendency EMPTY>
+<!ATTLIST pressureTendency v (0|1|2|3|4|5|6|7|8) #REQUIRED>
+
+<!ELEMENT ceilVisVariable (visibilityFrom, visibilityTo)>
+<!ATTLIST ceilVisVariable s CDATA #REQUIRED>
+<!ELEMENT visibilityFrom (distance)>
+<!ELEMENT visibilityTo   (distance)>
+
+<!ELEMENT rwySfcCondition ((notAvailable | decelerometer | rwySfc)+)>
+<!ATTLIST rwySfcCondition s CDATA #REQUIRED>
+
+<!ELEMENT decelerometer EMPTY>
+<!ATTLIST decelerometer v CDATA #REQUIRED>
+
+<!ELEMENT rwySfc EMPTY>
+<!ATTLIST rwySfc v (SLR|LSR|PSR|P|SANDED|WET|DRY|IR|WR) #REQUIRED>
+
+<!ELEMENT rainfall (precipitation+)>
+<!ATTLIST rainfall s CDATA #REQUIRED>
+
+<!ELEMENT densityAlt (altitude)>
+<!ATTLIST densityAlt s CDATA #REQUIRED>
+
+<!ELEMENT pressureAlt (altitude)>
+<!ATTLIST pressureAlt s CDATA #REQUIRED>
+
+<!ELEMENT altitude EMPTY>
+<!ATTLIST altitude v CDATA  #REQUIRED
+                   u (M|FT) #REQUIRED>
+
+<!ELEMENT VISNO (rwyDesig)>
+<!ATTLIST VISNO s CDATA #REQUIRED>
+
+<!ELEMENT CHINO (rwyDesig)>
+<!ATTLIST CHINO s CDATA #REQUIRED>
+
+<!ELEMENT obsTimeOffset (minutes)>
+<!ATTLIST obsTimeOffset s CDATA #REQUIRED>
+
+<!ELEMENT minutes EMPTY>
+<!ATTLIST minutes v CDATA #REQUIRED>
+
+<!ELEMENT waterEquivOfSnow ((  notAvailable
+                             | noMeasurement | precipAmount | precipTraces),
+                            timePeriod?)>
+<!ATTLIST waterEquivOfSnow s CDATA #REQUIRED>
+
+<!ELEMENT snowCover (snowCoverType)>
+<!ATTLIST snowCover s CDATA #REQUIRED>
+
+<!ELEMENT snowCoverType EMPTY>
+<!ATTLIST snowCoverType v
+     (ONE_LOOSE|MUCH_LOOSE|TRACE_LOOSE|MEDIUM_PACKED|HARD_PACKED|NIL) #REQUIRED>
+
+<!ELEMENT climate (((precipTraces | precipAmount1Inch | precipAmount1MM),
+                    (precipAmount2Inch | precipAmount2MM)?)?,
+                   temp1, temp2)>
+<!ATTLIST climate s CDATA #REQUIRED>
+
+<!ELEMENT temp1 (temp)>
+<!ELEMENT temp2 (temp)>
+
+<!ELEMENT precipAmount1Inch EMPTY>
+<!ATTLIST precipAmount1Inch v CDATA #REQUIRED>
+<!ELEMENT precipAmount1MM EMPTY>
+<!ATTLIST precipAmount1MM v CDATA #REQUIRED>
+<!ELEMENT precipAmount2Inch EMPTY>
+<!ATTLIST precipAmount2Inch v CDATA #REQUIRED>
+<!ELEMENT precipAmount2MM EMPTY>
+<!ATTLIST precipAmount2MM v CDATA #REQUIRED>
+
+<!ELEMENT balloon ((disappearedAt|visibleTo))>
+<!ATTLIST balloon s CDATA #REQUIRED>
+
+<!ELEMENT disappearedAt (distance)>
+<!ELEMENT visibleTo (distance)>
+
+<!ELEMENT firstObs ((isStaffed|isManned)?)>
+<!ATTLIST firstObs s CDATA #REQUIRED>
+
+<!ELEMENT isStaffed EMPTY>
+<!ELEMENT isManned EMPTY>
+
+<!ELEMENT nextObs (timeAt)>
+<!ATTLIST nextObs s CDATA #REQUIRED>
+
+<!ELEMENT lastObs ((isStaffed|isManned)?, timeAt?)>
+<!ATTLIST lastObs s CDATA #REQUIRED>
+
+<!ELEMENT estimated (estimatedItem+)>
+<!ATTLIST estimated s CDATA #REQUIRED>
+
+<!ELEMENT estimatedItem EMPTY>
+<!ATTLIST estimatedItem v (WND|ALTM|CIG|CIG_BLN|SLP|ALSTG|QNH|CLD_HGTS) #REQUIRED>
+
+<!ELEMENT RSNK (air, wind)>
+<!ATTLIST RSNK s CDATA #REQUIRED>
+
+<!ELEMENT LAG_PK (air, dewpoint, wind)>
+<!ATTLIST LAG_PK s CDATA #REQUIRED>
+
+<!ELEMENT RADAT (isMissing | (distance, relHumid))>
+<!ATTLIST RADAT s CDATA #REQUIRED>
+
+<!ELEMENT isMissing EMPTY>
+
+<!ELEMENT tempMaxFQ (temp)>
+<!ATTLIST tempMaxFQ s CDATA #REQUIRED>
+
+<!ELEMENT radShortWave (notAvailable | (radiationPeriod, radiationValue))>
+<!ATTLIST radShortWave s CDATA #REQUIRED>
+
+<!ELEMENT radDirectSolar (notAvailable | (radiationPeriod, radiationValue))>
+<!ATTLIST radDirectSolar s CDATA #REQUIRED>
+
+<!ELEMENT radiationValue EMPTY>
+<!ATTLIST radiationValue v CDATA #REQUIRED
+                         u (%unitRadiation;) #REQUIRED>
+
+<!ELEMENT radiationPeriod EMPTY>
+<!ATTLIST radiationPeriod v CDATA   #REQUIRED
+                          u (H|MIN) #IMPLIED>
+
+<!ELEMENT radiationSun (rad0PosNet?,
+                        rad1NegNet?,
+                        rad2GlobalSolar?,
+                        rad3DiffusedSolar?,
+                        rad4DownwardLongWave?,
+                        rad5UpwardLongWave?,
+                        rad6ShortWave?,
+                        radiationPeriod?,
+                        (sunshineNotAvailable | sunshine), sunshinePeriod)>
+<!ATTLIST radiationSun s CDATA #REQUIRED>
+
+<!ELEMENT rad0PosNet           (radiationValue)>
+<!ELEMENT rad1NegNet           (radiationValue)>
+<!ELEMENT rad2GlobalSolar      (radiationValue)>
+<!ELEMENT rad3DiffusedSolar    (radiationValue)>
+<!ELEMENT rad4DownwardLongWave (radiationValue)>
+<!ELEMENT rad5UpwardLongWave   (radiationValue)>
+<!ELEMENT rad6ShortWave        (radiationValue)>
+
+<!ELEMENT sunshineNotAvailable EMPTY>
+<!ELEMENT sunshine EMPTY>
+<!ATTLIST sunshine v CDATA   #REQUIRED
+                   u (H|MIN) #REQUIRED>
+<!ELEMENT sunshinePeriod EMPTY>
+<!ATTLIST sunshinePeriod v CDATA   #REQUIRED
+                         u (H|MIN) #IMPLIED>
+
+<!ELEMENT hailStones (notAvailable | diameter | precipTraces)>
+<!ATTLIST hailStones s CDATA #REQUIRED>
+
+<!ELEMENT diameter EMPTY>
+<!ATTLIST diameter v CDATA              #REQUIRED
+                   u (IN|MM)            #REQUIRED
+                   q (isLess|isGreater) #IMPLIED>
+
+<!ELEMENT glazeDeposit (notAvailable | diameter | precipTraces)>
+<!ATTLIST glazeDeposit s CDATA #REQUIRED>
+
+<!ELEMENT rimeDeposit (notAvailable | diameter | precipTraces)>
+<!ATTLIST rimeDeposit s CDATA #REQUIRED>
+
+<!ELEMENT compoundDeposit (notAvailable | diameter | precipTraces)>
+<!ATTLIST compoundDeposit s CDATA #REQUIRED>
+
+<!ELEMENT wetsnowDeposit (notAvailable | diameter | precipTraces)>
+<!ATTLIST wetsnowDeposit s CDATA #REQUIRED>
+
+<!ELEMENT currentATIS (ATIS)>
+<!ATTLIST currentATIS s CDATA #REQUIRED>
+
+<!ELEMENT ATIS EMPTY>
+<!ATTLIST ATIS v CDATA #REQUIRED>
+
+<!ELEMENT activeRwy (rwyDesig)>
+<!ATTLIST activeRwy s CDATA #REQUIRED>
+
+<!ELEMENT transitionLvl (level)>
+<!ATTLIST transitionLvl s CDATA #REQUIRED>
+
+<!ELEMENT obsInitials EMPTY>
+<!ATTLIST obsInitials s CDATA #REQUIRED>
+
+<!ELEMENT QBB (altitude)>
+<!ATTLIST QBB s CDATA #REQUIRED>
+
+<!ELEMENT QBJ (altitude)>
+<!ATTLIST QBJ s CDATA #REQUIRED>
+
+<!ELEMENT weatherMan (timeAt?, weather?)>
+<!ATTLIST weatherMan s CDATA #REQUIRED>
+
+<!ELEMENT birdStrikeHazard (rwyDesig?)>
+<!ATTLIST birdStrikeHazard s CDATA #REQUIRED>
+
+<!ELEMENT nextFcst (timeAt|timeBy)>
+<!ATTLIST nextFcst s CDATA #REQUIRED>
+
+<!ELEMENT amdAt (timeAt)>
+<!ATTLIST amdAt s CDATA #REQUIRED>
+
+<!ELEMENT fcstAutoObs ((timeFrom, timeTill)?)>
+<!ATTLIST fcstAutoObs s CDATA #REQUIRED>
+
+<!ELEMENT fcstAutoMETAR EMPTY>
+<!ATTLIST fcstAutoMETAR s CDATA #REQUIRED>
+
+<!ELEMENT QNH_fcst (pressure+)>
+<!ATTLIST QNH_fcst s CDATA #REQUIRED>
+
+<!ELEMENT temp_fcst (air+)>
+<!ATTLIST temp_fcst s CDATA #REQUIRED>
+
+<!ELEMENT fcstCancelledFrom (timeFrom)>
+<!ATTLIST fcstCancelledFrom s CDATA #REQUIRED>
+
+<!ELEMENT windIndicator (notAvailable | (isEstimated?, windUnit))>
+<!ATTLIST windIndicator s CDATA #REQUIRED>
+<!ELEMENT windUnit      EMPTY>
+<!ATTLIST windUnit      v (KT|MPS) #REQUIRED>
+
+<!ELEMENT isEstimated EMPTY>
+
+<!ELEMENT region EMPTY>
+<!ATTLIST region v (I|II|III|IV|V|VI|Antarctic) #REQUIRED>
+
+<!ELEMENT callSign (id, region?)>
+<!ATTLIST callSign s CDATA #REQUIRED>
+
+<!ELEMENT stationPosition (notAvailable |
+                           (elevation?, lat, lon, marsdenSquare?))>
+<!ATTLIST stationPosition s CDATA #REQUIRED>
+
+<!ELEMENT elevation EMPTY>
+<!ATTLIST elevation v CDATA  #REQUIRED
+                    u (M|FT) #REQUIRED
+                    q (confidenceIsExcellent | confidenceIsGood |
+                       confidenceIsFair      | confidenceIsPoor) #IMPLIED>
+
+<!ELEMENT lat EMPTY>
+<!ATTLIST lat v CDATA #REQUIRED
+              q (10|60|100|1000|100000) #IMPLIED> <!-- precision in 1/degree -->
+
+<!ELEMENT lon EMPTY>
+<!ATTLIST lon v CDATA #REQUIRED
+              q (10|60|100|1000|100000) #IMPLIED> <!-- precision in 1/degree -->
+
+<!ELEMENT marsdenSquare EMPTY>
+<!ATTLIST marsdenSquare v CDATA #REQUIRED>
+
+<!ELEMENT precipInd (notAvailable | precipIndVal)>
+<!ATTLIST precipInd s CDATA #REQUIRED>
+
+<!ELEMENT precipIndVal EMPTY>
+<!ATTLIST precipIndVal v (0|1|2|3|4) #REQUIRED>
+
+<!ELEMENT wxInd (notAvailable | wxIndVal)>
+<!ATTLIST wxInd s CDATA #REQUIRED>
+
+<!ELEMENT wxIndVal EMPTY>
+<!ATTLIST wxIndVal v (1|2|3|4|5|6|7) #REQUIRED>
+
+<!ELEMENT baseLowestCloud (notAvailable | distance | (from, to?))>
+<!ATTLIST baseLowestCloud s CDATA #REQUIRED>
+
+<!ELEMENT from EMPTY>
+<!ATTLIST from v CDATA            #REQUIRED
+               u (M|FT)           #REQUIRED
+               q (isEqualGreater) #IMPLIED>
+<!ELEMENT to EMPTY>
+<!ATTLIST to v CDATA    #REQUIRED
+             u (M|FT)   #REQUIRED
+             q (isLess) #REQUIRED>
+
+<!ELEMENT totalCloudCover (  notAvailable | invalidFormat
+                           | oktas | tenths | skyObscured)>
+<!ATTLIST totalCloudCover s CDATA #REQUIRED>
+
+<!ELEMENT totalOpacity (tenths)>
+<!ATTLIST totalOpacity s CDATA #REQUIRED>
+
+<!ELEMENT skyObscured EMPTY>
+
+<!ELEMENT gpSurface (notAvailable | invalidFormat | (geopotential, surface))>
+<!ATTLIST gpSurface s CDATA #REQUIRED>
+
+<!ELEMENT geopotential EMPTY>
+<!ATTLIST geopotential v CDATA #REQUIRED>
+
+<!ELEMENT surface EMPTY>
+<!ATTLIST surface v (1000|925|500|700|850) #REQUIRED>
+
+<!ELEMENT weatherSynop ((NSW, timeBeforeObs)
+          | (timeBeforeObs,
+         (weatherPast1NotAvailable   | weatherPast1   | weatherPast1Simple),
+         (weatherPast2NotAvailable   | weatherPast2   | weatherPast2Simple),
+         (weatherPresentNotAvailable | weatherPresent | weatherPresentSimple)))>
+<!ATTLIST weatherSynop s CDATA #REQUIRED>
+
+<!ELEMENT weatherPast1NotAvailable EMPTY>
+<!ELEMENT weatherPast2NotAvailable EMPTY>
+<!ELEMENT weatherPresentNotAvailable EMPTY>
+<!ELEMENT weatherPast1 EMPTY>
+<!ATTLIST weatherPast1 v (%digit;) #REQUIRED>
+<!ELEMENT weatherPast1Simple EMPTY>
+<!ATTLIST weatherPast1Simple v (%digit;) #REQUIRED>
+<!ELEMENT weatherPast2 EMPTY>
+<!ATTLIST weatherPast2 v (%digit;) #REQUIRED>
+<!ELEMENT weatherPast2Simple EMPTY>
+<!ATTLIST weatherPast2Simple v (%digit;) #REQUIRED>
+<!ELEMENT weatherPresent EMPTY>
+<!ATTLIST weatherPresent v CDATA #REQUIRED>
+<!ELEMENT weatherPresentSimple EMPTY>
+<!ATTLIST weatherPresentSimple v CDATA #REQUIRED>
+
+<!ELEMENT exactObsTime (timeAt)>
+<!ATTLIST exactObsTime s CDATA #REQUIRED>
+
+<!ELEMENT synop_section2 (displacement?,
+                          seaSurfaceTemp?,
+                          waves?,
+                          windWaves?,
+                          swell?,
+                          iceAccretion?,
+                          wetbulbTemperature?,
+                          seaLandIce?)>
+<!ATTLIST synop_section2 s (222) #REQUIRED>
+
+<!ELEMENT synop_section3 ((  tempMaxDaytime
+                           | tempMinNighttime
+                           | tempMin
+                           | tempMax
+                           | stateOfGround
+                           | tempMinGround
+                           | tempGround
+                           | stateOfGroundSnow
+                           | snowDepth
+                           | snowFall
+                           | group5xxxxNA
+                           | evapo
+                           | tempChange
+                           | radiationSun
+                           | radShortWave
+                           | radDirectSolar
+                           | cloudTypesDrift
+                           | cloudLocation
+                           | pressureChange
+                           | precipitation
+                           | cloudInfo
+                           | precipCharacter
+                           | beginPrecip
+                           | endPrecip
+                           | weatherSynopInfo
+                           | precipPeriods
+                           | highestGust
+                           | highestMeanSpeed
+                           | meanSpeed
+                           | lowestMeanSpeed
+                           | squall
+                           | windPhenom
+                           | highestWind
+                           | weatherSynopAdd
+                           | weatherSynopAmplPast
+                           | weatherSynopAmpl
+                           | weatherSynopPast
+                           | stateOfSky
+                           | weather
+                           | windDir
+                           | conditionMountain
+                           | conditionValley
+                           | orographicClouds
+                           | verticalClouds
+                           | specialClouds
+                           | opticalPhenom
+                           | visPrev
+                           | maxCloudLocation
+                           | maxLowCloudLocation
+                           | maxWeatherLocation
+                           | weatherMovement
+                           | hailStones
+                           | waterEquivOfSnow
+                           | glazeDeposit
+                           | rimeDeposit
+                           | compoundDeposit
+                           | wetsnowDeposit
+                           | cloudEvolution
+                           | cloudTopsHeight
+                           | snowCoverCharReg
+                           | driftSnow
+                           | hoarFrost
+                           | colouredPrecip
+                           | seaCondition
+                           | visibilityAtLoc
+                           | maxWindForce
+                           | frozenDeposit
+                           | mirage
+                           | visibilityVariation
+                           | cloudFrom
+                           | lowCloudFrom
+                           | alightingAreaCondition
+                           | waterTemp
+                           | tempExtreme)*)>
+<!ATTLIST synop_section3 s (333) #REQUIRED>
+
+<!ELEMENT tempMinNighttime (notAvailable | (temp, timeBeforeObs?))>
+<!ATTLIST tempMinNighttime s CDATA #REQUIRED>
+
+<!ELEMENT tempMaxDaytime (notAvailable | (temp, timeBeforeObs?))>
+<!ATTLIST tempMaxDaytime s CDATA #REQUIRED>
+
+<!ELEMENT stateOfGround (notAvailable | stateOfGroundVal)>
+<!ATTLIST stateOfGround s CDATA #REQUIRED>
+
+<!ELEMENT stateOfGroundVal EMPTY>
+<!ATTLIST stateOfGroundVal v (%digit;) #REQUIRED>
+
+<!ELEMENT tempMinGround (notAvailable |
+                         (sensorHeight?, temp, (timePeriod | timeBeforeObs)))>
+<!ATTLIST tempMinGround s CDATA #REQUIRED>
+
+<!ELEMENT tempGround (notAvailable | temp)>
+<!ATTLIST tempGround s CDATA #REQUIRED>
+
+<!ELEMENT timePeriod EMPTY>
+<!ATTLIST timePeriod v (p|n|24h06|12h18p|24h04|24h14|24h21|24h07p|3or6h) #REQUIRED>
+
+<!ELEMENT stateOfGroundSnow (notAvailable | stateOfGroundSnowVal)>
+<!ATTLIST stateOfGroundSnow s CDATA #REQUIRED>
+
+<!ELEMENT stateOfGroundSnowVal EMPTY>
+<!ATTLIST stateOfGroundSnowVal v (%digit;) #REQUIRED>
+
+<!ELEMENT snowDepth (  notAvailable | invalidFormat
+                     | coverNotCont | noMeasurement | precipAmount)>
+<!ATTLIST snowDepth s CDATA #REQUIRED>
+
+<!ELEMENT snowFall ((noMeasurement | precipAmount | precipTraces),
+                    (timePeriod | timeBeforeObs+ | timeSince))>
+<!ATTLIST snowFall s CDATA #REQUIRED>
+
+<!ELEMENT group5xxxxNA EMPTY>
+<!ATTLIST group5xxxxNA s CDATA #REQUIRED>
+
+<!ELEMENT evapo (evapoAmount, evapoIndicator, (timePeriod | timeBeforeObs))>
+<!ATTLIST evapo s CDATA #REQUIRED>
+
+<!ELEMENT evapoAmount EMPTY>
+<!ATTLIST evapoAmount v CDATA     #REQUIRED
+                      u (MM|kgm2) #REQUIRED>
+
+<!ELEMENT evapoIndicator EMPTY>
+<!ATTLIST evapoIndicator v (%digit;) #REQUIRED>
+
+<!ELEMENT coverNotCont EMPTY>
+<!ELEMENT noMeasurement EMPTY>
+
+<!ELEMENT tempChange (hoursFrom, hoursTill, temp)>
+<!ATTLIST tempChange s CDATA #REQUIRED>
+
+<!ELEMENT cloudTypesDrift (
+   (  cloudTypeHighNA
+    | cloudTypeHighDir    | cloudTypeHighCompassDir
+    | cloudTypeHighNone   | cloudTypeHighInvisible),
+   (  cloudTypeLowNA
+    | cloudTypeLowDir     | cloudTypeLowCompassDir
+    | cloudTypeLowNone    | cloudTypeLowInvisible),
+   (  cloudTypeMiddleNA
+    | cloudTypeMiddleDir  | cloudTypeMiddleCompassDir
+    | cloudTypeMiddleNone | cloudTypeMiddleInvisible))>
+<!ATTLIST cloudTypesDrift s CDATA #REQUIRED>
+
+<!ELEMENT cloudTypeHighDir EMPTY>
+<!ATTLIST cloudTypeHighDir v CDATA #REQUIRED>
+<!ELEMENT cloudTypeHighCompassDir EMPTY>
+<!ATTLIST cloudTypeHighCompassDir v (%compassDir;) #REQUIRED>
+<!ELEMENT cloudTypeHighNone EMPTY>
+<!ELEMENT cloudTypeHighInvisible EMPTY>
+
+<!ELEMENT cloudTypeLowDir EMPTY>
+<!ATTLIST cloudTypeLowDir v CDATA #REQUIRED>
+<!ELEMENT cloudTypeLowCompassDir EMPTY>
+<!ATTLIST cloudTypeLowCompassDir v (%compassDir;) #REQUIRED>
+<!ELEMENT cloudTypeLowNone EMPTY>
+<!ELEMENT cloudTypeLowInvisible EMPTY>
+
+<!ELEMENT cloudTypeMiddleDir EMPTY>
+<!ATTLIST cloudTypeMiddleDir v CDATA #REQUIRED>
+<!ELEMENT cloudTypeMiddleCompassDir EMPTY>
+<!ATTLIST cloudTypeMiddleCompassDir v (%compassDir;) #REQUIRED>
+<!ELEMENT cloudTypeMiddleNone EMPTY>
+<!ELEMENT cloudTypeMiddleInvisible EMPTY>
+
+<!ELEMENT cloudLocation ((cloudNone | cloudInvisible | cloudCompassDir),
+                         (cloudTypeNotAvailable | cloudType),
+                         (topsInvisible | elevationAngle))>
+<!ATTLIST cloudLocation s CDATA #REQUIRED>
+
+<!ELEMENT cloudInvisible  EMPTY>
+<!ELEMENT cloudNone       EMPTY>
+<!ELEMENT cloudCompassDir EMPTY>
+<!ATTLIST cloudCompassDir v (%compassDir;) #REQUIRED>
+
+<!ELEMENT topsInvisible EMPTY>
+
+<!ELEMENT elevationAngle EMPTY>
+<!ATTLIST elevationAngle v CDATA                   #REQUIRED
+                         q (isLess|isEqualGreater) #IMPLIED>
+
+<!ELEMENT cloudInfo ((  cloudBaseNotAvailable | invalidFormat
+                      | cloudBase | (cloudBaseFrom, cloudBaseTo)
+                      | visVert   | (visVertFrom,   visVertTo)),
+                     (  cloudTypeNotAvailable
+                      | cloudType
+                      | cloudTypeLow   | cloudTypeMiddle   | cloudTypeHigh
+                      | cloudTypeLowNA | cloudTypeMiddleNA | cloudTypeHighNA),
+                     cloudOktas)>
+<!ATTLIST cloudInfo s CDATA #REQUIRED>
+
+<!ELEMENT cloudBaseNotAvailable EMPTY>
+
+<!ELEMENT cloudOktas (oktas | oktasNotAvailable | skyObscured)>
+
+<!ELEMENT visVertFrom (distance)>
+<!ELEMENT visVertTo   (distance)>
+
+<!ELEMENT precipCharacter (notAvailable | noPrecip | (phenomDescr, phenomDescr2?))>
+<!ATTLIST precipCharacter s CDATA #REQUIRED>
+
+<!ELEMENT noPrecip EMPTY>
+
+<!ELEMENT phenomDescr EMPTY>
+<!ATTLIST phenomDescr v (%phenomDescr;) #REQUIRED>
+
+<!ELEMENT phenomDescr2 EMPTY>
+<!ATTLIST phenomDescr2 v (%phenomDescr;) #REQUIRED>
+
+<!ELEMENT beginPrecip (notAvailable | noPrecip | hours | (hoursFrom, hoursTill))>
+<!ATTLIST beginPrecip s CDATA #REQUIRED>
+
+<!ELEMENT endPrecip (notAvailable | noPrecip | hours | (hoursFrom, hoursTill))>
+<!ATTLIST endPrecip s CDATA #REQUIRED>
+
+<!ELEMENT hoursFrom EMPTY>
+<!ATTLIST hoursFrom v CDATA #REQUIRED>
+<!ELEMENT hoursTill EMPTY>
+<!ATTLIST hoursTill v CDATA #REQUIRED>
+
+<!ELEMENT weatherSynopInfo (phenomVariation | phenomDescr | location | timeBeforeObs)>
+<!ATTLIST weatherSynopInfo s CDATA #REQUIRED>
+
+<!ELEMENT timeBeforeObs (  notAvailable
+                         | minutes | hours | (hoursFrom, hoursTill))>
+<!ATTLIST timeBeforeObs occurred (Begin|End|At|Duration) "Since">
+
+<!ELEMENT hours EMPTY>
+<!ATTLIST hours v CDATA              #REQUIRED
+                q (isGreater|isLess) #IMPLIED>
+
+<!ELEMENT phenomVariation EMPTY>
+<!ATTLIST phenomVariation v (beganDuringObs|endedDuringObs|beganEndedDuringObs|changedDuringObs|beganAfterObs|endedAfterObs) #REQUIRED>
+
+<!ELEMENT precipPeriods ((hours | (hoursFrom, hoursTill)), (onePeriod | morePeriods | periodsNA))>
+<!ATTLIST precipPeriods s CDATA #REQUIRED>
+
+<!ELEMENT onePeriod   EMPTY>
+<!ELEMENT morePeriods EMPTY>
+<!ELEMENT periodsNA   EMPTY>
+
+<!ELEMENT highestGust (
+                    measurePeriod?,
+                    (phenomDescr | phenomVariation | location | timeBeforeObs)*,
+                    wind)>
+<!ATTLIST highestGust s CDATA #REQUIRED>
+
+<!ELEMENT measurePeriod EMPTY>
+<!ATTLIST measurePeriod v (1|2|10|30|60|180|360) #REQUIRED
+                        u (MIN)                  #REQUIRED>
+
+<!ELEMENT highestMeanSpeed (measurePeriod?, ((timePeriod | timeAt) | (phenomDescr | phenomVariation | location | timeBeforeObs)*), wind)>
+<!ATTLIST highestMeanSpeed s CDATA #REQUIRED>
+
+<!ELEMENT meanSpeed (measurePeriod?, timeBeforeObs+, wind)>
+<!ATTLIST meanSpeed s CDATA #REQUIRED>
+
+<!ELEMENT lowestMeanSpeed (measurePeriod?, timeBeforeObs+, wind)>
+<!ATTLIST lowestMeanSpeed s CDATA #REQUIRED>
+
+<!ELEMENT squall (approaching?, location?, squallType)>
+<!ATTLIST squall s CDATA #REQUIRED>
+
+<!ELEMENT squallType EMPTY>
+<!ATTLIST squallType v (%digit;) #REQUIRED>
+
+<!ELEMENT approaching ((compassDir, speed, speed) | isStationary)>
+
+<!ELEMENT windPhenom (approaching?, location?, windPhenomType)>
+<!ATTLIST windPhenom s CDATA #REQUIRED>
+
+<!ELEMENT windPhenomType EMPTY>
+<!ATTLIST windPhenomType v (%digit;) #REQUIRED>
+
+<!ELEMENT highestWind (timeAt?, timePeriod, wind)>
+<!ATTLIST highestWind s CDATA #REQUIRED>
+
+<!ELEMENT weatherSynopAdd ((phenomDescr | phenomVariation | location | timeBeforeObs)*, (weatherPresent | weatherSynopFG | weatherSynopPrecip | weatherPresent1))>
+<!ATTLIST weatherSynopAdd s CDATA #REQUIRED>
+
+<!ELEMENT weatherSynopAmplPast ((phenomDescr | phenomVariation | location | timeBeforeObs)*, (weatherPresent | weatherSynopFG | weatherSynopPrecip | weatherPresent1))>
+<!ATTLIST weatherSynopAmplPast s CDATA #REQUIRED>
+
+<!ELEMENT weatherSynopAmpl ((phenomDescr | phenomVariation | location | timeBeforeObs)*, (weatherPresent | weatherSynopFG | weatherSynopPrecip | weatherPresent1))>
+<!ATTLIST weatherSynopAmpl s CDATA #REQUIRED>
+
+<!ELEMENT weatherSynopPast (timeBeforeObs+, (weatherPresent | weatherSynopFG | weatherSynopPrecip | weatherPresent1))>
+<!ATTLIST weatherSynopPast s CDATA #REQUIRED>
+
+<!ELEMENT stateOfSky (notAvailable | stateOfSkyVal)>
+<!ATTLIST stateOfSky s CDATA #REQUIRED>
+
+<!ELEMENT stateOfSkyVal EMPTY>
+<!ATTLIST stateOfSkyVal v (%digit;) #REQUIRED>
+
+<!ELEMENT weatherSynopFG (visibility | (visibilityFrom, visibilityTo))>
+
+<!ELEMENT weatherSynopPrecip (phenomSpec,
+                              (rateOfFall | (rateOfFallFrom, rateOfFallTo)))>
+
+<!ELEMENT rateOfFall EMPTY>
+<!ATTLIST rateOfFall v CDATA                   #REQUIRED
+                     u (MMH|CMH)               #REQUIRED
+                     q (isLess|isEqualGreater) #IMPLIED>
+
+<!ELEMENT rateOfFallFrom EMPTY>
+<!ATTLIST rateOfFallFrom v CDATA     #REQUIRED
+                         u (MMH|CMH) #REQUIRED>
+
+<!ELEMENT rateOfFallTo EMPTY>
+<!ATTLIST rateOfFallTo v CDATA     #REQUIRED
+                       u (MMH|CMH) #REQUIRED>
+
+<!ELEMENT weatherPresent1 EMPTY>
+<!ATTLIST weatherPresent1 v CDATA #REQUIRED>
+
+<!ELEMENT windDir (compassDir, timeBeforeObs)>
+<!ATTLIST windDir s CDATA #REQUIRED>
+
+<!ELEMENT synop_section4 (cloudBelowStation*)>
+<!ATTLIST synop_section4 s (444) #REQUIRED>
+
+<!ELEMENT cloudBelowStation (cloudOktas, cloudTopDescr, cloudTops, cloudType)>
+<!ATTLIST cloudBelowStation s CDATA #REQUIRED>
+
+<!ELEMENT cloudTops EMPTY>
+<!ATTLIST cloudTops v   CDATA                             #REQUIRED
+                    rp  CDATA                             #IMPLIED
+                    rpi CDATA                             #IMPLIED
+                    rne CDATA                             #IMPLIED
+                    u   (M)                               #REQUIRED
+                    q   (isLess|isGreater|isEqualGreater) #IMPLIED>
+
+<!ELEMENT cloudTopDescr EMPTY>
+<!ATTLIST cloudTopDescr v (%digit;) #REQUIRED>
+
+<!ELEMENT synop_section5 ((  snowFall
+                           | waterEquivOfSnow
+                           | highestWind
+                           | highestMeanSpeed
+                           | recordTemp
+                           | tideData
+                           | (tempCity, tempCityMax, tempCityMin, recordTempCity*, precipCity)
+                           | waterTemp
+                           | obsTime
+                           | windAtLoc
+                           | highestGust
+                           | RH
+                           | soilTemp
+                           | soilTempMin
+                           | equivWindSpeed
+                           | peakWind
+                           | tempMax
+                           | tempMin
+                           | precipitation
+                           | endOfContWinds
+                           | continuousWind
+                           | stateOfGround
+                           | tempGround
+                           | tempMinNighttime
+                           | tempMinGround
+                           | stateOfGroundSnow
+                           | snowDepth
+                           | waterTempSalDepth)*)>
+<!ATTLIST synop_section5 s (555) #REQUIRED>
+
+<!ELEMENT recordTemp (recordPeriod, recordType)>
+<!ATTLIST recordTemp s CDATA #REQUIRED>
+
+<!ELEMENT recordType EMPTY>
+<!ATTLIST recordType v (HI|LO)            #REQUIRED
+                     q (isLess|isGreater) #IMPLIED>
+
+<!ELEMENT recordPeriod EMPTY>
+<!ATTLIST recordPeriod v (AT|FM|SE|SL|DA) #REQUIRED>
+
+<!ELEMENT tideData (notAvailable | (tideDeviation, tideLevel, tideType))>
+<!ATTLIST tideData s CDATA #REQUIRED>
+
+<!ELEMENT tideDeviation EMPTY>
+<!ATTLIST tideDeviation v CDATA #REQUIRED
+                        u (FT)  #REQUIRED>
+
+<!ELEMENT tideLevel EMPTY>
+<!ATTLIST tideLevel v (below|equal|above) #REQUIRED>
+
+<!ELEMENT tideType EMPTY>
+<!ATTLIST tideType v (low|neither|high) #REQUIRED>
+
+<!ELEMENT tempCity (temp)>
+<!ATTLIST tempCity s CDATA #REQUIRED>
+
+<!ELEMENT tempCityMax (temp, (timePeriod | timeBeforeObs))>
+<!ATTLIST tempCityMax s CDATA #REQUIRED>
+
+<!ELEMENT tempCityMin (temp, timeBeforeObs)>
+<!ATTLIST tempCityMin s CDATA #REQUIRED>
+
+<!ELEMENT recordTempCity (recordPeriod, recordType)>
+<!ATTLIST recordTempCity s CDATA #REQUIRED>
+
+<!ELEMENT precipCity (precipAmount, timeBeforeObs)>
+<!ATTLIST precipCity s CDATA #REQUIRED>
+
+<!ELEMENT waterTemp (notAvailable | temp)>
+<!ATTLIST waterTemp s CDATA #REQUIRED>
+
+<!ELEMENT soilTemp (depth, temp)>
+<!ATTLIST soilTemp s CDATA #REQUIRED>
+
+<!ELEMENT depth EMPTY>
+<!ATTLIST depth v CDATA     #REQUIRED
+                u (M|DM|CM) #REQUIRED>
+
+<!ELEMENT soilTempMin (depth, temp, timePeriod)>
+<!ATTLIST soilTempMin s CDATA #REQUIRED>
+
+<!ELEMENT orographicClouds (cloudTypeOrographic, location, maxConcentration*)>
+<!ATTLIST orographicClouds s CDATA #REQUIRED>
+
+<!ELEMENT cloudTypeOrographic EMPTY>
+<!ATTLIST cloudTypeOrographic v (1|2|3|4|5|6|7|8|9) #REQUIRED>
+
+<!ELEMENT verticalClouds (approaching?, cloudTypeVertical, location, maxConcentration*, phenomDescr)>
+<!ATTLIST verticalClouds s CDATA #REQUIRED>
+
+<!ELEMENT cloudTypeVertical EMPTY>
+<!ATTLIST cloudTypeVertical v (Cuhum|Cucon|Cb|CuCb) #REQUIRED>
+
+<!ELEMENT maxConcentration ((elevAboveHorizon | elevNotAvailable), location)>
+<!ELEMENT elevNotAvailable EMPTY>
+
+<!ELEMENT elevAboveHorizon EMPTY>
+<!ATTLIST elevAboveHorizon v (1|3|7) #REQUIRED>
+
+<!ELEMENT specialClouds (cloudTypeSpecial, location, maxConcentration*)>
+<!ATTLIST specialClouds s CDATA #REQUIRED>
+
+<!ELEMENT cloudTypeSpecial EMPTY>
+<!ATTLIST cloudTypeSpecial v (1|2|3|4|5) #REQUIRED>
+
+<!ELEMENT opticalPhenom (opticalPhenomenon, phenomDescr)>
+<!ATTLIST opticalPhenom s CDATA #REQUIRED>
+
+<!ELEMENT opticalPhenomenon EMPTY>
+<!ATTLIST opticalPhenomenon v (%digit;) #REQUIRED>
+
+<!ELEMENT maxCloudLocation (cloudType, location)>
+<!ATTLIST maxCloudLocation s CDATA #REQUIRED>
+
+<!ELEMENT maxLowCloudLocation (cloudTypeLow, location)>
+<!ATTLIST maxLowCloudLocation s CDATA #REQUIRED>
+
+<!ELEMENT maxWeatherLocation (elevAboveHorizon, location, weatherType)>
+<!ATTLIST maxWeatherLocation s CDATA #REQUIRED>
+
+<!ELEMENT weatherType EMPTY>
+<!ATTLIST weatherType v (present|addPresent|addPresent1|past1|past2) #REQUIRED>
+
+<!ELEMENT weatherMovement (approaching, weatherType)>
+<!ATTLIST weatherMovement s CDATA #REQUIRED>
+
+<!ELEMENT equivWindSpeed (sensorHeight, wind)>
+<!ATTLIST equivWindSpeed s CDATA #REQUIRED>
+
+<!ELEMENT cloudEvolution (cloudEvol, cloudType, maxConcentration*)>
+<!ATTLIST cloudEvolution s CDATA #REQUIRED>
+
+<!ELEMENT cloudTopsHeight ((  notAvailable | invalidFormat
+                            | cloudTops | (cloudTopsFrom, cloudTopsTo)),
+                           maxConcentration*)>
+<!ATTLIST cloudTopsHeight s CDATA #REQUIRED>
+
+<!ELEMENT cloudTopsFrom EMPTY>
+<!ATTLIST cloudTopsFrom v CDATA #REQUIRED
+                        u (M)   #REQUIRED>
+<!ELEMENT cloudTopsTo   EMPTY>
+<!ATTLIST cloudTopsTo   v CDATA    #REQUIRED
+                        u (M)      #REQUIRED
+                        q (isLess) #REQUIRED>
+
+<!ELEMENT snowCoverCharReg (snowCoverCharacter, snowCoverRegularity)>
+<!ATTLIST snowCoverCharReg s CDATA #REQUIRED>
+
+<!ELEMENT snowCoverCharacter EMPTY>
+<!ATTLIST snowCoverCharacter v (0|1|2|3|4|5|6|7|8) #REQUIRED>
+
+<!ELEMENT snowCoverRegularity EMPTY>
+<!ATTLIST snowCoverRegularity v (0|1|2|3|4|5|6|7|8) #REQUIRED>
+
+<!ELEMENT driftSnow (driftSnowData, driftSnowEvolution)>
+<!ATTLIST driftSnow s CDATA #REQUIRED>
+
+<!ELEMENT driftSnowData EMPTY>
+<!ATTLIST driftSnowData v (%digit;) #REQUIRED>
+
+<!ELEMENT driftSnowEvolution EMPTY>
+<!ATTLIST driftSnowEvolution v (0|1|2|3|4|5|6|7) #REQUIRED>
+
+<!ELEMENT hoarFrost (hoarFrostVal, phenomDescr)>
+<!ATTLIST hoarFrost s CDATA #REQUIRED>
+
+<!ELEMENT hoarFrostVal EMPTY>
+<!ATTLIST hoarFrostVal v (horizSurface | horizVertSurface) #REQUIRED>
+
+<!ELEMENT colouredPrecip (colouredPrecipVal, phenomDescr)>
+<!ATTLIST colouredPrecip s CDATA #REQUIRED>
+
+<!ELEMENT colouredPrecipVal EMPTY>
+<!ATTLIST colouredPrecipVal v (sand | volcanicAsh) #REQUIRED>
+
+<!ELEMENT displacement ((isStationary
+                         | ((compassDir | dir | dirVarAllUnk),
+                            (speedNotAvailable | (speed, speed)))),
+                        timeBeforeObs)>
+<!ATTLIST displacement s CDATA #REQUIRED>
+
+<!ELEMENT seaSurfaceTemp (notAvailable | (temp, waterTempMeasurement?))>
+<!ATTLIST seaSurfaceTemp s CDATA #REQUIRED>
+
+<!ELEMENT waterTempMeasurement EMPTY>
+<!ATTLIST waterTempMeasurement v (%digit;|10|11|12|13|14) #REQUIRED>
+
+<!ELEMENT iceAccretion ((notAvailable, timeBeforeObs?) | text |
+                        ((thickness | thicknessTraces), timeBeforeObs) |
+                        (iceAccretionRate, iceAccretionSource, thickness))>
+<!ATTLIST iceAccretion s CDATA #REQUIRED>
+
+<!ELEMENT iceAccretionRate EMPTY>
+<!ATTLIST iceAccretionRate v (0|1|2|3|4) #REQUIRED>
+
+<!ELEMENT iceAccretionSource EMPTY>
+<!ATTLIST iceAccretionSource v (1|2|3|4|5) #REQUIRED>
+
+<!ELEMENT text EMPTY>
+<!ATTLIST text v CDATA #REQUIRED>
+
+<!ELEMENT thickness EMPTY>
+<!ATTLIST thickness v CDATA   #REQUIRED
+                    u (CM|IN) #REQUIRED>
+
+<!ELEMENT thicknessTraces EMPTY>
+
+<!ELEMENT waves (  notAvailable | noWaves
+                 | wavePeriod
+                 | (height, wavePeriod?)
+                 | (dir, height?, wavePeriod?))>
+<!ATTLIST waves s CDATA #REQUIRED>
+<!ELEMENT noWaves EMPTY>
+<!ELEMENT height EMPTY>
+<!ATTLIST height v  CDATA  #REQUIRED
+                 rp CDATA  #IMPLIED
+                 rn CDATA  #IMPLIED
+                 u  (M|DM) #REQUIRED>
+<!ELEMENT wavePeriod EMPTY>
+<!ATTLIST wavePeriod v CDATA #REQUIRED>
+
+<!ELEMENT windWaves (  notAvailable | noWaves
+                     | wavePeriod | seaConfused
+                     | (height, (wavePeriod | seaConfused)?)
+                     | (dir, height?, (wavePeriod | seaConfused)?))>
+<!ATTLIST windWaves s CDATA #REQUIRED>
+<!ELEMENT seaConfused EMPTY>
+
+<!ELEMENT swell (swellData, swellData?)>
+<!ATTLIST swell s CDATA #REQUIRED>
+
+<!ELEMENT swellData (  notAvailable | noWaves | invalidFormat
+                     | wavePeriod | seaConfused
+                     | (height, (wavePeriod | seaConfused)?)
+                     | (dir, height?, (wavePeriod | seaConfused)?))>
+
+<!ELEMENT wetbulbTemperature (notAvailable | (temp, wetbulbTempMeasurement))>
+<!ATTLIST wetbulbTemperature s CDATA #REQUIRED>
+
+<!ELEMENT wetbulbTempMeasurement EMPTY>
+<!ATTLIST wetbulbTempMeasurement v (measured|icedMeasured|computed|icedComputed) #REQUIRED>
+
+<!ELEMENT seaLandIce (notAvailable | text |
+                      (seaIceConcentration?, iceDevelopmentStage?,
+                       iceOfLandOrigin?, iceEdgeBearing?, iceConditionTrend?))>
+<!ATTLIST seaLandIce s CDATA #REQUIRED>
+
+<!ELEMENT iceConditionTrend EMPTY>
+<!ATTLIST iceConditionTrend v (%digit;) #REQUIRED>
+
+<!ELEMENT iceDevelopmentStage EMPTY>
+<!ATTLIST iceDevelopmentStage v (%digit;) #REQUIRED>
+
+<!ELEMENT iceEdgeBearing EMPTY>
+<!ATTLIST iceEdgeBearing v (%digit;) #REQUIRED>
+
+<!ELEMENT iceOfLandOrigin EMPTY>
+<!ATTLIST iceOfLandOrigin v (%digit;) #REQUIRED>
+
+<!ELEMENT seaIceConcentration EMPTY>
+<!ATTLIST seaIceConcentration v (%digit;) #REQUIRED>
+
+<!ELEMENT endOfContWinds (timeAt)>
+<!ATTLIST endOfContWinds s CDATA #REQUIRED>
+
+<!ELEMENT continuousWind (wind)>
+<!ATTLIST continuousWind s CDATA #REQUIRED>
+
+<!ELEMENT maxWindForce (notAvailable | (timeBeforeObs, windForce))>
+<!ATTLIST maxWindForce s CDATA #REQUIRED>
+
+<!ELEMENT windForce EMPTY>
+<!ATTLIST windForce v CDATA #REQUIRED>
+
+<!ELEMENT frozenDeposit (frozenDepositType?, tempVariation?, timeBeforeObs)>
+<!ATTLIST frozenDeposit s CDATA #REQUIRED>
+
+<!ELEMENT frozenDepositType EMPTY>
+<!ATTLIST frozenDepositType v (0|1|2|3|4|5|6|7) #REQUIRED>
+
+<!ELEMENT tempVariation EMPTY>
+<!ATTLIST tempVariation v (%digit;) #REQUIRED>
+
+<!ELEMENT mirage (location, mirageType)>
+<!ATTLIST mirage s CDATA #REQUIRED>
+
+<!ELEMENT mirageType EMPTY>
+<!ATTLIST mirageType v (0|1|2|3|4|5|6|7|8) #REQUIRED>
+
+<!ELEMENT visibilityVariation (location?, timeBeforeObs, visibilityVariationVal)>
+<!ATTLIST visibilityVariation s CDATA #REQUIRED>
+
+<!ELEMENT visibilityVariationVal EMPTY>
+<!ATTLIST visibilityVariationVal v (%digit;) #REQUIRED>
+
+<!ELEMENT cloudFrom (notAvailable | invalidFormat | (cloudType, compassDir))>
+<!ATTLIST cloudFrom s CDATA #REQUIRED>
+
+<!ELEMENT lowCloudFrom (notAvailable | invalidFormat | (cloudTypeLow, compassDir))>
+<!ATTLIST lowCloudFrom s CDATA #REQUIRED>
+
+<!ELEMENT alightingAreaCondition (seaCondVal | notAvailable)>
+<!ATTLIST alightingAreaCondition s CDATA #REQUIRED>
+
+<!ELEMENT synop_section9 ((highestGust)*)>
+<!ATTLIST synop_section9 s (999) #REQUIRED>
+
+<!ELEMENT buoy_section1 (qualitySection?,
+                         sfcWind?,
+                         temperature?,
+                         stationPressure?,
+                         SLP?,
+                         pressureChange?)>
+<!ATTLIST buoy_section1 s (111) #REQUIRED>
+
+<!ELEMENT qualitySection (  notAvailable | invalidFormat
+                          | (qualityControlInd, worstQualityGroup?))>
+<!ATTLIST qualitySection s CDATA #REQUIRED>
+
+<!ELEMENT qualityControlInd EMPTY>
+<!ATTLIST qualityControlInd v (0|1|2|3|4|5) #REQUIRED>
+
+<!ELEMENT worstQualityGroup EMPTY>
+<!ATTLIST worstQualityGroup v (1|2|3|4|5|6) #REQUIRED>
+
+<!ELEMENT qualityPositionTime (qualityControlPosition, qualityControlTime,
+                               qualityLocClass)>
+<!ATTLIST qualityPositionTime s CDATA #REQUIRED>
+
+<!ELEMENT qualityControlPosition (  notAvailable | invalidFormat
+                                  | qualityControlInd)>
+<!ELEMENT qualityControlTime     (  notAvailable | invalidFormat
+                                  | qualityControlInd)>
+<!ELEMENT qualityLocClass        (  notAvailable | invalidFormat
+                                  | distance | (distanceFrom, distanceTo))>
+
+<!ELEMENT distanceFrom EMPTY>
+<!ATTLIST distanceFrom v CDATA                             #REQUIRED
+                       u (M|KM|SM|NM|FT)                   #REQUIRED
+                       q (isLess|isGreater|isEqualGreater) #IMPLIED>
+
+<!ELEMENT distanceTo   EMPTY>
+<!ATTLIST distanceTo   v CDATA                             #REQUIRED
+                       u (M|KM|SM|NM|FT)                   #REQUIRED
+                       q (isLess|isGreater|isEqualGreater) #IMPLIED>
+
+<!ELEMENT buoy_section2 (qualitySection?,
+                         seaSurfaceTemp?,
+                         waves?,
+                         windWaves?,
+                         swell?)>
+<!ATTLIST buoy_section2 s (222) #REQUIRED>
+
+<!ELEMENT buoy_section3 (qualityTempSalProfile?,
+                         qualityCurrentProfile?,
+                         (salinityMeasurement?, waterTempSalDepth*)?,
+                         (measurementCorrection, measurementDurTime,
+                          waterCurrent*)?)>
+<!ATTLIST buoy_section3 s (333) #REQUIRED>
+
+<!ELEMENT qualityTempSalProfile (  notAvailable | invalidFormat
+                                 | qualityControlInd)>
+<!ATTLIST qualityTempSalProfile s CDATA #REQUIRED>
+
+<!ELEMENT qualityCurrentProfile (  notAvailable | invalidFormat
+                                 | qualityControlInd)>
+<!ATTLIST qualityCurrentProfile s CDATA #REQUIRED>
+
+<!ELEMENT salinityMeasurement (  notAvailable | invalidFormat
+                               | salinityMeasurementInd)>
+<!ATTLIST salinityMeasurement s CDATA #REQUIRED>
+
+<!ELEMENT salinityMeasurementInd EMPTY>
+<!ATTLIST salinityMeasurementInd v (0|1|2|3) #REQUIRED>
+
+<!ELEMENT waterTempSalDepth (depth, salinity?, temp?)>
+<!ATTLIST waterTempSalDepth s CDATA #REQUIRED>
+
+<!ELEMENT salinity EMPTY>
+<!ATTLIST salinity v CDATA #REQUIRED> <!-- in percent -->
+
+<!ELEMENT measurementCorrection (  notAvailable | invalidFormat
+                                 | measurementCorrectionInd)>
+<!ATTLIST measurementCorrection s CDATA #REQUIRED>
+
+<!ELEMENT measurementCorrectionInd EMPTY>
+<!ATTLIST measurementCorrectionInd v (0|1|2|3|4|5|6) #REQUIRED>
+
+<!ELEMENT measurementDurTime (  notAvailable | invalidFormat
+                              | measurementDurTimeInd)>
+<!ATTLIST measurementDurTime s CDATA #REQUIRED>
+
+<!ELEMENT measurementDurTimeInd EMPTY>
+<!ATTLIST measurementDurTimeInd v (1|2|3|4|5|6|7|8|9) #REQUIRED>
+
+<!ELEMENT waterCurrent (current?, depth)>
+<!ATTLIST waterCurrent s CDATA #REQUIRED>
+
+<!ELEMENT current (  invalidFormat
+                   | ((dir | dirVarAllUnk), (speedNotAvailable | speed)))>
+
+<!ELEMENT buoy_section4 (qualityGroup1?,
+                         qualityGroup2?,
+                         stationPosition?,
+                         lastKnownPosTime?,
+                         pressureCableEnd?,
+                         cableLengthThermistor?,
+                         buoyType?,
+                         drogueType?,
+                         anemometer?,
+                         buoyDrift?,
+                         (batteryVoltage, submergence?)?,
+                         cableLengthDrogue?)>
+<!ATTLIST buoy_section4 s (444) #REQUIRED>
+
+<!ELEMENT qualityGroup1 (  invalidFormat
+                         | (qualityAirTemp, qualityHousekeeping,
+                            qualityPressure, qualityWaterTemp))>
+<!ATTLIST qualityGroup1 s CDATA #REQUIRED>
+
+<!ELEMENT qualityAirTemp EMPTY>
+<!ATTLIST qualityAirTemp v (0|1) #REQUIRED>
+
+<!ELEMENT qualityHousekeeping EMPTY>
+<!ATTLIST qualityHousekeeping v (0|1) #REQUIRED>
+
+<!ELEMENT qualityPressure EMPTY>
+<!ATTLIST qualityPressure v (0|1) #REQUIRED>
+
+<!ELEMENT qualityWaterTemp EMPTY>
+<!ATTLIST qualityWaterTemp v (0|1) #REQUIRED>
+
+<!ELEMENT qualityGroup2 (depthCorrectionInd?,
+                         qualityLocClass, qualityLocation, qualityTransmission)>
+<!ATTLIST qualityGroup2 s CDATA #REQUIRED>
+
+<!ELEMENT depthCorrectionInd EMPTY>
+<!ATTLIST depthCorrectionInd v (0|1) #REQUIRED>
+
+<!ELEMENT qualityLocation EMPTY>
+<!ATTLIST qualityLocation v (0|1|2) #REQUIRED>
+
+<!ELEMENT qualityTransmission EMPTY>
+<!ATTLIST qualityTransmission v (0|1) #REQUIRED>
+
+<!ELEMENT lastKnownPosTime (timeAt)>
+<!ATTLIST lastKnownPosTime s CDATA #REQUIRED>
+
+<!ELEMENT buoyType (notAvailable | invalidFormat | buoyTypeInd)>
+<!ATTLIST buoyType s CDATA #REQUIRED>
+
+<!ELEMENT buoyTypeInd EMPTY>
+<!ATTLIST buoyTypeInd
+             v (0|1|2|3|4|5|6|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|34|35|36|37|38|39) #REQUIRED>
+
+<!ELEMENT drogueType (notAvailable | invalidFormat | drogueTypeInd)>
+<!ATTLIST drogueType s CDATA #REQUIRED>
+
+<!ELEMENT drogueTypeInd EMPTY>
+<!ATTLIST drogueTypeInd v (0|1|2|3|4|5) #REQUIRED>
+
+<!ELEMENT anemometer (anemometerType?, sensorHeight)>
+<!ATTLIST anemometer s CDATA #REQUIRED>
+
+<!ELEMENT anemometerType (notAvailable | invalidFormat | anemometerTypeInd)>
+
+<!ELEMENT anemometerTypeInd EMPTY>
+<!ATTLIST anemometerTypeInd v (0|1|2) #REQUIRED>
+
+<!ELEMENT pressureCableEnd (pressure)>
+<!ATTLIST pressureCableEnd s CDATA #REQUIRED>
+
+<!ELEMENT cableLengthThermistor (length)>
+<!ATTLIST cableLengthThermistor s CDATA #REQUIRED>
+
+<!ELEMENT length EMPTY>
+<!ATTLIST length v CDATA #REQUIRED
+                 u (M)   #REQUIRED>
+
+<!ELEMENT buoyDrift (drift)>
+<!ATTLIST buoyDrift s CDATA #REQUIRED>
+
+<!ELEMENT drift ((dir | dirVarAllUnk), speed)>
+
+<!ELEMENT batteryVoltage (notAvailable | batteryVoltageVal)>
+<!ATTLIST batteryVoltage s CDATA #REQUIRED>
+
+<!ELEMENT batteryVoltageVal EMPTY>
+<!ATTLIST batteryVoltageVal v CDATA #REQUIRED>
+
+<!ELEMENT submergence (notAvailable | submergenceVal)>
+<!ATTLIST submergence s CDATA #REQUIRED>
+
+<!ELEMENT submergenceVal EMPTY>
+<!ATTLIST submergenceVal v CDATA #REQUIRED>
+
+<!ELEMENT cableLengthDrogue (notAvailable | length)>
+<!ATTLIST cableLengthDrogue s CDATA #REQUIRED>

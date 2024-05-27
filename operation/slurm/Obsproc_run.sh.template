@@ -1,0 +1,49 @@
+#!/bin/bash
+
+#!/bin/bash -x
+
+#SBATCH --time=05:00:00
+#SBATCH --export=ALL
+#SBATCH --hint=multithread
+#SBATCH --exclusive
+#SBATCH --nodes=3
+#SBATCH --ntasks=24            ## Number of tasks (analyses) to run
+#SBATCH --ntasks-per-node=8
+
+
+#SBATCH --job-name=obsproc-
+#SBATCH --output=%x.%j.log
+	
+
+
+
+#module purge
+# load intel compiler for C, C++, and FORTRAN
+source /nfs/stor/intel/oneapi/setvars.sh 
+source /nfs/users/working/corridas/WRF_env.sh
+# load WRF_ENV
+export RUN_PATH=/nfs/users/working/wrf4/corridas
+#==========================================================
+#source /nfs/users/working/wrf4/control/scripts_op/slurm/env_settings.sh
+export BASE_DIR=$RUN_PATH/$SIMULATION_DATE
+export RUNDIR=$BASE_DIR/wrfda/obsproc/
+export Data_Dir=$RUNDIR
+#mkdir -p $RUNDIR
+cd $RUNDIR
+
+
+export Data_Dir=$RUNDIR
+
+ulimit -s unlimited
+ulimit -n 10240
+
+export OMP_NUM_THREADS=2
+export OMP_STACKSIZE=4G
+export PPN=32
+export TASK=96
+export NODES=3
+
+
+echo "The start date is $(date +'%D:%T')"   >  ${Data_Dir}/../../logs/obsproc.log
+srun --nodes=$NODES --ntasks=$TASK --ntasks-per-node=$PPN --cpus-per-task=$OMP_NUM_THREADS  --mpi=pmi2   --distribution=block:block,pack --cpu-bind=verbose  $Data_Dir/obsproc.exe 2>&1 | tee -a $Data_Dir/../../logs/obsproc.log
+echo "The end date is $(date +'%D:%T')"  >>  ${Data_Dir}/../../logs/obsproc.log

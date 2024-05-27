@@ -1,0 +1,291 @@
+;*************************************************************************
+; D. Shea
+;      convert WRF character variable "Times" to udunits
+;      2001-06-11_12:00:00
+;
+;      convert WRF character variable "Times" to a coordinate variable  "Time"
+;      opt can be "integer" or "string"
+;      .   integer:  opt = 0 : hours since initial time: Times(0,:)
+;      .             opt = 1 : hours since 1901-01-01 00:00:00
+;      .   string:   opt = 'any udunits compatible string'
+;
+undef ("WRF_Times2Udunits_c")
+function WRF_Times2Udunits_c(Times:character, opt)
+local dimT, rank, year, month, day, hour, minute, sec, units, time
+begin
+   
+  dimT   = dimsizes(Times)
+  rank   = dimsizes(dimT)
+  if (rank.ne.2) then
+      print("===> WRF_contributed.ncl: WRF_Times2Udunits_c expects 2D array: rank="+rank)
+      exit
+  end if
+
+  if (.not.(typeof(opt).eq."integer" .or. typeof(opt).eq."string")) then
+      print("===> WRF_contributed.ncl: opt must be integer or string: type="+typeof(opt))
+      exit
+  end if
+
+  year   = stringtointeger((/Times(:, 0:3) /))
+  month  = stringtointeger((/Times(:, 5:6) /))
+  day    = stringtointeger((/Times(:, 8:9) /))
+  hour   = stringtointeger((/Times(:,11:12)/))
+  minute = stringtointeger((/Times(:,14:15)/))
+  sec    = stringtointeger((/Times(:,17:18)/))
+
+  if (typeof(opt).eq."integer") then
+      if (opt.eq.0) then
+          units  = "hours since "+year(0)+"-" \
+                                 +sprinti("%0.2i",month(0)) +"-" \
+                                 +sprinti("%0.2i",day(0))   +" " \
+                                 +sprinti("%0.2i",hour(0))  +":" \
+                                 +sprinti("%0.2i",minute(0))+":" \
+                                 +sprinti("%0.2i",sec(0))       
+      else  
+          units  = "hours since 1901-01-01 00:00:00"
+      end if
+  else
+          units  = opt   ; opt is udunits compatible string
+  end if
+
+  Time   = ut_inv_calendar(year,month,day,hour,minute,sec, units, 0)
+
+  Time!0          = "Time"
+  Time@long_name  = "Time"
+  Time@description= "Time"
+  Time@units      =  units
+  Time&Time       =  Time        ; make coordinate variable
+  return (Time)
+end 
+
+;*************************************************************************
+; D. Shea
+;      convert WRF character variable "Times" to 
+;      a coordinate variable of type double 
+;      time(double) =              yyyymmddhhmnss
+;      2001-06-11_12:00:00     ==> 20010611120000
+;
+;      opt: currently not used [dummy]
+;
+undef ("WRF_Times2double_c")
+function WRF_Times2double_c(Times:character, opt)
+local dimT, rank, N, time, i, tmp_c
+begin
+  dimT   = dimsizes(Times)
+  rank   = dimsizes(dimT)
+  if (rank.ne.2) then
+      print("===> WRF_contributed.ncl: WRF_Times2Udunits_c expects 2D array: rank="+rank)
+      exit
+  end if
+
+  N      = dimT(0)
+
+  Time   = new( N ,"double") ; preset to "double"
+  delete(Time@_FillValue)    ; coord variables should not have a _FillValue
+
+  Time   = stringtointeger((/Times(:,0:3)/))  *10000000000 + \  ; yyyy
+           stringtointeger((/Times(:,5:6)/))  *100000000   + \  ; mm
+           stringtointeger((/Times(:,8:9)/))  *1000000     + \  ; dd
+           stringtointeger((/Times(:,11:12)/))*10000       + \  ; hh
+           stringtointeger((/Times(:,14:15)/))*100         + \  ; mn
+           stringtointeger((/Times(:,17:18)/))                  ; ss
+
+  Time!0          = "Time"
+  Time@long_name  = "Time"
+  Time@description= "Time"
+  Time@units      = "yyyymmddhhmnss"
+  Time&Time       =  Time        ; make coordinate variable
+  return (Time)
+end 
+
+;*************************************************************************
+
+; D. Shea
+; This is a driver that selects the appropriate 
+; mapping function based upon the file attribute: MAP_PROJ
+; MAP_PROJ=1 [Lambert Conformal]; =2 [Stereographic]; =3 [Mercator]
+;
+; opt: currently not used [potentail use: time counter for XLAT/XLONG]
+;
+; Sample usage:
+;             ncdf = addfile("...", r")
+;             res  = True
+;             WRF_map_c (ncdf, res, 0)
+;             res  = ...
+;
+;procedure WRF_map_c (f:file, res:logical, opt)
+procedure resources_map (f:file, res:logical, opt)
+local rank, dimll, nlat, mlon, lat2d, lon2d
+begin
+  if (isatt(f,"MAP_PROJ")) then
+      if (f@MAP_PROJ.eq.1) then
+          res@mpProjection = "LambertConformal"
+      end if
+      if (f@MAP_PROJ.eq.2) then
+          res@mpProjection = "Stereographic"
+       end if
+      if (f@MAP_PROJ.eq.3) then
+          res@mpProjection = "Mercator"
+      end if
+  else
+      print ("WRF_mapProj: no MAP_PROJ attribute")
+  end if
+
+  rank  = dimsizes(filevardimsizes(f,"XLAT")) ; # of dimensions
+  if (rank.eq.3) then
+      lat2d = f->XLAT(0,:,:)       ; opt could bt "nt"  f->XLAT(opt,:,:)
+      lon2d = f->XLONG(0,:,:)
+  else
+    if (rank.eq.2) then
+        lat2d = f->XLAT
+        lon2d = f->XLONG
+    else
+        print ("WRF_resLamCon_c: unexpected lat/lon rank: rank="+rank)
+        exit
+    end if
+  end if
+  dimll = dimsizes(lat2d)
+  nlat  = dimll(0)
+  mlon  = dimll(1)
+
+  res@mpLimitMode           = "Corners"  
+  res@mpLeftCornerLatF      = lat2d(0,0)
+  res@mpLeftCornerLonF      = lon2d(0,0)
+  res@mpRightCornerLatF     = lat2d(nlat-1,mlon-1)
+  res@mpRightCornerLonF     = lon2d(nlat-1,mlon-1)
+
+  ;res@mpCenterLonF          = f@CEN_LON
+  ;res@mpCenterLatF          = f@CEN_LAT
+  res@mpCenterLonF          = f@STAND_LON
+  res@mpCenterLatF          = f@MOAD_CEN_LAT
+
+  if (res@mpProjection.eq."Mercator") then
+     res@mpCenterLatF = 0.0
+  end if
+
+  if (res@mpProjection.eq."LambertConformal") then
+      res@mpLambertParallel1F   = f@TRUELAT1
+      res@mpLambertParallel2F   = f@TRUELAT2
+      res@mpLambertMeridianF    = f@CEN_LON
+  end if
+
+res@gsnMaximize             	= True  
+res@gsnDraw                 	= False
+res@gsnFrame                	= False            	;Don't advance the frame
+;res@gsnRightString          	= ""
+;res@gsnLeftString           	= ""
+;res@gsnPaperOrientation     	= "portrait"
+;pnres@gsnPanelBottom 		= 0.03         		; add some space at bottom - ejemplo otro script
+;pnres@txString 		= date+"    "+otype+"   "+info	;ejemplo otro script
+;mpres@gsnStringFontHeightF    = 0.015
+
+res@mpFillOn			= False            	;turn off map fill
+res@mpOutlineSpecifiers 	= (/"Colombia:states"/) ;garantiza separacion Colombia-Venezuela
+res@mpOutlineDrawOrder    	= "PostDraw"       	;draw continental outline last
+res@mpOutlineOn 		= True 			;Permite dibujar contorno Nacional y Geofisico
+res@mpDataBaseVersion          	= "MediumRes" 		;Alias 'Ncarg4_1'
+;res@mpDataBaseVersion       	= "HighRes"  
+res@mpDataSetName              	= "Earth..4" 
+res@mpGeophysicalLineColor     	= "Black"
+res@mpNationalLineColor 	= "Black"
+res@mpGridLineColor             = "Black"
+res@mpLimbLineColor             = "Black"
+res@mpPerimLineColor            = "Black"
+res@mpLandFillColor 		= "white"
+res@mpGeophysicalLineThicknessF	= 2.0
+res@mpNationalLineThicknessF	= 2.0
+;res@mpCenterLonF 		= 180
+
+
+;-- grid line settings
+res@mpGridAndLimbOn   		= False          	;controla lineas longitud, default is every 15 deg
+;res@mpGridSpacingF       	= 1            		;line spacing iqual to X and Y
+;res@mpGridLatSpacingF 		= 2			;change latitude line spacing
+;res@mpGridLonSpacingF 		= 4 			;change longitude line spacing
+;res@mpGridLineColor 		= "transparent" 	;trick ncl into drawing earth's outline, norml "gray"
+res@mpGridAndLimbDrawOrder 	= "PreDraw"          	;Draw grid first
+;res@mpGridLineDashPattern   	= 2
+;res@mpGridLineDashSegLenF   	= 0.06            	;default 0.15
+
+;Title resources
+;res@tiMainString            	= title
+res@tiMainOffsetYF          	= 0.0             	;Move the title down.
+res@tiMainFontHeightF       	= 0.015
+;res@tiXAxisString       = xlabel              ; xaxis string
+;res@tiYAxisString       = ylabel              ; yaxis string
+ 
+;Tickmarcs controla el marco del plot
+res@tmYROn                  	= False        		;
+res@tmXBOn                  	= True         		;habilita tmXBMajorLengthF
+res@tmXTMajorLengthF        	= 0
+res@tmYLMajorLengthF        	= 0.01
+res@tmXBMajorLengthF        	= 0.01
+res@tmYRMajorLengthF        	= 0
+;res@tmXTLabelsOn 		= True               	;Turn on labels for top and right
+;res@tmYRLabelsOn 		= True               	;axes. They are off by default.
+res@tmYLLabelFontHeightF 	= 0.01			;hace mas pequena la letra en eje Y
+res@tmXBLabelFontHeightF 	= 0.01			;hace mas pequena la letra en eje X
+; res@tmXBMajorLengthF          = -0.01			;despegan linea eje, negativo hacia adentro
+; res@tmYLMajorLengthF          = -0.01			;despegan linea eje, negativo hacia adentro
+;res@tmYLMajorThicknessF = 1.0                 ; default 2.0
+;res@tmXBMajorThicknessF = 1.0                 ; default 2.0
+;res@tmLabelAutoStride   = True                ; nice tick mark labels
+ res@tmXBLabelFontHeightF      = 0.01			;zoom
+ res@tmYLLabelFontHeightF      = 0.01			;zoom
+; res@gsnLeftStringFontHeightF  =0.02			;zoom
+; res@gsnRightStringFontHeightF =0.02 			;zoom
+ res@tmXBLabelFontHeightF       = 0.02			;zoom
+
+;otros resources
+;res@tfDoNDCOverlay        	= False             	;True for 'native' grid
+res@pmTickMarkDisplayMode 	= "Always"	 	;facil distribucion marcas "x" y "y"
+;   scres@tmYROn              = False
+;   scres@tmXTOn              = False
+;   scres@tmYRBorderOn        = False
+;   scres@tmXTBorderOn        = False
+;   scres@tmYLMinorOn         = False
+;   scres@tmXBMinorOn         = False
+
+;lbres 			    = True                ; ejemplo plot panel 4 graficas radar
+;lbres@lbPerimOn            = False               ; no label bar box
+;lbres@lbOrientation        = "Horizontal"        ; orientation
+;lbres@vpWidthF             = 0.9                ; size
+;lbres@vpHeightF            = 0.06
+;lbres@lbLabelFontHeightF   = 0.01                ; label font height default 0.02
+;lbres@lbLabelAlignment     = "InteriorEdges"     ; where to label
+;lbres@lbLabelAutoStride    = True                ; Auto stride
+;lbres@lbMonoFillPattern    = True                ; fill sold
+;lbres@lbFillColors         = labelbarcolors            ; must be RGB triplets
+;lbres@lbBoxLinesOn         = False
+
+end 
+
+;*************************************************************************
+res = True
+res@cnLineLabelsOn    		= False             ; turn off contour lines
+res@cnLinesOn              	= False         ; mejora visualizacion contornos
+res@cnLevelSelectionMode = "ExplicitLevels"
+res@cnLabelBarEndStyle    = "ExcludeOuterBoxes"  ;evita primera cuadricula de la barra
+
+; D. Shea
+; interface for backward compatibility
+procedure WRF_resLamCon_c (f:file, res:logical, opt)
+begin
+;  WRF_map_c (f, res, opt)
+end
+
+;a   = addfile(f,"r")
+;lat = a->y
+;lon = a->x
+;
+;print("  res@mpMinLatF = " + min(lat))
+;print("  res@mpMaxLatF = " + max(lat))
+;print("  res@mpMinLonF = " + min(lon));min lon
+;print("  res@mpMaxLonF = " + max(lon))
+
+;refT            = g->Band1  ; band1 es el nombre de variable en file "g"
+; res@mpLimitMode = "LatLon"
+; res@mpMinLonF = min(refT&lon)
+; res@mpMinLatF = min(refT&lat)
+; res@mpMaxLonF = max(refT&lon)
+; res@mpMaxLatF = max(refT&lat)

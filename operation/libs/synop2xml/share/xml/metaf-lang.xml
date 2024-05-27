@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<transsum>
+<weatherSum xmlns="http://metaf2xml.sourceforge.net/2.1">
+ <weatherPresentSum>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>FU/VA</arr>
+  <arr>HZ</arr>
+  <arr>DU</arr>
+  <arr>BLSA/BLDU/BLPY</arr>
+  <arr>PO</arr>
+  <arr>VCDS/VCSS</arr>
+  <arr>BR</arr>
+  <arr>BCMIFG</arr>
+  <arr>MIFG</arr>
+  <arr>VCTS</arr>
+  <arr>-</arr>
+  <arr>VCUP</arr>
+  <arr>VCUP</arr>
+  <arr>TS</arr>
+  <arr>SQ</arr>
+  <arr>FC</arr>
+  <arr>DZ/SG/1h</arr>
+  <arr>RA/1h</arr>
+  <arr>SN/1h</arr>
+  <arr>SNRA/PL/1h</arr>
+  <arr>FZDZ/FZRA/1h</arr>
+  <arr>SHRA/1h</arr>
+  <arr>SHSN/SHRASN/1h</arr>
+  <arr>SHGR/SHGS/1h</arr>
+  <arr>(FZ)FG/1h</arr>
+  <arr>TS/1h</arr>
+  <arr>(-)DS/(-)SS</arr>
+  <arr>(-)DS/(-)SS</arr>
+  <arr>(-)DS/(-)SS</arr>
+  <arr>+DS/+SS</arr>
+  <arr>+DS/+SS</arr>
+  <arr>+DS/+SS</arr>
+  <arr>(-)DRSN</arr>
+  <arr>+DRSN</arr>
+  <arr>(-)BLSN</arr>
+  <arr>+BLSN</arr>
+  <arr>VC(FZ)FG</arr>
+  <arr>(FZ)BCFG</arr>
+  <arr>(FZ)PRFG</arr>
+  <arr>(FZ)FG</arr>
+  <arr>(FZ)PRFG</arr>
+  <arr>(FZ)FG</arr>
+  <arr>(FZ)PRFG</arr>
+  <arr>(FZ)FG</arr>
+  <arr>(FZ)PRFG</arr>
+  <arr>FZFG</arr>
+  <arr>-DZ</arr>
+  <arr>-DZ</arr>
+  <arr>DZ</arr>
+  <arr>DZ</arr>
+  <arr>+DZ</arr>
+  <arr>+DZ</arr>
+  <arr>-FZDZ</arr>
+  <arr>(+)FZDZ</arr>
+  <arr>-DZ RA</arr>
+  <arr>(+)DZ (+)RA</arr>
+  <arr>-RA</arr>
+  <arr>-RA</arr>
+  <arr>RA</arr>
+  <arr>RA</arr>
+  <arr>+RA</arr>
+  <arr>+RA</arr>
+  <arr>-FZRA</arr>
+  <arr>(+)FZRA</arr>
+  <arr>-RA/-DZ SN</arr>
+  <arr>(+)RA/(+)DZ (+)SN</arr>
+  <arr>-SN</arr>
+  <arr>-SN</arr>
+  <arr>SN</arr>
+  <arr>SN</arr>
+  <arr>+SN</arr>
+  <arr>+SN</arr>
+  <arr>IC</arr>
+  <arr>SG</arr>
+  <arr>IC</arr>
+  <arr>PL</arr>
+  <arr>-SHRA</arr>
+  <arr>(+)SHRA</arr>
+  <arr>+SHRA</arr>
+  <arr>-SHSN -SHRA</arr>
+  <arr>(+)SHSN (+)SHRA</arr>
+  <arr>-SHSN</arr>
+  <arr>(+)SHSN</arr>
+  <arr>-SHGS/-SHGR</arr>
+  <arr>(+)SHGS/(+)SHGR</arr>
+  <arr>-SHGR</arr>
+  <arr>(+)SHGR</arr>
+  <arr>TS/1h -RA</arr>
+  <arr>TS/1h (+)RA</arr>
+  <arr>TS/1h -SN/-SNRA/-GR</arr>
+  <arr>TS/1h (+)SN/(+)SNRA/(+)GR</arr>
+  <arr>(-)TSRA/(-)TSSN</arr>
+  <arr>(-)TSGR</arr>
+  <arr>+TSRA/+TSSN</arr>
+  <arr>TS DS/SS</arr>
+  <arr>+TSGR</arr>
+ </weatherPresentSum>
+
+ <weatherPresentSimpleSum>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>HZ/FU/DU</arr>
+  <arr>HZ/FU/DU</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>BR</arr>
+  <arr>IC</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>SQ</arr>
+  <arr>-</arr>
+  <arr>FG/1h</arr>
+  <arr>UP/1h</arr>
+  <arr>DZ/SG/1h</arr>
+  <arr>RA/1h</arr>
+  <arr>SN/1h</arr>
+  <arr>FZDZ/FZRA/1h</arr>
+  <arr>TS/1h</arr>
+  <arr>BLSN/DRSN</arr>
+  <arr>BLSN/DRSN</arr>
+  <arr>BLSN/DRSN</arr>
+  <arr>FG</arr>
+  <arr>(FZ)BCFG</arr>
+  <arr>(FZ)FG</arr>
+  <arr>(FZ)FG</arr>
+  <arr>(FZ)FG</arr>
+  <arr>FG</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>UP</arr>
+  <arr>UP</arr>
+  <arr>+UP</arr>
+  <arr>UP</arr>
+  <arr>+UP</arr>
+  <arr>UP</arr>
+  <arr>+UP</arr>
+  <arr>FZUP</arr>
+  <arr>+FZUP</arr>
+  <arr>-</arr>
+  <arr>DZ</arr>
+  <arr>-DZ</arr>
+  <arr>DZ</arr>
+  <arr>+DZ</arr>
+  <arr>-FZDZ</arr>
+  <arr>FZDZ</arr>
+  <arr>+FZDZ</arr>
+  <arr>-DZRA</arr>
+  <arr>DZRA</arr>
+  <arr>-</arr>
+  <arr>RA</arr>
+  <arr>-RA</arr>
+  <arr>RA</arr>
+  <arr>+RA</arr>
+  <arr>-FZRA</arr>
+  <arr>FZRA</arr>
+  <arr>+FZRA</arr>
+  <arr>-RA/-DZ, SN</arr>
+  <arr>RA/DZ, SN</arr>
+  <arr>-</arr>
+  <arr>SN</arr>
+  <arr>-SN</arr>
+  <arr>SN</arr>
+  <arr>+SN</arr>
+  <arr>-PL</arr>
+  <arr>PL</arr>
+  <arr>+PL</arr>
+  <arr>SG</arr>
+  <arr>IC</arr>
+  <arr>-</arr>
+  <arr>SH</arr>
+  <arr>-SHRA</arr>
+  <arr>SHRA</arr>
+  <arr>+SHRA</arr>
+  <arr>+SHRA</arr>
+  <arr>-SHSN</arr>
+  <arr>SHSN</arr>
+  <arr>+SHSN</arr>
+  <arr>-</arr>
+  <arr>GR</arr>
+  <arr>TS</arr>
+  <arr>TS</arr>
+  <arr>TSRA/TSSN</arr>
+  <arr>TSGR</arr>
+  <arr>+TS</arr>
+  <arr>+TSRA/+TSSN</arr>
+  <arr>+TSGS</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>+FC</arr>
+ </weatherPresentSimpleSum>
+
+ <weatherPastSum>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>SS</arr>
+  <arr>(FZ)FG</arr>
+  <arr>DZ</arr>
+  <arr>RA</arr>
+  <arr>SN(RA)</arr>
+  <arr>SHRA</arr>
+  <arr>TS</arr>
+ </weatherPastSum>
+
+ <weatherPastSimpleSum>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>-</arr>
+  <arr>FG</arr>
+  <arr>UP</arr>
+  <arr>DZ</arr>
+  <arr>RA</arr>
+  <arr>SN/PL</arr>
+  <arr>SH</arr>
+  <arr>TS</arr>
+ </weatherPastSimpleSum>
+
+ <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code table 0 20 012 -->
+ <cloud>
+  <arr>-</arr> <!-- C(H): 10 -->
+  <arr>CI fib/unc</arr>
+  <arr>CI spi/cas/flo</arr>
+  <arr>CI spi cbgen</arr>
+  <arr>CI unc/fib</arr>
+  <arr>CI,CS</arr>
+  <arr>CI,CS</arr>
+  <arr>CS</arr>
+  <arr>CS</arr>
+  <arr>CC</arr>
+  <arr>-</arr> <!-- C(M): 20 -->
+  <arr>AS tr</arr>
+  <arr>AS op/NS</arr>
+  <arr>AC tr</arr>
+  <arr>AC tr/len</arr>
+  <arr>AC tr/op</arr>
+  <arr>AC cugen/cbgen</arr>
+  <arr>AC tr/op,AC,AS/NS</arr>
+  <arr>AC cas/flo</arr>
+  <arr>AC</arr>
+  <arr>-</arr> <!-- C(L): 30 -->
+  <arr>CU fr</arr>
+  <arr>CU con</arr>
+  <arr>CB cal</arr>
+  <arr>SC cugen</arr>
+  <arr>SC</arr>
+  <arr>ST neb</arr>
+  <arr>ST/CU fra</arr>
+  <arr>CU,SC</arr>
+  <arr>CB cap</arr>
+ </cloud>
+</weatherSum>
+</transsum>

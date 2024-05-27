@@ -1,0 +1,1921 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- thanks to XX.wikipedia.org -->
+<!-- thanks to es.allmetsat.com, www.mundomanz.com, www.ogimet.com -->
+
+<trans>
+ <lang xmlns="http://metaf2xml.sourceforge.net/2.1">
+
+  <compassDirAbbr>
+   <arr>N</arr>
+   <arr>NNE</arr>
+   <arr>NE</arr>
+   <arr>ENE</arr>
+   <arr>E</arr>
+   <arr>ESE</arr>
+   <arr>SE</arr>
+   <arr>SSE</arr>
+   <arr>S</arr>
+   <arr>SSO</arr>
+   <arr>SO</arr>
+   <arr>OSO</arr>
+   <arr>O</arr>
+   <arr>ONO</arr>
+   <arr>NO</arr>
+   <arr>NNO</arr>
+   <arr>N</arr>
+  </compassDirAbbr>
+
+  <hdr o="metar">informe METAR</hdr>
+  <hdr o="metar_ul">=================</hdr>
+  <hdr o="speci">informe SPECI</hdr>
+  <hdr o="speci_ul">=================</hdr>
+  <hdr o="taf">predicción por aeropuerto</hdr>
+  <hdr o="taf_hour">|h predicción por aeropuerto</hdr>
+  <hdr o="taf_ul">=========================</hdr>
+  <hdr o="synop">observación sinóptica</hdr>
+  <hdr o="synop_ul">=====================</hdr>
+  <hdr o="buoy">observación de una boya</hdr>
+  <hdr o="buoy_ul">=======================</hdr>
+  <hdr o="amdar">informe meteorológico desde una aeronave</hdr>
+  <hdr o="amdar_ul">========================================</hdr>
+  <hdr o="obsStationId">id de la estación:&#9;</hdr>
+  <hdr o="callSign">señal de llamada:&#9;&#9;</hdr>
+  <hdr o="buoyId">id de la boya:&#9;&#9;</hdr>
+  <hdr o="obsTime">tiempo de observación:&#9;</hdr>
+  <hdr o="windIndicator">datos de viento:&#9;</hdr>
+  <hdr o="precipIndicator">datos de la precipitación:&#9;</hdr>
+  <hdr o="wxIndicator">datos del tiempo:&#9;</hdr>
+  <hdr o="stationPosition">posición de la estación:&#9;</hdr>
+  <hdr o="baseLowestCloud">base de la nube más baja|:&#9;</hdr>
+  <hdr o="to">&#9;&#9;a:&#9;</hdr>
+  <hdr o="issueTime">tiempo de publicación:&#9;</hdr>
+  <hdr o="fcstPeriod">validad del pronóstico:&#9;</hdr>
+  <hdr o="visPrev">visibilidad dominante:&#9;&#9;</hdr>
+  <hdr o="visMin">visibilidad mínima:&#9;</hdr>
+  <hdr o="visMax">visibilidad máxima:&#9;</hdr>
+  <hdr o="visRwy">visibilidad pista |:&#9;</hdr>
+  <hdr o="visTrend">&#9;tendencia:&#9;</hdr>
+  <hdr o="visVert">Vert. visibilidad|:&#9;</hdr>
+  <hdr o="sfcWind">viento:&#9;&#9;&#9;</hdr>
+  <hdr o="totalCloudCover">cubierta total de nubes:&#9;</hdr>
+  <hdr o="totalOpacity">cielo ocultado:&#9;</hdr>
+  <hdr o="gpSurface">geopotencial de la superficie isobárica | hPa:&#9;</hdr>
+  <hdr o="gpSurfaceNA">geopotencial:&#9;&#9;</hdr>
+  <hdr o="weather">tiempo:&#9;&#9;&#9;</hdr>
+  <hdr o="cloud">nubes:&#9;&#9;&#9;</hdr>
+  <hdr o="ceiling">techo:&#9;&#9;&#9;</hdr>
+  <hdr o="temperature-temp">temperatura:&#9;&#9;</hdr>
+  <hdr o="temperature-dew">temperatura del punto de rocío:&#9;&#9;</hdr>
+  <hdr o="relHumid">humedad relativa:&#9;</hdr>
+  <hdr o="tempMaxAt">|temperatura máx.:&#9;</hdr>
+  <hdr o="tempMinAt">|temperatura mín.:&#9;</hdr>
+  <hdr o="tempMax">temperatura máx.|:&#9;</hdr>
+  <hdr o="tempMin">temperatura mín.|:&#9;</hdr>
+  <hdr o="tempMaxDaytime">temperatura máx. del día|:&#9;</hdr>
+  <hdr o="tempMinNighttime">temperatura mín. de la noche|:&#9;</hdr>
+  <hdr o="tempAt">temperatura:&#9;&#9;</hdr>
+  <hdr o="tempMaxFQ">temperatura mín.:&#9;</hdr>
+  <hdr o="temp_fcst">predicción temperatura:&#9;</hdr>
+  <hdr o="QNH">altímetro:&#9;&#9;</hdr>
+  <hdr o="QNH_fcst">predicción altímetro:&#9;</hdr>
+  <hdr o="minQNH">altímetro mínimo:&#9;</hdr>
+  <hdr o="stationPressure">presión al nivel de la estación:&#9;</hdr>
+  <hdr o="stateOfRwy">estado |:&#9;</hdr>
+  <hdr o="rwyReportRepeated">no hay nuevo informe por la pista, anterior:&#9;</hdr>
+  <hdr o="windShearRwy">|:&#9;&#9;</hdr>
+  <hdr o="recentWeather">tiempo reciente:&#9;&#9;</hdr>
+  <hdr o="weatherPast">tiempo|:&#9;</hdr>
+  <hdr o="colourCode">código de color:&#9;&#9;</hdr>
+  <hdr o="windShearLvl">CIZALLADURA DEL VIENTO! Viento:&#9;</hdr>
+  <hdr o="windShearConds">cizalladura del viento posible</hdr>
+  <hdr o="waveHeight">olas:&#9;&#9;&#9;</hdr>
+  <hdr o="cloudMaxCover">máx. cubierta de nubes:&#9;</hdr>
+  <hdr o="cloudCoverVar">nubes:&#9;&#9;</hdr>
+  <hdr o="cloudCoverVar2">variando a:&#9;&#9;&#9;</hdr>
+  <hdr o="reportConcerns">informe concierne:&#9;&#9;</hdr>
+  <hdr o="cloudOpacityLvl">fenómeno meteorológico con opacidad:&#9;</hdr>
+  <hdr o="trend">tendencias por los 2 horas siguiente:</hdr>
+  <hdr o="trend_ul">=====================================</hdr>
+  <hdr o="trendTAF">predicción de tendencias:</hdr>
+  <hdr o="trendTAF_ul">=========================</hdr>
+  <hdr o="remark">comentarios:</hdr>
+  <hdr o="remark_ul">============</hdr>
+  <hdr o="visLoc">visibilidad|:&#9;</hdr>
+  <hdr o="rwyWind">viento por pista |:&#9;</hdr>
+  <hdr o="thrWind">viento por pista |:&#9;</hdr>
+  <hdr o="peakWind">viento mayor|:&#9;</hdr>
+  <hdr o="SLP">presión al nivel del mar:&#9;</hdr>
+  <hdr o="regQNH">reg. QNH:&#9;&#9;</hdr>
+  <hdr o="QFE">QFE presión:&#9;&#9;</hdr>
+  <hdr o="QFF">QFF presión:&#9;&#9;</hdr>
+  <hdr o="rmkVisVar">visib. variando desde:&#9;</hdr>
+  <hdr o="correctedAt">informe correctado:&#9;</hdr>
+  <hdr o="amendedAt">informe enmiendo:&#9;</hdr>
+  <hdr o="precipitation">cantidad de precipitación|:&#9;</hdr>
+  <hdr o="ERROR">error a '@': </hdr>
+  <hdr o="warning">aviso: </hdr>
+  <hdr o="SST">temp. del superficie del mar:&#9;</hdr>
+  <hdr o="OAT">temp. del aire exterior:&#9;</hdr>
+  <hdr o="AI">AI:&#9;&#9;&#9;</hdr>
+  <hdr o="snowIncr">nieve creciente rápidamente:&#9;</hdr>
+  <hdr o="cloudTypes">género de nubes:&#9;</hdr>
+  <hdr o="windShift">cambio del viento</hdr>
+  <hdr o="conditionMountain">montañas:&#9;&#9;</hdr>
+  <hdr o="conditionValley">valles:&#9;&#9;</hdr>
+  <hdr o="turbulence">turbulencia:&#9;&#9;</hdr>
+  <hdr o="icing">congelación:&#9;&#9;</hdr>
+  <hdr o="tracesOf">vestigios de:&#9;&#9;</hdr>
+  <hdr o="seaCondition">estado del mar:&#9;</hdr>
+  <hdr o="swellCondition">estado del oleaje:&#9;</hdr>
+  <hdr o="cloudLayer">capa de nubes:&#9;&#9;</hdr>
+  <hdr o="obscuration">debido a |:&#9;</hdr>
+  <hdr o="variableCeiling">techo variando:&#9;</hdr>
+  <hdr o="pressureChange">cambio de presión|:&#9;</hdr>
+  <hdr o="pressureChangeStn">cambio de presión (nivel de la estación)|:&#9;</hdr>
+  <hdr o="ceilVisVariable">techo a o debajo de 900 m y variando, visibilidad variando desde:&#9;</hdr>
+  <hdr o="rwySfcCondition">estado del superficie de la pista:&#9;</hdr>
+  <hdr o="rainfall">pluviosidad|:&#9;&#9;</hdr>
+  <hdr o="NEFO_PLAYA">NEFO PLAYA:&#9;&#9;</hdr>
+  <hdr o="densityAlt">altitud densimétrica:&#9;</hdr>
+  <hdr o="pressureAlt">altitud de presión:&#9;</hdr>
+  <hdr o="obsTimeOffset">desplazamiento para tiempo del observación:&#9;</hdr>
+  <hdr o="nextFcst">próx. predicción:&#9;</hdr>
+  <hdr o="amdAt">enmienda:&#9;&#9;</hdr>
+  <hdr o="fcstAutoObs">predicción basa en observación automática</hdr>
+  <hdr o="waterEquivOfSnow">agua equivalente a la nieve|:&#9;</hdr>
+  <hdr o="snowCover">tapa de la nieve:&#9;&#9;</hdr>
+  <hdr o="fcstNotAvbl">predicción no disponible:&#9;</hdr>
+  <hdr o="temp1">temperatura 1:&#9;&#9;</hdr>
+  <hdr o="temp2">temperatura 2:&#9;&#9;</hdr>
+  <hdr o="precipAmount1">precipitación 1:&#9;</hdr>
+  <hdr o="precipAmount2">precipitación 2:&#9;</hdr>
+  <hdr o="notRecognised">NO RECONOCIDO:&#9;&#9;</hdr>
+  <hdr o="RSNK">datos para Rattlesnake Mountain:</hdr>
+  <hdr o="LAG_PK">datos para Laguna Peak:</hdr>
+  <hdr o="RADAT">datos de observación de radiosonda para el nivel de 0 °C:</hdr>
+  <hdr o="freezingLvl">nivel de 0 °C:&#9;&#9;</hdr>
+  <hdr o="sunshine">duración de la insolación|:&#9;</hdr>
+  <hdr o="hailStones">máx. diámetro de granizos:&#9;</hdr>
+  <hdr o="glazeDeposit">espesor del depósito de cencellada transparente:&#9;</hdr>
+  <hdr o="rimeDeposit">espesor del depósito de cencellada blanca:&#9;</hdr>
+  <hdr o="compoundDeposit">espesor de depósitos mixtos:&#9;</hdr>
+  <hdr o="wetsnowDeposit">espesor del depósito de aguanieve:&#9;</hdr>
+  <hdr o="activeRwy">pista activa:&#9;&#9;</hdr>
+  <hdr o="transitionLvl">nivel de transición:&#9;</hdr>
+  <hdr o="currentATIS">ATIS:&#9;&#9;&#9;</hdr>
+  <hdr o="obsInitials">observador:&#9;&#9;</hdr>
+  <hdr o="QBB">base de nubes:&#9;&#9;</hdr>
+  <hdr o="QBJ">cumbre de nubes:&#9;</hdr>
+  <hdr o="limMetwatch">servicio met. limitado</hdr>
+  <hdr o="autoMetwatch">servicio met. automático</hdr>
+  <hdr o="issuedBy">publicado de:&#9;&#9;</hdr>
+  <hdr o="windAtLoc">viento |:&#9;&#9;</hdr>
+  <hdr o="exactObsTime">tiempo exacto de obs.:&#9;</hdr>
+  <hdr o="stateOfGround">estado del suelo:&#9;</hdr>
+  <hdr o="tempMinGround">temp. mín. del terreno|:&#9;</hdr>
+  <hdr o="tempGround">temperatura del terreno|:&#9;</hdr>
+  <hdr o="stateOfGroundSnow">estado del suelo:&#9;</hdr>
+  <hdr o="snowDepth">espesor de la nieve|:&#9;</hdr>
+  <hdr o="snowFall">nieve recién caída|:&#9;</hdr>
+  <hdr o="rad0PosNet">radiación neta positiva|:&#9;</hdr>
+  <hdr o="rad1NegNet">radiación neta negativa|:&#9;</hdr>
+  <hdr o="rad2GlobalSolar">radiación solar global|:&#9;</hdr>
+  <hdr o="rad3DiffusedSolar">radiación solar difusa|:&#9;</hdr>
+  <hdr o="rad4DownwardLongWave">radiación de onda larga descendente|:&#9;</hdr>
+  <hdr o="rad5UpwardLongWave">radiación de onda larga ascendente|:&#9;</hdr>
+  <hdr o="rad6ShortWave">radiación de onda corta|:&#9;</hdr>
+  <hdr o="radShortWave">radiación neta de onda corta|:&#9;</hdr>
+  <hdr o="radDirectSolar">radiación solar directa|:&#9;</hdr>
+  <hdr o="cloudTypesDrift">movimiento de nubes:&#9;</hdr>
+  <hdr o="evaporation">evaporación|:&#9;</hdr>
+  <hdr o="evapotranspiration">evapotranspiración|:&#9;</hdr>
+  <hdr o="evapoInstrumentation">medida con:&#9;&#9;</hdr>
+  <hdr o="cropEvapotranspiration">&#9;&#9;por:&#9;</hdr>
+  <hdr o="tempChange">cambio de temp. |:&#9;</hdr>
+  <hdr o="cloudInfoBase">base de |:&#9;</hdr>
+  <hdr o="precipCharacter">carácter de precipitación:&#9;</hdr>
+  <hdr o="beginPrecip">principio de precipitación:&#9;</hdr>
+  <hdr o="endPrecip">fin de precipitación:&#9;</hdr>
+  <hdr o="weatherSynopBegin">principio del tiempo:&#9;</hdr>
+  <hdr o="weatherSynopCharacter">carácter del tiempo:&#9;</hdr>
+  <hdr o="weatherSynopEnd">fin del tiempo:&#9;</hdr>
+  <hdr o="weatherSynopSince">duración del tiempo:&#9;</hdr>
+  <hdr o="highestGust">ráfaga máxima|:&#9;</hdr>
+  <hdr o="highestMeanSpeed">viento medio máximo|:&#9;</hdr>
+  <hdr o="meanSpeed">viento medio|:&#9;</hdr>
+  <hdr o="lowestMeanSpeed">viento medio mínimo|:&#9;</hdr>
+  <hdr o="highestWind">viento máximo|:&#9;</hdr>
+  <hdr o="weatherSynopAdd">tiempo adicional|:&#9;</hdr>
+  <hdr o="weatherSynopAmplPast">tiempo pasado importante|:&#9;</hdr>
+  <hdr o="weatherSynopAmpl">tiempo importante|:&#9;</hdr>
+  <hdr o="weatherSynopPast">tiempo pasado|:&#9;</hdr>
+  <hdr o="stateOfSky">estado del cielo:&#9;</hdr>
+  <hdr o="weatherSynopPrecip">, tasa de precipitación:&#9;</hdr>
+  <hdr o="cloudBelowStation">cima de | abajo de la estación:&#9;</hdr>
+  <hdr o="precipPeriods">duración y período de precipitación:&#9;</hdr>
+  <hdr o="windDir">dirección del viento|:&#9;</hdr>
+  <hdr o="tideData">marea:&#9;&#9;</hdr>
+  <hdr o="tideDeviation">desviación:&#9;&#9;</hdr>
+  <hdr o="tempCity">temperatura en la ciudad:&#9;</hdr>
+  <hdr o="tempCityMax">máx. temperatura en la ciudad|:&#9;</hdr>
+  <hdr o="tempCityMin">mín. temperatura en la ciudad|:&#9;</hdr>
+  <hdr o="precipCity">cantidad de precipitación en la ciudad|:&#9;</hdr>
+  <hdr o="waterTemp">temperatura del agua|:&#9;</hdr>
+  <hdr o="soilTemp">temperatura de suelo|:&#9;</hdr>
+  <hdr o="soilTempMin">mín. temperatura de suelo|:&#9;</hdr>
+  <hdr o="verticalClouds">nubes verticales:&#9;</hdr>
+  <hdr o="specialClouds">nubes especiales:&#9;</hdr>
+  <hdr o="opticalPhenom">fenómeno óptico:&#9;</hdr>
+  <hdr o="equivWindSpeed">viento equiv. en |:&#9;</hdr>
+  <hdr o="cloudTopsHeight">cima de la nube más baja o niebla|:&#9;</hdr>
+  <hdr o="displacement">desplazamiento|:&#9;</hdr>
+  <hdr o="seaSurfaceTemp">temperatura del superficie del agua:&#9;</hdr>
+  <hdr o="orographicClouds">nubes orográfícas:&#9;</hdr>
+  <hdr o="waves">olas:&#9;&#9;&#9;</hdr>
+  <hdr o="windWaves">olas por el viento:&#9;</hdr>
+  <hdr o="swell">olas de mar de fondo:&#9;</hdr>
+  <hdr o="wetbulbTemperature">temperatura de bulbo húmedo:&#9;</hdr>
+  <hdr o="snowCoverCharacter">carácter de la tapa de la nieve:&#9;</hdr>
+  <hdr o="snowCoverRegularity">regularidad de la tapa de la nieve:&#9;</hdr>
+  <hdr o="driftSnowData">ventisca:&#9;</hdr>
+  <hdr o="driftSnowEvolution">evolución de la ventisca:&#9;</hdr>
+  <hdr o="cloudEvolution">evolución de nubes:&#9;</hdr>
+  <hdr o="endOfContWinds">fin de mediciónes continuas del viento:&#9;</hdr>
+  <hdr o="continuousWind">media viento | antes:&#9;</hdr>
+  <hdr o="iceAccretion">acumulación de hielo|:&#9;</hdr>
+  <hdr o="seaLandIce">hielo marino/de origen terrestre:&#9;</hdr>
+  <hdr o="maxWindForce">fuerza máxima del viento|:&#9;</hdr>
+  <hdr o="frozenDeposit">depósito congelado:&#9;</hdr>
+  <hdr o="tempVariation">variación de la temperatura|:&#9;</hdr>
+  <hdr o="mirage">espejismo|:&#9;</hdr>
+  <hdr o="visibilityVariation">variación de la visibilidad|:&#9;</hdr>
+  <hdr o="alightingAreaCondition">estado de la superficie del agua en la zona de amerizaje:&#9;</hdr>
+  <hdr o="MAR">visibilidad hacia el mar|:&#9;</hdr>
+  <hdr o="SFC">visibilidad al superficie|:&#9;</hdr>
+  <hdr o="TWR">visibilidad al torre|:&#9;</hdr>
+  <hdr o="ROOF">visibilidad del tejado|:&#9;</hdr>
+  <hdr o="qualitySection">calidad de este sección:&#9;</hdr>
+  <hdr o="qualityControlPosition">calidad de la posición:&#9;</hdr>
+  <hdr o="qualityControlTime">calidad del tiempo:&#9;</hdr>
+  <hdr o="qualityLocClass">error de la ubicación (66 % de confiabilidad)|:&#9;</hdr>
+  <hdr o="layerBase">base de la capa:&#9;</hdr>
+  <hdr o="layerThickness">espesor de la capa:&#9;</hdr>
+  <hdr o="qualityData">datos de calidad:&#9;</hdr>
+  <hdr o="qualityPressure">calidad de la medición de la presión:&#9;</hdr>
+  <hdr o="qualityHousekeeping">calidad del parámetro de servicio:&#9;</hdr>
+  <hdr o="qualityWaterTemp">calidad de la medición de la temp. del agua:&#9;</hdr>
+  <hdr o="qualityAirTemp">calidad de la medición de la temp. del aire:&#9;</hdr>
+  <hdr o="qualityTransmission">calidad de las transmisiones por satélite:&#9;</hdr>
+  <hdr o="qualityLocation">calidad de la ubicación:&#9;</hdr>
+  <hdr o="depthCorrectionInd">corrección de los valores de profundidad:&#9;</hdr>
+  <hdr o="qualityTempSalProfile">calidad de la medición del perfil de temp. y salinidad:&#9;</hdr>
+  <hdr o="qualityCurrentProfile">calidad de la medición del perfil de corriente:&#9;</hdr>
+  <hdr o="salinityMeasurement">método de la medición del salinidad:&#9;</hdr>
+  <hdr o="salinity">salinidad:&#9;</hdr>
+  <hdr o="measurementDurTime">medición de la corriente:&#9;</hdr>
+  <hdr o="measurementCorrection">corrección de la medición:&#9;</hdr>
+  <hdr o="current">corriente:&#9;</hdr>
+  <hdr o="lastKnownPosTime">tiempo de la última posición conocida:&#9;</hdr>
+  <hdr o="buoyType">tipo de boya:&#9;</hdr>
+  <hdr o="drogueType">tipo de ancla flotante:&#9;</hdr>
+  <hdr o="anemometer">anemómetro:&#9;</hdr>
+  <hdr o="buoyDrift">deriva de la boya:&#9;</hdr>
+  <hdr o="pressureCableEnd">presión hidróstatica del extremo inferior del cable:&#9;</hdr>
+  <hdr o="batteryVoltage">voltaje de la batería:&#9;</hdr>
+  <hdr o="submergence">tiempo de inmersión:&#9;</hdr>
+  <hdr o="cableLengthThermistor">longitud del cable (cadena de termistores):&#9;</hdr>
+  <hdr o="cableLengthDrogue">longitud del cable del ancla:&#9;</hdr>
+  <hdr o="fcstCancelledFrom">predicción anulada</hdr>
+  <hdr o="phaseOfFlight">fase de vuelo:&#9;&#9;</hdr>
+  <hdr o="aircraftId">id de la aeronave:&#9;</hdr>
+  <hdr o="aircraftLocation">posición de la aeronave:&#9;</hdr>
+  <hdr o="amdarObs">datos de la medición:</hdr>
+  <hdr o="amdarObs_ul">=====================</hdr>
+  <hdr o="windAtPA">viento:&#9;&#9;&#9;</hdr>
+  <hdr o="turbulenceAtPA">turbulencia:&#9;&#9;</hdr>
+  <hdr o="rollAngleQuality">calidad del ángulo de balanceo de la aeronave:&#9;</hdr>
+  <hdr o="amdarInfo">información add.:&#9;</hdr>
+  <hdr o="flightLvl">nivel de vuelo:&#9;</hdr>
+  <hdr o="maxDerivedVerticalGust">ráfaga vert. máxima|:&#9;</hdr>
+
+  <t o="notAvailable">(no disponible)</t>
+  <t o="invalidFormat">formato no válido</t>
+  <t o="bulletinSeq">, secuencia de boletín </t>
+  <t o="sequenceLost">, secuencia de boletín perdida</t>
+  <t o="over24hLate">, boletín más que 24 horas después de la observación</t>
+  <t o="calmWind">en calma</t>
+  <t o="calmSea">mar en calma</t>
+  <t o="noWaves">sin olas</t>
+  <t o="onDate">el </t>
+  <t o="byDate">hasta al </t>
+  <t o="fromDate">del </t>
+  <t o="fromTillDate">del </t>
+  <t o="sinceDate">desde el </t>
+  <t o="tillDate">al </t>
+  <t o="dirVariable">de direcciónes variables</t>
+  <t o="dirVarAllUnk">de direcciónes variables/todas/desconocidas</t>
+  <t o="dirNotAvailable">dirección no disponible,</t>
+  <t o="speedNotAvailable">velocidad no disponible</t>
+  <t o="wind-from">del |</t>
+  <t o="last">último</t>
+  <t o="segment">segmento</t>
+  <t o="wind-at">a</t>
+  <t o="wind-gusts">&#9;&#9;&#9;con ráfagas</t>
+  <t o="cloud-at">a</t>
+  <t o="cloudTypeNotAvailable">(tipo de nubes impossibile observar)</t>
+  <t o="baseBelowStation">base de nubes debajo del nivel de la estación</t>
+  <t o="cloudBaseNotAvailable">base de nubes no disponible</t>
+  <t o="timeAt">a las </t>
+  <t o="afterHour"> minutes después de la hora</t>
+  <t o="timeBy">hasta las </t>
+  <t o="timeFrom">de las </t>
+  <t o="timeFromTill">de las </t>
+  <t o="timeSince">desde las </t>
+  <t o="timeTill">a las </t>
+  <t o="variable">&#9;&#9;&#9;variando</t>
+  <t o="variable-from">entre </t>
+  <t o="variable-to">y </t>
+  <t o="visVertNA">imposible determinarlo</t>
+  <t o="windShear">cizalladura crítica del viento</t>
+  <t o="rwyNotInUse">pista no operativa</t>
+  <t o="rwyVisNotAvailable">(visibilidad no disponible)</t>
+  <t o="visRwyNotAvailable">(visibilidad por las pistas no disponible)</t>
+  <t o="rwyDesigAll">todas pistas</t>
+  <t o="rwyDesig">pista |</t>
+  <t o="SNOCLO">aeropuerto cerrado por nieve</t>
+  <t o="cleared">despejado</t>
+  <t o="friction">coeficiente de la fricción: </t>
+  <t o="depositExtent"> de pista tapada</t>
+  <t o="depositDepth">espesor del depósito |</t>
+  <t o="NOSIG">no cambio significativo</t>
+  <t o="BECMG">transición a</t>
+  <t o="TEMPO">temporalmente</t>
+  <t o="INTER">intermitentemente</t>
+  <t o="CAVOK">nubes y visibilidad OK</t>
+  <t o="RVRNO">RVR no disponible</t>
+  <t o="PWINO">sensor para identificar el tiempo actual no funciona</t>
+  <t o="FZRANO">sensor para identificar lluvia engelante no funciona</t>
+  <t o="TSNO">sensor para identificar relámpagos no funciona</t>
+  <t o="PNO">sensor no funciona: lluvia indicador</t>
+  <t o="CHINO">indicador secundario para la altura de techo | no funciona</t>
+  <t o="VISNO">indicador secundario para la visibilidad | no funciona</t>
+  <t o="WXNO">información sobre el tiempo actual no disponible</t>
+  <t o="CBNO">información sobre los tipos de nubes CB/TCU no disponible</t>
+  <t o="NOSPECI">no SPECI informes producido a esta estación</t>
+  <t o="VIA_PHONE">vía teléfono</t>
+  <t o="RCRNR">frenar mermado pero indicaciónes del decelerometer no hay</t>
+  <t o="FROIN">escarcha en el indicador</t>
+  <t o="LGT_FROIN">escarcha ligera en el indicador</t>
+  <t o="HVY_FROIN">escarcha fuerte en el indicador</t>
+  <t o="VRBL_CONDS">condiciones variables</t>
+  <t o="ACFT_MSHP">desgracia de avión</t>
+  <t o="LTG_DATA_MISG">datos de relámpagos fallan</t>
+  <t o="RVR_MISG">datos de RVR fallan</t>
+  <t o="CLD_MISG">datos de nubes fallan</t>
+  <t o="WX_MISG">datos de tiempo fallan</t>
+  <t o="VIS_MISG">datos de visibilidad fallan</t>
+  <t o="WND_MISG">datos de viento fallan</t>
+  <t o="CIG_RAG">techo desigual</t>
+  <t o="needMaint">estación automática necesita mantenimiento</t>
+  <t o="loc-and"> y </t>
+  <t o="loc-through"> hasta</t>
+  <t o="predictedColour">predicho:</t>
+  <t o="prob">con | % probabilidad</t>
+  <t o="nextDay"> el día siguiente</t>
+  <t o="isStationary">inmóvil</t>
+  <t o="obscgMtns"> ocultand(o,a)(s) los montañas</t>
+  <t o="isGrid">cuadrícula </t>
+  <t o="quadrant">cuadrante</t>
+  <t o="snowIncrPastHour">| in. desde 1h</t>
+  <t o="snowIncrOnGround">| in. al suelo</t>
+  <t o="low">bajo:&#9;&#9;</t>
+  <t o="middle">medio:&#9;&#9;</t>
+  <t o="high">alto:&#9;&#9;</t>
+  <t o="FROPA">debido al paso de una frente</t>
+  <t o="MOV">moviendo</t>
+  <t o="MOVD">movió</t>
+  <t o="weatherBegan">empezó</t>
+  <t o="weatherEnded">acabó</t>
+  <t o="compassDirLocation">al |</t>
+  <t o="compassDirTo">al |</t>
+  <t o="compassDirFrom">desde |</t>
+  <t o="compassDirThrough">|</t>
+  <t o="compassDirDescrQuad">| cuadrante</t>
+  <t o="isLower">más baj(o,a)(s)</t>
+  <t o="isLow">baj(o,a)(s)</t>
+  <t o="isFrequent">frecuente</t>
+  <t o="isOccasional">ocasional</t>
+  <t o="isThick">denso</t>
+  <t o="isPrettyThick">bastante denso</t>
+  <t o="isVeryThick">muy denso</t>
+  <t o="isThin">fino</t>
+  <t o="isPrettyThin">bastante fino</t>
+  <t o="isVeryThin">muy fino</t>
+  <t o="isFeeble">débil</t>
+  <t o="isPrettyFeeble">bastante débil</t>
+  <t o="isVeryFeeble">muy débil</t>
+  <t o="isSlight">ligera</t>
+  <t o="isLight">ligera</t>
+  <t o="isPrettyLight">bastante leve</t>
+  <t o="isVeryLight">muy ligera</t>
+  <t o="isModerate">moderado</t>
+  <t o="isHeavy">fuerte</t>
+  <t o="isVeryHeavy">muy fuerte</t>
+  <t o="isIntermittent">intermitente</t>
+  <t o="isContinuous">continuo</t>
+  <t o="isIsolated">aislados</t>
+  <t o="isNumerous">numerosos</t>
+  <t o="isConvective">convectivas</t>
+  <t o="isDissipated">disipados</t>
+  <t o="isFreezing">engelante</t>
+  <t o="isPatchy">variable</t>
+  <t o="isVertical">vertical</t>
+  <t o="isPartial">parcial</t>
+  <t o="isVariable">fluctuante</t>
+  <t o="inPastHour">en la hora precedente</t>
+  <t o="isAloft">arriba</t>
+  <t o="aloftNotNearGround">en lo alto pero no cerca del suelo</t>
+  <t o="nearGroundNotAloft">cerca del suelo, pero no en lo alto</t>
+  <t o="isSteady">estable</t>
+  <t o="isIncreasing">en aumento</t>
+  <t o="isDecreasing">en descenso</t>
+  <t o="layerTop">cima de la capa</t>
+  <t o="thinLayer">capa fina |</t>
+  <t o="range-from"> desde</t>
+  <t o="toTopOfCloud">a la cima de nubes</t>
+  <t o="isNotScheduled">no es programada</t>
+  <t o="isLtdToCldVisWind">limitado a nubes, visibilidad y viento</t>
+  <t o="amendment">enmienda</t>
+  <t o="ceiling">techo</t>
+  <t o="approach">acercamiento</t>
+  <t o="cloudTypeAsoctd">asociado con |</t>
+  <t o="cloudTypeEmbd">| embebida</t>
+  <t o="decelerometerReading">indicación del decelerometer</t>
+  <t o="decelerometerReadingNA">no hay indicaciónes del decelerometer</t>
+  <t o="minutes">minutos</t>
+  <t o="fcstAutoMETAR">predicción basa en METAR automática</t>
+  <t o="fcstCancelled">predicción anulada</t>
+  <t o="CAVU">cielo despejado o nubes dispersas y visibilidad >10 US-miles</t>
+  <t o="EPC">estimado puerto de montaña cerrado</t>
+  <t o="EPO">estimado puerto de montaña abierto</t>
+  <t o="EPM">estimado puerto de montaña marginal</t>
+  <t o="RTS">vuelto en servicio</t>
+  <t o="precipTraces">vestigios</t>
+  <t o="thicknessTraces">vestigios</t>
+  <t o="firstObs">primera observación|</t>
+  <t o="nextObs">siguiente observación|</t>
+  <t o="lastObs">última observación|</t>
+  <t o="isStaffed"> proveída de personal</t>
+  <t o="isManned"> proveída de personal</t>
+  <t o="balloonDisapp">globo desapareció al |</t>
+  <t o="balloonVisib">globo visible hasta |</t>
+  <t o="estimated">estimado</t>
+  <t o="isEstimated">| (estimado)</t>
+  <t o="distIsVariable">| (variando)</t>
+  <t o="dueToIceAccretion"> debido a aumento de hielo</t>
+  <t o="BA_POOR">eficacia de frenado pobre</t>
+  <t o="BA_POOR_MED">eficacia de frenado mediana/pobre</t>
+  <t o="BA_MEDIUM">eficacia de frenado mediana</t>
+  <t o="BA_MED_GOOD">eficacia de frenado mediana/buena</t>
+  <t o="BA_GOOD">eficacia de frenado buena</t>
+  <t o="frictionUnreliable">fricción: medición poco seguro</t>
+  <t o="THN_SPTS_IOVC">puntos delgados en el cielo cubierto</t>
+  <t o="FUOCTY">humo sobre ciudad</t>
+  <t o="ALTM_MISG">valor de altímetro falla</t>
+  <t o="ALL_WNDS_GRID">todas direcciones de viento grid</t>
+  <t o="CONTRAILS">estelas de condensación</t>
+  <t o="FOGGY">nebuloso</t>
+  <t o="TWLGT">crepúsculo</t>
+  <t o="WEA">aumento meteorológico manual</t>
+  <t o="isMissing">fallan</t>
+  <t o="slash">/</t>
+  <t o="FIBI">archivado pero irrealizable transmitir</t>
+  <t o="section">sección</t>
+  <t o="lessOktas"> o menos, pero no 0/8 (0/10)</t>
+  <t o="moreOktas"> o más, pero no 8/8 (10/10)</t>
+  <t o="lessTenths"> o menos, pero no 0/10 (0/8)</t>
+  <t o="moreTenths"> o más, pero no 10/10 (8/8)</t>
+  <t o="oktasNotAvailable">cubierta no disponible</t>
+  <t o="synopMainHour"> (hora principal)</t>
+  <t o="synopIntermHour"> (hora intermedia)</t>
+  <t o="synopNonstandardHour"> (hora no estándar)</t>
+  <t o="cloudNone">ningunas nubes</t>
+  <t o="cloudInvisible">nubes no visible</t>
+  <t o="coverNotCont">cubierta, no continuamente</t>
+  <t o="noMeasurement">medición imposible o imprecisa</t>
+  <t o="topsInvisible">cumbre de las nubes no visible</t>
+  <t o="elevationAngle">ángulo a cumbre de la nube </t>
+  <t o="noPrecip">ninguna precipitación</t>
+  <t o="atAgo">hace |</t>
+  <t o="beganAgo">comenzó hace |</t>
+  <t o="endedAgo">terminó hace |</t>
+  <t o="duration">por |</t>
+  <t o="timeBeforeObsAtNA">(tiempo no disponible)</t>
+  <t o="timeBeforeObsBeginNA">(principio no disponible)</t>
+  <t o="timeBeforeObsEndNA">(fin no disponible)</t>
+  <t o="timeBeforeObsNA">(periodo no disponible)</t>
+  <t o="RS">Rosário (1NM THR05)</t>
+  <t o="during"> durante </t>
+  <t o="periodNotAvailable"> (período no disponible)</t>
+  <t o="beganDuringObs">comenzó durante la observación</t>
+  <t o="endedDuringObs">terminó durante la observación</t>
+  <t o="beganEndedDuringObs">comenzó y terminó durante la observación</t>
+  <t o="changedDuringObs">cambió durante la observación</t>
+  <t o="beganAfterObs">comenzó después de la observación</t>
+  <t o="endedAfterObs">terminó después de la observación</t>
+  <t o="onePeriod"> durante un período</t>
+  <t o="morePeriods"> durante dos o más períodos</t>
+  <t o="NDV">(variación dependiendo de la dirección no disponible)</t>
+  <t o="onGround"> al suelo</t>
+  <t o="recordTemp">temperatura |</t>
+  <t o="recordTempCity">temperatura | por ciudad</t>
+  <t o="highest">más alta</t>
+  <t o="lowest">más baja</t>
+  <t o="isEqualled"> conseguida</t>
+  <t o="isOverrun"> excedida</t>
+  <t o="isUnderrun"> excedida</t>
+  <t o="since">desde </t>
+  <t o="TWR">al torre</t>
+  <t o="KAUKAU">al Mt. Kaukau</t>
+  <t o="SUGARLOAF">al Sugar Loaf</t>
+  <t o="intensity">intensidad</t>
+  <t o="notMeasurable">demasiado pequeño para medir</t>
+  <t o="typeOfMeasurement">tipo de medición: </t>
+  <t o="period">periodo</t>
+  <t o="height">altura</t>
+  <t o="seaConfused">mar confusa</t>
+  <t o="approaching"> provienen |</t>
+  <t o="dataQualityAllOrBetter">| (o mejor)</t>
+  <t o="dataQualityExcept">, excepto grupo subsecuente |: </t>
+  <t o="cloudLayerCover">cubierta de nubes:&#9;</t>
+  <t o="atDepth">en la profundidad de |</t>
+  <t o="atHeight">en la altura de |</t>
+  <t o="birdStrikeHazard">peligro aviario|</t>
+  <t o="approachingWith">provienen | con:&#9;</t>
+  <t o="maxConcentration">máx. concentración</t>
+  <t o="confidenceIsExcellent">(+/- &lt;=3 m)</t>
+  <t o="confidenceIsGood">(+/- &lt;=10 m)</t>
+  <t o="confidenceIsFair">(+/- &lt;=20 m)</t>
+  <t o="confidenceIsPoor">(+/- >20 m)</t>
+  <t o="combined_phenom1"> con </t>
+  <t o="combined_phenom2"> y </t>
+  <t o="navSystem">sistema de navegación: |</t>
+  <t o="amdarSystem">sistema de AMDAR: |</t>
+  <t o="tempPrecision">precisión de la temperatura: |</t>
+
+  <reportModifierType o="NIL" >informe falta</reportModifierType>
+  <reportModifierType o="AUTO">generado automáticamente</reportModifierType>
+  <reportModifierType o="COR" >correctado manual</reportModifierType>
+  <reportModifierType o="RTD" >rutina pospuesto</reportModifierType>
+  <reportModifierType o="P"   >segmentado, </reportModifierType>
+  <reportModifierType o="RR"  >pospuesto</reportModifierType>
+  <reportModifierType o="CC"  >correctado</reportModifierType>
+  <reportModifierType o="AA"  >enmendado</reportModifierType>
+  <reportModifierType o="AMD" >enmendado</reportModifierType>
+  <reportModifierType o="LVW" >viento máximo observado</reportModifierType>
+
+  <compassDir o="N">norte</compassDir>
+  <compassDir o="NNE">norte-nordeste</compassDir>
+  <compassDir o="NE">nordeste</compassDir>
+  <compassDir o="ENE">este-nordeste</compassDir>
+  <compassDir o="E">este</compassDir>
+  <compassDir o="ESE">este-sudeste</compassDir>
+  <compassDir o="SE">sudeste</compassDir>
+  <compassDir o="SSE">sur-sudeste</compassDir>
+  <compassDir o="S">sur</compassDir>
+  <compassDir o="SSW">sur-sudoeste</compassDir>
+  <compassDir o="SW">sudoeste</compassDir>
+  <compassDir o="WSW">oeste-sudoeste</compassDir>
+  <compassDir o="W">oeste</compassDir>
+  <compassDir o="WNW">oeste-noroeste</compassDir>
+  <compassDir o="NW">noroeste</compassDir>
+  <compassDir o="NNW">norte-noroeste</compassDir>
+  <compassDir o="N">norte</compassDir>
+
+  <units o="M"> m</units>
+  <units o="KM"> km</units>
+  <units o="DM"> dm</units>
+  <units o="CM"> cm</units>
+  <units o="MM"> mm</units>
+  <units o="SM"> millas</units>
+  <units o="NM"> millas náut.</units>
+  <units o="FT"> pies</units>
+  <units o="IN"> in.</units>
+  <units o="KMH"> km/h</units>
+  <units o="KT"> kt</units>
+  <units o="MPH"> mph</units>
+  <units o="MPS"> m/s</units>
+  <units o="hPa"> hPa</units>
+  <units o="kPa"> kPa</units>
+  <units o="inHg"> in. Hg</units>
+  <units o="mmHg"> mmHg</units>
+  <units o="SEC"> seg.</units>
+  <units o="SEC-sum">s</units>
+  <units o="MIN"> min.</units>
+  <units o="MIN-sum">m</units>
+  <units o="H"> hora(s)</units>
+  <units o="H-sum">h</units>
+  <units o="Jcm2"> J/cm²</units>
+  <units o="kJm2"> kJ/m²</units>
+  <units o="kgm2"> kg/m²</units>
+  <units o="MMH"> mm/h</units>
+  <units o="CMH"> cm/h</units>
+  <units o="CMSEC"> cm/seg.</units>
+  <units o="gpm"> gpm</units>
+  <units o="bft"> Beaufort</units>
+  <units o="UTC"> UTC</units>
+  <units o="localtime"> (hora local)</units>
+  <units o="V"> voltio</units>
+
+  <locationSpec o="isAround">alrededor</locationSpec>
+  <locationSpec o="atStation">en la estación</locationSpec>
+  <locationSpec o="atStationNotInDistance">en la estación, pero no a distancia</locationSpec>
+  <locationSpec o="allDirections">en todas las direcciones</locationSpec>
+  <locationSpec o="allDirectionsNotAtStation">en todas las direcciones, pero no en la estación</locationSpec>
+  <locationSpec o="approachingStation">se aproxima a la estación</locationSpec>
+  <locationSpec o="recedingFromStation">se aleja de la estación</locationSpec>
+  <locationSpec o="passingStationInDistance">pasa a distancia de la estación</locationSpec>
+  <locationSpec o="inDistance">lejano</locationSpec>
+  <locationSpec o="inVicinity">en las proximidades</locationSpec>
+  <locationSpec o="OMTNS">sobre las montañas</locationSpec>
+  <locationSpec o="OHD">por encima</locationSpec>
+  <locationSpec o="ALQDS">en todos los cuadrantes</locationSpec>
+  <locationSpec o="AT_AP">al aeropuerto</locationSpec>
+  <locationSpec o="OVR_AP">sobre aeropuerto</locationSpec>
+  <locationSpec o="NR_AP">cerca del aeropuerto</locationSpec>
+  <locationSpec o="VC_AP">en las proximidades del aeropuerto</locationSpec>
+  <locationSpec o="IN_VLY">en valle</locationSpec>
+  <locationSpec o="V_D">a varias direcciones</locationSpec>
+  <locationSpec o="OVR_LK">sobre el lago</locationSpec>
+  <locationSpec o="OVR_RIVER">sobre el río</locationSpec>
+  <locationSpec o="OVR_VLYS">sobre los valles</locationSpec>
+  <locationSpec o="OVR_RDG">sobre la cadena</locationSpec>
+  <locationSpec o="ALG_RIVER">a lo largo del río</locationSpec>
+  <locationSpec o="ALG_SHRLN">a lo largo de la costa</locationSpec>
+  <locationSpec o="UNKN">en dirección desconocida</locationSpec>
+
+  <cloudCover o="SKC">cielo despejado</cloudCover>
+  <cloudCover o="NSC">no nubes significativo</cloudCover>
+  <cloudCover o="CLR">no nubes reportado de estación automática</cloudCover>
+  <cloudCover o="NCD">no nubes detectado</cloudCover>
+  <cloudCover o="FEW">escasas nubes (1-2/8)</cloudCover>
+  <cloudCover o="SCT">nubes dispersas (3-4/8)</cloudCover>
+  <cloudCover o="BKN">cielo nuboso (5-7/8)</cloudCover>
+  <cloudCover o="OVC">cielo cubierto (8/8)</cloudCover>
+
+  <cloudType o="AC">altocúmulos</cloudType>
+  <cloudType o="ACC">altocúmulos castellanus</cloudType>
+  <cloudType o="ACSL">altocúmulos lenticulares estacionarios</cloudType>
+  <cloudType o="AS">altoestratos</cloudType>
+  <cloudType o="CB">cumulonimbos</cloudType>
+  <cloudType o="CBMAM">cumulonimbos mammatus</cloudType>
+  <cloudType o="CC">cirrocúmulos</cloudType>
+  <cloudType o="CCSL">cirrocúmulos lenticulares estacionarios</cloudType>
+  <cloudType o="CF">cúmulos fractus</cloudType>
+  <cloudType o="CI">cirros</cloudType>
+  <cloudType o="CS">cirroestratos</cloudType>
+  <cloudType o="CU">cúmulos</cloudType>
+  <cloudType o="CUFRA">cúmulos fractos</cloudType>
+  <cloudType o="NS">nimboestratos</cloudType>
+  <cloudType o="SAC">estratoaltocúmulos</cloudType>
+  <cloudType o="SC">estratocúmulos</cloudType>
+  <cloudType o="SCSL">estratocúmulos lenticulares estacionarios</cloudType>
+  <cloudType o="SF">estratos fractus</cloudType>
+  <cloudType o="ST">estratos</cloudType>
+  <cloudType o="STFRA">estratos fractus</cloudType>
+  <cloudType o="TCU">cúmulo altísimo</cloudType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0513, FMH-2 table 4-17 -->
+  <cloudTypeLow o="0">no hay nubes</cloudTypeLow>
+  <cloudTypeLow o="1">cúmulos (pequeña extensión vertical) (Cu humulis o fractus)</cloudTypeLow>
+  <cloudTypeLow o="2">cúmulos (moderada/gran extensión vertical o cúmulos altísimas) (Cu mediocris o congestus)</cloudTypeLow>
+  <cloudTypeLow o="3">cumulonimbos (cimas no fibrosas ni en forma de yunque) (Cb calvus)</cloudTypeLow>
+  <cloudTypeLow o="4">estratocúmulos (de la extensión de cúmulos) (Sc cumulogenitus)</cloudTypeLow>
+  <cloudTypeLow o="5">estratocúmulos (no de la extensión de cúmulos) (Sc)</cloudTypeLow>
+  <cloudTypeLow o="6">estratos (capa más o menos continuo) (St nebulosus o fractus)</cloudTypeLow>
+  <cloudTypeLow o="7">estratos fractos o cúmulos fractus de mal tiempo (St fractus o Cu fractus)</cloudTypeLow>
+  <cloudTypeLow o="8">cúmulos y estratocúmulos, con bases differentes (Cu y St)</cloudTypeLow>
+  <cloudTypeLow o="9">cumulonimbos (parte superior fibrosas o en forma de yunque) (Cb capillatus)</cloudTypeLow>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0515, FMH-2 table 4-18 -->
+  <cloudTypeMiddle o="0">no hay nubes</cloudTypeMiddle>
+  <cloudTypeMiddle o="1">altoestratos (predominantemente semitransparente) (As translucidus)</cloudTypeMiddle>
+  <cloudTypeMiddle o="2">altoestratos (predominantemente opacas) o nimboestratos (As opacus o Ns)</cloudTypeMiddle>
+  <cloudTypeMiddle o="3">altocúmulos (predominantemente semitransparente) (Ac translucidus)</cloudTypeMiddle>
+  <cloudTypeMiddle o="4">bancos de altocúmulos (lenticularis) (Ac translucidus o lenticularis)</cloudTypeMiddle>
+  <cloudTypeMiddle o="5">altocúmulos semitransparentes en bandas o en capas continuas, invadiendo progresivamente el cielo (Ac translucidus o opacus)</cloudTypeMiddle>
+  <cloudTypeMiddle o="6">altocúmulos (de la extensión de cúmulos o cumulonimbos) (Ac cumulogenitus o cumulonimbogenitus)</cloudTypeMiddle>
+  <cloudTypeMiddle o="7">altocúmulos (predominantemente opacas, no extendiendas; o con altoestratos) (Ac translucidus o opacus, Ac y As o Ns)</cloudTypeMiddle>
+  <cloudTypeMiddle o="8">altocúmulos (con brotes en forma de torrecillas o almenas o con copos cumuliformes) (Ac castellanus o flocus)</cloudTypeMiddle>
+  <cloudTypeMiddle o="9">altocúmulos de cielo caótico; generalmente a varios niveles</cloudTypeMiddle>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0509, FMH-2 table 4-19 -->
+  <cloudTypeHigh o="0">no hay nubes</cloudTypeHigh>
+  <cloudTypeHigh o="1">cirros (filamentos, hebras, o ganchos) (Ci fibratus o uncinus)</cloudTypeHigh>
+  <cloudTypeHigh o="2">cirros (densas, con protuberancias, o copos cumuliformes) (Ci spissatus, castellanus, o flocus)</cloudTypeHigh>
+  <cloudTypeHigh o="3">cirros (densas, de las partes superiores de los cumulonimbos) (Ci spissatus cumulonimbogenitus)</cloudTypeHigh>
+  <cloudTypeHigh o="4">cirros (ganchos o filamentos, invadiendo progresivamente el cielo) (Ci uncinus o fibratus)</cloudTypeHigh>
+  <cloudTypeHigh o="5">cirros y/o cirroestratos (invadiendo progresivamente el cielo, velo &lt;45° encima del horizonte) (Ci, Cs)</cloudTypeHigh>
+  <cloudTypeHigh o="6">cirros y/o cirroestratos (invadiendo progresivamente el cielo, velo >45° encima del horizonte) (Ci, Cs)</cloudTypeHigh>
+  <cloudTypeHigh o="7">cirroestratos (cubriendo la bóveda terrestre) (Cs)</cloudTypeHigh>
+  <cloudTypeHigh o="8">cirroestratos (no invadiendo el cielo ni cubriendo la bóveda terrestre) (Cs)</cloudTypeHigh>
+  <cloudTypeHigh o="9">cirrocúmulos (como la nube alta predominante) (Cc)</cloudTypeHigh>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0531 -->
+  <cloudTypeVertical o="Cuhum">cúmulos (pequeña extensión vertical) (Cu humulis y/o Cu mediocris)</cloudTypeVertical>
+  <cloudTypeVertical o="Cucon">cúmulos (moderada/gran extensión vertical) (Cu congestus)</cloudTypeVertical>
+  <cloudTypeVertical o="Cb">cumulonimbos (Cb)</cloudTypeVertical>
+  <cloudTypeVertical o="CuCb">cúmulos y cumulonimbos (Cu, Cb)</cloudTypeVertical>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0521 -->
+  <cloudTypeSpecial o="1">nubes nacaradas</cloudTypeSpecial>
+  <cloudTypeSpecial o="2">nubes noctilucentes</cloudTypeSpecial>
+  <cloudTypeSpecial o="3">nubes causadas por cataratas</cloudTypeSpecial>
+  <cloudTypeSpecial o="4">nubes causadas por incendios</cloudTypeSpecial>
+  <cloudTypeSpecial o="5">nubes causadas por erupciones volcánicas</cloudTypeSpecial>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0561 -->
+  <cloudTypeOrographic o="1">nubes aisladas, pileus, incus, en formación</cloudTypeOrographic>
+  <cloudTypeOrographic o="2">nubes aisladas, pileus, incus</cloudTypeOrographic>
+  <cloudTypeOrographic o="3">nubes aisladas, pileus, incus, disipándose</cloudTypeOrographic>
+  <cloudTypeOrographic o="4">bancos irregulares de nubes, cortina de föhn, etc., en formación</cloudTypeOrographic>
+  <cloudTypeOrographic o="5">bancos irregulares de nubes, cortina de föhn, etc.</cloudTypeOrographic>
+  <cloudTypeOrographic o="6">bancos irregulares de nubes, cortina de föhn, etc., disipándose</cloudTypeOrographic>
+  <cloudTypeOrographic o="7">capa compacta de nubes, cortina de föhn, etc., en formación</cloudTypeOrographic>
+  <cloudTypeOrographic o="8">capa compacta de nubes, cortina de föhn, etc.</cloudTypeOrographic>
+  <cloudTypeOrographic o="9">capa compacta de nubes, cortina de föhn, etc., disipándose</cloudTypeOrographic>
+
+  <weather o="BCFG">|bancos de niebla</weather>
+  <weather o="BLDU">|polvo soplando</weather>
+  <weather o="BLSA">|arena soplanda</weather>
+  <weather o="BLSN">|ventisca alta</weather>
+  <weather o="BR">|neblina</weather>
+  <weather o="BLPY">|rociones</weather>
+  <weather o="DRDU">|polvo flotando baja</weather>
+  <weather o="DRSA">|arena flotanda baja</weather>
+  <weather o="DRSN">|ventisca baja</weather>
+  <weather o="DS">|tempestad de polvo</weather>
+  <weather o="DU">|polvo extendido</weather>
+  <weather o="DZ">|llovizna</weather>
+  <weather o="FC">|nube(s) con forma de embudo</weather>
+  <weather o="FG">|niebla</weather>
+  <weather_all o="+FG">niebla densa</weather_all>
+  <weather o="FU">|humo</weather>
+  <weather o="FZBR">|neblina engelante</weather>
+  <weather o="FZDZ">|llovizna engelante</weather>
+  <weather o="FZFG">|niebla engelante</weather>
+  <weather o="FZRA">|lluvia engelante</weather>
+  <weather o="FZSNRA">|nieve con lluvia engelante</weather>
+  <weather o="FZUP">|precipitación desconocida engelante</weather>
+  <weather o="GR">|granizo</weather>
+  <weather o="GS">|granizo pequeño y/o nieve granulada</weather>
+  <weather o="HZ">|bruma</weather>
+  <weather o="IC">|cristales de hielo</weather>
+  <weather o="JP">|precipitación adyacente</weather>
+  <weather o="MIFG">|niebla baja</weather>
+  <weather o="NSW">ningún tiempo significativo</weather>
+  <weather o="PL">|hielo granulado</weather>
+  <weather o="PO">|remolinos de polvo/arena</weather>
+  <weather o="PRFG">|niebla parcialmente</weather>
+  <weather o="RA">|lluvia</weather>
+  <weather o="SA">|arena</weather>
+  <weather o="SG">|cinarra</weather>
+  <weather o="SH">|chubascos</weather>
+  <weather o="SHGR">|chubascos de granizo</weather>
+  <weather o="SHGS">|chubascos de granizo pequeño y/o nieve granulada</weather>
+  <weather o="SHPL">|chubascos de hielos granulados</weather>
+  <weather o="SHRA">|chubascos de lluvia</weather>
+  <weather o="SHSN">|chubascos de nieve</weather>
+  <weather o="SHUP">|chubascos de precipitación desconocida</weather>
+  <weather o="SN">|nieve</weather>
+  <weather o="SQ">|turbonadas</weather>
+  <weather o="SS">|tempestad de arena</weather>
+  <weather o="TS">|tormenta</weather>
+  <weather o="TSDS">tormenta con |tempestad de polvo</weather>
+  <weather o="TSDZ">tormenta con |llovizna</weather>
+  <weather o="TSGR">tormenta con |granizo</weather>
+  <weather o="TSGS">tormenta con |granizo pequeño y/o nieve granulada</weather>
+  <weather o="TSRA">tormenta con |lluvia</weather>
+  <weather o="TSSN">tormenta con |nieve</weather>
+  <weather o="TSSS">tormenta con |tempestad de arena</weather>
+  <weather o="TSUP">tormenta con |precipitación desconocida</weather>
+  <weather o="UP">|precipitación desconocida</weather>
+  <weather o="VA">|ceniza volcánica</weather>
+  <weather o="tornado">tornado/tromba</weather>
+
+  <tornadoType o="tornado">tornado</tornadoType>
+  <tornadoType o="funnel_cloud">tromba terrestre o marina</tornadoType>
+  <tornadoType o="waterspout">tromba marina</tornadoType>
+
+  <lightningType o="CA">nube al aire</lightningType>
+  <lightningType o="CC">nube a la nube</lightningType>
+  <lightningType o="CG">nube a la tierra</lightningType>
+  <lightningType o="CW">nube al agua</lightningType>
+  <lightningType o="IC">en nubes</lightningType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 4677, FMH-2 table 4-12 -->
+  <weatherSynop o="0">ningún desarrollo nuboso observado durante la hora precedente</weatherSynop>
+  <weatherSynop o="1">nubes en general van disipándose o haciéndose menos desarrolladas durante la hora precedente</weatherSynop>
+  <weatherSynop o="2">estado del cielo sin cambios en su conjunto durante la hora precedente</weatherSynop>
+  <weatherSynop o="3">nubes en formación o en desarrollo durante la hora precedente</weatherSynop>
+  <weatherSynop o="4">visibilidad reducida por humo o cenizas volcánicas</weatherSynop>
+  <weatherSynop o="5">bruma</weatherSynop>
+  <weatherSynop o="6">polvo en suspensión en el aire, no levantado por el viento</weatherSynop>
+  <weatherSynop o="7">polvo o arena levantado por el viento; o rociones</weatherSynop>
+  <weatherSynop o="8">torbellino(s) de polvo o de arena bien desarrollado(s)</weatherSynop>
+  <weatherSynop o="9">tempestad de polvo o de arena a la vista en el momento de la observación, o en la estación misma durante la hora precedente</weatherSynop>
+  <weatherSynop o="10">neblina</weatherSynop>
+  <weatherSynop o="11">capa delgada de niebla (helada) en bancos</weatherSynop>
+  <weatherSynop o="12">capa delgada de niebla (helada)</weatherSynop>
+  <weatherSynop o="13">relámpagos a la vista sin oírse truenos</weatherSynop>
+  <weatherSynop o="14">precipitación a la vista que no llega al suelo</weatherSynop>
+  <weatherSynop o="15">precipitación a la vista, pero más de 5 km de la estación</weatherSynop>
+  <weatherSynop o="16">precipitación a la vista, cerca de, pero no en la estación</weatherSynop>
+  <weatherSynop o="17">tormenta, pero sin precipitación en el momento de la observación</weatherSynop>
+  <weatherSynop o="18">turbonadas</weatherSynop>
+  <weatherSynop o="19">tromba(s) terrestre(s) o marina(s)</weatherSynop>
+  <weatherSynop o="20">llovizna o cinarra durante la hora precedente</weatherSynop>
+  <weatherSynop o="21">lluvia durante la hora precedente</weatherSynop>
+  <weatherSynop o="22">nieve durante la hora precedente</weatherSynop>
+  <weatherSynop o="23">lluvia y nieve o hielo granulado durante la hora precedente</weatherSynop>
+  <weatherSynop o="24">llovizna engelante o lluvia engelante durante la hora precedente</weatherSynop>
+  <weatherSynop o="25">chubasco(s) de lluvia durante la hora precedente</weatherSynop>
+  <weatherSynop o="26">chubasco(s) de nieve, o de lluvia y nieve durante la hora precedente</weatherSynop>
+  <weatherSynop o="27">chubasco(s) de granizo, o de lluvia y granizo durante la hora precedente</weatherSynop>
+  <weatherSynop o="28">niebla (helada) durante la hora precedente</weatherSynop>
+  <weatherSynop o="29">tormenta durante la hora precedente</weatherSynop>
+  <weatherSynop o="30">tempestad de polvo o arena débil o moderada, ha disminuido durante la hora precedente</weatherSynop>
+  <weatherSynop o="31">tempestad de polvo o arena débil o moderada, sin cambio durante la hora precedente</weatherSynop>
+  <weatherSynop o="32">tempestad de polvo o arena débil o moderada, ha comenzado o ha aumentado durante la hora precedente</weatherSynop>
+  <weatherSynop o="33">tempestad de polvo o arena fuerte, ha disminuido durante la hora precedente</weatherSynop>
+  <weatherSynop o="34">tempestad de polvo o arena fuerte, sin cambio durante la hora precedente</weatherSynop>
+  <weatherSynop o="35">tempestad de polvo o arena fuerte, ha comenzado o ha aumentado durante la hora precedente</weatherSynop>
+  <weatherSynop o="36">ventisca baja débil o moderada, por debajo del nivel de ojo</weatherSynop>
+  <weatherSynop o="37">ventisca baja fuerte, por debajo del nivel de ojo</weatherSynop>
+  <weatherSynop o="38">ventisca alta débil o moderada, por encima del nivel de ojo</weatherSynop>
+  <weatherSynop o="39">ventisca alta fuerte, por encima del nivel de ojo</weatherSynop>
+  <weatherSynop o="40">niebla (engelante) a distancia, hasta un nivel superior al del observador</weatherSynop>
+  <weatherSynop o="41">niebla (engelante) en bancos</weatherSynop>
+  <weatherSynop o="42">niebla (engelante), cielo visible, ha disminuido durante la hora precedente</weatherSynop>
+  <weatherSynop o="43">niebla (engelante), cielo invisible, ha disminuido durante la hora precedente</weatherSynop>
+  <weatherSynop o="44">niebla (engelante), cielo visible, sin cambio durante la hora precedente</weatherSynop>
+  <weatherSynop o="45">niebla (engelante), cielo invisible, sin cambio durante la hora precedente</weatherSynop>
+  <weatherSynop o="46">niebla (engelante), cielo visible, ha comenzado o se ha espesado durante la hora precedente</weatherSynop>
+  <weatherSynop o="47">niebla (engelante), cielo invisible, ha comenzado o se ha espesado durante la hora precedente</weatherSynop>
+  <weatherSynop o="48">niebla que deposita cencellada blanca, cielo visible</weatherSynop>
+  <weatherSynop o="49">niebla que deposita cencellada blanca, cielo invisible</weatherSynop>
+  <weatherSynop o="50">llovizna débil intermitente</weatherSynop>
+  <weatherSynop o="51">llovizna débil</weatherSynop>
+  <weatherSynop o="52">llovizna moderada intermitente</weatherSynop>
+  <weatherSynop o="53">llovizna moderada</weatherSynop>
+  <weatherSynop o="54">llovizna fuerte intermitente</weatherSynop>
+  <weatherSynop o="55">llovizna fuerte</weatherSynop>
+  <weatherSynop o="56">llovizna engelante débil</weatherSynop>
+  <weatherSynop o="57">llovizna engelante moderada o fuerte</weatherSynop>
+  <weatherSynop o="58">llovizna y lluvia débil</weatherSynop>
+  <weatherSynop o="59">llovizna y lluvia moderada o fuerte</weatherSynop>
+  <weatherSynop o="60">lluvia débil intermitente</weatherSynop>
+  <weatherSynop o="61">lluvia débil</weatherSynop>
+  <weatherSynop o="62">lluvia moderada intermitente</weatherSynop>
+  <weatherSynop o="63">lluvia moderada</weatherSynop>
+  <weatherSynop o="64">lluvia fuerte intermitente</weatherSynop>
+  <weatherSynop o="65">lluvia fuerte</weatherSynop>
+  <weatherSynop o="66">lluvia engelante débil</weatherSynop>
+  <weatherSynop o="67">lluvia engelante moderada o fuerte</weatherSynop>
+  <weatherSynop o="68">lluvia o llovizna y nieve débil</weatherSynop>
+  <weatherSynop o="69">lluvia o llovizna y nieve moderada</weatherSynop>
+  <weatherSynop o="70">nieve débil intermitente</weatherSynop>
+  <weatherSynop o="71">nieve débil</weatherSynop>
+  <weatherSynop o="72">nieve moderada intermitente</weatherSynop>
+  <weatherSynop o="73">nieve moderada</weatherSynop>
+  <weatherSynop o="74">nieve fuerte intermitente</weatherSynop>
+  <weatherSynop o="75">nieve fuerte</weatherSynop>
+  <weatherSynop o="76">prismas de hielo</weatherSynop>
+  <weatherSynop o="77">cinarra</weatherSynop>
+  <weatherSynop o="78">cristales de nieve aislados</weatherSynop>
+  <weatherSynop o="79">hielo granulado</weatherSynop>
+  <weatherSynop o="80">chubasco(s) de lluvia débil(es)</weatherSynop>
+  <weatherSynop o="81">chubasco(s) de lluvia moderado(s) o fuerte(s)</weatherSynop>
+  <weatherSynop o="82">chubasco(s) de lluvia violento(s)</weatherSynop>
+  <weatherSynop o="83">chubasco(s) de lluvia y nieve débil(es)</weatherSynop>
+  <weatherSynop o="84">chubasco(s) de lluvia y nieve moderado(s) o fuerte(s)</weatherSynop>
+  <weatherSynop o="85">chubasco(s) de nieve débil(es)</weatherSynop>
+  <weatherSynop o="86">chubasco(s) de nieve moderado(s) o fuerte(s)</weatherSynop>
+  <weatherSynop o="87">chubasco(s) de nieve granulada o granizo pequeño débil(es)</weatherSynop>
+  <weatherSynop o="88">chubasco(s) de nieve granulada o granizo pequeño moderado(s) o fuerte(s)</weatherSynop>
+  <weatherSynop o="89">chubasco(s) de granizo débil(es)</weatherSynop>
+  <weatherSynop o="90">chubasco(s) de granizo moderado(s) o fuerte(s)</weatherSynop>
+  <weatherSynop o="91">tormenta durante la hora precedente, ahora lluvia débil</weatherSynop>
+  <weatherSynop o="92">tormenta durante la hora precedente, ahora lluvia moderada o fuerte</weatherSynop>
+  <weatherSynop o="93">tormenta durante la hora precedente, ahora nieve, o lluvia y nieve, o granizo débiles</weatherSynop>
+  <weatherSynop o="94">tormenta durante la hora precedente, ahora nieve, o lluvia y nieve, o granizo moderados o fuertes</weatherSynop>
+  <weatherSynop o="95">tormenta débil o moderada con lluvia y/o nieve</weatherSynop>
+  <weatherSynop o="96">tormenta débil o moderada con granizo</weatherSynop>
+  <weatherSynop o="97">tormenta fuerte con lluvia y/o nieve</weatherSynop>
+  <weatherSynop o="98">tormenta con tempestad de polvo o arena</weatherSynop>
+  <weatherSynop o="99">tormenta fuerte con granizo</weatherSynop>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 4561, FMH-2 table 4-14 -->
+  <weatherSynopPast o="0">nubes que cubren la mitad o menos del cielo</weatherSynopPast>
+  <weatherSynopPast o="1">nubes que cubren a veces más, otras veces menos de la mitad del cielo</weatherSynopPast>
+  <weatherSynopPast o="2">nubes que cubren más de la mitad del cielo</weatherSynopPast>
+  <weatherSynopPast o="3">tempestad de arena o polvo, o ventisca alta</weatherSynopPast>
+  <weatherSynopPast o="4">niebla (helada) o bruma espesa</weatherSynopPast>
+  <weatherSynopPast o="5">llovizna</weatherSynopPast>
+  <weatherSynopPast o="6">lluvia</weatherSynopPast>
+  <weatherSynopPast o="7">nieve, o lluvia y nieve</weatherSynopPast>
+  <weatherSynopPast o="8">chubasco(s)</weatherSynopPast>
+  <weatherSynopPast o="9">tormenta(s)</weatherSynopPast>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 4680, FMH-2 table 4-13 -->
+  <weatherSynopSimple o="0">ningún tiempo significativo</weatherSynopSimple>
+  <weatherSynopSimple o="1">nubes en disolución o haciéndose menos espesas durante la hora precedente</weatherSynopSimple>
+  <weatherSynopSimple o="2">estado del cielo sin cambios en su conjunto durante la hora precedente</weatherSynopSimple>
+  <weatherSynopSimple o="3">nubes en formación o en desarrollo durante la hora precedente</weatherSynopSimple>
+  <weatherSynopSimple o="4">bruma o humo, o polvo extendido en suspensión en el aire, visibilidad 1 km o superior</weatherSynopSimple>
+  <weatherSynopSimple o="5">bruma o humo, o polvo extendido en suspensión en el aire, visibilidad inferior a 1 km</weatherSynopSimple>
+  <weatherSynopSimple o="10">neblina</weatherSynopSimple>
+  <weatherSynopSimple o="11">prismas de hielo</weatherSynopSimple>
+  <weatherSynopSimple o="12">relámpagos distantes</weatherSynopSimple>
+  <weatherSynopSimple o="18">turbonadas</weatherSynopSimple>
+  <weatherSynopSimple o="20">niebla durante la hora precedente</weatherSynopSimple>
+  <weatherSynopSimple o="21">precipitación durante la hora precedente</weatherSynopSimple>
+  <weatherSynopSimple o="22">llovizna o cinarra durante la hora precedente</weatherSynopSimple>
+  <weatherSynopSimple o="23">lluvia durante la hora precedente</weatherSynopSimple>
+  <weatherSynopSimple o="24">nieve durante la hora precedente</weatherSynopSimple>
+  <weatherSynopSimple o="25">llovizna engelante o lluvia engelante durante la hora precedente</weatherSynopSimple>
+  <weatherSynopSimple o="26">tormenta durante la hora precedente</weatherSynopSimple>
+  <weatherSynopSimple o="27">ventisca o arena soplanda</weatherSynopSimple>
+  <weatherSynopSimple o="28">ventisca o arena soplanda, visibilidad 1 km o superior</weatherSynopSimple>
+  <weatherSynopSimple o="29">ventisca o arena soplanda, visibilidad inferior a 1 km</weatherSynopSimple>
+  <weatherSynopSimple o="30">niebla</weatherSynopSimple>
+  <weatherSynopSimple o="31">niebla (helada) en bancos</weatherSynopSimple>
+  <weatherSynopSimple o="32">niebla (helada), ha disminuido durante la hora precedente</weatherSynopSimple>
+  <weatherSynopSimple o="33">niebla (helada)</weatherSynopSimple>
+  <weatherSynopSimple o="34">niebla (helada), ha comenzado o se ha espesado durante la hora precedente</weatherSynopSimple>
+  <weatherSynopSimple o="35">niebla, depositando cencellada blanca</weatherSynopSimple>
+  <weatherSynopSimple o="40">precipitación</weatherSynopSimple>
+  <weatherSynopSimple o="41">precipitación débil o moderada</weatherSynopSimple>
+  <weatherSynopSimple o="42">precipitación fuerte</weatherSynopSimple>
+  <weatherSynopSimple o="43">precipitación líquida débil o moderada</weatherSynopSimple>
+  <weatherSynopSimple o="44">precipitación líquida fuerte</weatherSynopSimple>
+  <weatherSynopSimple o="45">precipitación sólida débil o moderada</weatherSynopSimple>
+  <weatherSynopSimple o="46">precipitación sólida fuerte</weatherSynopSimple>
+  <weatherSynopSimple o="47">precipitación engelante débil o moderada</weatherSynopSimple>
+  <weatherSynopSimple o="48">precipitación engelante fuerte</weatherSynopSimple>
+  <weatherSynopSimple o="50">llovizna</weatherSynopSimple>
+  <weatherSynopSimple o="51">llovizna débil</weatherSynopSimple>
+  <weatherSynopSimple o="52">llovizna moderada</weatherSynopSimple>
+  <weatherSynopSimple o="53">llovizna fuerte</weatherSynopSimple>
+  <weatherSynopSimple o="54">llovizna engelante débil</weatherSynopSimple>
+  <weatherSynopSimple o="55">llovizna engelante moderada</weatherSynopSimple>
+  <weatherSynopSimple o="56">llovizna engelante fuerte</weatherSynopSimple>
+  <weatherSynopSimple o="57">llovizna y lluvia débil</weatherSynopSimple>
+  <weatherSynopSimple o="58">llovizna y lluvia moderada o fuerte</weatherSynopSimple>
+  <weatherSynopSimple o="60">lluvia</weatherSynopSimple>
+  <weatherSynopSimple o="61">lluvia débil</weatherSynopSimple>
+  <weatherSynopSimple o="62">lluvia moderada</weatherSynopSimple>
+  <weatherSynopSimple o="63">lluvia fuerte</weatherSynopSimple>
+  <weatherSynopSimple o="64">lluvia engelante débil</weatherSynopSimple>
+  <weatherSynopSimple o="65">lluvia engelante moderada</weatherSynopSimple>
+  <weatherSynopSimple o="66">lluvia engelante fuerte</weatherSynopSimple>
+  <weatherSynopSimple o="67">lluvia (o llovizna) y nieve débil</weatherSynopSimple>
+  <weatherSynopSimple o="68">lluvia (o llovizna) y nieve moderada o fuerte</weatherSynopSimple>
+  <weatherSynopSimple o="70">nieve</weatherSynopSimple>
+  <weatherSynopSimple o="71">nieve débil</weatherSynopSimple>
+  <weatherSynopSimple o="72">nieve moderada</weatherSynopSimple>
+  <weatherSynopSimple o="73">nieve fuerte</weatherSynopSimple>
+  <weatherSynopSimple o="74">hielo granulado débil</weatherSynopSimple>
+  <weatherSynopSimple o="75">hielo granulado moderado</weatherSynopSimple>
+  <weatherSynopSimple o="76">hielo granulado fuerte</weatherSynopSimple>
+  <weatherSynopSimple o="77">cinarra</weatherSynopSimple>
+  <weatherSynopSimple o="78">cristales de hielo</weatherSynopSimple>
+  <weatherSynopSimple o="80">chubasco(s) o precipitación intermitente</weatherSynopSimple>
+  <weatherSynopSimple o="81">chubasco(s) de lluvia o lluvia intermitente, débil</weatherSynopSimple>
+  <weatherSynopSimple o="82">chubasco(s) de lluvia o lluvia intermitente, moderada</weatherSynopSimple>
+  <weatherSynopSimple o="83">chubasco(s) de lluvia o lluvia intermitente, fuerte</weatherSynopSimple>
+  <weatherSynopSimple o="84">chubasco(s) de lluvia o lluvia intermitente, violenta</weatherSynopSimple>
+  <weatherSynopSimple o="85">chubasco(s) de nieve o nieve intermitente, débil</weatherSynopSimple>
+  <weatherSynopSimple o="86">chubasco(s) de nieve o nieve intermitente, moderada</weatherSynopSimple>
+  <weatherSynopSimple o="87">chubasco(s) de nieve o nieve intermitente, fuerte</weatherSynopSimple>
+  <weatherSynopSimple o="89">granizo</weatherSynopSimple>
+  <weatherSynopSimple o="90">tormenta</weatherSynopSimple>
+  <weatherSynopSimple o="91">tormenta débil o moderada</weatherSynopSimple>
+  <weatherSynopSimple o="92">tormenta débil o moderada con chubascos de lluvia y/o de nieve</weatherSynopSimple>
+  <weatherSynopSimple o="93">tormenta débil o moderada con granizo</weatherSynopSimple>
+  <weatherSynopSimple o="94">tormenta fuerte</weatherSynopSimple>
+  <weatherSynopSimple o="95">tormenta fuerte con chubascos de lluvia y/o de nieve</weatherSynopSimple>
+  <weatherSynopSimple o="96">tormenta fuerte con granizo</weatherSynopSimple>
+  <weatherSynopSimple o="99">tornado</weatherSynopSimple>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 4531, FMH-2 table 4-15 -->
+  <weatherSynopPastSimple o="0">ningún tiempo significativo</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="1">visibilidad reducida</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="2">fenómenos de ventisca, visibilidad reducida</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="3">niebla</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="4">precipitación</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="5">llovizna</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="6">lluvia</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="7">nieve o hielo granulado</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="8">chubascos o precipitación intermitente</weatherSynopPastSimple>
+  <weatherSynopPastSimple o="9">tormenta</weatherSynopPastSimple>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 4687 -->
+  <weatherSynop1 o="4">ceniza volcánica en suspensión a gran altitud</weatherSynop1>
+  <weatherSynop1 o="6">calima espesa de polvo, visibilidad menos de 1 km</weatherSynop1>
+  <weatherSynop1 o="7">ventisca de rociones en la estación</weatherSynop1>
+  <weatherSynop1 o="8">polvo (arena) flotando baja</weatherSynop1>
+  <weatherSynop1 o="9">pantalla de polvo o arena a distancia (como haboob)</weatherSynop1>
+  <weatherSynop1 o="10">calima de nieve</weatherSynop1>
+  <weatherSynop1 o="11">resplandor blanco</weatherSynop1>
+  <weatherSynop1 o="13">relámpagos, de la nube a superficie</weatherSynop1>
+  <weatherSynop1 o="17">tormenta seca</weatherSynop1>
+  <weatherSynop1 o="19">tornado (destructivo) en o a la vista de la estación durante la hora precedente o la observación</weatherSynop1>
+  <weatherSynop1 o="20">depósito de ceniza volcánica</weatherSynop1>
+  <weatherSynop1 o="21">depósito de polvo o arena</weatherSynop1>
+  <weatherSynop1 o="22">depósito de rocío</weatherSynop1>
+  <weatherSynop1 o="23">depósito de aguanieve</weatherSynop1>
+  <weatherSynop1 o="24">depósito de cencellada blanca granulada</weatherSynop1>
+  <weatherSynop1 o="25">depósito de cencellada blanca cristalizada</weatherSynop1>
+  <weatherSynop1 o="26">depósito de escarcha</weatherSynop1>
+  <weatherSynop1 o="27">depósito de cencellada transparente</weatherSynop1>
+  <weatherSynop1 o="28">depósito de costra de hielo</weatherSynop1>
+  <weatherSynop1 o="30">tempestad de polvo o arena con temperatura menos de 0 °C</weatherSynop1>
+  <weatherSynop1 o="39">ventisca</weatherSynop1>
+  <weatherSynop1 o="41">niebla en el mar</weatherSynop1>
+  <weatherSynop1 o="42">niebla en valles</weatherSynop1>
+  <weatherSynop1 o="43">humo en el mar Ártico o Antártico</weatherSynop1>
+  <weatherSynop1 o="44">niebla de evaporación (mar, lago o río)</weatherSynop1>
+  <weatherSynop1 o="45">niebla de evaporación (tierra)</weatherSynop1>
+  <weatherSynop1 o="46">niebla sobre el manto de nieve o la capa de hielo</weatherSynop1>
+  <weatherSynop1 o="59">llovizna y nieve</weatherSynop1>
+  <weatherSynop1 o="78">cristales de nieve o hielo con cielo despejado</weatherSynop1>
+  <weatherSynop1 o="79">aguanieve, engelante al contacto</weatherSynop1>
+  <weatherSynop1 o="80">lluvia</weatherSynop1>
+  <weatherSynop1 o="81">lluvia engelante</weatherSynop1>
+  <weatherSynop1 o="82">lluvia y nieve</weatherSynop1>
+  <weatherSynop1 o="83">nieve</weatherSynop1>
+  <weatherSynop1 o="84">granizo pequeño o nieve granulada</weatherSynop1>
+  <weatherSynop1 o="85">granizo pequeño o nieve granulada con lluvia</weatherSynop1>
+  <weatherSynop1 o="86">granizo pequeño o nieve granulada con lluvia y nieve</weatherSynop1>
+  <weatherSynop1 o="87">granizo pequeño o nieve granulada con nieve</weatherSynop1>
+  <weatherSynop1 o="88">granizo</weatherSynop1>
+  <weatherSynop1 o="89">granizo con lluvia</weatherSynop1>
+  <weatherSynop1 o="90">granizo con lluvia y nieve</weatherSynop1>
+  <weatherSynop1 o="91">granizo con nieve</weatherSynop1>
+  <weatherSynop1 o="92">chubasco(s) o tormenta sobre el mar</weatherSynop1>
+  <weatherSynop1 o="93">chubasco(s) o tormenta sobre montañas</weatherSynop1>
+
+  <visTrend o="U">subiendo</visTrend>
+  <visTrend o="N">no cambio</visTrend>
+  <visTrend o="D">bajando</visTrend>
+
+  <stationType o="AO1">estación automática sin precipitación discriminador (AMOS)</stationType>
+  <stationType o="AO2">estación automática con precipitación discriminador (ASOS)</stationType>
+  <stationType o="AO2A">estación automática con precipitación discriminador (ASOS) y aumentos manuales</stationType>
+  <stationType o="SAWR">estación meteorológica adicional para la aviación</stationType>
+  <stationType o="AAXX">estación terrestre estacionaria</stationType>
+  <stationType o="BBXX">estación marítima</stationType>
+  <stationType o="OOXX">estación terrestre móvil</stationType>
+  <stationType o="ZZYY">boya</stationType>
+  <stationType o="AMDAR">aeronave</stationType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0919 -->
+  <depositType o="0">claro y seco</depositType>
+  <depositType o="1">húmedo</depositType>
+  <depositType o="2">mojado con charcos</depositType>
+  <depositType o="3">cencellada blanca y escarcha</depositType>
+  <depositType o="4">nieve seca</depositType>
+  <depositType o="5">nieve mojada</depositType>
+  <depositType o="6">nieve fundente</depositType>
+  <depositType o="7">hielo</depositType>
+  <depositType o="8">nieve compacta</depositType>
+  <depositType o="9">surcos o cordones de hielo</depositType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0519 -->
+  <depositExtent o="0">0 %</depositExtent>
+  <depositExtent o="1">1-10 %</depositExtent>
+  <depositExtent o="2">11-25 %</depositExtent>
+  <depositExtent o="5">26-50 %</depositExtent>
+  <depositExtent o="9">51-100 %</depositExtent>
+
+  <colour o="BLACK"     >aeropuerto cerrado por razónes técnicas</colour>
+  <colour o="BLUplus"   >techo >=20000 ft, visibilidad >=8 km</colour>
+  <colour o="BLU"       >techo >=2500 ft, visibilidad >=8 km</colour>
+  <colour o="WHT"       >techo 1500..&lt;2500 ft, visibilidad 5..&lt;8 km</colour>
+  <colour o="GRN"       >techo 700..&lt;1500 ft, visibilidad 3700..&lt;5000 m</colour>
+  <colour o="YLO1"      >techo 500..&lt;700 ft, visibilidad 2500..&lt;3700 m</colour>
+  <colour o="YLO2"      >techo 300..&lt;500 ft, visibilidad 1600..&lt;2500 m</colour>
+  <colour o="YLO"       >techo 300..&lt;700 ft, visibilidad 1600..&lt;3700 m</colour>
+  <colour o="AMB"       >techo 200..&lt;300 ft, visibilidad 800..&lt;1600 m</colour>
+  <colour o="RED"       >techo &lt;200 ft, visibilidad &lt;800 m</colour>
+  <colour o="FCSTCANCEL">predicción anulada</colour>
+  <colour o="noChange"  >techo o visibilidad no cambian</colour>
+
+  <concernsChange o="M">empeoramiento de estado de |</concernsChange>
+  <concernsChange o="B">mejora de estado de |</concernsChange>
+  <concernsSubject o="0">ráfagas</concernsSubject>
+  <concernsSubject o="1">viento</concernsSubject>
+  <concernsSubject o="2">visibilidad</concernsSubject>
+  <concernsSubject o="3">nubes</concernsSubject>
+  <concernsSubject o="4">precipitación</concernsSubject>
+  <concernsSubject o="5">presión</concernsSubject>
+  <concernsSubject o="6">mar o oleaje</concernsSubject>
+  <concernsSubject o="7">tempestad de polvo o arena, o ventisca</concernsSubject>
+  <concernsSubject o="8">tormenta</concernsSubject>
+  <concernsSubject o="9">turbonadas o tormenta</concernsSubject>
+
+  <phenomenon o="LTG">relámpago</phenomenon>
+  <phenomenon o="VIRGA">virga</phenomenon>
+  <phenomenon o="AURBO">aurora boreal</phenomenon>
+  <phenomenon o="FG_BNK">banco de niebla</phenomenon>
+  <phenomenon o="PCPN">precipitación</phenomenon>
+  <phenomenon o="BC_VLY_FG">bancos de niebla de valle</phenomenon>
+  <phenomenon o="VLY_FG">niebla de valle</phenomenon>
+  <phenomenon o="HIR_CLDS">nubes más alto</phenomenon>
+  <phenomenon o="FULYR">capa de humo</phenomenon>
+  <phenomenon o="HZY">hay bruma</phenomenon>
+  <phenomenon o="BINOVC">claros en el cielo cubierto</phenomenon>
+  <phenomenon o="ICG">glaciación</phenomenon>
+  <phenomenon o="SH">chubasco</phenomenon>
+  <phenomenon o="SHS">chubascos</phenomenon>
+  <phenomenon o="DEW">rocío</phenomenon>
+  <phenomenon o="VIS_HYR">visibilidad superior</phenomenon>
+  <phenomenon o="VIS_LWR">visibilidad peor</phenomenon>
+  <phenomenon o="VIS_RDCD">visibilidad reducida</phenomenon>
+  <phenomenon o="CIG_HYR">techo más alto</phenomenon>
+  <phenomenon o="CIG_LWR">techo más bajo</phenomenon>
+  <phenomenon o="ROTOR_CLD">nube de rotor</phenomenon>
+  <phenomenon o="CLD">nubes</phenomenon>
+  <phenomenon o="CLDS">nubes</phenomenon>
+  <phenomenon o="CLD_EMBD">nubes embebidas</phenomenon>
+  <phenomenon o="CLDS_EMBD">nubes embebidas</phenomenon>
+  <phenomenon o="CLD_EMBD_1ST_LYR">nubes embebidas en primera capa</phenomenon>
+  <phenomenon o="CLDS_EMBD_1ST_LYR">nubes embebidas en primera capa</phenomenon>
+  <phenomenon o="PRESFR">tendencia de presión: cayendo rápidamente</phenomenon>
+  <phenomenon o="PRESRR">tendencia de presión: aumentando rápidamente</phenomenon>
+  <phenomenon o="FIRE">fuego</phenomenon>
+  <phenomenon o="FIRES">fuegos</phenomenon>
+  <phenomenon o="GRASS_FIRE">fuego de hierba</phenomenon>
+  <phenomenon o="GRASS_FIRES">fuegos de hierba</phenomenon>
+  <phenomenon o="MTN_TOPS_OBSC">cimas obscurecidas</phenomenon>
+  <phenomenon o="SKY_OBSC">cielo oscurecido</phenomenon>
+  <phenomenon o="MTNS_OBSC">montañas obscurecidas</phenomenon>
+  <phenomenon o="RDGS_OBSC">crestas obscurecidas</phenomenon>
+  <phenomenon o="MTN_TOPS_PRLY_OBSC">cimas obscurecidas parcialmente</phenomenon>
+  <phenomenon o="SKY_PRLY_OBSC">cielo oscurecido parcialmente</phenomenon>
+  <phenomenon o="MTNS_PRLY_OBSC">montañas obscurecidas parcialmente</phenomenon>
+  <phenomenon o="RDGS_PRLY_OBSC">crestas obscurecidas parcialmente</phenomenon>
+  <phenomenon o="MTNS_OPEN">montañas despejadas</phenomenon>
+  <phenomenon o="HALO">halo visible</phenomenon>
+  <phenomenon o="CB_TOPS">cimas de cumulonimbos</phenomenon>
+  <phenomenon o="TCU_TOPS">cimas de cúmulo altísimo</phenomenon>
+  <phenomenon o="VOLCANIC_ASH_CLOUD">nube de ceniza volcánica</phenomenon>
+  <phenomenon o="ASH_FALL">caída de ceniza volcánica</phenomenon>
+
+  <quadrant o="1">primero</quadrant>
+  <quadrant o="2">segundo</quadrant>
+  <quadrant o="3">tercero</quadrant>
+  <quadrant o="4">quartero</quadrant>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 2745 -->
+  <cloudMountain o="0">despejadas</cloudMountain>
+  <cloudMountain o="1">parcialmente cubiertas por nubes dispersas</cloudMountain>
+  <cloudMountain o="2">todas las laderas cubiertas, las cimas y los pasos despejados</cloudMountain>
+  <cloudMountain o="3">despejadas del lado del observador, cortina de nubes del otro lado</cloudMountain>
+  <cloudMountain o="4">nubes rasantes a las montañas, todas las laderas y montañas despejadas</cloudMountain>
+  <cloudMountain o="5">nubes rasantes a las montañas, las cimas cubiertas parcialmente por la cortina de la precipitación o las nubes</cloudMountain>
+  <cloudMountain o="6">las cimas cubiertas, los pasos despejados, las laderas despejadas o cubiertas</cloudMountain>
+  <cloudMountain o="7">cubiertas por lo general, algunas cimas despejadas, las laderas total o parcialmente cubiertas</cloudMountain>
+  <cloudMountain o="8">las cimas, pasos o laderas cubiertas</cloudMountain>
+  <cloudMountain o="9">no visible</cloudMountain>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 2863 -->
+  <cloudEvol o="0">no cambio</cloudEvol>
+  <cloudEvol o="1">toma forma de cúmulos</cloudEvol>
+  <cloudEvol o="2">levantando lentamente</cloudEvol>
+  <cloudEvol o="3">levantando rápidamente</cloudEvol>
+  <cloudEvol o="4">levantando y estratificando</cloudEvol>
+  <cloudEvol o="5">desciendo lentamente</cloudEvol>
+  <cloudEvol o="6">desciendo rápidamente</cloudEvol>
+  <cloudEvol o="7">estratificando</cloudEvol>
+  <cloudEvol o="8">estratificando y desciendo</cloudEvol>
+  <cloudEvol o="9">variando rápidamente</cloudEvol>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 2754 -->
+  <cloudValley o="0">ni nubes ni neblina</cloudValley>
+  <cloudValley o="1">neblina; por encima, claro</cloudValley>
+  <cloudValley o="2">bancos de niebla dispersos</cloudValley>
+  <cloudValley o="3">capa de niebla ligera</cloudValley>
+  <cloudValley o="4">capa de niebla densa</cloudValley>
+  <cloudValley o="5">nubes aisladas</cloudValley>
+  <cloudValley o="6">nubes aisladas y niebla por abajo</cloudValley>
+  <cloudValley o="7">muchas nubes aisladas</cloudValley>
+  <cloudValley o="8">mar de nubes</cloudValley>
+  <cloudValley o="9">mala visibilidad hacia abajo</cloudValley>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 2864 -->
+  <cloudBelowEvol o="0">no cambio</cloudBelowEvol>
+  <cloudBelowEvol o="1">disminuyendo y levantando</cloudBelowEvol>
+  <cloudBelowEvol o="2">disminuyendo</cloudBelowEvol>
+  <cloudBelowEvol o="3">levantando</cloudBelowEvol>
+  <cloudBelowEvol o="4">disminuyendo y desciendo</cloudBelowEvol>
+  <cloudBelowEvol o="5">aumentando y levantando</cloudBelowEvol>
+  <cloudBelowEvol o="6">desciendo</cloudBelowEvol>
+  <cloudBelowEvol o="7">aumentando</cloudBelowEvol>
+  <cloudBelowEvol o="8">aumentando y desciendo</cloudBelowEvol>
+  <cloudBelowEvol o="9">nieblas intermitentes en la estación</cloudBelowEvol>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0300 -->
+  <turbulenceDescr o="0">ninguna</turbulenceDescr>
+  <turbulenceDescr o="1">leve</turbulenceDescr>
+  <turbulenceDescr o="2">esporádico, moderado, en aire claro</turbulenceDescr>
+  <turbulenceDescr o="3">frecuente, moderado, en aire claro</turbulenceDescr>
+  <turbulenceDescr o="4">esporádico, moderado, en cloud</turbulenceDescr>
+  <turbulenceDescr o="5">frecuente, moderado, en nubes</turbulenceDescr>
+  <turbulenceDescr o="6">esporádico, severo, en aire claro</turbulenceDescr>
+  <turbulenceDescr o="7">frecuente, severo, en aire claro</turbulenceDescr>
+  <turbulenceDescr o="8">esporádico, severo, en nubes</turbulenceDescr>
+  <turbulenceDescr o="9">frecuente, severo, en nubes</turbulenceDescr>
+  <!-- as text -->
+  <turbulenceDescr o="MOD">moderado</turbulenceDescr>
+  <turbulenceDescr o="MOD_SEV">moderado o severo</turbulenceDescr>
+  <turbulenceDescr o="SEV">severo</turbulenceDescr>
+
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code tables 0 11 031 -->
+  <turbulenceVal o="0">ninguna en nubes</turbulenceVal>
+  <turbulenceVal o="1">leve, en nubes</turbulenceVal>
+  <turbulenceVal o="2">moderada, en nubes</turbulenceVal>
+  <turbulenceVal o="3">fuerte, en nubes</turbulenceVal>
+  <turbulenceVal o="4">ninguna en aire claro</turbulenceVal>
+  <turbulenceVal o="5">leve, en aire claro</turbulenceVal>
+  <turbulenceVal o="6">moderada, en aire claro</turbulenceVal>
+  <turbulenceVal o="7">fuerte, en aire claro</turbulenceVal>
+  <turbulenceVal o="8">ninguna</turbulenceVal>
+  <turbulenceVal o="9">leve</turbulenceVal>
+  <turbulenceVal o="10">moderada</turbulenceVal>
+  <turbulenceVal o="11">fuerte</turbulenceVal>
+  <turbulenceVal o="12">extrema, en aire claro</turbulenceVal>
+  <turbulenceVal o="13">extrema, en nubes</turbulenceVal>
+  <turbulenceVal o="14">extrema</turbulenceVal>
+
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code tables 0 02 064 -->
+  <rollAngleQualityVal o="0">buena</rollAngleQualityVal>
+  <rollAngleQualityVal o="1">mala</rollAngleQualityVal>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 1733 -->
+  <icingDescr o="0">ninguna</icingDescr>
+  <icingDescr o="1">leve</icingDescr>
+  <icingDescr o="2">leve, en nubes</icingDescr>
+  <icingDescr o="3">leve, en precipitación</icingDescr>
+  <icingDescr o="4">moderado</icingDescr>
+  <icingDescr o="5">moderado, en nubes</icingDescr>
+  <icingDescr o="6">moderado, en precipitación</icingDescr>
+  <icingDescr o="7">severo</icingDescr>
+  <icingDescr o="8">severo, en nubes</icingDescr>
+  <icingDescr o="9">severo, en precipitación</icingDescr>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3700 -->
+  <seaCondition o="0">calma (como un espejo)</seaCondition>
+  <seaCondition o="1">calma (con rizos)</seaCondition>
+  <seaCondition o="2">ondulada</seaCondition>
+  <seaCondition o="3">ligeramente agitado</seaCondition>
+  <seaCondition o="4">agitado</seaCondition>
+  <seaCondition o="5">gruesa</seaCondition>
+  <seaCondition o="6">muy gruesa</seaCondition>
+  <seaCondition o="7">alta</seaCondition>
+  <seaCondition o="8">muy alta</seaCondition>
+  <seaCondition o="9">montañosa</seaCondition>
+
+  <swellCondition o="0">ningún</swellCondition>
+  <swellCondition o="1">longitud: corta o media, altura: baja</swellCondition>
+  <swellCondition o="2">longitud: larga, altura: baja</swellCondition>
+  <swellCondition o="3">longitud: corta, altura: moderada</swellCondition>
+  <swellCondition o="4">longitud: media, altura: moderada</swellCondition>
+  <swellCondition o="5">longitud: larga, altura: moderada</swellCondition>
+  <swellCondition o="6">longitud: corta, altura: alta</swellCondition>
+  <swellCondition o="7">longitud: media, altura: alta</swellCondition>
+  <swellCondition o="8">longitud: larga, altura: alta</swellCondition>
+  <swellCondition o="9">caótico</swellCondition>
+
+  <cloudPhenom o="PWR_PLNT">central eléctrica</cloudPhenom>
+  <cloudPhenom o="PWR_PLNT_PLUME">columna de central eléctrica</cloudPhenom>
+
+  <pressureTend o="0">subiendo, después bajando</pressureTend>
+  <pressureTend o="1">subiendo, después estacionaria; o subiendo, después aumentando con más lentitud</pressureTend>
+  <pressureTend o="2">subiendo regularmente o irregularmente</pressureTend>
+  <pressureTend o="3">bajando o estacionaria, después subiendo; o subiendo y después subiendo más rápidamente</pressureTend>
+  <pressureTend o="4">estacionaria</pressureTend>
+  <pressureTend o="5">bajando, después subiendo</pressureTend>
+  <pressureTend o="6">bajando, después estacionaria; o bajando y después bajando más lentamente</pressureTend>
+  <pressureTend o="7">bajando (regularmente o irregularmente</pressureTend>
+  <pressureTend o="8">estacionaria o subiendo y después bajando; o bajando y después bajando más rápidamente</pressureTend>
+
+  <rwySfc o="SLR">nieve medio derretida en la pista</rwySfc>
+  <rwySfc o="LSR">nieve floja en la pista</rwySfc>
+  <rwySfc o="PSR">nieve compacta en la pista</rwySfc>
+  <rwySfc o="P">variable</rwySfc>
+  <rwySfc o="SANDED">enarenada</rwySfc>
+  <rwySfc o="WET">mojada</rwySfc>
+  <rwySfc o="DRY">seca</rwySfc>
+  <rwySfc o="IR">hielo en la pista</rwySfc>
+  <rwySfc o="WR">pista mojada</rwySfc>
+
+  <snowCoverType o="ONE_LOOSE">one loose</snowCoverType>
+  <snowCoverType o="MUCH_LOOSE">mucho suelto</snowCoverType>
+  <snowCoverType o="TRACE_LOOSE">rastro suelto</snowCoverType>
+  <snowCoverType o="MEDIUM_PACKED">medio embalado</snowCoverType>
+  <snowCoverType o="HARD_PACKED">embalado con fuerza</snowCoverType>
+  <snowCoverType o="NIL">nada</snowCoverType>
+
+  <estimatedItem o="WND">viento</estimatedItem>
+  <estimatedItem o="ALTM">valor de altímetro</estimatedItem>
+  <estimatedItem o="CIG">techo</estimatedItem>
+  <estimatedItem o="CIG_BLN">techo de datos de globo</estimatedItem>
+  <estimatedItem o="CLD_HGTS">altura de nubes</estimatedItem>
+  <estimatedItem o="SLP">presión al nivel del mar</estimatedItem>
+  <estimatedItem o="ALSTG">el ajuste del altímetro (A....)</estimatedItem>
+  <estimatedItem o="QNH">el ajuste del altímetro (Q....)</estimatedItem>
+
+  <fcstNotAvblReason o="NOOBS">no observación</fcstNotAvblReason>
+  <fcstNotAvblReason o="INSUFFICIENTOBS">observación insuficiente</fcstNotAvblReason>
+
+  <wmoRegion o="I">África</wmoRegion>
+  <wmoRegion o="II">Asia</wmoRegion>
+  <wmoRegion o="III">América del Sur</wmoRegion>
+  <wmoRegion o="IV">América del Norte y Central</wmoRegion>
+  <wmoRegion o="V">Océano Pacífico Sudoeste</wmoRegion>
+  <wmoRegion o="VI">Europa</wmoRegion>
+  <wmoRegion o="Antarctic">Antártida</wmoRegion>
+
+  <precipIndicator o="0">en secciones 1 y 3</precipIndicator>
+  <precipIndicator o="1">en sección 1</precipIndicator>
+  <precipIndicator o="2">en sección 3</precipIndicator>
+  <precipIndicator o="3">omitidos (ninguna precipitación)</precipIndicator>
+  <precipIndicator o="4">omitidos (no disponible)</precipIndicator>
+
+  <wxIndicator o="1">en sección 1</wxIndicator>
+  <wxIndicator o="2">omitidos (ningún fenómeno meteorológico significativo)</wxIndicator>
+  <wxIndicator o="3">omitidos (no disponible)</wxIndicator>
+  <wxIndicator o="4">en sección 1</wxIndicator>
+  <wxIndicator o="5">omitidos (ningún fenómeno meteorológico significativo)</wxIndicator>
+  <wxIndicator o="6">omitidos (no disponible)</wxIndicator>
+  <wxIndicator o="7">en sección 1</wxIndicator>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0901 -->
+  <stateOfGround o="0">superficie seca</stateOfGround>
+  <stateOfGround o="1">superficie húmeda</stateOfGround>
+  <stateOfGround o="2">superficie mojada</stateOfGround>
+  <stateOfGround o="3">inundado</stateOfGround>
+  <stateOfGround o="4">superficie helada</stateOfGround>
+  <stateOfGround o="5">cencellada (hielo liso) transparente</stateOfGround>
+  <stateOfGround o="6">polvo o arena secos sueltos que no cubren completamente el suelo</stateOfGround>
+  <stateOfGround o="7">fina tapa de polvo o arena secos sueltos</stateOfGround>
+  <stateOfGround o="8">capa media o espesa de polvo o arena secos sueltos que cubren el suelo completamente</stateOfGround>
+  <stateOfGround o="9">extremadamente seco y agrietado</stateOfGround>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0975 -->
+  <stateOfGroundSnow o="0">cubierto predominantemente de hielo</stateOfGroundSnow>
+  <stateOfGroundSnow o="1">nieve compacta o húmeda que cubre menos de la mitad del suelo</stateOfGroundSnow>
+  <stateOfGroundSnow o="2">nieve compacta o húmeda que cubre al menos la mitad del suelo, pero no completamente</stateOfGroundSnow>
+  <stateOfGroundSnow o="3">capa uniforme de nieve compacta o húmeda</stateOfGroundSnow>
+  <stateOfGroundSnow o="4">capa no uniforme de nieve compacta o húmeda</stateOfGroundSnow>
+  <stateOfGroundSnow o="5">nieve seca suelta que cubre menos de la mitad del suelo</stateOfGroundSnow>
+  <stateOfGroundSnow o="6">nieve seca suelta que cubre menos de la mitad del suelo, pero no completamente</stateOfGroundSnow>
+  <stateOfGroundSnow o="7">capa uniforme de nieve seca suelta</stateOfGroundSnow>
+  <stateOfGroundSnow o="8">capa no uniforme de nieve seca suelta</stateOfGroundSnow>
+  <stateOfGroundSnow o="9">nieve que cubre el suelo completamente; amontonamientos importantes</stateOfGroundSnow>
+
+  <period o="p">ayer</period>
+  <period o="n">la noche anterior</period>
+  <period o="24h06">en las 24 horas antes de las 06:00 UTC</period>
+  <period o="12h18p">ayer entre las 06:00 y las 18:00 UTC</period>
+  <period o="24h04">en las 24 horas antes de las 04:00 UTC</period>
+  <period o="24h14">en las 24 horas antes de las 14:00 UTC</period>
+  <period o="24h21">en las 24 horas antes de las 21:00 UTC</period>
+  <period o="24h07p">en las 24 horas antes de las 07:00 UTC ayer</period>
+  <period o="3or6h">desde 3 o 6h</period>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 1806 -->
+  <evapoIndicator o="0">evaporímetro estadounidense de recipiente abierto (sin tapa)</evapoIndicator>
+  <evapoIndicator o="1">evaporímetro estadounidense de recipiente abierto (con malla)</evapoIndicator>
+  <evapoIndicator o="2">evaporímetro GGI-3000 (hundido)</evapoIndicator>
+  <evapoIndicator o="3">tanque de 20 m²</evapoIndicator>
+  <evapoIndicator o="4">otros</evapoIndicator>
+  <evapoIndicator o="5">arroz</evapoIndicator>
+  <evapoIndicator o="6">trigo</evapoIndicator>
+  <evapoIndicator o="7">maíz</evapoIndicator>
+  <evapoIndicator o="8">sorgo</evapoIndicator>
+  <evapoIndicator o="9">otras cultivos</evapoIndicator>
+
+  <!-- WMO-No. 306 Vol II, code table 430 -->
+  <stateOfSky o="0">cúmulos, si hay, son bastante pequeños; generalmente menos de 2/8 cobertura excepto en cuestas de barlovento de terreno elevado; la anchura media de la nube es al menos tan grande como su grosor vertical</stateOfSky>
+  <stateOfSky o="1">cúmulos del tamaño intermedio con la cobertura menos que 5/8; la anchura de nube media es más que su grosor vertical; las torres son verticales con pocas o ningunas pruebas de la precipitación, excepto a lo largo de cuestas del terreno elevado; una ausencia general de medio y nubes superiores</stateOfSky>
+  <stateOfSky o="2">cúmulos aumentando con torrecillas altas creciendo rápidamente que se disminuyen en el tamaño con la altura y cuyas cimas tienden a separarse del cuerpo de nube más largo y evaporarse unos minutos después de la separación</stateOfSky>
+  <stateOfSky o="3">cúmulos aumentando con torres que tienen una inclinación pronunciada en la dirección del viento; el grosor de nube vertical es más que tiempos 1 1/2 aquella de su anchura media</stateOfSky>
+  <stateOfSky o="4">cúmulos aumentando con torres que tienen una inclinación pronunciada contra la dirección del viento; el grosor de nube vertical es más de 1 veces 1/2 aquella de su anchura media</stateOfSky>
+  <stateOfSky o="5">cúmulos congestus altos con grosor vertical más que dos veces la anchura media; no organizado en racimos o líneas; una o varias capas de nubes se extienden de las torres de nube, aunque ningunas capas de nube continuas existan</stateOfSky>
+  <stateOfSky o="6">cumulonimbos aislados o racimos grandes de torrecillas de cúmulos separadas por amplias áreas sin nubes; las bases de nube son generalmente oscuras con chubascos observadas en la mayor parte de células; algunas nubes medios o altos pueden existir; las células de cúmulos individuales son dos veces más alto de su anchura</stateOfSky>
+  <stateOfSky o="7">numerosos cúmulos que extienden por la troposfera media con 5/8-8/8 nubes medios y/o cirroestratos; las torres de cúmulo no se disminuyen generalmente en el tamaño con la altura; los nubes tienen bases oscuras y desiguales con un algunos chubascos</stateOfSky>
+  <stateOfSky o="8">nubes medias densas continuas y/o hojas de nube de cirroestratos con unos cumulonimbos grandes aislados o cúmulos congestus que penetran estas hojas; encienda la lluvia de vez en cuando observada del altoestratos; los cumulonimbos tienen bases desiguales y oscuros con chubascos</stateOfSky>
+  <stateOfSky o="9">hojas continuas de nubes medias y/o cirroestratos con cumulonimbos y cúmulos congestus organizadas en líneas o cintas; generalmente lluvia de hojas altoestratos y chubascos pesadas de cumulonimbos; el viento tiene un carácter turbulento</stateOfSky>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0552 -->
+  <cloudTopDescr o="0">nubes aisladas o fragmentos de nubes</cloudTopDescr>
+  <cloudTopDescr o="1">nubes continuas, cimas aplanadas</cloudTopDescr>
+  <cloudTopDescr o="2">nubes fragmentadas, pequeños claros, cimas aplanadas</cloudTopDescr>
+  <cloudTopDescr o="3">nubes fragmentadas, grandes claros, cimas aplanadas</cloudTopDescr>
+  <cloudTopDescr o="4">nubes continuas, cimas onduladas</cloudTopDescr>
+  <cloudTopDescr o="5">nubes fragmentadas, pequeños claros, cimas onduladas</cloudTopDescr>
+  <cloudTopDescr o="6">nubes fragmentadas, grandes claros, cimas onduladas</cloudTopDescr>
+  <cloudTopDescr o="7">ondulaciones continuas o casi continuas con torres nubosas más arriba de la cima de la capa</cloudTopDescr>
+  <cloudTopDescr o="8">grupos de ondulaciones con torres nubosas más arriba de la cima de la capa</cloudTopDescr>
+  <cloudTopDescr o="9">dos o más capas de nubes a diferentes niveles</cloudTopDescr>
+
+  <recordPeriod o="AT"> del año</recordPeriod>
+  <recordPeriod o="FM"> del mes</recordPeriod>
+  <recordPeriod o="DA"> del día</recordPeriod>
+  <recordPeriod o="spring"> por la primavera</recordPeriod>
+  <recordPeriod o="fall"> por el otoño</recordPeriod>
+
+  <tideLevel o="below">, marea observada más baja que nivel predicho</tideLevel>
+  <tideLevel o="equal">, marea observada el mismo como nivel predicho</tideLevel>
+  <tideLevel o="above">, marea observada más alta que nivel predicho</tideLevel>
+
+  <tideType o="low">marea baja</tideType>
+  <tideType o="neither">ni marea alta ni marea baja</tideType>
+  <tideType o="high">marea alta</tideType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0938 -->
+  <elevAboveHorizon o="1">muy bajo en el horizonte</elevAboveHorizon>
+  <elevAboveHorizon o="3">menos de 30° por encima del horizonte</elevAboveHorizon>
+  <elevAboveHorizon o="7">más de 30° por encima del horizonte</elevAboveHorizon>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 5161 -->
+  <opticalPhenomenon o="0">espectro de Brocken</opticalPhenomenon>
+  <opticalPhenomenon o="1">arco iris</opticalPhenomenon>
+  <opticalPhenomenon o="2">halo solar o lunar</opticalPhenomenon>
+  <opticalPhenomenon o="3">parhelios o anthelios</opticalPhenomenon>
+  <opticalPhenomenon o="4">obelisco luminoso</opticalPhenomenon>
+  <opticalPhenomenon o="5">corona</opticalPhenomenon>
+  <opticalPhenomenon o="6">resplandor crepuscular</opticalPhenomenon>
+  <opticalPhenomenon o="7">resplandor crepuscular en las montañas (Alpenglühen)</opticalPhenomenon>
+  <opticalPhenomenon o="8">espejismo</opticalPhenomenon>
+  <opticalPhenomenon o="9">luz zodiacal</opticalPhenomenon>
+
+  <maxCloudType o="cloud">nubes</maxCloudType>
+  <maxCloudType o="lowCloud">nubes bajas</maxCloudType>
+
+  <weatherType o="present">tiempo actual</weatherType>
+  <weatherType o="addPresent">tiempo adicional (960ww)</weatherType>
+  <weatherType o="addPresent1">tiempo adicional (961w1w1)</weatherType>
+  <weatherType o="past1">tiempo pasado 1</weatherType>
+  <weatherType o="past2">tiempo pasado 2</weatherType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3850 -->
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code table 0 02 038 -->
+  <waterTempMeasurement o="0">toma de agua del buque</waterTempMeasurement>
+  <waterTempMeasurement o="1">cubeta</waterTempMeasurement>
+  <waterTempMeasurement o="2">sensor de contacto con el casco</waterTempMeasurement>
+  <waterTempMeasurement o="3">termómetro de inversión</waterTempMeasurement>
+  <waterTempMeasurement o="4">sensor STD/CTD</waterTempMeasurement>
+  <waterTempMeasurement o="5">batitermógrafo mecánico</waterTempMeasurement>
+  <waterTempMeasurement o="6">batitermógrafo no recuperable</waterTempMeasurement>
+  <waterTempMeasurement o="7">batitermógrafo digital</waterTempMeasurement>
+  <waterTempMeasurement o="8">cadena de termistor</waterTempMeasurement>
+  <waterTempMeasurement o="9">explorador de infrarrojo</waterTempMeasurement>
+  <waterTempMeasurement o="10">explorador de microondas</waterTempMeasurement>
+  <waterTempMeasurement o="11">radiómetro infrarrojo</waterTempMeasurement>
+  <waterTempMeasurement o="12">termosalinógrafo en línea</waterTempMeasurement>
+  <waterTempMeasurement o="13">cuerpo remolcado</waterTempMeasurement>
+  <waterTempMeasurement o="14">otro</waterTempMeasurement>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3855 -->
+  <wetbulbTempMeasurement o="measured">medido</wetbulbTempMeasurement>
+  <wetbulbTempMeasurement o="icedMeasured">medido, en cuanto a hielo</wetbulbTempMeasurement>
+  <wetbulbTempMeasurement o="computed">calculado</wetbulbTempMeasurement>
+  <wetbulbTempMeasurement o="icedComputed">calculado, en cuanto a hielo</wetbulbTempMeasurement>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3765 -->
+  <snowCoverCharacter o="0">nieve reciente fina</snowCoverCharacter>
+  <snowCoverCharacter o="1">nieve reciente transformada en ventisca</snowCoverCharacter>
+  <snowCoverCharacter o="2">nieve reciente compacta</snowCoverCharacter>
+  <snowCoverCharacter o="3">nieve vieja, suelta</snowCoverCharacter>
+  <snowCoverCharacter o="4">nieve vieja, firme</snowCoverCharacter>
+  <snowCoverCharacter o="5">nieve vieja, húmeda</snowCoverCharacter>
+  <snowCoverCharacter o="6">nieve suelta con corteza superficial</snowCoverCharacter>
+  <snowCoverCharacter o="7">nieve firme con corteza superficial</snowCoverCharacter>
+  <snowCoverCharacter o="8">nieve húmeda con corteza superficial</snowCoverCharacter>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3775 -->
+  <snowCoverRegularity o="0">manto de nieve uniforme, terreno congelado</snowCoverRegularity>
+  <snowCoverRegularity o="1">manto de nieve uniforme, terreno blando</snowCoverRegularity>
+  <snowCoverRegularity o="2">manto de nieve uniforme</snowCoverRegularity>
+  <snowCoverRegularity o="3">manto de nieve moderadamente irregular, terreno congelado, ventiscas débiles</snowCoverRegularity>
+  <snowCoverRegularity o="4">manto de nieve moderadamente irregular, terreno blando, ventiscas débiles</snowCoverRegularity>
+  <snowCoverRegularity o="5">manto de nieve moderadamente irregular, ventiscas débiles</snowCoverRegularity>
+  <snowCoverRegularity o="6">manto de nieve muy irregular, terreno congelado, ventiscas fuertes</snowCoverRegularity>
+  <snowCoverRegularity o="7">manto de nieve muy irregular, terreno blando, ventiscas fuertes</snowCoverRegularity>
+  <snowCoverRegularity o="8">manto de nieve muy irregular, ventiscas fuertes</snowCoverRegularity>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3766 -->
+  <driftSnowData o="0">calima de nieve</driftSnowData>
+  <driftSnowData o="1">ventisca baja, débil o moderada</driftSnowData>
+  <driftSnowData o="2">ventisca baja, intensa</driftSnowData>
+  <driftSnowData o="3">ventisca baja, intensa, con precipitación de nieve</driftSnowData>
+  <driftSnowData o="4">ventisca alta, débil o moderada</driftSnowData>
+  <driftSnowData o="5">ventisca alta, intensa</driftSnowData>
+  <driftSnowData o="6">ventisca alta, débil o moderada, con precipitación de nieve</driftSnowData>
+  <driftSnowData o="7">ventisca alta, intensa, con precipitación de nieve</driftSnowData>
+  <driftSnowData o="8">ventisca baja y ventisca alta, débil o moderada</driftSnowData>
+  <driftSnowData o="9">ventisca baja y ventisca alta, intensa</driftSnowData>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3776 -->
+  <driftSnowEvolution o="0">ha terminado</driftSnowEvolution>
+  <driftSnowEvolution o="1">disminución de la intensidad</driftSnowEvolution>
+  <driftSnowEvolution o="2">la intensidad no ha cambiado</driftSnowEvolution>
+  <driftSnowEvolution o="3">aumento de la intensidad</driftSnowEvolution>
+  <driftSnowEvolution o="4">persistencia, sin tener en cuenta interrupciones que duren menos de 30 minutos</driftSnowEvolution>
+  <driftSnowEvolution o="5">la ventisca generalizada se ha transformado en ventisca cercana al suelo</driftSnowEvolution>
+  <driftSnowEvolution o="6">la ventisca cercana al suelo se ha transformado en ventisca general</driftSnowEvolution>
+  <driftSnowEvolution o="7">ha comenzado otra vez, después de una interrupción de más de 30 minutos</driftSnowEvolution>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3761 -->
+  <hoarFrost o="horizSurface">escarcha en superficies horizontales</hoarFrost>
+  <hoarFrost o="horizVertSurface">escarcha en superficies horizontales y verticales</hoarFrost>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3761 -->
+  <colouredPrecip o="sand">precipitación que contiene polvo o arena del desierto</colouredPrecip>
+  <colouredPrecip o="volcanicAsh">precipitación que contiene ceniza volcánica</colouredPrecip>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 1751 -->
+  <iceAccretionSource o="1">por rociones</iceAccretionSource>
+  <iceAccretionSource o="2">por niebla</iceAccretionSource>
+  <iceAccretionSource o="3">por rociones y niebla</iceAccretionSource>
+  <iceAccretionSource o="4">por lluvia</iceAccretionSource>
+  <iceAccretionSource o="5">por rociones y lluvia</iceAccretionSource>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3551 -->
+  <iceAccretionRate o="0">el hielo no se acumula</iceAccretionRate>
+  <iceAccretionRate o="1">el hielo se acumula lentamente</iceAccretionRate>
+  <iceAccretionRate o="2">el hielo se acumula rápidamente</iceAccretionRate>
+  <iceAccretionRate o="3">el hielo se funde o quiebra lentamente</iceAccretionRate>
+  <iceAccretionRate o="4">el hielo se funde o quiebra rápidamente</iceAccretionRate>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0639 -->
+  <seaIceConcentration o="0">ningún hielo marino a la vista</seaIceConcentration>
+  <seaIceConcentration o="1-0">buque en canal abierto con una anchura >1 NM</seaIceConcentration>
+  <seaIceConcentration o="1-9">buque en hielo fijo con frontera más alla del límite de visibilidad</seaIceConcentration>
+  <seaIceConcentration o="1">buque en canal abierto con una anchura >1 NM, o buque en hielo fijo con frontera más alla del límite de visibilidad</seaIceConcentration>
+  <seaIceConcentration o="2">buque en hielos o a menos de 0.5 NM del borde del hielo, &lt;3/8 hielo marino uniforme, aguas libres o hielo a la deriva muy abierto</seaIceConcentration>
+  <seaIceConcentration o="3">buque en hielos o a menos de 0.5 NM del borde del hielo, 3/8 .. &lt;6/8 hielo marino uniforme, hielo a la deriva abierto</seaIceConcentration>
+  <seaIceConcentration o="4">buque en hielos o a menos de 0.5 NM del borde del hielo, 6/8 .. &lt;7/8 hielo marino uniforme, hielo a la deriva cerrado</seaIceConcentration>
+  <seaIceConcentration o="5">buque en hielos o a menos de 0.5 NM del borde del hielo, 7/8 .. &lt;8/8 hielo marino uniforme, hielo a la deriva muy cerrado</seaIceConcentration>
+  <seaIceConcentration o="6">buque en hielos o a menos de 0.5 NM del borde del hielo, hielo marino no uniforme, cintas y bancos de hielo a la deriva separados, por aguas libres</seaIceConcentration>
+  <seaIceConcentration o="7">buque en hielos o a menos de 0.5 NM del borde del hielo, hielo marino no uniforme, cintas y bancos de hielo a la deriva cerrado o muy cerrado, separados por zonas donde la concentración es menor</seaIceConcentration>
+  <seaIceConcentration o="8">buque en hielos o a menos de 0.5 NM del borde del hielo, hielo marino no uniforme, hielo fijo con aguas libres, hielo a la deriva muy abierto o abierto a lo largo de la frontera del hielo</seaIceConcentration>
+  <seaIceConcentration o="9">buque en hielos o a menos de 0.5 NM del borde del hielo, hielo fijo con hielo a la deriva cerrado o muy cerrado a lo largo de la frontera del hielo</seaIceConcentration>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3739 -->
+  <iceDevelopmentStage o="0">hielo nuevo solamente (cristales de hielo, hielo grasoso, grumo, shuga)</iceDevelopmentStage>
+  <iceDevelopmentStage o="1">nilas o costras de hielo, &lt;10 cm de espesor</iceDevelopmentStage>
+  <iceDevelopmentStage o="2">hielo joven (hielo gris, hielo gris-blanco), de 10 a 30 cm de espesor</iceDevelopmentStage>
+  <iceDevelopmentStage o="3">hielo nuevo o hielo joven predominante, con algo de hielo del primer año</iceDevelopmentStage>
+  <iceDevelopmentStage o="4">hielo delgado del primer año predominante, con algo de hielo nuevo y/o hielo joven</iceDevelopmentStage>
+  <iceDevelopmentStage o="5">hielo delgado del primer año exclusivamente (30 a 70 cm de espesor)</iceDevelopmentStage>
+  <iceDevelopmentStage o="6">hielo medio del primer año predominante (70 a 120 cm de espesor) y hielo grueso del primer año (>120 cm de espesor), con un poco de hielo más delgado (más joven) del primer año</iceDevelopmentStage>
+  <iceDevelopmentStage o="7">hielo medio y grueso del primer año exclusivamente</iceDevelopmentStage>
+  <iceDevelopmentStage o="8">hielo medio y grueso del primer año predominante, con algo de hielo viejo (generalmente más de 2 m de espesor)</iceDevelopmentStage>
+  <iceDevelopmentStage o="9">hielo viejo predominante</iceDevelopmentStage>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0439 -->
+  <iceOfLandOrigin o="0">ningún hielo de origen terrestre</iceOfLandOrigin>
+  <iceOfLandOrigin o="1">1-5 témpanos, ningún gruñón ni tempanito</iceOfLandOrigin>
+  <iceOfLandOrigin o="2">6-10 témpanos, ningún gruñón ni tempanito</iceOfLandOrigin>
+  <iceOfLandOrigin o="3">11-20 témpanos, ningún gruñón ni tempanito</iceOfLandOrigin>
+  <iceOfLandOrigin o="4">ningún témpano, &lt;=10 gruñones y tempanitos inclusive</iceOfLandOrigin>
+  <iceOfLandOrigin o="5">ningún témpano, >10 gruñones y tempanitos, ningún témpano</iceOfLandOrigin>
+  <iceOfLandOrigin o="6">1-5 témpanos, con gruñones y tempanitos</iceOfLandOrigin>
+  <iceOfLandOrigin o="7">6-10 témpanos, con gruñones y tempanitos</iceOfLandOrigin>
+  <iceOfLandOrigin o="8">11-20 témpanos, con gruñones y tempanitos</iceOfLandOrigin>
+  <iceOfLandOrigin o="9">>20 témpanos, con gruñones y tempanitos: gran peligro para la navegación</iceOfLandOrigin>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0739 -->
+  <iceEdgeBearing o="0">borde principal no determinada: buque en canal costero o en canal agrietado</iceEdgeBearing>
+  <iceEdgeBearing o="1">borde principal del hielo hacia el NE</iceEdgeBearing>
+  <iceEdgeBearing o="2">borde principal del hielo hacia el E</iceEdgeBearing>
+  <iceEdgeBearing o="3">borde principal del hielo hacia el SE</iceEdgeBearing>
+  <iceEdgeBearing o="4">borde principal del hielo hacia el S</iceEdgeBearing>
+  <iceEdgeBearing o="5">borde principal del hielo hacia el SO</iceEdgeBearing>
+  <iceEdgeBearing o="6">borde principal del hielo hacia el O</iceEdgeBearing>
+  <iceEdgeBearing o="7">borde principal del hielo hacia el NO</iceEdgeBearing>
+  <iceEdgeBearing o="8">borde principal del hielo hacia el N</iceEdgeBearing>
+  <iceEdgeBearing o="9">borde principal no determinada: buque en hielos</iceEdgeBearing>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 5239 -->
+  <iceConditionTrend o="0">buques en mar abierto con hielos flotantes a la vista</iceConditionTrend>
+  <iceConditionTrend o="1">buque en hielos fácilmente penetrables; las condiciones mejoran</iceConditionTrend>
+  <iceConditionTrend o="2">buque en hielos fácilmente penetrables; las condiciones no varían</iceConditionTrend>
+  <iceConditionTrend o="3">buque en hielos fácilmente penetrables; las condiciones empeoran</iceConditionTrend>
+  <iceConditionTrend o="4">buque en hielos difícilmente penetrables; las condiciones mejoran</iceConditionTrend>
+  <iceConditionTrend o="5">buque en hielos difícilmente penetrables; las condiciones no varían</iceConditionTrend>
+  <iceConditionTrend o="6">buque en hielos difícilmente penetrables y en condiciones que empeoran, hielo en formación y masas de hielo congelándose juntos</iceConditionTrend>
+  <iceConditionTrend o="7">buque en hielos difícilmente penetrables y en condiciones que empeoran, hielos sometidos a presión débil</iceConditionTrend>
+  <iceConditionTrend o="8">buque en hielos difícilmente penetrables y en condiciones que empeoran, hielos sometidos a presión moderada o fuerte</iceConditionTrend>
+  <iceConditionTrend o="9">buque en hielos difícilmente penetrables y en condiciones que empeoran, buque bloqueado</iceConditionTrend>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3955 -->
+  <tempVariation o="0">estable</tempVariation>
+  <tempVariation o="1">en descenso, sin pasar de 0 °C</tempVariation>
+  <tempVariation o="2">en alza, sin pasar de 0 °C</tempVariation>
+  <tempVariation o="3">que desciende a un valor bajo 0 °C</tempVariation>
+  <tempVariation o="4">que sube a un valor sobre 0 °C</tempVariation>
+  <tempVariation o="5">variaciones irregulares, las oscilaciones pasan por el valor 0 °C</tempVariation>
+  <tempVariation o="6">variaciones irregulares, las oscilaciones no pasan por el valor 0 °C</tempVariation>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3764 -->
+  <frozenDepositType o="0">hielo liso</frozenDepositType>
+  <frozenDepositType o="1">cencellada blanca blanda</frozenDepositType>
+  <frozenDepositType o="2">cencellada blanca dura</frozenDepositType>
+  <frozenDepositType o="3">depósito de nieve</frozenDepositType>
+  <frozenDepositType o="4">depósito de aguanieve</frozenDepositType>
+  <frozenDepositType o="5">depósito de aguanieve engelante</frozenDepositType>
+  <frozenDepositType o="6">depósito mezclados (al mismo tiempo hielo liso y cencellada blanca, o cencellada blanca y aguanieve engelante, etc.)</frozenDepositType>
+  <frozenDepositType o="7">hielo en la superficie del suelo</frozenDepositType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0101 -->
+  <mirageType o="0">sin especificación</mirageType>
+  <mirageType o="1">imagen de objeto que emerge a distancia (espejismo emergente)</mirageType>
+  <mirageType o="2">imagen de objeto que emerge claramente en el horizonte</mirageType>
+  <mirageType o="3">imagen invertida de un objeto distante</mirageType>
+  <mirageType o="4">imágenes complejas y múltiples de objetos distantes (imágenes en posición normal)</mirageType>
+  <mirageType o="5">imágenes complejas y múltiples de objetos distantes (con inversión de algunas imágenes)</mirageType>
+  <mirageType o="6">imagen del sol o la luna apreciablemente distorsionada</mirageType>
+  <mirageType o="7">sol visible, aunque esté situado astronómicamente debajo del horizonte</mirageType>
+  <mirageType o="8">luna visible, aunque esté situada astronómicamente debajo del horizonte</mirageType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 4332 -->
+  <visibilityVariation o="0">visibilidad no ha variado (sol/cielo/luna/estrellas visible)</visibilityVariation>
+  <visibilityVariation o="1">visibilidad no ha variado (sol/cielo/luna/estrellas invisible)</visibilityVariation>
+  <visibilityVariation o="2">visibilidad ha aumentado (sol/cielo/luna/estrellas visible)</visibilityVariation>
+  <visibilityVariation o="3">visibilidad ha aumentado (sol/cielo/luna/estrellas invisible)</visibilityVariation>
+  <visibilityVariation o="4">visibilidad ha disminuido (sol/cielo/luna/estrellas visible)</visibilityVariation>
+  <visibilityVariation o="5">visibilidad ha disminuido (sol/cielo/luna/estrellas invisible)</visibilityVariation>
+  <visibilityVariation o="6">niebla procedente</visibilityVariation>
+  <visibilityVariation o="7">niebla ha ascendido sin disiparse</visibilityVariation>
+  <visibilityVariation o="8">niebla se ha disipado</visibilityVariation>
+  <visibilityVariation o="9">bancos de niebla en movimiento</visibilityVariation>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3334 -->
+  <qualityControlInd o="0">datos no comprobados</qualityControlInd>
+  <qualityControlInd o="1">datos correctos</qualityControlInd>
+  <qualityControlInd o="2">datos incongruentes</qualityControlInd>
+  <qualityControlInd o="3">datos dudosos</qualityControlInd>
+  <qualityControlInd o="4">datos erróneos</qualityControlInd>
+  <qualityControlInd o="5">el valor de los datos ha cambiado</qualityControlInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3315, 3319, 3363 -->
+  <qualityInd o="0">valor entre los límites especificados</qualityInd>
+  <qualityInd o="1">valor fuera de los límites especificados</qualityInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3313 -->
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code table 0 33 023 -->
+  <qualityTransmission o="0">buena</qualityTransmission>
+  <qualityTransmission o="1">dudosa</qualityTransmission>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3311 -->
+  <qualityLocation o="0">valores del comienzo del informe son fiables</qualityLocation>
+  <qualityLocation o="1">valores del comienzo del informe son los últimos valores conocidos</qualityLocation>
+  <qualityLocation o="2">valores del comienzo del informe son dudosos</qualityLocation>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3318 -->
+  <depthCorrectionInd o="0">no se corrigen las profundidades</depthCorrectionInd>
+  <depthCorrectionInd o="1">se corrigen las profundidades</depthCorrectionInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 2263 -->
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code table 0 02 033 -->
+  <salinityMeasurementInd o="0">sin medición</salinityMeasurementInd>
+  <salinityMeasurementInd o="1">sensor en el lugar, precisión superior a 0,02 ‰</salinityMeasurementInd>
+  <salinityMeasurementInd o="2">sensor en el lugar, precisión inferior a 0,02 ‰</salinityMeasurementInd>
+  <salinityMeasurementInd o="3">análisis de muestras</salinityMeasurementInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 2267 -->
+  <measurementCorrectionInd o="0">movimiento mediante el establecimiento de la media, velocidad mediante un sistema de localización del fondo del océano</measurementCorrectionInd>
+  <measurementCorrectionInd o="1">movimiento mediante la compensación del movimiento, velocidad mediante un sistema de localización del fondo del océano</measurementCorrectionInd>
+  <measurementCorrectionInd o="2">movimiento no eliminado, velocidad mediante un sistema de localización del fondo del océano</measurementCorrectionInd>
+  <measurementCorrectionInd o="3">movimiento mediante el establecimiento de la media, velocidad mediante navegación</measurementCorrectionInd>
+  <measurementCorrectionInd o="4">movimiento mediante la compensación del movimiento, velocidad mediante navegación</measurementCorrectionInd>
+  <measurementCorrectionInd o="5">movimiento no eliminado, velocidad mediante navegación</measurementCorrectionInd>
+  <measurementCorrectionInd o="6">(método de Doppler no utilizado)</measurementCorrectionInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 2264 -->
+  <measurementDurTimeInd o="1">instantánea, medido durante la hora precedente</measurementDurTimeInd>
+  <measurementDurTimeInd o="2">&lt;=3 min. media, medido durante la hora precedente</measurementDurTimeInd>
+  <measurementDurTimeInd o="3">>3..&lt;=6 min. media, medido durante la hora precedente</measurementDurTimeInd>
+  <measurementDurTimeInd o="4">>6..&lt;=12 min. media, medido durante la hora precedente</measurementDurTimeInd>
+  <measurementDurTimeInd o="5">instantánea, medido durante la hora penúltima</measurementDurTimeInd>
+  <measurementDurTimeInd o="6">&lt;=3 min. media, medido durante la hora penúltima</measurementDurTimeInd>
+  <measurementDurTimeInd o="7">>3..&lt;=6 min. media, medido durante la hora penúltima</measurementDurTimeInd>
+  <measurementDurTimeInd o="8">>6..&lt;=12 min. media, medido durante la hora penúltima</measurementDurTimeInd>
+  <measurementDurTimeInd o="9">(ni método vectorial ni el de Doppler utilizado)</measurementDurTimeInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0370 -->
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code table 0 02 149 -->
+  <buoyTypeInd o="0">boya a la deriva</buoyTypeInd>
+  <buoyTypeInd o="1">boya a la deriva lagrangiano normalizado</buoyTypeInd>
+  <buoyTypeInd o="2">boya a la deriva normalizada de tipo FGGE</buoyTypeInd>
+  <buoyTypeInd o="3">boya a la deriva de tipo FGGE para la medición de viento</buoyTypeInd>
+  <buoyTypeInd o="4">derivador de hielo</buoyTypeInd>
+  <buoyTypeInd o="5">derivador lagrangiano normalizado SVP-G dotado de GPS</buoyTypeInd>
+  <buoyTypeInd o="6">derivador SVP-HR con resistencia para la medición de la temperatura de alta resolución o cadena de termistor</buoyTypeInd>
+  <buoyTypeInd o="8">objeto flotante bajo la superficie</buoyTypeInd>
+  <buoyTypeInd o="9">SOFAR</buoyTypeInd>
+  <buoyTypeInd o="10">ALACE</buoyTypeInd>
+  <buoyTypeInd o="11">MARVOR</buoyTypeInd>
+  <buoyTypeInd o="12">RAFOS</buoyTypeInd>
+  <buoyTypeInd o="13">PROVOR</buoyTypeInd>
+  <buoyTypeInd o="14">SOLO</buoyTypeInd>
+  <buoyTypeInd o="15">APEX</buoyTypeInd>
+  <buoyTypeInd o="16">boya fondeada</buoyTypeInd>
+  <buoyTypeInd o="17">NOMAD</buoyTypeInd>
+  <buoyTypeInd o="18">disco de 3 metros</buoyTypeInd>
+  <buoyTypeInd o="19">disco de 10..12 metros</buoyTypeInd>
+  <buoyTypeInd o="20">serie ODAS 30</buoyTypeInd>
+  <buoyTypeInd o="21">ATLAS</buoyTypeInd>
+  <buoyTypeInd o="22">TRITON</buoyTypeInd>
+  <buoyTypeInd o="23">fondeo FLEX</buoyTypeInd>
+  <buoyTypeInd o="24">boya flotante omnidireccional</buoyTypeInd>
+  <buoyTypeInd o="25">boya flotante direccional</buoyTypeInd>
+  <buoyTypeInd o="26">boya flotante ARGO subsuperficial</buoyTypeInd>
+  <buoyTypeInd o="27">PALACE</buoyTypeInd>
+  <buoyTypeInd o="28">NEMO</buoyTypeInd>
+  <buoyTypeInd o="29">NINJA</buoyTypeInd>
+  <buoyTypeInd o="30">boya/flotador sobre hielo</buoyTypeInd>
+  <buoyTypeInd o="34">boya fondeada oceanográfica</buoyTypeInd>
+  <buoyTypeInd o="35">boya fondeada meteorológica</buoyTypeInd>
+  <buoyTypeInd o="36">boya fondeada multidisciplinaria</buoyTypeInd>
+  <buoyTypeInd o="37">boya fondeada: mareógrafo o boya de tsunamis</buoyTypeInd>
+  <buoyTypeInd o="38">baliza de hielo</buoyTypeInd>
+  <buoyTypeInd o="39">boya de seguimiento del balance de masa de hielo</buoyTypeInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 4780 -->
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code table 0 02 034 -->
+  <drogueTypeInd o="0">no especificada</drogueTypeInd>
+  <drogueTypeInd o="1">manga con orificios</drogueTypeInd>
+  <drogueTypeInd o="2">TRISTAR</drogueTypeInd>
+  <drogueTypeInd o="3">visor de ventana</drogueTypeInd>
+  <drogueTypeInd o="4">paracaídas</drogueTypeInd>
+  <drogueTypeInd o="5">ancla marina no lagrangiana</drogueTypeInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 0114 -->
+  <anemometerTypeInd o="0">rotor de cazoletas</anemometerTypeInd>
+  <anemometerTypeInd o="1">rotor de hélice</anemometerTypeInd>
+  <anemometerTypeInd o="2">observación del viento a partir del ruido ambiental (WOTAN)</anemometerTypeInd>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3848 -->
+  <squallType o="0">calma o viento ligero seguido de turbonada</squallType>
+  <squallType o="1">calma o viento ligero seguido de turbonadas sucesivas</squallType>
+  <squallType o="2">tiempo borrascoso seguido de turbonada</squallType>
+  <squallType o="3">tiempo borrascoso seguido de turbonadas sucesivas</squallType>
+  <squallType o="4">turbonada seguida de tiempo borrascoso</squallType>
+  <squallType o="5">tiempo borrascoso generalizado con turbonadas intermitentes</squallType>
+  <squallType o="6">turbonada aproximándose a la estación</squallType>
+  <squallType o="7">línea de turbonada</squallType>
+  <squallType o="8">turbonada con nubes de polvo o arena bajas o altas</squallType>
+  <squallType o="9">línea de turbonada con nubes de polvo o arena, bajas o altas</squallType>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 2555 -->
+  <windPhenomType o="0">tromba(s) marina(s) a 3 km como máximo de la estación</windPhenomType>
+  <windPhenomType o="1">tromba(s) marina(s) a más de 3 km de la estación</windPhenomType>
+  <windPhenomType o="2">nubes de tornado a 3 km como máximo de la estación</windPhenomType>
+  <windPhenomType o="3">nubes de tornado a más de 3 km de la estación</windPhenomType>
+  <windPhenomType o="4">torbellinos de poca intensidad</windPhenomType>
+  <windPhenomType o="5">torbellinos de intensidad moderada</windPhenomType>
+  <windPhenomType o="6">torbellinos de gran intensidad</windPhenomType>
+  <windPhenomType o="7">remolinos de polvo de poca intensidad</windPhenomType>
+  <windPhenomType o="8">remolinos de polvo de intensidad moderada</windPhenomType>
+  <windPhenomType o="9">remolinos de polvo de gran intensidad</windPhenomType>
+
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code tables 0 08 004 (2..6), 0 08 009 -->
+  <phaseOfFlight o="0">vuelo horizontal, observación de rutina, inestable</phaseOfFlight>
+  <phaseOfFlight o="1">vuelo horizontal, viento más fuerte encontrado, inestable</phaseOfFlight>
+  <phaseOfFlight o="2">inestable</phaseOfFlight>
+  <phaseOfFlight o="3">vuelo horizontal, observación de rutina</phaseOfFlight>
+  <phaseOfFlight o="4">vuelo horizontal, viento más fuerte encontrado</phaseOfFlight>
+  <phaseOfFlight o="5">ascendente</phaseOfFlight>
+  <phaseOfFlight o="6">descendente</phaseOfFlight>
+  <phaseOfFlight o="7">ascendente, intervalos de observación seleccionados por incrementos de tiempo</phaseOfFlight>
+  <phaseOfFlight o="8">ascendente, intervalos de observación seleccionados por incrementos de tiempo, inestable</phaseOfFlight>
+  <phaseOfFlight o="9">ascendente, intervalos de observación seleccionados por incrementos de presión</phaseOfFlight>
+  <phaseOfFlight o="10">ascendente, intervalos de observación seleccionados por incrementos de presión, inestable</phaseOfFlight>
+  <phaseOfFlight o="11">descendente, intervalos de observación seleccionados por incrementos de tiempo</phaseOfFlight>
+  <phaseOfFlight o="12">descendente, intervalos de observación seleccionados por incrementos de tiempo, inestable</phaseOfFlight>
+  <phaseOfFlight o="13">descendente, intervalos de observación seleccionados por incrementos de presión</phaseOfFlight>
+  <phaseOfFlight o="14">descendente, intervalos de observación seleccionados por incrementos de presión, inestable</phaseOfFlight>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3866 -->
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code tables 0 02 061 -->
+  <navSystem o="0">sistema inercial</navSystem>
+  <navSystem o="1">OMEGA</navSystem>
+
+  <!-- WMO-No. 306 Vol I.1, Part A, code table 3867 -->
+  <!-- WMO-No. 306 Vol I.2, Part B, CODE/FLAG Tables, code tables 0 02 062 -->
+  <amdarSystem o="0">ASDAR</amdarSystem>
+  <amdarSystem o="1">ASDAR (ACARS disponible pero no operativo)</amdarSystem>
+  <amdarSystem o="2">ASDAR (ACARS disponible y operativo)</amdarSystem>
+  <amdarSystem o="3">ACARS</amdarSystem>
+  <amdarSystem o="4">ACARS (ASDAR disponible pero no operativo)</amdarSystem>
+  <amdarSystem o="5">ACARS (ASDAR disponible y operativo)</amdarSystem>
+
+  <error o="obsStation">no una id de la estación</error>
+  <error o="obsTime">no un tiempo de observación</error>
+  <error o="obsStationType">no un tipo de una estación</error>
+  <error o="stationId">no una id de una estación</error>
+  <error o="callSign">no un señal de llamada</error>
+  <error o="buoyId">no un id de una boya</error>
+  <error o="obsTimeWindInd">no un tiempo de observación/indicación de viento</error>
+  <error o="stationPosition">no una posición de una estación</error>
+  <error o="indicatorCloudVis">no un grupo para indicaciónes, nubes y precipitación</error>
+  <error o="cloudWind">no un grupo de nubes y viento</error>
+  <error o="wind">no un grupo de viento</error>
+  <error o="QNH">no una presión</error>
+  <error o="invalid333-5xxxx">5xxxx grupos en sección 3 no válidos</error>
+  <error o="noTrendData">datos de tendencia fallan</error>
+  <error o="other">formato no válido</error>
+
+  <warning o="msgModified">mensaje modificado a:&#10;|</warning>
+  <warning o="notProcessed">no tratado: |</warning>
+  <warning o="windMissing">viento falla</warning>
+  <warning o="visibilityMissing">visibilidad falla</warning>
+  <warning o="tempMissing">temperatura falla</warning>
+  <warning o="QNHMissing">QNH falla</warning>
+  <warning o="pressureMissing">presión al nivel de la estación falla</warning>
+  <warning o="periodMissing">período falla para |</warning>
+  <warning o="periodInvalid">período de medición no válido: |</warning>
+  <warning o="cloudTypeInvalid">tipo(s) de nube(s) no válido(s): |</warning>
+  <warning o="weatherOmitted">datos del tiempo omitidos</warning>
+  <warning o="weatherNotOmitted">datos del tiempo no omitidos</warning>
+  <warning o="precipOmitted1">datos de la precipitación omitidos en sección 1</warning>
+  <warning o="precipNotOmitted1">datos de la precipitación no omitidos en sección 1</warning>
+  <warning o="precipOmitted3">datos de la precipitación omitidos en sección 3</warning>
+  <warning o="precipNotOmitted3">datos de la precipitación no omitidos en sección 3</warning>
+  <warning o="multCloudTypes">más de uno grupo de tipo de nubes: |</warning>
+  <warning o="mixedFormat4TafPeriods">formato viejo o minutos faltan por período |</warning>
+  <warning o="ambigPeriodVis">grupo ambiguo: periodo | puede ser visibilidad</warning>
+  <warning o="qualityLimit">error de la medición para el parámetro antes de '&lt;' excede cierto límite</warning>
+  <warning o="BLUslash">'BLU/' quiere decir 'BLU+' muy probablemente</warning>
+  <warning o="latlonDigitMismatch">códigos de control por la posición esperado != encontrado: |</warning>
+
+  <cgi o="title">metaf2xml: analiza y decodifica METAR, TAF, SYNOP, BUOY y AMDAR</cgi>
+  <cgi o="infosrc">Una buena fuente por mensajes actuales de METAR y TAF es</cgi>
+  <cgi o="infofetch">Si es elegido una opción con "código(s)" y son dado uno o más código(s), los mensajes serán traído de la fuente elegida (o si esta opción es minusválida del servidor de donde viene esta página web).</cgi>
+  <cgi o="options">Opciones</cgi>
+  <cgi o="example">ejemplos: </cgi>
+  <cgi o="type1">mensaje METAR o </cgi>
+  <cgi o="type2">mensaje TAF o </cgi>
+  <cgi o="type3">mensaje o </cgi>
+  <cgi o="type4">código(s) OACI: </cgi>
+  <cgi o="type5">código(s) OMM: </cgi>
+  <cgi o="type7">código(s) OMM o </cgi>
+  <cgi o="type8">código(s) SHIP o </cgi>
+  <cgi o="type9">código(s) MOBIL: </cgi>
+  <cgi o="type11">código(s) aeronave: </cgi>
+  <cgi o="source">consultar mensajes de: </cgi>
+  <cgi o="source1">NOAA/IWS </cgi>
+  <cgi o="source2">NOAA/ADDS </cgi>
+  <cgi o="source3">NOAA/ADDS dataserver </cgi>
+  <cgi o="source4">NOAA/NWS </cgi>
+  <cgi o="source5">College of DuPage </cgi>
+  <cgi o="source6">Ogimet </cgi>
+  <cgi o="language">lengua: </cgi>
+  <cgi o="format">presentar como: </cgi>
+  <cgi o="format1">HTML </cgi>
+  <cgi o="format2">texto </cgi>
+  <cgi o="format3">XML (+XSL -> HTML) </cgi>
+  <cgi o="mode">consultar/presentar: </cgi>
+  <cgi o="mode1">último/detallado </cgi>
+  <cgi o="mode2">todos/resumen desde </cgi>
+  <cgi o="hours"> hora(s)</cgi>
+  <cgi o="decode">traducir</cgi>
+  <cgi o="disclaimer">Aviso: Las informaciones siguientes puedan ser antiguas o falsas o los dos. No&#10;son apropiadas para el uso en la aviación.</cgi>
+  <cgi o="derived">Los valores de entradas marcadas con * no provienen directamente del mensaje,&#10;pero son sacados de sus datos.</cgi>
+
+  <country o="BR">Brasil</country>
+  <country o="JP">Japón</country>
+  <country o="US-NY">Nueva York, Estados Unidos</country>
+
+  <summaryHeader o="metar">
+   <c/><c>estac</c><c>tiempo (UTC)</c><c>viento (kt)</c><c>vis</c><c>tiempo</c><c>nubes</c><c>temp (°C)</c><c>hum</c><c>presión (hPa)</c><c>n.r.</c><c align="left">mensaje</c>
+  </summaryHeader>
+  <summaryHeader o="synop">
+   <c/><c>typo</c><c>estac</c><c>tiempo (UTC)</c><c>vis</c><c post="&#9;">nubes</c><c>viento (kt)</c><c>temp (°C)</c><c>hum</c><c>presión (hPa)/GP (gpm)</c><c>precip</c><c>tiempo</c><c colspan="3" post="&#9;&#9;">nubes bajas,medias,altas</c><c>altura de nubes</c><c>olas</c><c>n.t.</c><c align="left">mensaje</c>
+  </summaryHeader>
+  <summaryHeader o="buoy">
+   <c/><c>boya</c><c>tiempo (UTC)</c><c>viento (kt)</c><c>temp (°C)</c><c>hum</c><c>presión (hPa)</c><c>olas</c><c>n.t.</c><c align="left">mensaje</c>
+  </summaryHeader>
+  <summaryHeader o="amdar">
+   <c/><c>typo</c><c>aeronave</c><c>tiempo (UTC)</c><c>posición</c><c>viento (kt)</c><c>temp (°C)</c><c>n.t.</c><c align="left">mensaje</c>
+  </summaryHeader>
+ </lang>
+</trans>
