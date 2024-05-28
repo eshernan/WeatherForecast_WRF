@@ -3,32 +3,24 @@
 #################################################################
 # Script for compiling WRF libraries for Intel oneAPI compilers
 #################################################################
-BASE=/home/ehernandez/WRF
+source ../../setup_env.sh 
 
 #################################################################
-# Load the Intel Cluster Compilers environment
+# Load the Intel OneAPI Compilers environment
 #################################################################
 source ~/intel/oneapi/setvars.sh
 
-SHARED=$BASE/SHARED
-LIBS=$SHARED/libs
-INSTALLERS=$BASE/installer
-export SHARED INSTALLERS
 #for Intel Cluster Compilers
-export CC=icc
-export FC=ifort
-export CXX=icpc
+export CC=icx
+export FC=ifx
+export CXX=icx
 
-# #for gcc
-# export CC=gcc
-# export FC=gfortran
-# export CXX=g++
 cd $INSTALLERS
 echo "-------------------------------------------------"
 echo "----------- Compiling ZLIB  ---------------------"
 echo "-------------------------------------------------"
 
-cd zlib
+cd zlib-$ZLIB
 ./configure --prefix=$LIBS/compiled
 make
 make install
@@ -37,7 +29,7 @@ echo "-------------------------------------------------"
 echo "----------- Compiling  LIBPNG  ------------------"
 echo "-------------------------------------------------"
 
-cd libpng
+cd libpng-$LIBPNG
 ./configure --prefix=$LIBS/compiled #--build=arm
 make
 make install
